@@ -27,10 +27,6 @@ private static final Logger logger = LoggerFactory.getLogger(CStatisticsControll
 	
 	ExcelWriter excelWriter;
 	
-	// 화면 연결
-	// 기간 변경
-	// 엑셀 다운
-	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String cstatisticsForm(Model model) {
