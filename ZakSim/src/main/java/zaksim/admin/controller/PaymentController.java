@@ -19,7 +19,7 @@ import zaksim.dto.ZakSimMember;
 import zaksim.util.Paging;
 
 @Controller
-@RequestMapping(value="/zaksim/admin/payment")
+@RequestMapping(value="/zaksim/admin")
 public class PaymentController {
 	
 private static final Logger logger = LoggerFactory.getLogger(PaymentController.class);
@@ -29,16 +29,15 @@ private static final Logger logger = LoggerFactory.getLogger(PaymentController.c
 	
 	
 	// 화면 연결
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String memberForm(Model model, int page) {
+	@RequestMapping(value = "/payment", method = RequestMethod.GET)
+	public void paymentForm() {
 		// 페이징 객체 생성
 		// 서비스.리스트 받아오기();
 		// 모델에 값 넣기
-		return "/zaksim/admin/payment";
 	}
 	
 	// 카테고리 변경
-	@RequestMapping(value="/changeCategory", method = RequestMethod.POST, produces="application/json; charset=utf-8")
+	@RequestMapping(value="/payment/changeCategory", method = RequestMethod.POST, produces="application/json; charset=utf-8")
 	@ResponseBody
 	public Map<String, String> changeCategory(int page, String category) {
 		
@@ -52,7 +51,7 @@ private static final Logger logger = LoggerFactory.getLogger(PaymentController.c
 	}	
 	
 	// 리스트 출력 갯수 변경
-	@RequestMapping(value="/changeListNum", method = RequestMethod.POST, produces="application/json; charset=utf-8")
+	@RequestMapping(value="/payment/changeListNum", method = RequestMethod.POST, produces="application/json; charset=utf-8")
 	@ResponseBody
 	public Map<String, String> changeListNum(int page, int listNum) {
 		
@@ -66,7 +65,7 @@ private static final Logger logger = LoggerFactory.getLogger(PaymentController.c
 	}
 	
 	// 전액 환불 처리
-	@RequestMapping(value="/refund", method = RequestMethod.POST, produces="application/json; charset=utf-8")
+	@RequestMapping(value="/payment/refund", method = RequestMethod.POST, produces="application/json; charset=utf-8")
 	@ResponseBody
 	public Map<String, String> refund(Challenge challenge) {
 		
@@ -80,7 +79,7 @@ private static final Logger logger = LoggerFactory.getLogger(PaymentController.c
 	}
 	
 	// 부분 환불 처리
-	@RequestMapping(value="/partialRefund", method = RequestMethod.POST, produces="application/json; charset=utf-8")
+	@RequestMapping(value="/payment/partialRefund", method = RequestMethod.POST, produces="application/json; charset=utf-8")
 	@ResponseBody
 	public Map<String, String> partialRefund(Challenge challenge) {
 		

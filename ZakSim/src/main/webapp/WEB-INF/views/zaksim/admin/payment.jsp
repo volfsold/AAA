@@ -10,6 +10,10 @@
 	font-family: Dohyeon;
 	src: url('/resources/fonts/BMDOHYEON_ttf.ttf');
 }
+@font-face {
+	font-family: HannaAir;
+	src: url('/resources/fonts/BMHANNAAir_ttf.ttf');
+}
 </style>
 
 <style>
@@ -207,22 +211,27 @@ body {
 		<div class="main">
 		
  			<div class="row justify-content-center">
-				<p class="data-title">&nbsp;&nbsp;&nbsp;회원 관리&nbsp;&nbsp;&nbsp;</p>
+				<p class="data-title">&nbsp;&nbsp;&nbsp;결제 관리&nbsp;&nbsp;&nbsp;</p>
  			</div>
 		
-			<div class="row justify-content-between">
+			<div class="row">
 				<div class="col-1"></div>
-				<div class="col-1">
-					<button class="btn btn-zaksim rounded" type="button" >계정 정지</button>
+				<div class="col-5">
+					<div class="row justify-content-start">
+						<button class="btn btn-zaksim rounded" type="button" style="margin-left: 15px; margin-right: 5px;">전액 환불</button>
+						<button class="btn btn-zaksim rounded" type="button" >부분 환불</button>
+					</div>
 				</div>
-				<div class="col-9">
+				
+				<div class="col-5">
 					<div class="row justify-content-end">
 						<div class="btn-group" style="margin-right: 7px;">
-				            <button class="btn btn-outline-danger dropdown-toggle" data-toggle="dropdown"> 전체 회원 </button>
+				            <button class="btn btn-outline-danger dropdown-toggle" data-toggle="dropdown"> 전체 결제 내역 </button>
 				            <div class="dropdown-menu">
-				            	<a class="dropdown-item" href="#">전체 회원</a>
-				            	<a class="dropdown-item" href="#">계정 정지 대상</a>
-				            	<a class="dropdown-item" href="#">계정 정지 회원</a>
+				            	<a class="dropdown-item" href="#">전체 결제 내역</a>
+				            	<a class="dropdown-item" href="#">부분 환불 신청</a>
+				            	<a class="dropdown-item" href="#">전체 환불 신청</a>
+				            	<a class="dropdown-item" href="#">환불 완료</a>
 				          	</div>
 						</div>
 						<div class="btn-group">
@@ -248,16 +257,15 @@ body {
 							<tr>
 								<th><input type="checkbox"/></th>
 								<th>No.</th>
-								<th>type</th>
-								<th>ID</th>
-								<th>Nick</th>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Phone</th>
-								<th>Join Date</th>
-								<th>Status</th>
-								<th>Suspension Date</th>
-								<th>신고 횟수</th>
+								<th>회원 유형</th>
+								<th>아이디</th>
+								<th>닉네임</th>
+								<th>이름</th>
+								<th>도전 타이틀</th>
+								<th>결제 방법</th>
+								<th>환불 사유</th>
+								<th>인증률</th>
+								<th>결제 상태</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -270,12 +278,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전10</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -286,12 +293,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전9</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -302,12 +308,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전8</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -318,12 +323,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전7</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -334,12 +338,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전6</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -350,12 +353,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전5</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -366,12 +368,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전4</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -382,12 +383,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전3</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -398,12 +398,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전2</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -414,12 +413,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전1</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 						</tbody>
 					</table>
