@@ -10,6 +10,10 @@
 	font-family: Dohyeon;
 	src: url('/resources/fonts/BMDOHYEON_ttf.ttf');
 }
+@font-face {
+	font-family: HannaAir;
+	src: url('/resources/fonts/BMHANNAAir_ttf.ttf');
+}
 </style>
 
 <style>
@@ -104,6 +108,12 @@ body {
 	border-bottom: 4px solid #a81919;
 }
 
+.data-subTitle {
+	font-family: Dohyeon !important;
+	font-size: 20px;
+	border-bottom: 3.5px solid #a81919;
+}
+
 .btn-zaksim {
 	background-color: #a81919;
 	color: white;
@@ -111,6 +121,14 @@ body {
 
 .dropdown-item {
    font-size: 0.8571em;
+}
+
+.badge {
+	padding: 0.5em 0.8em !important;
+}
+
+.badge-secondary {
+	background-color: #c7c7c7 !important;
 }
 
 .page-item {
@@ -170,7 +188,7 @@ body {
 	</nav>
 <!-- navbar -->
 	
-	<!-- commit -->
+	
 
 
 <!-- sidenav -->
@@ -207,35 +225,50 @@ body {
 		<div class="main">
 		
  			<div class="row justify-content-center">
-				<p class="data-title">&nbsp;&nbsp;&nbsp;회원 관리&nbsp;&nbsp;&nbsp;</p>
+				<p class="data-title" style="border-color: #ccc !important;">&nbsp;&nbsp;&nbsp;통계 / 그래프&nbsp;&nbsp;&nbsp;</p>
+ 			</div>
+ 			
+ 			<div class="row" style="margin-top: 20px;">
+ 				<div class="col-4">
+ 					<div class="row justify-content-end">
+ 						<p class="data-subTitle pl-3 pr-3">회원</p>
+ 					</div>
+ 				</div>
+ 				<div class="col-4">
+ 					<div class="row justify-content-center">
+		 				<p class="data-subTitle  pl-3 pr-3">도전</p>
+ 					</div>
+ 				</div>
+ 				<div class="col-4">
+ 					<div class="row justify-content-start">
+ 						<p class="data-subTitle  pl-3 pr-3">수익</p>
+ 					</div>
+ 				</div>
  			</div>
 		
-			<div class="row justify-content-between">
+			<div class="row" style="margin-top: 50px;">
 				<div class="col-1"></div>
-				<div class="col-1">
-					<button class="btn btn-zaksim rounded" type="button" >계정 정지</button>
-				</div>
-				<div class="col-9">
-					<div class="row justify-content-end">
-						<div class="btn-group" style="margin-right: 7px;">
-				            <button class="btn btn-outline-danger dropdown-toggle" data-toggle="dropdown"> 전체 회원 </button>
-				            <div class="dropdown-menu">
-				            	<a class="dropdown-item" href="#">전체 회원</a>
-				            	<a class="dropdown-item" href="#">계정 정지 대상</a>
-				            	<a class="dropdown-item" href="#">계정 정지 회원</a>
-				          	</div>
-						</div>
-						<div class="btn-group">
-				            <button class="btn btn-outline-danger dropdown-toggle" data-toggle="dropdown"> 10개씩 보기 </button>
-				            <div class="dropdown-menu">
-				            	<a class="dropdown-item" href="#">10개씩 보기</a>
-				            	<a class="dropdown-item" href="#">15개씩 보기</a>
-				            	<a class="dropdown-item" href="#">30개씩 보기</a>
-				          	</div>
-						</div>	
+				<div class="col-5">
+					<div class="row justify-content-start">
+						<span class="badge badge-secondary badge-pill mr-1" >&nbsp;&nbsp;오늘&nbsp;&nbsp;</span>
+						<span class="badge badge-secondary badge-pill mr-1" >&nbsp;&nbsp;어제&nbsp;&nbsp;</span>
+						<span class="badge badge-secondary badge-pill mr-1" >최근 7일</span>
+						<span class="badge badge-secondary badge-pill mr-1" >최근 30일</span>
 					</div>
 				</div>
 				
+				<div class="col-5">
+					<div class="row justify-content-start">
+						<select class="" id="inputGroupSelect02">
+						    <option selected>Choose...</option>
+						    <option value="1">One</option>
+						    <option value="2">Two</option>
+						    <option value="3">Three</option>
+						</select>
+					</div>
+				</div>
+				
+<!-- 				<div class="col-3"></div> -->
 				<div class="col-1"></div>
 			</div>
 			
@@ -248,16 +281,15 @@ body {
 							<tr>
 								<th><input type="checkbox"/></th>
 								<th>No.</th>
-								<th>type</th>
-								<th>ID</th>
-								<th>Nick</th>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Phone</th>
-								<th>Join Date</th>
-								<th>Status</th>
-								<th>Suspension Date</th>
-								<th>신고 횟수</th>
+								<th>회원 유형</th>
+								<th>아이디</th>
+								<th>닉네임</th>
+								<th>이름</th>
+								<th>도전 타이틀</th>
+								<th>결제 방법</th>
+								<th>환불 사유</th>
+								<th>인증률</th>
+								<th>결제 상태</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -270,12 +302,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전10</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -286,12 +317,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전9</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -302,12 +332,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전8</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -318,12 +347,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전7</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -334,12 +362,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전6</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -350,12 +377,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전5</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -366,12 +392,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전4</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -382,12 +407,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전3</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -398,12 +422,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전2</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 							<tr>
 								<th scope="row">
@@ -414,12 +437,11 @@ body {
 								<td>id</td>
 								<td>nick</td>
 								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
+								<td>도전1</td>
+								<td>카드</td>
+								<td>중도포기</td>
+								<td>5%</td>
+								<td>결제 완료</td>
 							</tr>
 						</tbody>
 					</table>

@@ -18,7 +18,7 @@ import zaksim.admin.service.MStatisticsService;
 import zaksim.util.ExcelWriter;
 
 @Controller
-@RequestMapping(value="/zaksim/admin/mstatistics")
+@RequestMapping(value="/zaksim/admin")
 public class MStatisticsController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MStatisticsController.class);
@@ -31,18 +31,17 @@ public class MStatisticsController {
 	// 엑셀 다운
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String mstatisticsForm(Model model) {
+	@RequestMapping(value = "/mStatistics", method = RequestMethod.GET)
+	public void mstatisticsForm() {
 		// 화면 연결
 		// memberService.당일 가입 수 가져오기();
 		// memberService.최근 일주일간? 회원수 추이 가져오기();
 		// memberService.최근 일주일간 방문수 추이 가져오기();
 		// memberService.상세 통계자료 가져오기();
 		// 모델에 값 넣기
-		return "/zaksim/admin/mstatistics";
 	}
 	
-	@RequestMapping(value="/changePeriod", method = RequestMethod.POST, produces="application/json; charset=utf-8")
+	@RequestMapping(value="/mStatistics/changePeriod", method = RequestMethod.POST, produces="application/json; charset=utf-8")
 	@ResponseBody
 	public Map<String, String> changePeriod(int period) {
 		
@@ -57,7 +56,7 @@ public class MStatisticsController {
 		return map;
 	}
 	
-	@RequestMapping(value="/downloadExcel", method = RequestMethod.POST)
+	@RequestMapping(value="/mStatistics/downloadExcel", method = RequestMethod.POST)
 	@ResponseBody
 	public void downloadExcel(HttpServletResponse response) {
 		
