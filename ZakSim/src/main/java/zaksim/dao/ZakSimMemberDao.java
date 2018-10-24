@@ -4,6 +4,7 @@ import zaksim.dto.ZakSimMember;
 
 public interface ZakSimMemberDao {
 	
+	// -------------- 관리자 ------------------
 	// 로그인
 	// 아이디, 비밀번호 일치하는 count(*) 반환
 	public int selectAdminMember(ZakSimMember member);
@@ -19,5 +20,6 @@ public interface ZakSimMemberDao {
 
 	// 기간 별 회원 수
 	public void selectMemberNum(int period);
+	// -------------- 관리자 ------------------
 
 }
