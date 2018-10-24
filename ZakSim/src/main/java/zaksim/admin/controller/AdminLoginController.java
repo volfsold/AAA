@@ -20,7 +20,7 @@ public class AdminLoginController {
 	
 	@Autowired LoginService loginService;
 	
-	
+	//fdgfgfgfgh
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginForm() {
