@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+        #zz {
+            margin-top: 150px;
+        }
+
+
+
+        #groupBorder {
+            border: 10px solid;
+            padding: 10px;
+            padding: 10px;
+            background-color: white;
+            border-color: lightgray;
+            border-radius: 10px;
+        }
+
+        .img-thumbnail {
+            width: 250px;
+            height: 150px;
+        }
+
+        .rounded-circle {
+            width: 250px;
+            height: 150px;
+        }
