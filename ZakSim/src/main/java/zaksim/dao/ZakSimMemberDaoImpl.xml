@@ -18,4 +18,26 @@
   	WHERE id=#{id} AND password=#{password}
   </select>
   
+  <select id="selectTotalMemberCount" parameterType="map" resultType="int">
+  	SELECT COUNT(*)
+  	FROM ZakSimMember
+	WHERE id != 'admin'
+	AND id LIKE '%' || #{searchId} || '%'
+	<!-- if category == "계정정지대상"/"계정정지회원" -->
+  </select>
+  
+  <select id="selectAdminMemberList" parameterType="map" resultMap="ZakSimMember">
+  	SELECT * FROM ( 
+		SELECT rownum rnum, Z.* FROM (
+			SELECT * FROM ZakSimMember
+			WHERE id != 'admin'
+			AND id LIKE '%' || #{searchId} || '%'
+			<!-- if category == "계정정지대상"/"계정정지회원" -->
+			ORDER BY idx DESC
+		) Z
+		ORDER BY rnum
+	)
+	WHERE rnum BETWEEN #{paging.startNo} AND #{paging.endNo}
+  </select>
+  
   </mapper>

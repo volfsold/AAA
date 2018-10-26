@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+.data-title {
+	font-family: Dohyeon !important;
+	font-size: 30px;
+	padding-left: 40px;
+	padding-right: 40px;
+	border-bottom: 4px solid #a81919;
+}
+
+.data-subTitle {
+	font-family: Dohyeon !important;
+	font-size: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
+	border-bottom: 3.5px solid #a81919;
+}
+
+.data-search-form {
+	width: 200px;
+}
+
+input[type="text"]:focus,
+.uneditable-input:focus {   
+  border-color: rgba(243, 104, 104, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(220, 76, 76, 0.6);
+  outline: 0 none;
+}
+
+.btn-zaksim {
+	background-color: #a81919;
+	color: white;
+}
+
+.dropdown-item {
+   font-size: 0.8571em;
+}
+
+.badge {
+	padding: 0.5em 0.8em !important;
+}
+
+.badge-secondary {
+	background-color: #c7c7c7 !important;
+}
+
+.page-item {
+	background-color:transparent !important;
+}
+
+.page-item .page-link{
+    border: 0;
+    border-radius: 30px ;
+  	color: #2c2c2c;
+    padding: 0px 11px;
+    margin: 0 3px;
+    min-width: 30px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+
+.page-item.active .page-link{
+	background-color: #a81919 !important;
+}
+
+.active > button {
+	color:white !important;
+	box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-menu a:active {
+	background-color: #a81919 !important;
+}
+
+.data-span-modal {
+	text-decoration: underline;
+	color: blue;
+}
+
+.data-modal-iconBtn {
+	 background-color: transparent;
+	 border: none;
+}

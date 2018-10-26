@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Payment {
 	
+	private int rnum;
+	
 	private int impUid;
 	private int merchantUid;
 	private int buyerIdx;
@@ -16,6 +18,13 @@ public class Payment {
 	private ZakSimMember zakSimMember;
 
 	
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
 	
 	public int getImpUid() {
 		return impUid;
@@ -91,8 +100,8 @@ public class Payment {
 
 	@Override
 	public String toString() {
-		return "Payment [impUid=" + impUid + ", merchantUid=" + merchantUid + ", buyerIdx=" + buyerIdx
-				+ ", challengeIdx=" + challengeIdx + ", price=" + price + ", paidAt=" + paidAt + ", status=" + status
-				+ ", paymentOption=" + paymentOption + ", zakSimMember=" + zakSimMember + "]";
+		return "Payment [rnum=" + rnum + ", impUid=" + impUid + ", merchantUid=" + merchantUid + ", buyerIdx="
+				+ buyerIdx + ", challengeIdx=" + challengeIdx + ", price=" + price + ", paidAt=" + paidAt + ", status="
+				+ status + ", paymentOption=" + paymentOption + ", zakSimMember=" + zakSimMember + "]";
 	}
 }

@@ -1,6 +1,8 @@
 package zaksim.admin.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +19,26 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired ZakSimMemberDao zakSimMemberDao;
 	@Autowired ReportDao reportDao;
 	
+
 	@Override
-	public List<ZakSimMember> viewList(Paging paging, String category, int listNum) {
+	public int getTotalCount(String searchId, String category) {
+		// TODO Auto-generated method stub
+		Map<String, Object> param = new HashMap<>();
+		param.put("searchId", searchId);
+		param.put("category", category);
+		return zakSimMemberDao.selectTotalMemberCount(param);
+	}
+	
+	@Override
+	public List<ZakSimMember> viewList(Paging paging, String category, String searchId) {
 		// TODO Auto-generated method stub
 		// 페이징 객체 생성
-		zakSimMemberDao.selectAdminMemberList(category, listNum);
-		return null;
+		Map<String, Object> param = new HashMap<>();
+		param.put("paging", paging);
+		param.put("category", category);
+		param.put("searchId", searchId);
+		
+		return zakSimMemberDao.selectAdminMemberList(param);
 	}
 
 	@Override
@@ -39,5 +55,6 @@ public class MemberServiceImpl implements MemberService {
 		// 디비에서 자동으로 상태변경되게 만들거나 메소드 생성하기
 		
 	}
+
 
 }

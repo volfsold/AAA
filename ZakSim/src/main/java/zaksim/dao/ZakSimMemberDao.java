@@ -1,5 +1,8 @@
 package zaksim.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import zaksim.dto.ZakSimMember;
 
 public interface ZakSimMemberDao {
@@ -9,8 +12,11 @@ public interface ZakSimMemberDao {
 	// 아이디, 비밀번호 일치하는 count(*) 반환
 	public int selectAdminMember(ZakSimMember member);
 
+	// 총 회원수 가져오기
+	public int selectTotalMemberCount(Map<String, Object> param);
+
 	// 회원 관리 리스트
-	public void selectAdminMemberList(String category, int listNum);
+	public List<ZakSimMember> selectAdminMemberList(Map<String, Object> param);
 
 	// 계정 정지 처리
 	public void updateMemberStatus(ZakSimMember member);
@@ -68,6 +74,8 @@ public interface ZakSimMemberDao {
 	 */
 	public int joinAjax(String id);
 	// -------------- 로그인 ------------------
+
+
 	
 	
 }
