@@ -170,6 +170,28 @@
     <script src="https://code.jquery.com/jquery.min.js"></script>
     <!-- google charts -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+        <script type="text/javascript">
+        $(document).ready(function() {
+
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 200) {
+                    $('.top-button').fadeIn();
+                } else {
+                    $('.top-button').fadeOut();
+                }
+            });
+
+
+            $('.top-button').click(function() {
+                $('html,body').animate({
+                    scrollTop: 0
+                }, 400);
+                return false;
+            });
+        });
+    </script>
+    
 <script>
     var chartDrowFun = {
 
