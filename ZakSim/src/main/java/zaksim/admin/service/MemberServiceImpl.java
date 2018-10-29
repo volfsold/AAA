@@ -21,7 +21,7 @@ public class MemberServiceImpl implements MemberService {
 	
 
 	@Override
-	public int getTotalCount(String searchId, String category) {
+	public int getAdminTotalCount(String searchId, String category) {
 		// TODO Auto-generated method stub
 		Map<String, Object> param = new HashMap<>();
 		param.put("searchId", searchId);
@@ -30,9 +30,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public List<ZakSimMember> viewList(Paging paging, String category, String searchId) {
+	public List<ZakSimMember> viewAdminList(Paging paging, String category, String searchId) {
 		// TODO Auto-generated method stub
-		// 페이징 객체 생성
 		Map<String, Object> param = new HashMap<>();
 		param.put("paging", paging);
 		param.put("category", category);

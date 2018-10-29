@@ -12,6 +12,7 @@
 						<thead>
 							<tr>
 								<th><input type="checkbox"/></th>
+								<th style="display: none;">impUid</th>
 								<th>No.</th>
 								<th>회원 유형</th>
 								<th>아이디</th>
@@ -25,22 +26,22 @@
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach items="${ pList }" var="payment">
+						<c:forEach items="${ rList }" var="refund">
 							<tr>
 								<th scope="row">
 									<input type="checkbox"/>
 								</th>
-								<td style="display: none;">${payment.impUid}</td>
-								<td>10</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>도전10</td>
-								<td>카드</td>
-								<td>중도포기</td>
-								<td>5%</td>
-								<td>결제 완료</td>
+								<td style="display: none;">${refund.impUid}</td>
+								<td>${refund.rRnum}</td>
+								<td>${refund.payment.zakSimMember.memberType}</td>
+								<td>${refund.payment.zakSimMember.id}</td>
+								<td>${refund.payment.zakSimMember.nick}</td>
+								<td>${refund.payment.zakSimMember.name}</td>
+								<td>${refund.payment.challenge.title}</td>
+								<td>${refund.payment.paymentOption}</td>
+								<td>${refund.refundOption}</td>
+								<td>${refund.payment.certificationRate}</td>
+								<td>${refund.payment.status}</td>
 							</tr>
 						</c:forEach>
 						</tbody>
@@ -51,7 +52,7 @@
 			<!-- table -->
 			
 			<!-- pagination -->
-			<%@include file="./paging/memberPaging.jsp" %>
+			<%@include file="./paging/paymentPaging.jsp" %>
           <!-- pagination -->
 
 </body>

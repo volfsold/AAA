@@ -1,25 +1,42 @@
 package zaksim.admin.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import zaksim.dao.AdminPaymentDao;
 import zaksim.dao.PaymentDao;
 import zaksim.dto.Payment;
+import zaksim.dto.Refund;
 import zaksim.util.Paging;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
 	
 	@Autowired PaymentDao paymentDao;
+	@Autowired AdminPaymentDao adminPaymentDao;
+	
+	
+	@Override
+	public int getAdminTotalCount(String searchId, String category) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("searchId", searchId);
+		param.put("category", category);
+		return adminPaymentDao.selectTotalPaymentCount(param);
+	}
 
 	@Override
-	public List<Payment> viewList(Paging paging, String category, int listNum) {
+	public List<Refund> viewAdminList(Paging paging, String category, String searchId) {
 		// TODO Auto-generated method stub
-		// 페이징 객체 생성
-		paymentDao.selectAdminPaymentList(category, listNum);
-		return null;
+		Map<String, Object> param = new HashMap<>();
+		param.put("paging", paging);
+		param.put("category", category);
+		param.put("searchId", searchId);
+		
+		return adminPaymentDao.selectAdminPaymentList(param);
 	}
 
 	@Override
