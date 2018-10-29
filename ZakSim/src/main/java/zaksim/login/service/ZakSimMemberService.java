@@ -13,9 +13,17 @@ public interface ZakSimMemberService {
 
 	/**
 	 * 로그인 service
-	 * @return ZasimMember
+	 * @param ZaSimMember memberDto
+	 * @return true or false
 	 */
-	public ZakSimMember login();
+	public boolean login(ZakSimMember memberDto);
+	
+	/**
+	 * 회원정보 dao
+	 * @param ZaSimMember memberDto 
+	 * @return ZakSimMember
+	 */
+	public ZakSimMember memberInfo(ZakSimMember memberDto);
 	
 	/**
 	 * 아이디 찾기 service

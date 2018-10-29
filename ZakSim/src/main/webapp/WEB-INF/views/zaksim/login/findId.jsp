@@ -61,5 +61,5 @@
 			<!-- body 안  -->
 		</div>
 	</div>
-
+	
 <%@ include file="../main/footer.jsp" %>

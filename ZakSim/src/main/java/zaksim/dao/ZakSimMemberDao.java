@@ -32,9 +32,17 @@ public interface ZakSimMemberDao {
 	// -------------- 로그인 ------------------
 	/**
 	 * 로그인 dao
-	 * @return ZasimMember
+	 * @param ZakSimMember memberDto
+	 * @return int
 	 */
-	public ZakSimMember login();
+	public int login(ZakSimMember memberDto);
+	
+	/**
+	 * 회원정보 dao
+	 * @param ZaSimMember memberDto
+	 * @return ZakSimMember
+	 */
+	public ZakSimMember memberInfo(ZakSimMember memberDto);
 	
 	/**
 	 * 아이디 찾기 dao

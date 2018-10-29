@@ -13,15 +13,23 @@
 
 <body>
 
+<!-- 로그인 상태일 경우 메인으로 돌아가게끔 -->
+<%-- <% if ( session.getAttribute("login") != null || session.getAttribute("id") != null) { %>
+<script type="text/javascript">
+	alert("로그인 상태");
+	location.href = "/zaksim/main/home";
+</script>
+<% } %> --%>
+
 <!-- body -->
   <img class="img-fluid d-block mx-auto pt-4" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" width="400" height="200">
   <div class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-5 mx-auto py-2 shadow-sm" id="login_form">
-          <form>
-            <div class="form-group"> <label>ID</label> <input type="email" class="form-control" placeholder="ID"></div>
-            <div class="form-group"> <label>비밀번호</label> <input type="password" class="form-control" placeholder="비밀번호"> </div>
+          <form action="/zaksim/login/login" method="post">
+            <div class="form-group"> <label>ID</label> <input type="text" class="form-control" name="id" placeholder="ID"></div>
+            <div class="form-group"> <label>비밀번호</label> <input type="password" class="form-control" name="password" placeholder="비밀번호"> </div>
             <div class="col-md-5 mx-auto text-center">
               <button type="submit" class="btn loginBtnColor col">로그인</button>
             </div>
