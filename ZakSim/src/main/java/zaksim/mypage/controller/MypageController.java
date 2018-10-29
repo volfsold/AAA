@@ -12,6 +12,7 @@ import zaksim.mypage.controller.MypageController;
 
 
 @Controller
+
 public class MypageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);

@@ -1,7 +1,10 @@
-package zaksim.customerCenter.service.inter;
+package zaksim.customerCenter.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import zaksim.dao.QnAFileDao;
 import zaksim.dto.QnAFile;
 
 /*

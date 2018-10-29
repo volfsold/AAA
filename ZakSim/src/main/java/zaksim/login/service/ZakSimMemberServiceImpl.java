@@ -1,11 +1,10 @@
-package zaksim.login.service.impl;
+package zaksim.login.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import zaksim.dao.ZakSimMemberDao;
 import zaksim.dto.ZakSimMember;
-import zaksim.login.service.inter.ZakSimMemberService;
 
 /*
  * 작성일 : 2018.10.18
@@ -19,10 +18,19 @@ public class ZakSimMemberServiceImpl implements ZakSimMemberService {
 
 	@Autowired ZakSimMemberDao memberDao;
 	
+
 	@Override
-	public ZakSimMember login() {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean login(ZakSimMember memberDto) {
+		if( memberDao.login(memberDto) == 1 ) {
+			return true;
+		} else {
+			return false;			
+		}
+	}
+	
+	@Override
+	public ZakSimMember memberInfo(ZakSimMember memberDto) {
+		return memberDao.memberInfo(memberDto);
 	}
 
 	@Override

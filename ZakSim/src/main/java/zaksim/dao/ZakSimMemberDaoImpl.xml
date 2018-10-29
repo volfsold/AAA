@@ -66,6 +66,21 @@
 	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]>= TO_CHAR(sysdate-30, 'YY/MM/DD')
 	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YY/MM/DD')
   	</if>
+  	</select>
+  	
+  <!-- 로그인 -->
+  <select id="login" parameterType="zaksim.dto.ZakSimMember" resultType="int">
+  	SELECT COUNT(*) FROM ZakSimMember
+  	WHERE member_type = 'zaksim'
+  	AND id = #{id}
+  	AND password = #{password}
+  </select>
+  
+  <!-- 회원정보 -->
+  <select id="memberInfo" parameterType="zaksim.dto.ZakSimMember" resultMap="ZakSimMember">
+  	SELECT * FROM ZakSimMember
+  	WHERE member_type = 'zaksim'
+  	AND id = #{id}
   </select>
   
   </mapper>

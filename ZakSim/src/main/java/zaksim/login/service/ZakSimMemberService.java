@@ -1,4 +1,4 @@
-package zaksim.login.service.inter;
+package zaksim.login.service;
 
 import zaksim.dto.ZakSimMember;
 
@@ -13,9 +13,17 @@ public interface ZakSimMemberService {
 
 	/**
 	 * 로그인 service
-	 * @return ZasimMember
+	 * @param ZaSimMember memberDto
+	 * @return true or false
 	 */
-	public ZakSimMember login();
+	public boolean login(ZakSimMember memberDto);
+	
+	/**
+	 * 회원정보 dao
+	 * @param ZaSimMember memberDto 
+	 * @return ZakSimMember
+	 */
+	public ZakSimMember memberInfo(ZakSimMember memberDto);
 	
 	/**
 	 * 아이디 찾기 service
@@ -36,7 +44,7 @@ public interface ZakSimMemberService {
 
 	/**
 	 * 회원가입 service
-	 * @param ZaksimMember memberDto
+	 * @param ZakSimMember memberDto
 	 */
 	public void jogin(ZakSimMember memberDto);
 	

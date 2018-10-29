@@ -413,7 +413,7 @@
 			</div>
 		</div>
 
-		<div class="col" style="margin-bottom: 500px;"></div>
+		<div class="col" style="margin-bottom: 300px;"></div>
 	</div>
 
 </div>

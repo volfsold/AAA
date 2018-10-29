@@ -53,7 +53,7 @@
  
  <!--미들 세션 - 로그인-->
  
-  <div class="py-5" style="background-image: url(/resources/image/main/back.webp); background-color: rgba(197, 155, 60, 0.4); " >
+  <div class="py-5" style="background-image: url(/resources/image/main/back.webp); background-color: rgba(197, 155, 60, 0.0); " >
     <div class="container">
       <div class="row justify-content-center">
        
@@ -71,10 +71,14 @@
         <div class="col-md-6 col-lg-6 rounded m-2 mx-5 text-center" 
          style="background-color: blanchedalmond;    border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;    border-left-width: 5px;	border-style: solid;	border-color: white;">
           <h3 class="text-center my-2 mb-4">도전 정보</h3>
-          <p>10월 19일 부터 12월 31일 까지</p>
-          <p>도전금 30,000원을 걸고</p>
-          <p>헬스,운동하기 도전중</p>
-          <a class="btn btn-sm w-50 btn-info my-2 mt-4" href="#"> 도전 정보 확인 </a>
+          
+          	<a class="my-2 d-flex justify-content-center align-items-end">  <h5 class="mb-1"> 10월 26일</h5>&nbsp;부터&nbsp; <h5 class="mb-1">12월 31일</h5>&nbsp;까지 </a>
+         
+          	<a class="my-2 d-flex justify-content-center align-items-end"> 도전금&nbsp;<h4 class="mb-0"> 30,000</h4>원을 걸고</a>
+          
+         	<a class="my-2 d-flex justify-content-center align-items-end"><h5 class="mb-1"><b>헬스,운동하기</b></h5>&nbsp;도전중 </a>  
+          
+          	<a class="btn btn-sm w-50 btn-info my-2 mt-4" href="#"> 도전 정보 확인 </a>
         </div>
         
         
@@ -100,7 +104,7 @@
  <!--인기 그룹-->
  
  <div class="py-5" style="background-image: url(/resources/image/main/back.webp); 
-    background-color: rgba(197, 155, 60, 0.5);">
+    background-color: rgba(197, 155, 60, 0.1);">
     <div class="container">
       <div class="row">
         <div class="mx-3" >
@@ -245,7 +249,7 @@
  <!--최신 인증-->
  
  <div class="py-5" style="background-image: url(/resources/image/main/back.webp); 
-   background-color: rgba(197, 155, 60, 0.6);">
+   background-color: rgba(197, 155, 60, 0.2);">
     <div class="container">
     
       <div class="row">
