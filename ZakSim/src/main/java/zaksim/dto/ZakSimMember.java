@@ -4,6 +4,10 @@ import java.util.Date;
 
 public class ZakSimMember {
 	
+	private int rnum;
+	
+	private int idx;
+	private String memberType;
 	private String id;
 	private String password;
 	private String nick;
@@ -11,8 +15,28 @@ public class ZakSimMember {
 	private String email;
 	private String phone;
 	private Date joinDate;
-	private int status;				// 계정 정지 / 정상
+	private String status;				// 계정 정지 / 정상
 	private Date suspensionDate;	// 계정 정지 처분 날짜
+	
+	
+	public int getRnum() {
+		return rnum;
+	}
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+	public int getIdx() {
+		return idx;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+	public String getMemberType() {
+		return memberType;
+	}
+	public void setMemberType(String memberType) {
+		this.memberType = memberType;
+	}
 	public String getId() {
 		return id;
 	}
@@ -55,10 +79,10 @@ public class ZakSimMember {
 	public void setJoinDate(Date joinDate) {
 		this.joinDate = joinDate;
 	}
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	public Date getSuspensionDate() {
@@ -69,11 +93,9 @@ public class ZakSimMember {
 	}
 	@Override
 	public String toString() {
-		return "ZakSimMember [id=" + id + ", password=" + password + ", nick=" + nick + ", name=" + name + ", email="
-				+ email + ", phone=" + phone + ", joinDate=" + joinDate + ", status=" + status + ", suspensionDate="
-				+ suspensionDate + "]";
+		return "ZakSimMember [rnum=" + rnum + ", idx=" + idx + ", memberType=" + memberType + ", id=" + id
+				+ ", password=" + password + ", nick=" + nick + ", name=" + name + ", email=" + email + ", phone="
+				+ phone + ", joinDate=" + joinDate + ", status=" + status + ", suspensionDate=" + suspensionDate + "]";
 	}
 	
-	
-
 }

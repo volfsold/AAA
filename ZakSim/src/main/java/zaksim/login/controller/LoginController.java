@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import zaksim.dto.ZakSimMember;
-import zaksim.login.service.inter.ZakSimMemberService;
+import zaksim.login.service.ZakSimMemberService;
 
 /*
  * 작성일 : 2018.10.18
@@ -64,6 +64,10 @@ public class LoginController {
 	}
 	
 	// 회원가입
+	@RequestMapping(value="/zaksim/login/join_terms", method=RequestMethod.GET)
+	public void joinTermsPage() {
+		
+	}
 	@RequestMapping(value="/zaksim/login/join", method=RequestMethod.GET)
 	public String joinPage() {
 		return "zaksim/login/join";

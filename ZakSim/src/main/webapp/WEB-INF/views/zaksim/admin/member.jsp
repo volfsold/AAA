@@ -1,757 +1,12 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>ZakSim admin</title>
-<style>
-@font-face {
-	font-family: Dohyeon;
-	src: url('/resources/fonts/BMDOHYEON_ttf.ttf');
-}
-</style>
-
-<style>
-body {
-	font-family: "Lato", sans-serif;
-}
-
-/* Fixed sidenav, full height */
-.sidenav {
-	height: 100%;
-	width: 250px;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	background-color: white;
-	overflow-x: hidden;
-	padding-top: 20px;
-	border-right: 2px solid #ccc;
-}
-
-/* Style the sidenav links and the dropdown button */
-.sidenav a, .dropdown-btn {
-	padding: 6px 8px 6px 16px;
-	text-decoration: none;
-	font-family: Dohyeon !important;
-	font-size : 20px;
-	font-weight: 300;
-	color: #818181;
-	display: block;
-	border: none;
-	background: none;
-	width: 100%;
-	text-align: left;
-	cursor: pointer;
-	outline: none;
-	font-size: 20px;
-}
-
-/* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
-	color: #a81919;
-	text-decoration: underline;
-}
-
-/* Main content */
-.main {
-	margin-left: 250px;
-	margin-top: 120px;
-/* 	font-size: 20px; /* Increased text to enable scrolling */ */
-	padding: 0px 10px;
-}
-
-/* Add an active class to the active dropdown button */
-.active {
-	color: #a81919;
-}
-
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-.dropdown-container {
-	display: none;
-	background-color: white;
-	padding-left: 8px;
-}
-
-/* Optional: Style the caret down icon */
-.fa-caret-down {
-	float: right;
-	padding-right: 8px;
-}
-
-/* Some media queries for responsiveness */
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
-}
-
-.sidenav-a {
-	margin-bottom: 10px;
-}
-</style>
-
-<style>
-
-.data-title {
-	font-family: Dohyeon !important;
-	font-size: 30px;
-	border-bottom: 4px solid #a81919;
-}
-
-.btn-zaksim {
-	background-color: #a81919;
-	color: white;
-}
-
-.dropdown-item {
-   font-size: 0.8571em;
-}
-
-.page-item {
-	background-color:transparent !important;
-}
-
-.page-item .page-link{
-    border: 0;
-    border-radius: 30px ;
-  	color: #2c2c2c;
-    padding: 0px 11px;
-    margin: 0 3px;
-    min-width: 30px;
-    text-align: center;
-    height: 30px;
-    line-height: 30px;
-}
-
-.page-item.active .page-link{
-	background-color: #a81919 !important;
-}
-
-.active > a {
-	color:white !important;
-	box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.3);
-}
-
-.dropdown-menu a:active {
-	background-color: #a81919 !important;
-}
-
-</style>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="https://static.pingendo.com/bootstrap/bootstrap-4.1.3.css">
-
-<!-- font awesome -->
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-	crossorigin="anonymous">
-
-</head>
-<body>
-
-<!-- navbar -->
-	<nav class="navbar navbar-expand-lg fixed-top" style="background-color: #8A0303;">
-		<a href="" class="btn" style="font-size: xx-large; font-weight: bold; color: white;">ZakSim</a>
-		<div class="collapse navbar-collapse justify-content-end">
-			<a href="/zaksim/login" style="font-weight: bold; color: white;">LOGOUT</a>
-		</div>
-	</nav>
-<!-- navbar -->
-	
-	
-
-
-<!-- sidenav -->
-	<div class="sidenav" style="margin-top: 50px;">
-		<div class="row" style="margin-top: 50px;">
-			<div class="col-2"></div>
-				<div class="col-8">
-				<img class="img-fluid d-block rounded-circle" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" >
-				</div>
-				<div class="col-2"></div>		
-		</div>
-		<div class="row text-center" style="margin-top: 15px; margin-bottom: 80px;">
-			<div class="col-12"><p>ID or Name</p></div>
-		</div>
-		<a class="sidenav-a" href="/zaksim/admin/member">회원 관리</a>
-		<a class="sidenav-a" href="/zaksim/admin/payment">결제 관리</a>
-		<button class="dropdown-btn">
-			통계 / 그래프 <i class="fa fa-caret-down"></i>
-		</button>
-		<div class="dropdown-container">
-			<a href="/zaksim/admin/mStatistics">회원</a>
-			<a href="/zaksim/admin/cStatistics">도전</a>
-			<a href="/zaksim/admin/pStatistics">수익</a>
-		</div>
-	</div>
-<!-- sidenav -->
 
 	
+<%@include file="./header/adminHeader.jsp" %>
 
-
-
-<!-- main -->
-	<div class="container-fluid">
-		<div class="main">
-		
- 			<div class="row justify-content-center">
-				<p class="data-title">&nbsp;&nbsp;&nbsp;회원 관리&nbsp;&nbsp;&nbsp;</p>
- 			</div>
-		
-			<div class="row justify-content-between">
-				<div class="col-1"></div>
-				<div class="col-1">
-					<button class="btn btn-zaksim rounded" type="button" >계정 정지</button>
-				</div>
-				<div class="col-9">
-					<div class="row justify-content-end">
-						<div class="btn-group" style="margin-right: 7px;">
-				            <button class="btn btn-outline-danger dropdown-toggle" data-toggle="dropdown"> 전체 회원 </button>
-				            <div class="dropdown-menu">
-				            	<a class="dropdown-item" href="#">전체 회원</a>
-				            	<a class="dropdown-item" href="#">계정 정지 대상</a>
-				            	<a class="dropdown-item" href="#">계정 정지 회원</a>
-				          	</div>
-						</div>
-						<div class="btn-group">
-				            <button class="btn btn-outline-danger dropdown-toggle" data-toggle="dropdown"> 10개씩 보기 </button>
-				            <div class="dropdown-menu">
-				            	<a class="dropdown-item" href="#">10개씩 보기</a>
-				            	<a class="dropdown-item" href="#">15개씩 보기</a>
-				            	<a class="dropdown-item" href="#">30개씩 보기</a>
-				          	</div>
-						</div>	
-					</div>
-				</div>
-				
-				<div class="col-1"></div>
-			</div>
-			
-			<!-- table -->
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-1"></div>
-				<div class="col-10 table-responsive-xl">
-					<table class="table table-hover text-center">
-						<thead>
-							<tr>
-								<th><input type="checkbox"/></th>
-								<th>No.</th>
-								<th>type</th>
-								<th>ID</th>
-								<th>Nick</th>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Phone</th>
-								<th>Join Date</th>
-								<th>Status</th>
-								<th>Suspension Date</th>
-								<th>신고 횟수</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>10</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>9</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>8</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>7</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>6</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>5</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>4</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>3</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>2</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>1</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="col-1"></div>
-			</div>
-			<!-- table -->
-			
-			<!-- pagination -->
-			<div class="text-center">
-				<ul class="pagination pt-2 justify-content-center">
-	            <li class="page-item">
-	              <a class="page-link" href="#">
-	                <span>«</span>
-	                <span class="sr-only">Previous</span>
-	              </a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link " href="#">1</a>
-	            </li>
-	            <li class="page-item active">
-	              <a class="page-link" href="#">2</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">3</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">4</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">5</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">6</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">7</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">8</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">9</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">10</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">
-	                <span>»</span>
-	                <span class="sr-only">Next</span>
-	              </a>
-	            </li>
-	          </ul>
-	      </div>
-          <!-- pagination -->
-          
-		</div>
-	</div>
-<!-- main -->
-
-
-	<script>
-		/* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
-		var prevScrollpos = window.pageYOffset;
-		window.onscroll = function() {
-			var currentScrollPos = window.pageYOffset;
-			if (prevScrollpos > currentScrollPos) {
-				document.getElementById("navbar").style.top = "0";
-			} else {
-				document.getElementById("navbar").style.top = "-50px";
-			}
-			prevScrollpos = currentScrollPos;
-		}
-
-		/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-		var dropdown = document.getElementsByClassName("dropdown-btn");
-		var i;
-
-		for (i = 0; i < dropdown.length; i++) {
-			dropdown[i].addEventListener("click", function() {
-				this.classList.toggle("active");
-				var dropdownContent = this.nextElementSibling;
-				if (dropdownContent.style.display === "block") {
-					dropdownContent.style.display = "none";
-				} else {
-					dropdownContent.style.display = "block";
-				}
-			});
-		}
-	</script>
-
-
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-</body>
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>ZakSim admin</title>
-<style>
-@font-face {
-	font-family: Dohyeon;
-	src: url('/resources/fonts/BMDOHYEON_ttf.ttf');
-}
-@font-face {
-	font-family: HannaAir;
-	src: url('/resources/fonts/BMHANNAAir_ttf.ttf');
-}
-</style>
-
-<style>
-body {
-	font-family: "Lato", sans-serif;
-}
-
-/* Fixed sidenav, full height */
-.sidenav {
-	height: 100%;
-	width: 250px;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	background-color: white;
-	overflow-x: hidden;
-	padding-top: 20px;
-	border-right: 2px solid #ccc;
-}
-
-/* Style the sidenav links and the dropdown button */
-.sidenav a, .dropdown-btn {
-	padding: 6px 8px 6px 16px;
-	text-decoration: none;
-	font-family: Dohyeon !important;
-	font-size : 20px;
-	font-weight: 300;
-	color: #818181;
-	display: block;
-	border: none;
-	background: none;
-	width: 100%;
-	text-align: left;
-	cursor: pointer;
-	outline: none;
-	font-size: 20px;
-}
-
-/* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
-	color: #a81919;
-}
-
-.sidenav-a:hover {
-	text-decoration: none;
-}
-
-.dropdown-container a:hover {
-	text-decoration: none;
-}
-
-/* Main content */
-.main {
-	margin-left: 250px;
-	margin-top: 120px;
-/* 	font-size: 20px; /* Increased text to enable scrolling */ */
-	padding: 0px 10px;
-}
-
-/* Add an active class to the active dropdown button */
-.active {
-	color: #a81919;
-}
-
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-.dropdown-container {
-	display: none;
-	background-color: white;
-	padding-left: 8px;
-}
-
-/* Optional: Style the caret down icon */
-.fa-caret-down {
-	float: right;
-	padding-right: 8px;
-}
-
-/* Some media queries for responsiveness */
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
-}
-
-.sidenav-a {
-	margin-bottom: 10px;
-}
-</style>
-
-<style>
-
-.data-title {
-	font-family: Dohyeon !important;
-	font-size: 30px;
-	padding-left: 40px;
-	padding-right: 40px;
-	border-bottom: 4px solid #a81919;
-}
-
-.data-subTitle {
-	font-family: Dohyeon !important;
-	font-size: 20px;
-	padding-left: 40px;
-	padding-right: 40px;
-	border-bottom: 3.5px solid #a81919;
-}
-
-.btn-zaksim {
-	background-color: #a81919;
-	color: white;
-}
-
-.dropdown-item {
-   font-size: 0.8571em;
-}
-
-.badge {
-	padding: 0.5em 0.8em !important;
-}
-
-.badge-secondary {
-	background-color: #c7c7c7 !important;
-}
-
-.page-item {
-	background-color:transparent !important;
-}
-
-.page-item .page-link{
-    border: 0;
-    border-radius: 30px ;
-  	color: #2c2c2c;
-    padding: 0px 11px;
-    margin: 0 3px;
-    min-width: 30px;
-    text-align: center;
-    height: 30px;
-    line-height: 30px;
-}
-
-.page-item.active .page-link{
-	background-color: #a81919 !important;
-}
-
-.active > a {
-	color:white !important;
-	box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.3);
-}
-
-.dropdown-menu a:active {
-	background-color: #a81919 !important;
-}
-
-</style>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="https://static.pingendo.com/bootstrap/bootstrap-4.1.3.css">
-
-<!-- font awesome -->
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-	crossorigin="anonymous">
-
-</head>
-<body>
-
-<!-- navbar -->
-	<nav class="navbar navbar-expand-lg fixed-top" style="background-color: #8A0303;">
-		<a href="" class="btn" style="font-size: xx-large; font-weight: bold; color: white;">ZakSim</a>
-		<div class="collapse navbar-collapse justify-content-end">
-			<a href="/zaksim/admin/logout" style="font-weight: bold; color: white;">LOGOUT</a>
-		</div>
-	</nav>
-<!-- navbar -->
-	
-
-
-<!-- sidenav -->
-	<div class="sidenav" style="margin-top: 50px;">
-		<div class="row" style="margin-top: 50px;">
-			<div class="col-2"></div>
-				<div class="col-8">
-				<img class="img-fluid d-block rounded-circle" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" >
-				</div>
-				<div class="col-2"></div>		
-		</div>
-		<div class="row text-center" style="margin-top: 15px; margin-bottom: 80px;">
-			<div class="col-12"><p>관리자</p></div>
-		</div>
-		<a class="sidenav-a" href="/zaksim/admin/member">회원 관리</a>
-		<a class="sidenav-a" href="/zaksim/admin/payment">결제 관리</a>
-		<button class="dropdown-btn">
-			통계 / 그래프 <i class="fa fa-caret-down"></i>
-		</button>
-		<div class="dropdown-container">
-			<a href="/zaksim/admin/mStatistics">회원</a>
-			<a href="/zaksim/admin/cStatistics">도전</a>
-			<a href="/zaksim/admin/pStatistics">수익</a>
-		</div>
-	</div>
-<!-- sidenav -->
+<link rel="stylesheet" type="text/css" href="/css/admin/member.css">
 
 	
-
 
 
 <!-- main -->
@@ -762,7 +17,20 @@ body {
 				<p class="data-title mb-5 mt-3">회원 관리</p>
  			</div>
 		
-			<div class="row justify-content-between mt-3">
+			<div class="row mt-3">
+				<div class="col-1"></div>
+				<div class="col-10 pr-0 d-flex justify-content-end">
+					<div class="input-group mb-3 data-search-form">
+						<input type="text" class="form-control" placeholder="input ID" id="searchId" name="searchId">
+						<div class="input-group-append">
+						  <button class="btn btn-outline-danger" type="button" onclick="searching();">Search</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-1"></div>
+			</div>
+			
+			<div class="row justify-content-between">
 				<div class="col-1"></div>
 				<div class="col-1">
 					<button class="btn btn-zaksim rounded" type="button" >계정 정지</button>
@@ -770,19 +38,20 @@ body {
 				<div class="col-9">
 					<div class="row justify-content-end">
 						<div class="btn-group" style="margin-right: 7px;">
-				            <button class="btn btn-outline-danger dropdown-toggle" data-toggle="dropdown"> 전체 회원 </button>
+				            <button class="btn btn-outline-danger dropdown-toggle" id="categoryDrop" data-toggle="dropdown">전체 회원</button>
 				            <div class="dropdown-menu">
-				            	<a class="dropdown-item" href="#">전체 회원</a>
-				            	<a class="dropdown-item" href="#">계정 정지 대상</a>
-				            	<a class="dropdown-item" href="#">계정 정지 회원</a>
+				            	<a class="dropdown-item" id="all">전체 회원</a>
+				            	<a class="dropdown-item" id="warn">계정 정지 대상</a>
+				            	<a class="dropdown-item" id="suspension">계정 정지 회원</a>
 				          	</div>
 						</div>
 						<div class="btn-group">
-				            <button class="btn btn-outline-danger dropdown-toggle" data-toggle="dropdown"> 10개씩 보기 </button>
+				            <button class="btn btn-outline-danger dropdown-toggle" id="pageCountDrop" data-toggle="dropdown">10개씩 보기</button>
 				            <div class="dropdown-menu">
-				            	<a class="dropdown-item" href="#">10개씩 보기</a>
-				            	<a class="dropdown-item" href="#">15개씩 보기</a>
-				            	<a class="dropdown-item" href="#">30개씩 보기</a>
+				            	<a class="dropdown-item" id="pageCount10">10개씩 보기</a>
+				            	<a class="dropdown-item" id="pageCount15">15개씩 보기</a>
+				            	<a class="dropdown-item" id="pageCount30">30개씩 보기</a>
+				            	<%-- 힘내! 뿅뿅 --%>
 				          	</div>
 						</div>	
 					</div>
@@ -791,286 +60,214 @@ body {
 				<div class="col-1"></div>
 			</div>
 			
+			
 			<!-- table -->
-			<div class="row" style="margin-top: 15px;">
-				<div class="col-1"></div>
-				<div class="col-10 table-responsive-xl">
-					<table class="table table-hover text-center">
-						<thead>
-							<tr>
-								<th><input type="checkbox"/></th>
-								<th>No.</th>
-								<th>type</th>
-								<th>ID</th>
-								<th>Nick</th>
-								<th>Name</th>
-								<th>Email</th>
-								<th>Phone</th>
-								<th>Join Date</th>
-								<th>Status</th>
-								<th>Suspension Date</th>
-								<th>신고 횟수</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>10</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>9</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>8</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>7</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>6</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>5</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>4</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>3</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>2</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<input type="checkbox"/>
-								</th>
-								<td>1</td>
-								<td>type</td>
-								<td>id</td>
-								<td>nick</td>
-								<td>name</td>
-								<td>email</td>
-								<td>phone</td>
-								<td>join date</td>
-								<td>status</td>
-								<td>suspension date</td>
-								<td>0</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="col-1"></div>
+			<div  id="pagingDiv">
+				<%@include file="./memberTable.jsp" %>
 			</div>
 			<!-- table -->
-			
-			<!-- pagination -->
-			<div class="text-center">
-				<ul class="pagination pt-2 justify-content-center">
-	            <li class="page-item">
-	              <a class="page-link" href="#">
-	                <span>«</span>
-	                <span class="sr-only">Previous</span>
-	              </a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link " href="#">1</a>
-	            </li>
-	            <li class="page-item active">
-	              <a class="page-link" href="#">2</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">3</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">4</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">5</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">6</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">7</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">8</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">9</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">10</a>
-	            </li>
-	            <li class="page-item">
-	              <a class="page-link" href="#">
-	                <span>»</span>
-	                <span class="sr-only">Next</span>
-	              </a>
-	            </li>
-	          </ul>
-	      </div>
-          <!-- pagination -->
-          
+
 		</div>
 	</div>
 <!-- main -->
 
 
-	<script>
-		/* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
-		var prevScrollpos = window.pageYOffset;
-		window.onscroll = function() {
-			var currentScrollPos = window.pageYOffset;
-			if (prevScrollpos > currentScrollPos) {
-				document.getElementById("navbar").style.top = "0";
-			} else {
-				document.getElementById("navbar").style.top = "-50px";
-			}
-			prevScrollpos = currentScrollPos;
+
+<!-- Modal -->
+<div class="modal" id="reportModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mt-1 mb-1" style="font-family: Dohyeon; font-weight: 300;">신고 상세 내역</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row border ml-1 mr-1" style="height: 150px;">
+        	<div class="col-4 bg-warning"></div>
+        	<div class="col-8"></div>
+        </div>
+        <div class="row ml-1 mr-1 mt-2" style="max-height: 300px;">
+        	<div class="col-12" style="overflow: auto;">
+	        	<div class="row border">
+	        		<div class="col-12">
+		        		<div class="row" id="reportCategory" style="font-family: Dohyeon;">신고 카테고리</div>
+		        		<div class="row" id="reportReason">신고 사유 상세</div>
+		        		<div class="row justify-content-end">
+		        			<button class="btn data-modal-iconBtn"><i class="fas fa-arrow-circle-right"></i></button>
+		        		</div>
+		        	</div>
+	        	</div>
+        	</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	
+	
+<script type="text/javascript">	
+
+window.onload = function() {
+	console.log($("#pageCountDrop").text());
+}
+
+$("#all").click(function() {
+	$("#categoryDrop").text($("#all").text());
+	
+	var category = $("#categoryDrop").text();
+	var pageCount = $("#pageCountDrop").text().substr(0,2);
+	var searchId = $("#searchId").val();
+	
+	console.log(category + ", " + pageCount + ", " + searchId);
+	
+	paging(category, pageCount, searchId);
+});
+
+$("#warn").click(function() {
+	$("#categoryDrop").text($("#warn").text());
+	
+	var category = $("#categoryDrop").text();
+	var pageCount = $("#pageCountDrop").text().substr(0,2);
+	var searchId = $("#searchId").val();
+	
+	console.log(category + ", " + pageCount + ", " + searchId);
+	
+	paging(category, pageCount, searchId);
+});
+
+$("#suspension").click(function() {
+	$("#categoryDrop").text($("#suspension").text());
+	
+	var category = $("#categoryDrop").text();
+	var pageCount = $("#pageCountDrop").text().substr(0,2);
+	var searchId = $("#searchId").val();
+	
+	console.log(category + ", " + pageCount + ", " + searchId);
+	
+	paging(category, pageCount, searchId);
+});
+
+$("#pageCount10").click(function() {
+	$("#pageCountDrop").text($("#pageCount10").text());
+	
+	var category = $("#categoryDrop").text();
+	var pageCount = $("#pageCountDrop").text().substr(0,2);
+	var searchId = $("#searchId").val();
+	
+	console.log(category + ", " + pageCount + ", " + searchId);
+	
+	paging(category, pageCount, searchId);
+});
+
+$("#pageCount15").click(function() {
+	$("#pageCountDrop").text($("#pageCount15").text());
+	
+	var category = $("#categoryDrop").text();
+	var pageCount = $("#pageCountDrop").text().substr(0,2);
+	var searchId = $("#searchId").val();
+	
+	console.log(category + ", " + pageCount + ", " + searchId);
+	
+	paging(category, pageCount, searchId);
+});
+
+$("#pageCount30").click(function() {
+	$("#pageCountDrop").text($("#pageCount30").text());
+	
+	var category = $("#categoryDrop").text();
+	var pageCount = $("#pageCountDrop").text().substr(0,2);
+	var searchId = $("#searchId").val();
+	
+	console.log(category + ", " + pageCount + ", " + searchId);
+	
+	paging(category, pageCount, searchId);
+});
+
+function paging(category, pageCount, searchId) {
+	$.ajax({
+		type: "get"
+		, url : "/zaksim/admin/memberTable?category=" + category + "&pageCount=" + pageCount + "&searchId=" + searchId
+		, dataType: "html"
+		, success: function( data ) {
+			$("#pagingDiv").html(data);
 		}
-
-		/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-		var dropdown = document.getElementsByClassName("dropdown-btn");
-		var i;
-
-		for (i = 0; i < dropdown.length; i++) {
-			dropdown[i].addEventListener("click", function() {
-				this.classList.toggle("active");
-				var dropdownContent = this.nextElementSibling;
-				if (dropdownContent.style.display === "block") {
-					dropdownContent.style.display = "none";
-				} else {
-					dropdownContent.style.display = "block";
-				}
-			});
+		, error: function( e ) {
+			console.log("--- error ---");
+			console.log( e.responseText );
 		}
-	</script>
+		, complete: function() {
+			//입력 창 초기화
+		}
+	});	
+}
+
+function searching() {
+	var category = $("#categoryDrop").text();
+	var pageCount = $("#pageCountDrop").text().substr(0,2);
+	var searchId = $("#searchId").val();
+	
+	console.log(category + ", " + pageCount + ", " + searchId);
+	
+	$.ajax({
+		type: "get"
+		, url : "/zaksim/admin/memberTable?category=" + category + "&pageCount=" + pageCount + "&searchId=" + searchId
+		, dataType: "html"
+		, success: function( data ) {
+			$("#pagingDiv").html(data);
+		}
+		, error: function( e ) {
+			console.log("--- error ---");
+			console.log( e.responseText );
+		}
+		, complete: function() {
+			//입력 창 초기화
+		}
+	});	
+}
+
+$(".data-span-modal").click(function() {
+	// ajax로
+	// 신고 리스트 가져오기
+	// 신고 게시글/댓글의 주소?내용? 가져오기
+			
+	var idx = $(this).parent().parent().children("td").eq(0).text();
+// 	console.log(idx);
+	
+	$.ajax({
+		type: "get"
+		, url : "/zaksim/admin/reportDetail?idx=" + idx
+		, dataType: "json"
+		, success: function( data ) {
+			console.log(data.rList);
+		
+			$("#reportCategory").text(data.rList.category);
+			$("#reportReason").text(data.rList.reason);
+		
+			$("#reportModal").modal('show');
+		}
+		, error: function( e ) {
+			console.log("--- error ---");
+			console.log( e.responseText );
+		}
+		, complete: function() {
+			//입력 창 초기화
+		}
+	});	
+});
 
 
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</script>
 
 </body>
->>>>>>> branch 'master' of https://github.com/ksj71816/ZakSim.git
 </html>

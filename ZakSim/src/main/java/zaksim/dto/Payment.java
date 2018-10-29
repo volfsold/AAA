@@ -4,7 +4,9 @@ import java.util.Date;
 
 public class Payment {
 	
-	private int impUid;
+	private int pRnum;
+	
+	private String impUid;
 	private int merchantUid;
 	private int buyerIdx;
 	private int challengeIdx;
@@ -13,15 +15,43 @@ public class Payment {
 	private String status;
 	private String paymentOption;
 	
+	private int certificationRate;	// 인증률
+	
+
 	private ZakSimMember zakSimMember;
+	private Challenge challenge;
 
 	
 	
-	public int getImpUid() {
+	public int getCertificationRate() {
+		return certificationRate;
+	}
+
+	public void setCertificationRate(int certificationRate) {
+		this.certificationRate = certificationRate;
+	}
+	
+	public Challenge getChallenge() {
+		return challenge;
+	}
+
+	public void setChallenge(Challenge challenge) {
+		this.challenge = challenge;
+	}
+
+	public int getpRnum() {
+		return pRnum;
+	}
+
+	public void setPrnum(int pRnum) {
+		this.pRnum = pRnum;
+	}
+	
+	public String getImpUid() {
 		return impUid;
 	}
 
-	public void setImpUid(int impUid) {
+	public void setImpUid(String impUid) {
 		this.impUid = impUid;
 	}
 
@@ -91,8 +121,10 @@ public class Payment {
 
 	@Override
 	public String toString() {
-		return "Payment [impUid=" + impUid + ", merchantUid=" + merchantUid + ", buyerIdx=" + buyerIdx
-				+ ", challengeIdx=" + challengeIdx + ", price=" + price + ", paidAt=" + paidAt + ", status=" + status
-				+ ", paymentOption=" + paymentOption + ", zakSimMember=" + zakSimMember + "]";
+		return "Payment [pRnum=" + pRnum + ", impUid=" + impUid + ", merchantUid=" + merchantUid + ", buyerIdx="
+				+ buyerIdx + ", challengeIdx=" + challengeIdx + ", price=" + price + ", paidAt=" + paidAt + ", status="
+				+ status + ", paymentOption=" + paymentOption + ", certificationRate=" + certificationRate 
+				+ ", zakSimMember=" + zakSimMember + ", challenge="	+ challenge + "]";
 	}
+	
 }

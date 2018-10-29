@@ -143,6 +143,8 @@
             <div class="overlay">
               <h2>Hover effect 1v2</h2>
               <a class="info" href="#">link here</a>
+              
+             
             </div>
           </div>
         </div>

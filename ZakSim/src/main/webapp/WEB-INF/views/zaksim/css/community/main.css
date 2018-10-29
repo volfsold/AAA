@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+        #zz {
+            margin-top: 150px;
+        }
+
+
+                /* 카드 꾸미기 */
+        .card{
+            
+           /*  border-image: url(사진/색깔.webp); */
+/*            background-image: url("/resources/image/main/back.webp"); */
+        }
+        
+        /* 사진 높이 */
+        .card-img-top {
+            
+           height: 200px;;
+            width: 318px;
+           border:5px solid;
+            border-color: lightgray;
+        }
+        
+
+        .card-title{
+            color: darkslategrey;
+            font-weight: bold;
+            
+        }
+        .card-body{
+           text-align: center;
+        }
+        
+        h5{
+            margin-left: 100px;
+        }
+        
+
+        
+        

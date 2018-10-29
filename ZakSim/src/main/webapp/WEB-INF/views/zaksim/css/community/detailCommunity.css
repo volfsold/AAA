@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+        #zz {
+            margin-top: 150px;
+        }
+
+        #rankingPhoto {
+            width: 100px;
+            height: 100px;
+
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }

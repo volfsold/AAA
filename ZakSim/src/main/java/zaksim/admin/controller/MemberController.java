@@ -1,6 +1,8 @@
 package zaksim.admin.controller;
 
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import zaksim.admin.service.MemberService;
@@ -24,54 +27,59 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired MemberService memberService;
-	Paging paging;
+//	Paging paging;
 	
 	
 	// 화면 연결
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
-	public void memberForm(/*Model model, int page*/) {
-		// 페이징 객체 생성
-		// memberService.리스트 받아오기();
-		// 모델에 값 넣기
+	public void memberForm(Model model) {
+		
+		int totalCount = memberService.getAdminTotalCount("", "전체 회원");
+		Paging paging = new Paging(totalCount, 1, 10);
+		
+		List<ZakSimMember> mList = memberService.viewAdminList(paging, "전체 회원", "");
+		
+		model.addAttribute("mList", mList);
+		model.addAttribute("paging", paging);
 	}
 	
-	// 카테고리 변경
-	@RequestMapping(value="/changeCategory", method = RequestMethod.POST, produces="application/json; charset=utf-8")
-	@ResponseBody
-	public Map<String, String> changeCategory(int page, String category) {
+	// 화면 연결 (아이디 검색, 카테고리 변경, 리스트 갯수 변경, 페이지 변경)
+	@RequestMapping(value = "/memberTable", method = RequestMethod.GET)
+	public void changeMemberTable(Model model, @RequestParam(defaultValue="1", required=false)int curPage,
+					@RequestParam(defaultValue="10", required=false)String pageCount,
+					@RequestParam(defaultValue="", required=false)String searchId,
+					@RequestParam(defaultValue="전체 회원", required=false)String category) {
 		
-		// 페이징 객체 생성
-		// 서비스.리스트 받아오기();
-		// 모델에 값 넣기
+		int totalCount = memberService.getAdminTotalCount(searchId, category);
+		Paging paging = new Paging(totalCount, curPage, Integer.parseInt(pageCount));
 		
-		HashMap<String, String> map = new HashMap<>();
+		List<ZakSimMember> mList = memberService.viewAdminList(paging, category, searchId);
 		
-		return map;
-	}	
-	
-	// 리스트 출력 갯수 변경
-	@RequestMapping(value="/changeListNum", method = RequestMethod.POST, produces="application/json; charset=utf-8")
-	@ResponseBody
-	public Map<String, String> changeListNum(int page, int listNum) {
-		
-		// 페이징 객체 생성
-		// 서비스.리스트 받아오기();
-		// 모델에 값 넣기
-		
-		HashMap<String, String> map = new HashMap<>();
-		
-		return map;
+		model.addAttribute("mList", mList);
+		model.addAttribute("paging", paging);
 	}
 	
-	// 신고 상세 보기
-	@RequestMapping(value="/viewReport", method = RequestMethod.POST, produces="application/json; charset=utf-8")
+	// 신고 상세 모달
+	@RequestMapping(value="/reportDetail", method = RequestMethod.GET, produces="application/json; charset=utf-8")
 	@ResponseBody
-	public Map<String, String> viewReport(ZakSimMember member, Report report) {
+	public Map<String, Object> reportDetail(int idx) {
 		
-		// 서비스.신고 리스트 가져오기();
-		// 모델에 값 넣기
+		// 신고 상세 가져오기
+		HashMap<String, Object> map = new HashMap<>();
 		
-		HashMap<String, String> map = new HashMap<>();
+		// test data
+		Report rList = new Report();
+		rList.setBoardIdx(0);
+		rList.setCategory("욕설");
+		rList.setCommentIdx(12);
+		rList.setIdx(1);
+		rList.setMemberIdx(idx);
+		rList.setReason("갑자기 욕해요ㅠㅠ");
+		rList.setReportDate(new Date());
+		rList.setReporterIdx(2);
+		
+		
+		map.put("rList", rList);
 		
 		return map;
 	}

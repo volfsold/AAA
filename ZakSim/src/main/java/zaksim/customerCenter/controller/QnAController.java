@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import zaksim.customerCenter.service.inter.QnACommentService;
-import zaksim.customerCenter.service.inter.QnAFileService;
-import zaksim.customerCenter.service.inter.QnAService;
+import zaksim.customerCenter.service.QnACommentService;
+import zaksim.customerCenter.service.QnAFileService;
+import zaksim.customerCenter.service.QnAService;
 import zaksim.dto.QnA;
 
 /*

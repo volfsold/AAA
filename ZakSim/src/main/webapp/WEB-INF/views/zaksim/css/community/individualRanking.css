@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+#zz {
+	margin-top: 150px;
+}
+
+span {
+	font-size: 25px;
+}
+
+img {
+	width: 90px;
+	height: 90px;
+	border-radius: 200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.table-borderless>tbody>tr>td, .table-borderless>tbody>tr>th,
+	.table-borderless>tfoot>tr>td, .table-borderless>tfoot>tr>th,
+	.table-borderless>thead>tr>td, .table-borderless>thead>tr>th {
+	vertical-align: bottom;
+	border: none;
+	font-size: 25px;
+}

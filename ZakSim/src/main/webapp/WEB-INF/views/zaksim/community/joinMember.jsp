@@ -1,0 +1,297 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+        <!-- header include -->
+<%@include file="/WEB-INF/views/zaksim/main/header.jsp" %>
+
+     <div class="container" id="zz">
+        <div class="row" style="margin-bottom: 30px;">
+            <div class="col">
+            </div>
+            <div class="col-9">
+                <div class="form-inline">
+                    <strong>
+                        <span style="font-size: 40px;">참여하고 있는 모임 1</span>
+                        <span style="color: grey; font-style: italic; margin-left: 20px;">참여자 보기</span>
+                    </strong>
+                    <button type="button" class="btn btn-danger" style="margin-top: 60px; margin-left: 150px;">모임 상세 보기</button>
+                </div>
+
+            </div>
+            <div class="col">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col"></div>
+
+
+            <div class="col-sm-11" style="margin-top: 50px; margin-right: 100px;">
+
+
+
+                <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                   
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임1<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임2<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> 
+                
+                <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                  
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임3<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                   
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임4<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+                 
+                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                  
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임5<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>              
+                   
+                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                  
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임6<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+                 
+                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                   
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임7<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>   
+                              
+                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                 
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임8<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                  
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임9<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+                 
+                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임10<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>     
+                            
+                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                  
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임11<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+                 
+                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                   
+                                   
+                                
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임12<br>도전하고 있는 목표
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+
+
+
+
+            <div class="col" style="margin-bottom: 500px;"></div>
+        </div>
+
+    </div>
+
+
+    <!-- 위로가기 버튼 -->
+    <div class="top-button"><a href=""><img id ="upImg" src="/resources/image/community/위로.png"> </a></div>
+
+
+
+
+</body>
+
+
+<link rel="stylesheet" type="text/css" href="/css/community/button.css">	
+<link rel="stylesheet" type="text/css" href="/css/community/individualRanking.css">
+
+    <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 200) {
+                    $('.top-button').fadeIn();
+                } else {
+                    $('.top-button').fadeOut();
+                }
+            });
+
+
+            $('.top-button').click(function() {
+                $('html,body').animate({
+                    scrollTop: 0
+                }, 400);
+                return false;
+            });
+        });
+    </script>
+
+        <!-- footer include -->
+<%@include file="/WEB-INF/views/zaksim/main/footer.jsp" %>
