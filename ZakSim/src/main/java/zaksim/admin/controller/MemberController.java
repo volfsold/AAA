@@ -34,26 +34,26 @@ public class MemberController {
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
 	public void memberForm(Model model) {
 		
-		int totalCount = memberService.getTotalCount("", "전체 회원");
+		int totalCount = memberService.getAdminTotalCount("", "전체 회원");
 		Paging paging = new Paging(totalCount, 1, 10);
 		
-		List<ZakSimMember> mList = memberService.viewList(paging, "전체 회원", "");
+		List<ZakSimMember> mList = memberService.viewAdminList(paging, "전체 회원", "");
 		
 		model.addAttribute("mList", mList);
 		model.addAttribute("paging", paging);
 	}
 	
-	// 화면 연결
+	// 화면 연결 (아이디 검색, 카테고리 변경, 리스트 갯수 변경, 페이지 변경)
 	@RequestMapping(value = "/memberTable", method = RequestMethod.GET)
 	public void changeMemberTable(Model model, @RequestParam(defaultValue="1", required=false)int curPage,
 					@RequestParam(defaultValue="10", required=false)String pageCount,
 					@RequestParam(defaultValue="", required=false)String searchId,
 					@RequestParam(defaultValue="전체 회원", required=false)String category) {
 		
-		int totalCount = memberService.getTotalCount(searchId, category);
+		int totalCount = memberService.getAdminTotalCount(searchId, category);
 		Paging paging = new Paging(totalCount, curPage, Integer.parseInt(pageCount));
 		
-		List<ZakSimMember> mList = memberService.viewList(paging, category, searchId);
+		List<ZakSimMember> mList = memberService.viewAdminList(paging, category, searchId);
 		
 		model.addAttribute("mList", mList);
 		model.addAttribute("paging", paging);
@@ -80,47 +80,6 @@ public class MemberController {
 		
 		
 		map.put("rList", rList);
-		
-		return map;
-	}	
-	
-	// 카테고리 변경
-	@RequestMapping(value="/changeCategory", method = RequestMethod.POST, produces="application/json; charset=utf-8")
-	@ResponseBody
-	public Map<String, String> changeCategory(int page, String category) {
-		
-		// 페이징 객체 생성
-		// 서비스.리스트 받아오기();
-		// 모델에 값 넣기
-		
-		HashMap<String, String> map = new HashMap<>();
-		
-		return map;
-	}	
-	
-	// 리스트 출력 갯수 변경
-	@RequestMapping(value="/changeListNum", method = RequestMethod.POST, produces="application/json; charset=utf-8")
-	@ResponseBody
-	public Map<String, String> changeListNum(int page, int listNum) {
-		
-		// 페이징 객체 생성
-		// 서비스.리스트 받아오기();
-		// 모델에 값 넣기
-		
-		HashMap<String, String> map = new HashMap<>();
-		
-		return map;
-	}
-	
-	// 신고 상세 보기
-	@RequestMapping(value="/viewReport", method = RequestMethod.POST, produces="application/json; charset=utf-8")
-	@ResponseBody
-	public Map<String, String> viewReport(ZakSimMember member, Report report) {
-		
-		// 서비스.신고 리스트 가져오기();
-		// 모델에 값 넣기
-		
-		HashMap<String, String> map = new HashMap<>();
 		
 		return map;
 	}

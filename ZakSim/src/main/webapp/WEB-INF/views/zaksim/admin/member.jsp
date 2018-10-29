@@ -213,7 +213,7 @@ function paging(category, pageCount, searchId) {
 }
 
 function searching() {
-	var category = $("#categoryDrop").text().trim();
+	var category = $("#categoryDrop").text();
 	var pageCount = $("#pageCountDrop").text().substr(0,2);
 	var searchId = $("#searchId").val();
 	
