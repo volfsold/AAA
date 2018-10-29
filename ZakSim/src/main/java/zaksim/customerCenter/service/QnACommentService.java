@@ -1,4 +1,4 @@
-package zaksim.customerCenter.service.inter;
+package zaksim.customerCenter.service;
 
 import java.util.List;
 

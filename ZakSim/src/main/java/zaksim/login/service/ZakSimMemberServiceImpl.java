@@ -1,11 +1,10 @@
-package zaksim.login.service.impl;
+package zaksim.login.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import zaksim.dao.ZakSimMemberDao;
 import zaksim.dto.ZakSimMember;
-import zaksim.login.service.inter.ZakSimMemberService;
 
 /*
  * 작성일 : 2018.10.18

@@ -1,4 +1,4 @@
-package zaksim.login.service.inter;
+package zaksim.login.service;
 
 import zaksim.dto.ZakSimMember;
 
@@ -36,7 +36,7 @@ public interface ZakSimMemberService {
 
 	/**
 	 * 회원가입 service
-	 * @param ZaksimMember memberDto
+	 * @param ZakSimMember memberDto
 	 */
 	public void jogin(ZakSimMember memberDto);
 	

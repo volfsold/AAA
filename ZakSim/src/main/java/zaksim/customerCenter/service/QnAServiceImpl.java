@@ -1,11 +1,10 @@
-package zaksim.customerCenter.service.impl;
+package zaksim.customerCenter.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import zaksim.customerCenter.service.inter.QnAService;
 import zaksim.dao.QnADao;
 import zaksim.dto.QnA;
 import zaksim.util.Paging;
