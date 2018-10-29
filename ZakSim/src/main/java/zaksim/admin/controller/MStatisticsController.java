@@ -32,26 +32,22 @@ public class MStatisticsController {
 	
 	
 	@RequestMapping(value = "/mStatistics", method = RequestMethod.GET)
-	public void mStatisticsForm() {
-		// 화면 연결
-		// memberService.당일 가입 수 가져오기();
-		// memberService.최근 일주일간? 회원수 추이 가져오기();
-		// memberService.최근 일주일간 방문수 추이 가져오기();
-		// memberService.상세 통계자료 가져오기();
-		// 모델에 값 넣기
+	public void mStatisticsForm(Model model) {
+		int joinNum = mStatisticsrService.viewJoinNum("오늘");
+		
+		model.addAttribute("joinNum", joinNum);
 	}
 	
 	@RequestMapping(value="/mStatistics/changePeriod", method = RequestMethod.POST, produces="application/json; charset=utf-8")
 	@ResponseBody
-	public Map<String, String> changePeriod(int period) {
+	public Map<String, Object> changePeriod(String period) {		
+		HashMap<String, Object> map = new HashMap<>();
 		
-		// 화면 연결
-		// memberService.기간 가입 수 가져오기();
-		// memberService.기간 회원수 추이 가져오기();
-		// memberService.기간 방문수 추이 가져오기();
-		// memberService.상세 통계자료 가져오기();
+		int joinNum = mStatisticsrService.viewJoinNum(period);
 		
-		HashMap<String, String> map = new HashMap<>();
+		
+		
+		map.put("joinNum", joinNum);
 		
 		return map;
 	}

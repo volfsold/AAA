@@ -22,7 +22,7 @@ public interface ZakSimMemberDao {
 	public void updateMemberStatus(ZakSimMember member);
 
 	// 기간 별 가입 인원
-	public void selectJoinNum(int period);
+	public int selectJoinNum(Map<String, String> param);
 
 	// 기간 별 회원 수
 	public void selectMemberNum(int period);
