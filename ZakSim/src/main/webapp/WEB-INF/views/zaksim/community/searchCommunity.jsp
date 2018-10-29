@@ -35,7 +35,7 @@
                         <option value="3">키워드</option>
                     </select>
                     <input type="text" class="form-control mx-3" style="width: 600px;" placeholder="검색할 내용">
-                    <button type="button" class="btn btn-outline-info">검색</button>
+                    <button type="button" class="btn btn-outline-info">Search</button>
                 </div>
 
             </div>
@@ -195,9 +195,8 @@
 
 
 
-        <!-- 위로가기 버튼 -->
-    <div class="top-button"><a href=""><img src="/resources/image/community/위로.png"> </a></div>
-
+    <!-- 위로가기 버튼 -->
+    <div class="top-button"><a href=""><img id ="upImg" src="/resources/image/community/위로.png"> </a></div>
 
 </body>
 

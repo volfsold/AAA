@@ -49,8 +49,10 @@ public class CommunityJoinController {
 		
 	}
 	
+	//, int idx
 	// 커뮤니티 참여자 보기 GET
-	public void joinMember(Model model, int idx) {
+	@RequestMapping(value="/joinMember", method=RequestMethod.GET)
+	public void joinMember(Model model) {
 		
 	}
 	
@@ -61,7 +63,13 @@ public class CommunityJoinController {
 		
 	}
 	
+	@RequestMapping(value="/detailCommunity", method=RequestMethod.GET)
+	public void detailCommunity(Model model   ) {
+		
+	}
+	
 	// 인증하는 화면 GET
+	@RequestMapping(value="/certificationCommunity", method=RequestMethod.GET)
 	public void certification() {
 		
 	}

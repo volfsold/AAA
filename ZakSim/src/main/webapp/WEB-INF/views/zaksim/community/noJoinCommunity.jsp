@@ -175,8 +175,7 @@
 
 
     <!-- 위로가기 버튼 -->
-    <div class="top-button"><a href=""><img src="/resources/image/community/위로.png"> </a></div>
-
+    <div class="top-button"><a href=""><img id ="upImg" src="/resources/image/community/위로.png"> </a></div>
 
 
 </body>

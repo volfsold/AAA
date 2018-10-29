@@ -9,11 +9,7 @@
 
 
 
-
-
-
-
-    <div class="container" id="zz">
+  <div class="container" id="zz">
         <div class="row" style="margin-bottom: 30px;">
             <div class="col">
             </div>
@@ -52,356 +48,238 @@
                     </div>
                 </div>
 
-                <!-- 랭킹 -->
-                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px; padding-bottom: 30px; margin-bottom: 60px;">
-                    <div style="color: red; margin-right: 50px; font-size: 60px; padding-left: 40px;">1</div>
-                    <div>
-                        <div style="float: left">
-                            <img src="/resources/image/community/sample.png" >
-                        </div>
-                        <div style="float: left; margin-right: 130px; width: 180px;">
-                            <span>모임1</span>
-                            <br>
-                            <span style="font-size: 20px">#키워드1</span>
-                            <span style="font-size: 20px">#키워드2</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                좋아요
-                            </span>
-                            <br>
-                            <span style=" text-align: center; margin-left: 20px;">30</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                &nbsp;&nbsp;&nbsp;달성도
-                            </span>
-                            <br>
-                            <span style="margin-left: 20px;">98%</span>
-                        </div>
-                    </div>
-                </div>
+                                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="color: red; font-size: 60px;">&nbsp;&nbsp;1</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임1<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> 
+                
+                                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="color: red; font-size: 60px;">&nbsp;&nbsp;2</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임2<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> 
 
 
 
-                <!-- 랭킹 -->
-                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px; padding-bottom: 30px; margin-bottom: 60px;">
-                    <div style="color: red; margin-right: 50px; font-size: 60px; padding-left: 40px;">2</div>
-                    <div>
-                        <div style="float: left">
-                            <img src="/resources/image/community/sample.png" >
-                        </div>
-                        <div style="float: left; margin-right: 130px;">
-                            <span>모임1</span>
-                            <br>
-                            <span style="font-size: 20px">#키워드1</span>
-                            <span style="font-size: 20px">#키워드2</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                좋아요
-                            </span>
-                            <br>
-                            <span style=" text-align: center; margin-left: 20px;">30</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                &nbsp;&nbsp;&nbsp;달성도
-                            </span>
-                            <br>
-                            <span style="margin-left: 20px;">98%</span>
-                        </div>
-                    </div>
-                </div>
+                                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="color: red; font-size: 60px;">&nbsp;&nbsp;3</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임3<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> 
 
 
 
-                <!-- 랭킹 -->
-                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px; padding-bottom: 30px; margin-bottom: 60px;">
-                    <div style="color: red; margin-right: 50px; font-size: 60px; padding-left: 40px;">3</div>
-                    <div>
-                        <div style="float: left">
-                            <img src="/resources/image/community/sample.png" >
-                        </div>
-                        <div style="float: left; margin-right: 130px;">
-                            <span>모임1</span>
-                            <br>
-                            <span style="font-size: 20px">#키워드1</span>
-                            <span style="font-size: 20px">#키워드2</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                좋아요
-                            </span>
-                            <br>
-                            <span style=" text-align: center; margin-left: 20px;">30</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                &nbsp;&nbsp;&nbsp;달성도
-                            </span>
-                            <br>
-                            <span style="margin-left: 20px;">98%</span>
-                        </div>
-                    </div>
-                </div>
+                                  <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="font-size: 60px;">&nbsp;&nbsp;4</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임4<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> 
 
 
-
-                <!-- 랭킹 -->
-                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px; padding-bottom: 30px; margin-bottom: 60px;">
-                    <div style=" margin-right: 50px; font-size: 60px; padding-left: 40px;">4</div>
-                    <div>
-                        <div style="float: left">
-                            <img src="/resources/image/community/sample.png" >
-                        </div>
-                        <div style="float: left; margin-right: 130px;">
-                            <span>모임1</span>
-                            <br>
-                            <span style="font-size: 20px">#키워드1</span>
-                            <span style="font-size: 20px">#키워드2</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                좋아요
-                            </span>
-                            <br>
-                            <span style=" text-align: center; margin-left: 20px;">30</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                &nbsp;&nbsp;&nbsp;달성도
-                            </span>
-                            <br>
-                            <span style="margin-left: 20px;">98%</span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- 랭킹 -->
-                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px; padding-bottom: 30px; margin-bottom: 60px;">
-                    <div style=" margin-right: 50px; font-size: 60px; padding-left: 40px;">5</div>
-                    <div>
-                        <div style="float: left">
-                            <img src="/resources/image/community/sample.png" >
-                        </div>
-                        <div style="float: left; margin-right: 130px;">
-                            <span>모임1</span>
-                            <br>
-                            <span style="font-size: 20px">#키워드1</span>
-                            <span style="font-size: 20px">#키워드2</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                좋아요
-                            </span>
-                            <br>
-                            <span style=" text-align: center; margin-left: 20px;">30</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                &nbsp;&nbsp;&nbsp;달성도
-                            </span>
-                            <br>
-                            <span style="margin-left: 20px;">98%</span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- 랭킹 -->
-                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px; padding-bottom: 30px; margin-bottom: 60px;">
-                    <div style="margin-right: 50px; font-size: 60px; padding-left: 40px;">6</div>
-                    <div>
-                        <div style="float: left">
-                            <img src="/resources/image/community/sample.png" >
-                        </div>
-                        <div style="float: left; margin-right: 130px;">
-                            <span>모임1</span>
-                            <br>
-                            <span style="font-size: 20px">#키워드1</span>
-                            <span style="font-size: 20px">#키워드2</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                좋아요
-                            </span>
-                            <br>
-                            <span style=" text-align: center; margin-left: 20px;">30</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                &nbsp;&nbsp;&nbsp;달성도
-                            </span>
-                            <br>
-                            <span style="margin-left: 20px;">98%</span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- 랭킹 -->
-                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px; padding-bottom: 30px; margin-bottom: 60px;">
-                    <div style=" margin-right: 50px; font-size: 60px; padding-left: 40px;">7</div>
-                    <div>
-                        <div style="float: left">
-                            <img src="/resources/image/community/sample.png" >
-                        </div>
-                        <div style="float: left; margin-right: 130px;">
-                            <span>모임1</span>
-                            <br>
-                            <span style="font-size: 20px">#키워드1</span>
-                            <span style="font-size: 20px">#키워드2</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                좋아요
-                            </span>
-                            <br>
-                            <span style=" text-align: center; margin-left: 20px;">30</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                &nbsp;&nbsp;&nbsp;달성도
-                            </span>
-                            <br>
-                            <span style="margin-left: 20px;">98%</span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- 랭킹 -->
-                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px; padding-bottom: 30px; margin-bottom: 60px;">
-                    <div style=" margin-right: 50px; font-size: 60px; padding-left: 40px;">8</div>
-                    <div>
-                        <div style="float: left">
-                            <img src="/resources/image/community/sample.png" >
-                        </div>
-                        <div style="float: left; margin-right: 130px;">
-                            <span>모임1</span>
-                            <br>
-                            <span style="font-size: 20px">#키워드1</span>
-                            <span style="font-size: 20px">#키워드2</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                좋아요
-                            </span>
-                            <br>
-                            <span style=" text-align: center; margin-left: 20px;">30</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                &nbsp;&nbsp;&nbsp;달성도
-                            </span>
-                            <br>
-                            <span style="margin-left: 20px;">98%</span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- 랭킹 -->
-                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px; padding-bottom: 30px; margin-bottom: 60px;">
-                    <div style="margin-right: 50px; font-size: 60px; padding-left: 40px;">9</div>
-                    <div>
-                        <div style="float: left">
-                            <img src="/resources/image/community/sample.png" >
-                        </div>
-                        <div style="float: left; margin-right: 130px;">
-                            <span>모임1</span>
-                            <br>
-                            <span style="font-size: 20px">#키워드1</span>
-                            <span style="font-size: 20px">#키워드2</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                좋아요
-                            </span>
-                            <br>
-                            <span style=" text-align: center; margin-left: 20px;">30</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                &nbsp;&nbsp;&nbsp;달성도
-                            </span>
-                            <br>
-                            <span style="margin-left: 20px;">98%</span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- 랭킹 -->
-                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px; padding-bottom: 30px; margin-bottom: 60px;">
-                    <div style="margin-right: 50px; font-size: 60px; padding-left: 40px;">10</div>
-                    <div>
-                        <div style="float: left">
-                            <img src="/resources/image/community/sample.png" >
-                        </div>
-                        <div style="float: left; margin-right: 130px;">
-                            <span>모임1</span>
-                            <br>
-                            <span style="font-size: 20px">#키워드1</span>
-                            <span style="font-size: 20px">#키워드2</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                좋아요
-                            </span>
-                            <br>
-                            <span style=" text-align: center; margin-left: 20px;">30</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                &nbsp;&nbsp;&nbsp;달성도
-                            </span>
-                            <br>
-                            <span style="margin-left: 20px;">98%</span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- 랭킹 -->
-                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px; padding-bottom: 30px; margin-bottom: 60px;">
-                    <div style=" margin-right: 50px; font-size: 60px; padding-left: 40px;">11</div>
-                    <div>
-                        <div style="float: left">
-                            <img src="/resources/image/community/sample.png" >
-                        </div>
-                        <div style="float: left; margin-right: 130px;">
-                            <span>모임1</span>
-                            <br>
-                            <span style="font-size: 20px">#키워드1</span>
-                            <span style="font-size: 20px">#키워드2</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                좋아요
-                            </span>
-                            <br>
-                            <span style=" text-align: center; margin-left: 20px;">30</span>
-                        </div>
-                        <div style="float: left;">
-                            <span style="font-size: 20px;">
-                                &nbsp;&nbsp;&nbsp;달성도
-                            </span>
-                            <br>
-                            <span style="margin-left: 20px;">98%</span>
-                        </div>
-                    </div>
-                </div>
-
+                                                <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="font-size: 60px;">&nbsp;&nbsp;5</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임5<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>      
+                
+                                                                          <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="font-size: 60px;">&nbsp;&nbsp;6</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임6<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                                   <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="font-size: 60px;">&nbsp;&nbsp;7</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임7<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                                   <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="font-size: 60px;">&nbsp;&nbsp;8</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임8<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                                   <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="font-size: 60px;">&nbsp;&nbsp;9</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임9<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                                   <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="font-size: 60px;">10</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임10<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                                   <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="font-size: 60px;">11</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임11<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                                   <!-- 랭킹 -->
+                <div class="form-inline" style="margin-top: 50px; font-size: 30px; margin-left: 150px; box-shadow: 5px 5px 5px; margin-right: 100px;  margin-bottom: 60px;">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="col">
+                                    <p style="font-size: 60px;">12</p>
+                                </th>
+                                <th scope="col"><img src="https://picsum.photos/1200/350/?image=2" style="width: 90px;"></th>
+                                <th scope="col" style="text-align: center; width: 300px; word-break:break-all" wrap="hard"> 닉네임12<br>
+                                      <span>#키워드1</span>
+                            <span>#키워드2</span>
+                                </th>
+                                <th scope="col" style="text-align: center;">도전횟수<br>10</th>
+                                <th scope="col" style="text-align: center;">인증률<br>96%</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> 
 
 
             </div>
@@ -414,13 +292,16 @@
 
     </div>
 
+
+
     <!-- 위로가기 버튼 -->
-    <div class="top-button"><a href=""><img src="/resources/image/community/위로.png"> </a></div>
+    <div class="top-button"><a href=""><img id ="upImg" src="/resources/image/community/위로.png"> </a></div>
 
 </body>
 
+
 <link rel="stylesheet" type="text/css" href="/css/community/button.css">	
-<link rel="stylesheet" type="text/css" href="/css/community/groupRanking.css">
+<link rel="stylesheet" type="text/css" href="/css/community/individualRanking.css">
 
     <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript">
