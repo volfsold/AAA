@@ -23,7 +23,11 @@
   	FROM ZakSimMember
 	WHERE id != 'admin'
 	AND id LIKE '%' || #{searchId} || '%'
-	<!-- if category == "계정정지대상"/"계정정지회원" -->
+	<if test="category == '계정 정지 대상'">
+	</if>
+	<if test="category == '계정 정지 회원'">
+		AND suspension_date IS NOT NULL
+	</if>
   </select>
   
   <select id="selectAdminMemberList" parameterType="map" resultMap="ZakSimMember">
@@ -32,7 +36,11 @@
 			SELECT * FROM ZakSimMember
 			WHERE id != 'admin'
 			AND id LIKE '%' || #{searchId} || '%'
-			<!-- if category == "계정정지대상"/"계정정지회원" -->
+			<if test="category == '계정 정지 대상'">
+			</if>
+			<if test="category == '계정 정지 회원'">
+				AND suspension_date IS NOT NULL
+			</if>
 			ORDER BY idx DESC
 		) Z
 		ORDER BY rnum
@@ -40,6 +48,26 @@
 	WHERE rnum BETWEEN #{paging.startNo} AND #{paging.endNo}
   </select>
   
+  <select id="selectJoinNum" parameterType="map" resultType="int">
+  	SELECT COUNT(*)
+  	FROM ZakSimMember
+  	WHERE id != 'admin'
+  	<if test="period == '오늘'">
+	  	AND TO_CHAR(join_date, 'YY/MM/DD') = TO_CHAR(sysdate, 'YY/MM/DD')
+  	</if>
+  	<if test="period == '어제'">
+	  	AND TO_CHAR(join_date, 'YY/MM/DD') = TO_CHAR(sysdate-1, 'YY/MM/DD')
+  	</if>
+  	<if test="period == '최근 7일'">
+	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]>= TO_CHAR(sysdate-7, 'YY/MM/DD')
+	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YY/MM/DD')
+  	</if>
+  	<if test="period == '최근 30일'">
+	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]>= TO_CHAR(sysdate-30, 'YY/MM/DD')
+	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YY/MM/DD')
+  	</if>
+  	</select>
+  	
   <!-- 로그인 -->
   <select id="login" parameterType="zaksim.dto.ZakSimMember" resultType="int">
   	SELECT COUNT(*) FROM ZakSimMember

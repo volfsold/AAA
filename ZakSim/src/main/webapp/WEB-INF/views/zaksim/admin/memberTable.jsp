@@ -63,6 +63,5 @@
 			<!-- pagination -->
 			<%@include file="./paging/memberPaging.jsp" %>
           <!-- pagination -->
-
-</body>
-</html>
+          
+          

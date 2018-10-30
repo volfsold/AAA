@@ -37,7 +37,7 @@ private static final Logger logger = LoggerFactory.getLogger(PaymentController.c
 		Paging paging = new Paging(totalCount, 1, 10);
 		
 		System.out.println(totalCount);
-		List<Refund> rList = paymentService.viewAdminList(paging, "전체 회원", "");
+		List<Refund> rList = paymentService.viewAdminList(paging, "전체 결제 내역", "");
 		
 //		System.out.println(pList);
 		
@@ -50,7 +50,7 @@ private static final Logger logger = LoggerFactory.getLogger(PaymentController.c
 	public void changePaymentTable(Model model, @RequestParam(defaultValue="1", required=false)int curPage,
 					@RequestParam(defaultValue="10", required=false)String pageCount,
 					@RequestParam(defaultValue="", required=false)String searchId,
-					@RequestParam(defaultValue="전체 회원", required=false)String category) {
+					@RequestParam(defaultValue="전체 결제 내역", required=false)String category) {
 		
 		int totalCount = paymentService.getAdminTotalCount(searchId, category);
 		Paging paging = new Paging(totalCount, curPage, Integer.parseInt(pageCount));

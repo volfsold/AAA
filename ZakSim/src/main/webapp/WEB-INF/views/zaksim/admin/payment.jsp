@@ -214,10 +214,7 @@ function searching() {
 	});	
 }
 
-$(".data-span-modal").click(function() {
-	// ajax로
-	// 신고 리스트 가져오기
-	// 신고 게시글/댓글의 주소?내용? 가져오기
+$("#pagingDiv").on("click", ".data-span-modal", function() {
 			
 	var idx = $(this).parent().parent().children("td").eq(0).text();
 // 	console.log(idx);
@@ -244,6 +241,34 @@ $(".data-span-modal").click(function() {
 	});	
 });
 
+$("#pagingDiv").on("click", '.page-link', function() {
+	
+	var category = $("#categoryDrop").text();
+	var pageCount = $("#pageCountDrop").text().substr(0,2);
+	var searchId = $("#searchId").val();
+	var curPage = $(this).attr('data-curPage');
+	
+	console.log(category + ", " + pageCount + ", " + searchId + ", " + curPage);
+	
+	$.ajax({
+		type: "get"
+		, url : "/zaksim/admin/paymentTable?curPage=" + curPage + "&category=" + category + "&pageCount=" + pageCount + "&searchId=" + searchId
+		, dataType: "html"
+		, success: function( data ) {
+			console.log(data);
+			
+			$("#pagingDiv").html(data);
+		}
+		, error: function( e ) {
+			console.log("--- error ---");
+			console.log( e.responseText );
+		}
+		, complete: function() {
+			//입력 창 초기화
+		}
+	});	
+	
+});
 
 </script>
 
