@@ -51,11 +51,14 @@ public class LoginController {
 			
 			logger.info("로그인 완료!");
 			
+			return "redirect:/zaksim/main/home"; // 메인화면으로 리다이렉트
+			
 		} else {
 			logger.info("로그인 실패! 아이디 혹은 비밀번호를 확인해주세요.");
+			
+			return "redirect:/zaksim/login/login"; // 로그인 실패시 로그인 화면으로 리다이렉트
 		}
 		
-		return "redirect:/zaksim/main/home"; // 메인화면으로 리다이렉트
 	}
 	
 	// 로그아웃

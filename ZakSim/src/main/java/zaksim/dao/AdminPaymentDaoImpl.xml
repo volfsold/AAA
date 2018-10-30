@@ -73,7 +73,6 @@
   	<if test="category == '전체 환불 신청'">
   		AND ((ZPR.refund_option = 'stop') OR (ZPR.refund_option = 'success')) AND ZPR.Pstatus = 'success'
   	</if>
-
   </select>
   
   <select id="selectAdminPaymentList" parameterType="map" resultMap="Refund">

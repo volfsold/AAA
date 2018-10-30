@@ -49,7 +49,7 @@
 
 
             <div class="col-sm-11" style="margin-top: 50px; margin-right: 50px;">
-                <strong style="font-size: 150%">새로운 모임</strong>
+                <strong style="font-size: 150%">인기 모임</strong>
                 <button type="button" class="btn btn-outline-info" style="float: right; color: red; border-color: red;">모임 만들기</button>
                 <hr style="margin-top: 40px;  border-color: gray; 
                 margin-top: 40px; margin-bottom: 40px;">

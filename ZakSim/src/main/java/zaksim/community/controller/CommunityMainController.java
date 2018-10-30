@@ -25,7 +25,7 @@ public class CommunityMainController {
 	@RequestMapping(value="/communityMain", method=RequestMethod.GET)
 	public void commnunityMain(Model model) {
 		
-		
+		model.addAttribute("joinedGroupLIst", communityListServiceImpl.joinedGroupList());
 		model.addAttribute("categoryList", communityListServiceImpl.categoryList());
 		
 	}

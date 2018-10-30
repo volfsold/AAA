@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="zaksim.dao.CommunityEditDAO">
+  
+  <insert id="createGroup" parameterType="zaksim.dto.CommunityGroup">
+  		INSERT INTO CommunityGroup (idx, member_idx, category_idx, title, content, image, max, open_date, private, password) 
+  		VALUES (CommunityGroup_SEQ.nextval,1, 1, #{title}, #{content}, #{image}, #{max}, default, #{secret}, #{password})
+  </insert>
+  
+  </mapper>
+  
