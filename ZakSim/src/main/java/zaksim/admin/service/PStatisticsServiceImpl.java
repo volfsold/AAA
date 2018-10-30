@@ -42,7 +42,7 @@ public class PStatisticsServiceImpl implements PStatisticsService{
 	@Override
 	public List<Integer> viewMemberNum(int period) {
 		// TODO Auto-generated method stub
-		zakSimMemberDao.selectMemberNum(period);
+//		zakSimMemberDao.selectMemberNum(period);
 		return null;
 	}
 

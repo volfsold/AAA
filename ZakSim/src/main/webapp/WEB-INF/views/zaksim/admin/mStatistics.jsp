@@ -85,14 +85,136 @@
 
 
 $(document).ready(function() {
+	changePeriod("오늘");
+});
+
+
+
+
+$(".badge").click(function() {
+	$(".badge").attr("style", "background-color: #c7c7c7 !important");
+	$(this).attr("style", "background-color: #929292 !important");
+	
+	$("#startDate").val("");
+	$("#endDate").val("");
+	
+	var period = $(this).text();
+// 	console.log(period);
+	
+	changePeriod(period);
+	
+});
+
+$("#okBtn").click(function() {
+	$(".badge").attr("style", "background-color: #c7c7c7 !important");
+	
+	var startDate = $("#startDate").val();
+	var endDate = $("#endDate").val();
+	
+	console.log(startDate + ", " + endDate);
+	console.log(endDate > startDate);
+	
+	if(endDate >= startDate){
+		 changePeriod2(startDate, endDate);
+	} else {
+		alert("시작날짜와 종료날짜를 확인해주세요. - modal로 변경");
+	}
+});
+
+
+
+function changePeriod(period) {
+	$.ajax({
+		type: "post"
+		, url : "/zaksim/admin/mStatistics/changePeriod"
+		, data : {
+			period: period
+		}
+		, dataType: "json"
+		, success: function( result ) {
+			var labels = [];
+			var data = [];
+			
+			$("#joinNum").text(result.joinNum);
+			
+			for(var i=0; i<result.memberCount.length; i++) {
+				
+				var date = (new Date(result.memberCount[i].memberCountDate).getMonth() + 1) + "월 "
+				+ new Date(result.memberCount[i].memberCountDate).getDate() + "일"
+				
+				labels.push(date);
+				
+				data.push(result.memberCount[i].memberCount);
+			}
+			
+			if(period == '오늘' || period == '어제') {
+				changeChart("bar", labels, data);			
+			} else {
+				changeChart("line", labels, data);
+			}
+		}
+		, error: function( e ) {
+			console.log("--- error ---");
+			console.log( e.responseText );
+		}
+		, complete: function() {
+			//입력 창 초기화
+		}
+	});	
+}
+
+function changePeriod2(startDate, endDate) {
+	$.ajax({
+		type: "post"
+		, url : "/zaksim/admin/mStatistics/changePeriod2"
+		, data : {
+			startDate : startDate,
+			endDate : endDate
+		}
+		, dataType: "json"
+		, success: function( result ) {
+// 			var labels = [];
+// 			var data = [];
+			
+// 			$("#joinNum").text(result.joinNum);
+			
+// 			for(var i=0; i<result.memberCount.length; i++) {
+				
+// 				var date = (new Date(result.memberCount[i].memberCountDate).getMonth() + 1) + "월 "
+// 				+ new Date(result.memberCount[i].memberCountDate).getDate() + "일"
+				
+// 				labels.push(date);
+				
+// 				data.push(result.memberCount[i].memberCount);
+// 			}
+			
+// 			if(period == '오늘' || period == '어제') {
+// 				changeChart("bar", labels, data);			
+// 			} else {
+// 				changeChart("line", labels, data);
+// 			}
+			console.log("period2");
+		}
+		, error: function( e ) {
+			console.log("--- error ---");
+			console.log( e.responseText );
+		}
+		, complete: function() {
+			//입력 창 초기화
+		}
+	});	
+}
+
+
+function changeChart(type, labels, data){
 	var ctx = document.getElementById("myChart").getContext('2d');
 	var myChart = new Chart(ctx, {
-	    type: 'line',
+	    type: type,
 	    data: {
-	        labels: ["5월", "6월", "7월", "8월", "9월", "10월"],
+	        labels: labels,
 	        datasets: [{
 	            label: '회원수',
-	            data: [90, 134, 189, 192, 247, 260],
+	            data: data,
 	            backgroundColor: [
 	                'rgba(255, 99, 132, 0.2)'
 	            ],
@@ -103,7 +225,7 @@ $(document).ready(function() {
 	        },
 	        {
 	            label: '방문수',
-	            data: [500, 635, 559, 492, 727, 850],
+	            data: [5000],
 	            backgroundColor: [
 	                'rgba(0, 99, 50, 0.2)'
 	            ],
@@ -123,81 +245,7 @@ $(document).ready(function() {
 	        }
 	    }
 	});
-});
-
-
-
-
-$(".badge").click(function() {
-	$(".badge").attr("style", "background-color: #c7c7c7 !important");
-	$(this).attr("style", "background-color: #929292 !important");
-	
-	$("#startDate").val("");
-	$("#endDate").val("");
-	
-	var period = $(this).text();
-	console.log(period);
-	
-	if(period == "오늘" || period == "어제") {
-		$.ajax({
-			type: "post"
-			, url : "/zaksim/admin/mStatistics/changePeriod"
-			, data : {
-				period: period
-			}
-			, dataType: "json"
-			, success: function( data ) {
-				$("#joinNum").text(data.joinNum);
-			}
-			, error: function( e ) {
-				console.log("--- error ---");
-				console.log( e.responseText );
-			}
-			, complete: function() {
-				//입력 창 초기화
-			}
-		});	
-	} else {
-		$.ajax({
-			type: "post"
-			, url : "/zaksim/admin/mStatistics/changePeriod"
-			, data : {
-				period: period
-			}
-			, dataType: "json"
-			, success: function( data ) {
-				$("#joinNum").text(data.joinNum);
-			}
-			, error: function( e ) {
-				console.log("--- error ---");
-				console.log( e.responseText );
-			}
-			, complete: function() {
-				//입력 창 초기화
-			}
-		});
-	}
-});
-
-$("#okBtn").click(function() {
-	$(".badge").attr("style", "background-color: #c7c7c7 !important");
-	
-// 	$.ajax({
-// 		type: "get"
-// 		, url : "/zaksim/admin/memberTable?category=" + category + "&pageCount=" + pageCount + "&searchId=" + searchId
-// 		, dataType: "html"
-// 		, success: function( data ) {
-// 			$("#pagingDiv").html(data);
-// 		}
-// 		, error: function( e ) {
-// 			console.log("--- error ---");
-// 			console.log( e.responseText );
-// 		}
-// 		, complete: function() {
-// 			//입력 창 초기화
-// 		}
-// 	});	
-});
+}
 
 </script>
 
