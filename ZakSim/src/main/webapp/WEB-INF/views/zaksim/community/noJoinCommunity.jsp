@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!-- header include -->
 <%@include file="/WEB-INF/views/zaksim/main/header.jsp"%>
 
@@ -73,13 +75,24 @@
 
 
 
+
+
+<!-- 위로가기 버튼 -->
+<div class="top-button">
+	<a href=""><img id="upImg" src="/resources/image/community/위로.png">
+	</a>
+</div>
+
+<!-- footer include -->
+<%@include file="/WEB-INF/views/zaksim/main/footer.jsp"%>
+
 <!-- 모달 -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
 	aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<form id="form1" action="/zaksim/community/createCommunity"
-				method="post" runat="server">
+				method="post" runat="server" enctype="multipart/form-data">
 
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel"
@@ -101,7 +114,7 @@
 								<div class="form-inline">
 									<div>
 
-										<img id="CommImage" name="image"
+										<img id="image" 
 											src="/resources/image/community/sample.png" alt="..."
 											class="img-thumbnail"
 											style="width: 200px; height: 150px; margin-bottom: 10px;"><br>
@@ -110,7 +123,7 @@
 										<div class="imgInp btn btn-primary"
 											style="position: relative; overflow: hidden; padding-right: 17px; margin-left: 40px;">
 
-											<b>이미지 변경</b> <input type="file" id="imgInp"
+											<b>이미지 변경</b> <input type="file" id="imgInp" name="file" value="/resources/image/community/sample.png"
 												style="align-content: center; margin-left: 40px; position: absolute; font-size: 0px; opacity: 0; right: 0; top: 0; cursor: pointer; height: 36px; width: 100px;">
 										</div>
 
@@ -120,13 +133,14 @@
 									</div>
 									<div style="padding-bottom: 0px; margin-left: 50px;">
 										<span style="font-size: 20px;"><strong>모임명 : </strong></span>
-										<input class="form-control" type="text" style="height: 30px;" name="title"
-											maxlength="20" required="required"
+										<input class="form-control" type="text" style="height: 30px;"
+											name="title" maxlength="20" required="required"
 											placeholder="20자 이내로 작성하세요"> <br> <br> <span
 											style="font-size: 20px;"><strong>최대 모임 인원 : </strong></span>
 										<input class="form-control" type="number"
-											style="width: 80px; height: 30px;" placeholder="100" min="1" max="100" name="max"
-											required="required"><strong>명</strong> <br> <span
+											style="width: 80px; height: 30px;" placeholder="100" min="1"
+											max="100" name="max" required="required"><strong>명</strong>
+										<br> <span
 											style="margin-left: 50px; font-size: 15px; color: gray;">※
 											최대 100명까지 가능</span>
 
@@ -136,26 +150,29 @@
 
 								<div style="margin-top: 30px;">
 									<span style="margin-left: 50px; margin-right: 102px;"><strong>공개</strong></span>
-									<input type="radio" name="private" id="screctRadio1"> <label>
-										공개</label> <input type="radio" style="margin-left: 100px;"
-										id="screctRadio2" name="private"> <label> 비공개</label> <br>
-									<br>
+									<input type="radio" name="secret" id="screctRadio1"
+										checked="checked" value=0> <label> 공개</label> <input
+										type="radio" style="margin-left: 100px;" id="screctRadio2"
+										name="secret" value=1> <label> 비공개</label> <br> <br>
 
-									<div style="margin-left: 30px; margin-right: 30px;">
 
-										<div id="screctRadio" style="vertical-align: top;">
-											<div class="card-body">
-												<div class="form-inline">
-													<span><strong>비밀번호</strong></span> <input type="password"
-														class="form-control" style="margin-left: 73px;" name="password">
+
+
+											<div style="margin-left: 30px; margin-right: 30px;">
+												<div id="screctRadio" style="vertical-align: top;">
+													<div class="card-body">
+														<div class="form-inline">
+															<span><strong>비밀번호</strong></span> <input type="password"
+																class="form-control" style="margin-left: 73px;"
+																name="password">
+														</div>
+														<br>
+													</div>
 												</div>
-
-												<br>
 											</div>
-										</div>
 
 
-									</div>
+
 
 
 
@@ -169,47 +186,43 @@
 									<div class="form-inline">
 										<span style="margin-left: 50px; margin-right: 90px;"><strong>키워드</strong></span>
 
-										<input type="text" class="form-control" style="width: 300px;" name="keyword"
-											placeholder="ex) #키워드1, #키워드2">
+										<input type="text" class="form-control" style="width: 300px;"
+											name="keyword" placeholder="ex) #키워드1, #키워드2"
+											required="required">
 									</div>
 									<br>
 									<div class="form-inline">
 										<span style="margin-left: 50px; margin-right: 90px;"><strong>소개글</strong></span>
 
-									<br>
-							<textarea class="form-control" name="content"
-							onkeydown="content(this)" 
-							style="width: 300px; margin-bottom: 20px;" onkeyup="content(this)" placeholder="내용을 입력하세요" ></textarea>
+										<br>
+										<textarea class="form-control" name="content"
+											onkeydown="content(this)"
+											style="width: 300px; margin-bottom: 20px;"
+											onkeyup="content(this)" placeholder="내용을 입력하세요"
+											required="required"></textarea>
+
+
+									</div>
 
 
 								</div>
-
-
+								<div class="col-sm-1"></div>
 							</div>
-							<div class="col-sm-1"></div>
-						</div>
 
+						</div>
 					</div>
-				</div>
-				<div class="modal-footer" style="">
-					<!-- 				<button type="button" class="btn btn-danger" id="create"> -->
-					<!-- 					<a href="">만들기</a> -->
-					<!-- 				</button> -->
-					<input type="submit" class="btn btn-danger" id="create"
-						value="만들기1" />
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">취소</button>
-				</div>
+					<div class="modal-footer" style="">
+						<!-- 				<button type="button" class="btn btn-danger" id="create"> -->
+						<!-- 					<a href="">만들기</a> -->
+						<!-- 				</button> -->
+						<input type="submit" class="btn btn-danger" id="create"
+							value="만들기" />
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">취소</button>
+					</div>
 			</form>
 		</div>
 	</div>
-</div>
-
-
-<!-- 위로가기 버튼 -->
-<div class="top-button">
-	<a href=""><img id="upImg" src="/resources/image/community/위로.png">
-	</a>
 </div>
 
 
@@ -273,20 +286,15 @@
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function(e) {
-				$('#CommImage').attr('src', e.target.result);
+				$('#image').attr('src', e.target.result);
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-	
-    function content(obj) {
-  	  obj.style.height = "1px";
-  	  obj.style.height = (12+obj.scrollHeight)+"px";
-  	}       
-	
-	
-	
+
+	function content(obj) {
+		obj.style.height = "1px";
+		obj.style.height = (12 + obj.scrollHeight) + "px";
+	}
 </script>
 
-<!-- footer include -->
-<%@include file="/WEB-INF/views/zaksim/main/footer.jsp"%>

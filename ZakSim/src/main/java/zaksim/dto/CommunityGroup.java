@@ -151,9 +151,7 @@ public class CommunityGroup {
         return secret;
     }
 
-	public void setPrivate(int secret) {
-        this.secret = secret;
-    }
+
 
     public String getPassword() {
         return password;
