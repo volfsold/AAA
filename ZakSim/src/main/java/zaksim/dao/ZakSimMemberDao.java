@@ -77,7 +77,4 @@ public interface ZakSimMemberDao {
 	public int joinAjax(String id);
 	// -------------- 로그인 ------------------
 
-
-	
-	
 }

@@ -75,7 +75,9 @@
   	</select>
   
   <!--                      관리자                                                  -->
-  	
+  
+  
+  <!--						로그인						 -->
   <!-- 로그인 -->
   <select id="login" parameterType="zaksim.dto.ZakSimMember" resultType="int">
   	SELECT COUNT(*) FROM ZakSimMember
@@ -114,5 +116,6 @@
   	SET password = #{ranPw}
   	WHERE member_type = 'zaksim' AND id = #{id}
   </update>
+  <!--						로그인						 -->
   
   </mapper>
