@@ -29,7 +29,7 @@ public interface ZakSimMemberService {
 	 * 아이디 찾기 service
 	 * @param String name
 	 * @param String email
-	 * @return ZaksimMember
+	 * @return String
 	 */
 	public String findId(String name, String email);
 

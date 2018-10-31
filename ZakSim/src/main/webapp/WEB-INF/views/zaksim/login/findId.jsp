@@ -21,37 +21,21 @@
 			<div class="row">
 				<div class="col-md-8 mx-auto shadow-sm">
 					<ul class="nav nav-tabs">
-						<li class="nav-item col-md"><a class="active nav-link" href="/zaksim/login/findId" data-toggle="tab" data-target="#tabone">ID 찾기</a></li>
-						<li class="nav-item col-md"><a href="/zaksim/login/findPw" class="nav-link" data-toggle="tab" data-target="#tabtwo">비밀번호 찾기</a></li>
+						<li class="nav-item col-md"><a href="/zaksim/login/findId" class="active nav-link" data-toggle="tab" data-target="#tabone">ID 찾기</a></li>
+						<li class="nav-item col-md"><a href="/zaksim/login/findPw" class="nav-link">비밀번호 찾기</a></li>
 					</ul>
 					<!-- 처음 화면에 활성화 되는 컨테이너 -->
 					<div class="tab-content mt-2">
 						<div class="tab-pane fade show active" id="tabone" role="tabpanel">
-							<form class="pi-draggable" action="/zaksim/login/findId">
+							<form class="pi-draggable" id="formFindId">
 								<div class="form-group">
-									<label>이름</label> <input type="text" class="form-control" placeholder="ex) 홍길동">
+									<label>이름</label> <input type="text" class="form-control" id="name" name="name" placeholder="ex) 홍길동">
 								</div>
 								<div class="form-group">
-									<label>이메일</label> <input type="email" class="form-control" placeholder="ex) abcd@gmail.com">
+									<label>이메일</label> <input type="email" class="form-control" id="email" name="email" placeholder="ex) abcd@gmail.com">
 								</div>
 								<div class="col-md-4 mx-auto pt-5 pb-2">
-									<button type="submit" class="btn joinBtnColor col-md">ID 찾기</button>
-								</div>
-							</form>
-						</div>
-						<div class="tab-pane fade" id="tabtwo" role="tabpanel">
-							<form class="pi-draggable" action="/zaksim/login/findPw">
-								<div class="form-group">
-									<label>아이디</label> <input type="text" class="form-control">
-								</div>
-								<div class="form-group">
-									<label>이름</label> <input type="text" class="form-control" placeholder="ex) 홍길동">
-								</div>
-								<div class="form-group">
-									<label>이메일</label> <input type="email" class="form-control" placeholder="ex) abcd@gmail.com">
-								</div>
-								<div class="col-md-4 mx-auto pt-5 pb-2">
-									<button type="submit" class="btn joinBtnColor col-md">비밀번호 찾기</button>
+									<button type="button" class="btn joinBtnColor col-md" id="btnFindId">ID 찾기</button>
 								</div>
 							</form>
 						</div>
@@ -61,5 +45,60 @@
 			<!-- body 안  -->
 		</div>
 	</div>
-	
+
+	<!-- Modal -->
+	<div class="modal fade" id="idModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModal3Label">ID 찾기</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" id="btnRedirectLogin">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 <%@ include file="../main/footer.jsp" %>
+<script type="text/javascript">
+	$('#btnFindId').click(function() {
+		if ( $('#name').val() == "" || $('#email').val() == "" ) {
+			$('.modal-body').html("빈 내용이 있습니다.<br>내용을 채워주세요.");
+		} else {
+
+			var params = jQuery("#formFindId").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+			$.ajax({
+				type : "post",
+				url : "/zaksim/login/findId",
+				data : params,
+				dataType : "json",
+				success : function(data) {
+					var findId = data.findId;
+					console.log(findId)
+					if ( findId == null ) {
+						$('.modal-body').html("해당되는 ID가 없습니다.<br>회원가입을 해주세요.");
+					} else {
+						$('.modal-body').text("찾으시는 ID : " + data.findId);
+					}
+				},
+				error : function() {
+					$('.modal-body').text('님아 오류남. 고치셈');
+				}
+			});
+		}
+		$("#idModal").modal();
+	});
+
+	$('#btnRedirectLogin').click(function() {
+		if ( $('#name').val() == "" || $('#email').val() == "" ) {
+			$('button[id=btnRedirectLogin]').attr("data-dismiss", "modal"); // 태그에 속성 추가하기, 화면 전환 없음
+		} else {
+			location.href = "/zaksim/login/login"; // 리다이렉트
+		}
+	});
+</script>

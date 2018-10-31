@@ -53,8 +53,8 @@
       <div class="row">
         <div class="col-md-7 mx-auto">
           <div class="text-center">
-            <button class="btn loginBtnColor col-md-3">ID 찾기</button>
-            <button class="btn loginBtnColor col-md-4">비밀번호 찾기</button>
+            <button class="btn loginBtnColor col-md-3" id="btnFindIdPage">ID 찾기</button>
+            <button class="btn loginBtnColor col-md-4" id="btnFindPwPage">비밀번호 찾기</button>
             <button class="btn loginBtnColor col-md-3">회원가입</button>
           </div>
         </div>
@@ -63,3 +63,11 @@
   </div>
  
 <%@ include file="../main/footer.jsp" %>
+<script type="text/javascript">
+$('#btnFindIdPage').click(function(){
+	location.href = "/zaksim/login/findId";
+});
+$('#btnFindPwPage').click(function(){
+	location.href = "/zaksim/login/findPw";
+});
+</script>
