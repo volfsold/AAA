@@ -24,8 +24,8 @@ public interface ZakSimMemberDao {
 	// 기간 별 가입 인원
 	public int selectJoinNum(Map<String, String> param);
 
-	// 기간 별 회원 수
-	public void selectMemberNum(int period);
+//	// 기간 별 회원 수
+//	public void selectMemberNum(String period);
 	// -------------- 관리자 ------------------
 
 	

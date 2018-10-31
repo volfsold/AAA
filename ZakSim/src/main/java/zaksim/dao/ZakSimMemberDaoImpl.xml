@@ -12,6 +12,8 @@
   	<result property="suspensionDate" column="suspension_date"/>
   </resultMap>
   
+  <!--                      관리자                                                  -->
+  
   <select id="selectAdminMember" parameterType="zaksim.dto.ZakSimMember" resultType="int">
   	SELECT COUNT(*)
   	FROM ZakSimMember
@@ -59,14 +61,20 @@
 	  	AND TO_CHAR(join_date, 'YY/MM/DD') = TO_CHAR(sysdate-1, 'YY/MM/DD')
   	</if>
   	<if test="period == '최근 7일'">
-	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]>= TO_CHAR(sysdate-7, 'YY/MM/DD')
+	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]> TO_CHAR(sysdate-7, 'YY/MM/DD')
 	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YY/MM/DD')
   	</if>
   	<if test="period == '최근 30일'">
-	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]>= TO_CHAR(sysdate-30, 'YY/MM/DD')
+	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]> TO_CHAR(sysdate-30, 'YY/MM/DD')
 	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YY/MM/DD')
   	</if>
+<!--   	<if test="startDate != '' and endDate != ''"> -->
+<!--   		AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]>= TO_CHAR(#{startDate}, 'YY/MM/DD') -->
+<!-- 	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(#{endDate}, 'YY/MM/DD') -->
+<!--   	</if> -->
   	</select>
+  
+  <!--                      관리자                                                  -->
   	
   <!-- 로그인 -->
   <select id="login" parameterType="zaksim.dto.ZakSimMember" resultType="int">

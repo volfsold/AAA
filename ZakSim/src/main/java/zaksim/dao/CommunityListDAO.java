@@ -3,12 +3,13 @@ package zaksim.dao;
 import java.util.List;
 
 import zaksim.dto.CommunityCategory;
+import zaksim.dto.CommunityGroup;
 
 public interface CommunityListDAO {
 
-//	// 그룹 리스트
-//	public List<CommunityGroup> groupList( );
-//	
+	// 그룹 리스트
+	public List<CommunityGroup> joinedGroupList( );
+	
 //	// 인기그룹 리스트
 //	public List<CommunityGroup> popularGroupList( );
 //		

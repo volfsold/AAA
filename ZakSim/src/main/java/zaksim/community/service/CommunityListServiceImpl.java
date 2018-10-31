@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import zaksim.dao.CommunityListDAO;
 import zaksim.dto.CommunityCategory;
+import zaksim.dto.CommunityGroup;
 
 @Service
 public class CommunityListServiceImpl  implements CommunityListService{
@@ -14,9 +15,17 @@ public class CommunityListServiceImpl  implements CommunityListService{
 	@Autowired CommunityListDAO communityListDAO;
 
 	@Override
+	public List<CommunityGroup> joinedGroupList() {
+		// TODO Auto-generated method stub
+		return communityListDAO.joinedGroupList();
+	}
+	
+	@Override
 	public List<CommunityCategory> categoryList() {
 		
 		return communityListDAO.categoryList();
 	}
+
+
 	
 }

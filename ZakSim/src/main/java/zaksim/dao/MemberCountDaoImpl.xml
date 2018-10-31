@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="zaksim.dao.MemberCountDao">
+  
+  <resultMap type="zaksim.dto.MemberCount" id="MemberCount">
+  	<result property="memberCountDate" column="membercount_date"/>
+  	<result property="memberCount" column="membercount"/>
+  </resultMap>
+  
+  
+  <select id="selectMemberNum" parameterType="map" resultMap="MemberCount">
+  	SELECT * FROM MEMBERCOUNT
+  	WHERE 1=1
+  	<if test="period == '오늘'">
+  		AND TO_CHAR(membercount_date, 'YYYY-MM-DD') = TO_CHAR(sysdate, 'YYYY-MM-DD')
+  	</if>
+  	<if test="period == '어제'">
+  		AND TO_CHAR(membercount_date, 'YYYY-MM-DD') = TO_CHAR(sysdate-1, 'YYYY-MM-DD')
+  	</if>
+  	<if test="period == '최근 7일'">
+  		AND TO_CHAR(membercount_date, 'YYYY-MM-DD') <![CDATA[ > ]]> TO_CHAR(sysdate-7, 'YYYY-MM-DD')
+  		AND TO_CHAR(membercount_date, 'YYYY-MM-DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YYYY-MM-DD')
+  	</if>
+  	<if test="period == '최근 30일'">
+  		AND TO_CHAR(membercount_date, 'YYYY-MM-DD') <![CDATA[ > ]]> TO_CHAR(sysdate-30, 'YYYY-MM-DD')
+  		AND TO_CHAR(membercount_date, 'YYYY-MM-DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YYYY-MM-DD')
+  	</if>
+<!--   	<if test="startDate != '' and endDate != ''"> -->
+<!--   		AND TO_CHAR(membercount_date, 'YY/MM/DD') <![CDATA[ > ]]>= TO_CHAR(#{startDate}, 'YY/MM/DD') -->
+<!-- 	  	AND TO_CHAR(membercount_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(#{endDate}, 'YY/MM/DD') -->
+<!--   	</if> -->
+  </select>
+
+
+   
+  </mapper>
