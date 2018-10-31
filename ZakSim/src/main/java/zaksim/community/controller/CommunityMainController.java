@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import zaksim.community.service.CommunityListServiceImpl;
+import zaksim.community.service.CommunityListService;
 
 // 커뮤니티 메인 화면
 @Controller
@@ -18,15 +18,18 @@ import zaksim.community.service.CommunityListServiceImpl;
 public class CommunityMainController {
 
 	private static final Logger logger = LoggerFactory.getLogger(CommunityMainController.class);
-	@Autowired CommunityListServiceImpl communityListServiceImpl;
+	@Autowired CommunityListService communityListService;
 
 	
 	// 메인 화면 GET
 	@RequestMapping(value="/communityMain", method=RequestMethod.GET)
 	public void commnunityMain(Model model) {
 		
-		model.addAttribute("joinedGroupLIst", communityListServiceImpl.joinedGroupList());
-		model.addAttribute("categoryList", communityListServiceImpl.categoryList());
+//		model.addAttribute("joinedGroupLIst", communityListService.joinedGroupList());
+		model.addAttribute("joinedGroupLIst", communityListService.test());
+		model.addAttribute("keywordList", communityListService.test2());
+		model.addAttribute("categoryList", communityListService.categoryList());
+		model.addAttribute("newGroupList", communityListService.newGroupList());
 		
 	}
 

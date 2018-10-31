@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import zaksim.community.service.CommunityListService;
 import zaksim.community.service.CommunityListServiceImpl;
 
 // 커뮤니티 분류 화면
@@ -16,7 +17,7 @@ import zaksim.community.service.CommunityListServiceImpl;
 public class CommunityClassificationController {
 
 	private static final Logger logger = LoggerFactory.getLogger(CommunityMainController.class);
-	@Autowired CommunityListServiceImpl communityListServiceImpl;
+	@Autowired CommunityListService communityListService;
 	
 	// 가입한 커뮤니티 화면 GET
 	@RequestMapping(value="/joinCommunity", method=RequestMethod.GET)
@@ -33,13 +34,13 @@ public class CommunityClassificationController {
 	// 새로운 커뮤니티 화면 GET
 	@RequestMapping(value="/newCommunity", method=RequestMethod.GET)
 	public void newCommunity(Model model) {
-		
+		model.addAttribute("newGroupList", communityListService.newGroupList());
 	}
 	
 	// 카테고리 화면 GET
 	@RequestMapping(value="/categoryCommunity", method=RequestMethod.GET)
 	public void category(Model model) {
-		model.addAttribute("categoryList", communityListServiceImpl.categoryList());
+		model.addAttribute("categoryList", communityListService.categoryList());
 	}
 
 	// 카테고리 클릭 시 검색 화면 GET
