@@ -4,6 +4,7 @@ import java.util.List;
 
 import zaksim.dto.CommunityCategory;
 import zaksim.dto.CommunityGroup;
+import zaksim.dto.GroupKeyword;
 
 public interface CommunityListService {
 
@@ -13,5 +14,13 @@ public interface CommunityListService {
 	
 	// 카테고리 리스트
 	public List<CommunityCategory> categoryList();
+	
+	// 새로운 그룹 리스트
+	public List<CommunityGroup> newGroupList();
+	
+	// 테스트
+	public List<CommunityGroup> test();
+
+	public List<GroupKeyword> test2();
 	
 }

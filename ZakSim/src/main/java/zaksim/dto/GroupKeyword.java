@@ -6,10 +6,19 @@ public class GroupKeyword {
 	private 	int idx;
 	private int group_idx;
 	private String keyword;
+	private CommunityGroup communityGroup;
 	
+
+	public CommunityGroup getCommunityGroup() {
+		return communityGroup;
+	}
+	public void setCommunityGroup(CommunityGroup communityGroup) {
+		this.communityGroup = communityGroup;
+	}
 	@Override
 	public String toString() {
-		return "GroupKeyword [idx=" + idx + ", group_idx=" + group_idx + ", keyword=" + keyword + "]";
+		return "GroupKeyword [idx=" + idx + ", group_idx=" + group_idx + ", keyword=" + keyword + ", communityGroup="
+				+ communityGroup + "]";
 	}
 	public int getIdx() {
 		return idx;

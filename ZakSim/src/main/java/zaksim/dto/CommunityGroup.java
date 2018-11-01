@@ -35,49 +35,9 @@ public class CommunityGroup {
     // 비밀번호 
     private String password;
     
-    // 그룹 좋아요
-    private GroupLike groupLike;
-    
-    // 그룹 멤버
-    private GroupMember groupMember;
-    
-    // 그룹 키워드
-    private GroupKeyword groupKeyword;
-    
-    // 그룹 카테고리
-    private CommunityCategory communityCategory;
 
-    public GroupLike getGroupLike() {
-		return groupLike;
-	}
 
-	public void setGroupLike(GroupLike groupLike) {
-		this.groupLike = groupLike;
-	}
 
-	public GroupMember getGroupMember() {
-		return groupMember;
-	}
-
-	public void setGroupMember(GroupMember groupMember) {
-		this.groupMember = groupMember;
-	}
-
-	public GroupKeyword getGroupKeyword() {
-		return groupKeyword;
-	}
-
-	public void setGroupKeyword(GroupKeyword groupKeyword) {
-		this.groupKeyword = groupKeyword;
-	}
-
-	public CommunityCategory getCommunityCategory() {
-		return communityCategory;
-	}
-
-	public void setCommunityCategory(CommunityCategory communityCategory) {
-		this.communityCategory = communityCategory;
-	}
 
 	public void setSecret(int secret) {
 		this.secret = secret;
@@ -165,10 +125,10 @@ public class CommunityGroup {
 	public String toString() {
 		return "CommunityGroup [idx=" + idx + ", memberIdx=" + memberIdx + ", categoryIdx=" + categoryIdx + ", title="
 				+ title + ", content=" + content + ", image=" + image + ", max=" + max + ", openDate=" + openDate
-				+ ", secret=" + secret + ", password=" + password + ", groupLike=" + groupLike + ", groupMember="
-				+ groupMember + ", groupKeyword=" + groupKeyword + ", communityCategory=" + communityCategory + "]";
+				+ ", secret=" + secret + ", password=" + password + "]";
 	}
-    
+
+
 
 	
 }

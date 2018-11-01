@@ -3,15 +3,73 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="zaksim.dao.CommunityListDAO">
-  
-    <select id="joinedGroupList" resultType="zaksim.dto.CommunityGroup" >
-  			select * from CommunityGroup order by idx asc
-  </select>
-  
-  <select id="categoryList" resultType="zaksim.dto.CommunityCategory" >
-  			select * from CommunityCategory order by idx asc
-  </select>
-  
-  </mapper>
+
+<mapper namespace="zaksim.dao.CommunityListDAO">
+
+	<select id="joinedGroupList"
+		resultType="zaksim.dto.CommunityGroup">
+		select * from CommunityGroup order by idx asc
+	</select>
+
+	<select id="categoryList"
+		resultType="zaksim.dto.CommunityCategory">
+		select * from CommunityCategory order by idx asc
+	</select>
+
+	<select id="newGroupList" resultType="zaksim.dto.CommunityGroup">
+		select * from CommunityGroup order by idx desc
+	</select>
+
+	<resultMap type="zaksim.dto.CommunityGroup"
+		id="CommunityGroup">
+		<result column="g_idx" property="idx" />
+		<result column="member_idx" property="memberIdx" />
+		<result column="category_idx" property="categoryIdx" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="image" property="image" />
+		<result column="max" property="max" />
+		<result column="open_date" property="openDate" />
+		<result column="private" property="secret" />
+		<result column="password" property="password" />
+	</resultMap>
+
+	<resultMap type="zaksim.dto.GroupKeyword" id="GroupKeyword">
+		<result column="idx" property="idx" />
+		<result column="gruop_idx" property="group_idx" />
+		<result column="keyword" property="keyword" />
+		<collection property="communityGroup" resultMap="CommunityGroup"/>
+	</resultMap>
+
+	<resultMap type="zaksim.dto.GroupLike" id="GroupLike">
+		<result column="like_num" property="likeNum" />
+		<result column="idx" property="idx" />
+		<result column="l_group_idx" property="groupIdx" />
+		<result column="member_idx" property="memberIdx" />
+  		<collection property="communityGroup" resultMap="CommunityGroup"/>
+  		<collection property="groupKeyword" resultMap="GroupKeyword"/>
+	</resultMap>
+
+	<select id="test" resultMap="GroupLike">
+		select * from
+		(select c.idx g_idx, c.title, c.content, c.image, c.max, c.open_date, c.private, c.password 
+			from groupmember m, communitygroup c where m.member_idx=3 and m.gruop_idx=c.idx
+		) g
+		left join (select count(*) like_num, gruop_idx l_gruop_idx from grouplike
+		GROUP BY gruop_idx) l on l.l_gruop_idx=g.g_idx
+
+	</select>
+	
+	<select id="test2" resultMap="GroupKeyword">
+		select k.gruop_idx,  k.keyword
+		from communityGroup g, GroupKeyword k
+		where g.idx=k.gruop_idx
+	</select>
+
+
+
+
+
+
+
+</mapper>

@@ -49,28 +49,22 @@ public interface ZakSimMemberDao {
 	
 	/**
 	 * 아이디 찾기 dao
-	 * @param String name
-	 * @param String email
+	 * @param Map map
 	 * @return String
 	 */
-	public String findId(String name, String email);
+	public String findId(Map<String, String> map);
 
 	/**
 	 * 비밀번호 찾기 dao - 해당 회원이 있는지 확인
-	 * @param String id
-	 * @param String name
-	 * @param String email
-	 * @return String
+	 * @param Map map
+	 * @return int
 	 */
-	public int findPw(String id, String name, String email);
+	public int findPw(Map<String, String> map);
 	/**
 	 * 비밀번호 찾기 dao - 임시 비밀번호 DB에 저장
-	 * @param String id
-	 * @param String name
-	 * @param String email
-	 * @return String
+	 * @param Map map
 	 */
-	public String findPw(String id, String temPw);
+	public void findPwResult(Map<String, String> map);
 
 	/**
 	 * 회원가입 dao
@@ -86,7 +80,4 @@ public interface ZakSimMemberDao {
 	public int joinAjax(String id);
 	// -------------- 로그인 ------------------
 
-
-	
-	
 }
