@@ -118,13 +118,13 @@ public class LoginController {
 	}
 	
 	// 회원가입
-	@RequestMapping(value="/zaksim/login/join_terms", method=RequestMethod.GET)
+	@RequestMapping(value="/zaksim/login/join", method=RequestMethod.GET)
 	public void joinTermsPage() {
 		
 	}
-	@RequestMapping(value="/zaksim/login/join", method=RequestMethod.GET)
+	@RequestMapping(value="/zaksim/login/joinForm", method=RequestMethod.GET)
 	public String joinPage() {
-		return "zaksim/login/join";
+		return "zaksim/login/joinForm";
 	}
 	@RequestMapping(value="/zaksim/login/join", method=RequestMethod.POST)
 	public String join(ZakSimMember memberDto) {
