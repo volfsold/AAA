@@ -9,13 +9,13 @@ public class Board {
 	private int idx;
 
 	// 개인 도전 인덱스 
-	private int challengeIdx;
+	private int challenge_idx;
 
 	// 그룹 인덱스 
-	private int gruopIdx;
+	private int group_idx;
 
 	// 작성자 인덱스 
-	private int writerIdx;
+	private int writer_idx;
 
 	// 타이틀 
 	private String title;
@@ -26,14 +26,14 @@ public class Board {
 	// 이미지 
 	private String image;
 
-	// 비밀글 여부 1(비공개)/0(공개)
-	private int secret;
+	// 공개 여부
+	private int open;
 
 	// 인증글 여부 1(인증글)/0(일반글)
 	private int certification;
 
 	// 작성 날짜 
-	private Date writtenDate;
+	private Date written_date;
 
 	// 조회수 
 	private int hit;
@@ -47,29 +47,12 @@ public class Board {
 	// 신고
 	private Report report;
 
-
 	@Override
 	public String toString() {
-		return "Board [idx=" + idx + ", challengeIdx=" + challengeIdx + ", gruopIdx=" + gruopIdx + ", writerIdx="
-				+ writerIdx + ", title=" + title + ", content=" + content + ", image=" + image + ", secret=" + secret
-				+ ", certification=" + certification + ", writtenDate=" + writtenDate + ", hit=" + hit
-				+ ", comment=" +comment + ", boardLike=" + boardLike + ", report=" + report + "]";
-	}
-
-	public Report getReport() {
-		return report;
-	}
-
-	public void setReport(Report report) {
-		this.report = report;
-	}
-
-	public BoardLike getBoardLike() {
-		return boardLike;
-	}
-
-	public void setBoardLike(BoardLike boardLike) {
-		this.boardLike = boardLike;
+		return "Board [idx=" + idx + ", challenge_idx=" + challenge_idx + ", group_idx=" + group_idx + ", writer_idx="
+				+ writer_idx + ", title=" + title + ", content=" + content + ", image=" + image + ", open=" + open
+				+ ", certification=" + certification + ", written_date=" + written_date + ", hit=" + hit + ", comment="
+				+ comment + ", boardLike=" + boardLike + ", report=" + report + "]";
 	}
 
 	public int getIdx() {
@@ -80,28 +63,28 @@ public class Board {
 		this.idx = idx;
 	}
 
-	public int getChallengeIdx() {
-		return challengeIdx;
+	public int getChallenge_idx() {
+		return challenge_idx;
 	}
 
-	public void setChallengeIdx(int challengeIdx) {
-		this.challengeIdx = challengeIdx;
+	public void setChallenge_idx(int challenge_idx) {
+		this.challenge_idx = challenge_idx;
 	}
 
-	public int getGruopIdx() {
-		return gruopIdx;
+	public int getGroup_idx() {
+		return group_idx;
 	}
 
-	public void setGruopIdx(int gruopIdx) {
-		this.gruopIdx = gruopIdx;
+	public void setGroup_idx(int group_idx) {
+		this.group_idx = group_idx;
 	}
 
-	public int getWriterIdx() {
-		return writerIdx;
+	public int getWriter_idx() {
+		return writer_idx;
 	}
 
-	public void setWriterIdx(int writerIdx) {
-		this.writerIdx = writerIdx;
+	public void setWriter_idx(int writer_idx) {
+		this.writer_idx = writer_idx;
 	}
 
 	public String getTitle() {
@@ -128,12 +111,12 @@ public class Board {
 		this.image = image;
 	}
 
-	public int getSecret() {
-		return secret;
+	public int getOpen() {
+		return open;
 	}
 
-	public void setPrivate(int secret) {
-		this.secret = secret;
+	public void setOpen(int open) {
+		this.open = open;
 	}
 
 	public int getCertification() {
@@ -144,12 +127,12 @@ public class Board {
 		this.certification = certification;
 	}
 
-	public Date getWrittenDate() {
-		return writtenDate;
+	public Date getWritten_date() {
+		return written_date;
 	}
 
-	public void setWrittenDate(Date writtenDate) {
-		this.writtenDate = writtenDate;
+	public void setWritten_date(Date written_date) {
+		this.written_date = written_date;
 	}
 
 	public int getHit() {
@@ -160,17 +143,31 @@ public class Board {
 		this.hit = hit;
 	}
 
-	public Comment getBoardComment() {
+	public Comment getComment() {
 		return comment;
 	}
 
-	public void setBoardComment(Comment boardComment) {
-		this.comment = boardComment;
+	public void setComment(Comment comment) {
+		this.comment = comment;
 	}
 
-	public void setSecret(int secret) {
-		this.secret = secret;
+	public BoardLike getBoardLike() {
+		return boardLike;
 	}
+
+	public void setBoardLike(BoardLike boardLike) {
+		this.boardLike = boardLike;
+	}
+
+	public Report getReport() {
+		return report;
+	}
+
+	public void setReport(Report report) {
+		this.report = report;
+	}
+
+
 
 
 

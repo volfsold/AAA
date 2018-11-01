@@ -7,14 +7,14 @@ public class BoardLike {
     private int idx;
 
     // 게시글 인덱스 
-    private int boardIdx;
+    private int board_idx;
 
     // 회원 인덱스 
-    private int memberIdx;
+    private int member_idx;
 
 	@Override
 	public String toString() {
-		return "BoardLike [idx=" + idx + ", boardIdx=" + boardIdx + ", memberIdx=" + memberIdx + "]";
+		return "BoardLike [idx=" + idx + ", board_idx=" + board_idx + ", member_idx=" + member_idx + "]";
 	}
 
 	public int getIdx() {
@@ -25,22 +25,23 @@ public class BoardLike {
 		this.idx = idx;
 	}
 
-	public int getBoardIdx() {
-		return boardIdx;
+	public int getBoard_idx() {
+		return board_idx;
 	}
 
-	public void setBoardIdx(int boardIdx) {
-		this.boardIdx = boardIdx;
+	public void setBoard_idx(int board_idx) {
+		this.board_idx = board_idx;
 	}
 
-	public int getMemberIdx() {
-		return memberIdx;
+	public int getMember_idx() {
+		return member_idx;
 	}
 
-	public void setMemberIdx(int memberIdx) {
-		this.memberIdx = memberIdx;
+	public void setMember_idx(int member_idx) {
+		this.member_idx = member_idx;
 	}
-    
+
+
     
 	
 }

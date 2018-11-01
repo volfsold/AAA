@@ -28,8 +28,9 @@ public class CommunityMainController {
 //		model.addAttribute("joinedGroupLIst", communityListService.joinedGroupList());
 		model.addAttribute("joinedGroupLIst", communityListService.test());
 		model.addAttribute("keywordList", communityListService.test2());
-		model.addAttribute("categoryList", communityListService.categoryList());
+		model.addAttribute("popularGroupList", communityListService.popularGroupList());
 		model.addAttribute("newGroupList", communityListService.newGroupList());
+		model.addAttribute("categoryList", communityListService.categoryList());
 		
 	}
 

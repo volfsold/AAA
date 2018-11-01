@@ -28,7 +28,8 @@ public class CommunityClassificationController {
 	// 인기있는 커뮤니티 화면 GET
 	@RequestMapping(value="/popularCommunity", method=RequestMethod.GET)
 	public void popularCommunity(Model model) {
-		
+		communityListService.popularGroupList();
+		communityListService.test2();
 	}
 	
 	// 새로운 커뮤니티 화면 GET

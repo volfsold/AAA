@@ -12,7 +12,7 @@ public interface CommunityListDAO {
 	public List<CommunityGroup> joinedGroupList( );
 	
 	// 인기그룹 리스트
-//	public List<CommunityGroup> popularGroupList( );
+	public List<CommunityGroup> popularGroupList( );
 
 	// 새로 시작한 그룹 리스트
 	public List<CommunityGroup> newGroupList( );

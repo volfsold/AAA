@@ -29,24 +29,13 @@ public class CommnuityEditController {
 	// 커뮤니티 만들기 POST
 	@RequestMapping(value="/createCommunity", method=RequestMethod.POST)
 	public String createCommnunityProcess(CommunityGroup communityGroup, MultipartFile file) {
-
-		logger.info("타이틀 : "+communityGroup.getTitle());
-		logger.info("이미지 : "+communityGroup.getImage());
-		logger.info("인원 : "+communityGroup.getMax());
-		logger.info("비밀여부 : "+communityGroup.getSecret());
 		
 		String path = "/resources/upload/community/";
-
 		String realpath = context.getRealPath(path);
-
 		String uid = UUID.randomUUID().toString().split("-")[4];
-
 		String stored = uid+"_"+file.getOriginalFilename();
-
 		File dest = new File(realpath, stored);
-
-
-
+		
 		try {
 			file.transferTo(dest);
 		} catch (IllegalStateException e) {
@@ -55,14 +44,8 @@ public class CommnuityEditController {
 			e.printStackTrace();
 		}
 
-//		communityGroup.setImage(file.getOriginalFilename());
 		communityGroup.setImage("/resources/upload/community/"+stored);
-
-		
-		logger.info("toString : "+communityGroup.toString());
-
 		communityEditServiceImpl.createGroup(communityGroup);
-		
 		String result = "redirect:/zaksim/community/communityMain";
 
 		return result;
