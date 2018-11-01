@@ -6,16 +6,24 @@ public class Payment {
 	
 	private int pRnum;
 	
+	// 아임포트 인덱스
 	private String impUid;
+	// 결제 인덱스
 	private int merchantUid;
+	// 회원 인덱스
 	private int buyerIdx;
+	// 도전 인덱스
 	private int challengeIdx;
+	// 금액
 	private int price;
+	// 결제 시각
 	private Date paidAt;
+	// 상태
 	private String status;
+	// 결제 방법
 	private String paymentOption;
-	
-	private int certificationRate;	// 인증률
+	// 인증률
+	private int certificationRate;	
 	
 
 	private ZakSimMember zakSimMember;

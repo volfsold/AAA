@@ -5,6 +5,7 @@
 <%@include file="/WEB-INF/views/zaksim/main/header.jsp" %>
 
 
+
 <!-- 바디 -->
 
    <div class="py-5" style="background-image: url(/resources/image/challenge/back.jpg);">
@@ -16,57 +17,219 @@
             <div class="mt-2 col-md-3">
               <h2 class="text-left ml-4 mt-1"> <b>ZakSim</b> </h2>
             </div>
-            <div class="col-md-2 mt-3 rounded" style="background-color:rgb(154, 28, 15); padding-top:7px; ">
-              <h5 class="mt-1"> 도전 정보입력 </h5>
+            <div class="col-md-2 mt-3 data-cmenu" id="cmenu1" style="background-color:rgb(154, 28, 15); padding-top:7px; ">
+              <h5 class="mt-1 "> 도전 정보입력 </h5>
             </div>
-            <div class="col-md-2 mt-3">
-              <h5 class="mt-1"> 도전금 결제 </h5>
+            <div class="col-md-2 mt-3 data-cmenu" id="cmenu2">
+              <h5 class="mt-1 "> 도전금 결제 </h5>
             </div>
-            <div class="col-md-2 mt-3">
-              <h5 class="mt-1"> 서약서 작성 </h5>
+            <div class="col-md-2 mt-3 data-cmenu" id="cmenu3">
+              <h5 class="mt-1 "> 서약서 작성 </h5>
             </div>
-            <div class="col-md-2 mt-3">
+            <div class="col-md-2 mt-3 data-cmenu" id="cmenu4">
               <h5 class="mt-1"> 도전 안내사항 </h5>
             </div>
             <div class="col-md-1 mt-3">
             </div>
+            
             <div style="height:5px; background-color:rgb(154, 28, 15);" class="col rounded">
             </div>
           </div>
         </div>
         <div class="col-md-1"> <img class="img-fluid d-block rounded-circle ml-3" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" style="	height: 30px; width: 30px;"></div>
       </div>
-      <div class="row text-dark pb-5 py-2 " style="background-color: rgba(94, 94, 94, 0.64);">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 rounded" style="height: 530px; background-color: rgba(33, 33, 33, 0.67);">
-          <div class="col-md-12 text-center my-4 text-white">
-            <h2> 홍길동의</h2>
-            <h3> 새로운 도전 시작 </h3>
-          </div>
-          <div class="row text-center text-muted" style="height: 50px; background-color: rgba(154, 28, 15, 0.5);"> <div class="col-md-12"><h5 class="mt-3">멋진 도전을 시작해 보세요.</h5></div></div>
-          <div class="row mt-5">
-            <div class="col-md-4 mt-3 text-white" >
-              <p class="text-right mt-3 "> 도전 명 : </p>
-              <p class="text-right mt-4"> 도전 시작일 : </p>
-              <p class="text-right mt-4"> 도전 종료일 : </p>
-            </div>
-            <form class="col-md-6" >
-              <input class="form-control mt-3" type="text" placeholder="도전할 목표을 입력하세요.">
-              <input class="form-control mt-3" type="date">
-              <input class="form-control mt-3" type="date">
-              <a class="btn text-white btn-lg mt-5 ml-5" href="/zaksim/challenge/priceChallenge" style="background-color: rgb(187, 68, 56);"> 도전금 설정 </a>
-            </form>
-          </div>
-        </div>
-        <div class="col-md-2"></div>
+      
+      <div id="chageDiv">
+      
+      <!-- 인클루드 -->
+      <%@include file="/WEB-INF/views/zaksim/challenge/include/doInclude.jsp" %>
+      
       </div>
+      
+      
     </div>
   </div>
             
 <!--바디 끝-->
 
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- 도전정보 입력 -->
+	<script type="text/javascript">
+
+	
+
+	function toPriceChallenge(){
+		
+		var params= $('#doChal').serialize();
+		
+		 $.ajax({
+		      type: "get"
+		      , url : "/zaksim/challenge/priceChallenge"
+		      , data : params
+		      , dataType: "html"
+		      , success: function( data ) {
+// 		         console.log(data);
+		         $(".data-cmenu").attr("style","");
+		         $("#cmenu2").attr("style","background-color:rgb(154, 28, 15); padding-top:7px; ");
+		         
+		         $("#chageDiv").html(data);
+		      }
+		      , error: function( e ) {
+		         console.log("--- error ---");
+		         console.log( e.responseText );
+		      }
+		      , complete: function() {
+		         //입력 창 초기화
+		      }
+		   });  
+		
+	}
+
+	
+	
     
+    </script>
+   
+ 
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
+
+<script type="text/javascript">
+  
+  var IMP = window.IMP; // 생략해도 괜찮습니다.
+  IMP.init("imp14263647"); // "imp00000000" 대신 발급받은 "가맹점 식별코드"를 사용합니다.
+  
+  
+  $('#chageDiv').on("click","#payBtn",function() {
+	  
+	  console.log("버튼 활성화");
     
+//      var msg = "";
+    
+    // 결제 정보 설정 
+     IMP.request_pay({ // param
+          pg: "html5_inicis",   // PG사 - 'html5_inicis':이니시스(웹표준결제)
+          pay_method: "card",   // 결제방식 - 'card':신용카드
+          merchant_uid: 'merchant_' + new Date().getTime(), // 고유주문번호 - random, unique
+          
+          /* name: '${lesson[0].title}', */   // 도전명 - 선택항목, 결제정보 확인을 위한 입력, 16자 이내로 작성
+          name: '금연하기',
+          amount: 1000,   // 결제금액
+          buyer_email: 'asdf@naver.com',   // 주문자Email - db에서 가져오기
+          buyer_name: '홍길동',               // 주문자명 - db에서 가져오기
+          buyer_tel:    '010-1234-5678'      // 주문자연락처 - db에서 가져오기
+      }, function (rsp) { // callback - 결제 이후 호출됨, 이곳에서 DB에 저장하는 로직을 작성한다
+      
+          if (rsp.success) {   // 결제 성공 로직
+             
+//              var msg = '결제가 완료되었습니다.';
+//              msg += '\n고유ID : ' + rsp.imp_uid;
+//              msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+//              msg += '\n결제 금액 : ' + rsp.paid_amount;
+//              msg += '\n카드 승인번호 : ' + rsp.apply_num;
+             
+//              alert(msg);
+             
+             //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
+            
+             
+             
+            /*  챌린지 insert
+            	결제 insert
+            	정보 취합 넘겨 주는 역할 - post역활
+            	
+            	
+             jQuery.ajax({
+                url: "/zaksim/challenge/priceChallenge", //cross-domain error가 발생하지 않도록 주의해주세요
+                type: 'post',
+                dataType: 'text',
+                data: {
+                   imp_uid : rsp.imp_uid,
+                   merchant_uid : rsp.merchant_uid,
+                  
+                   // challenge idx
+                   lesson_idx : '${ lesson[0].idx }',
+                  
+                   // 도전 정보 , 타이틀, 시작일, 종료일, 도전금
+                   
+                   // 도전자 정보
+                   buyer_id : '${sessionScope.id}',
+                   buyer_name : '${member.name}',
+                   buyer_email : '${member.email}',
+                   buyer_phone : '${member.phone}',
+                   // 결제 시각
+                   paid_at : rsp.paid_at, 
+                   // 결제 상태
+                   status : rsp.status
+                   //기타 필요한 데이터가 있으면 추가 전달
+                }
+                , success: function( data ) {
+                   console.log(data);
+                   
+//                    msg = '결제가 완료되었습니다.';
+//                    msg += '\n고유ID : ' + rsp.imp_uid;
+//                    msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+//                    msg += '\n결제 금액 : ' + rsp.paid_amount;
+//                    msg += '\n카드 승인번호 : ' + rsp.apply_num;
+                   
+//                    alert(msg);
+                }
+             });
+             
+  --------------------------------  여기까지 주석 */
+             
+             
+             
+             
+//              .done(function(data) {
+//                 console.log(data);
+//                 //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
+//                 if ( everythings_fine ) {
+//                    var msg = '결제가 완료되었습니다.';
+//                    msg += '\n고유ID : ' + rsp.imp_uid;
+//                    msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+//                    msg += '\n결제 금액 : ' + rsp.paid_amount;
+//                    msg += '\n카드 승인번호 : ' + rsp.apply_num;
+                   
+//                    alert(msg);
+//                 } else {
+//                    //[3] 아직 제대로 결제가 되지 않았습니다.
+//                    //[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
+//                 }
+//              });
+
+            var msg = '결제가 완료되었습니다.';
+             msg += '\n고유ID : ' + rsp.imp_uid;
+             msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+             msg += '\n결제 금액 : ' + rsp.paid_amount;
+             msg += '\n카드 승인번호 : ' + rsp.apply_num;
+             
+             
+             /* $("#모달 아이디").modal("show"); */
+             
+             alert(msg);
+             
+             $(".data-cmenu").attr("style","");
+	         $("#cmenu3").attr("style","background-color:rgb(154, 28, 15); padding-top:7px; ");
+	         
+             
+          } else {
+             console.log('fail');
+              var msg = '결제에 실패하였습니다.';
+              msg += '\n에러내용 : ' + rsp.error_msg;
+              alert(msg); 
+          }
+           
+      });
+     
+//      alert(msg); 
+     
+  });
+  
+  </script>
+   
    
         <!-- footer include -->
 <%@include file="/WEB-INF/views/zaksim/main/footer.jsp" %>
