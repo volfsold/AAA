@@ -10,8 +10,8 @@
 
 
 
-
 <div class="container" id="zz">
+
 	<div class="row" style="margin-bottom: 30px;">
 		<div class="col"></div>
 		<div class="col-9">
@@ -87,21 +87,25 @@
 						begin="0" end="2" step="1">
 						<div class="card" style="width: 20rem; margin-right: 15px;">
 							<div class="hovereffect">
-								<img class="card-img-top" src="${joinedGroupLIst.communityGroup.image }"
+								<img class="card-img-top"
+									src="${joinedGroupLIst.communityGroup.image }"
 									alt="Card image cap">
 								<div class="card-body">
 									<span>
 										<h3 class="card-title">${joinedGroupLIst.communityGroup.title }</h3>
 									</span> <span class="form-inline"> <span style="color: red;">
-										<h4>♥ &nbsp;${joinedGroupLIst.likeNum }</h4>
-								</span>
-								</span>
-								<p class="card-text">키워드 : 
-								<c:forEach items="${keywordList }" var="keyword">
-									<c:if test="${joinedGroupLIst.communityGroup.idx eq keyword.group_idx}">
-										${keyword.keyword }</p>
-									</c:if>
-								</c:forEach>
+											<h4>♥ &nbsp;${joinedGroupLIst.likeNum }</h4>
+									</span>
+									</span>
+									<p class="card-text">
+										키워드 :
+										<c:forEach items="${keywordList }" var="keyword" >
+											<c:if
+												test="${joinedGroupLIst.communityGroup.idx eq keyword.group_idx}">
+													#${keyword.keyword } 
+											</c:if>
+										</c:forEach>
+									</p>
 								</div>
 
 								<div class="overlay">
@@ -123,103 +127,62 @@
 
 
 
-
-
 			<!-- 인기모임 -->
 			<div>
 				<strong style="font-size: 150%">인기모임</strong>
 				<button type="button" class="btn btn-outline-primary"
-					style="float: right; margin-top: 30px;"id="popularGroupViewMore" >+ 더보기</button>
+					style="float: right; margin-top: 30px;" id="popularGroupViewMore">+
+					더보기</button>
 				<hr
 					style="margin-top: 40px; border-color: gray; margin-bottom: 40px;">
 
 				<div class="form-inline" style="margin-bottom: 50px;">
-					<div class="card" style="width: 20rem; margin-right: 15px;">
-						<div class="hovereffect">
-							<img class="card-img-top"
-								src="https://picsum.photos/1200/350/?image=4"
-								alt="Card image cap">
-							<div class="card-body">
-								<span>
-									<h3 class="card-title">인기 모임1</h3>
-								</span> <span class="form-inline"> <span style="color: red;">
-										<h4>♥ &nbsp;1</h4>
-								</span>
-								</span>
-								<p class="card-text">키워드 : 키워드1, 키워드2</p>
+					<c:forEach var="popularGroupList" items="${popularGroupList }"
+						begin="0" end="2" step="1">
+						<div class="card" style="width: 20rem; margin-right: 15px;">
+							<div class="hovereffect">
+								<img class="card-img-top"
+									src="https://picsum.photos/1200/350/?image=4"
+									alt="Card image cap">
+								<div class="card-body">
+									<span>
+										<h3 class="card-title">${popularGroupList.communityGroup.title }</h3>
+									</span> <span class="form-inline"> <span style="color: red;">
+											<h4>♥ &nbsp;${popularGroupList.likeNum }</h4>
+									</span>
+									</span>
+									<p class="card-text">
+										키워드 : 
+										<c:forEach items="${keywordList }" var="keyword">
+											<c:if test="${popularGroupList.communityGroup.idx eq keyword.group_idx}">
+												#${keyword.keyword } 
+											</c:if>
+										</c:forEach>
+									</p>
+								</div>
+
+								<div class="overlay">
+									<br> <br> <a class="info" href="#">
+
+										<button type="button" class="btn btn-primary">가입하기</button> <br>
+										<br>
+										<button type="button" class="btn btn-danger">상세보기</button>
+									</a>
+
+								</div>
+
 							</div>
-
-							<div class="overlay">
-								<br> <br> <a class="info" href="#">
-
-									<button type="button" class="btn btn-primary">가입하기</button> <br>
-									<br>
-									<button type="button" class="btn btn-danger">상세보기</button>
-								</a>
-
-							</div>
-
 						</div>
-					</div>
+					</c:forEach>
 
-					<div class="card" style="width: 20rem; margin-right: 15px;">
-						<div class="hovereffect">
-							<img class="card-img-top"
-								src="https://picsum.photos/1200/350/?image=5"
-								alt="Card image cap">
-							<div class="card-body">
-								<span>
-									<h3 class="card-title">인기 모임2</h3>
-								</span> <span class="form-inline"> <span style="color: red;">
-										<h4>♥ &nbsp;2</h4>
-								</span>
-								</span>
-								<p class="card-text">키워드 : 키워드1, 키워드2</p>
-							</div>
-
-							<div class="overlay">
-								<br> <br> <a class="info" href="#">
-
-									<button type="button" class="btn btn-primary">가입하기</button> <br>
-									<br>
-									<button type="button" class="btn btn-danger">상세보기</button>
-								</a>
-
-							</div>
-
-						</div>
-					</div>
-
-					<div class="card" style="width: 20rem; margin-right: 15px;">
-						<div class="hovereffect">
-							<img class="card-img-top"
-								src="https://picsum.photos/1200/350/?image=9"
-								alt="Card image cap">
-							<div class="card-body">
-								<span>
-									<h3 class="card-title">인기 모임3</h3>
-								</span> <span class="form-inline"> <span style="color: red;">
-										<h4>♥ &nbsp;1</h4>
-								</span>
-								</span>
-								<p class="card-text">키워드 : 키워드1, 키워드2</p>
-							</div>
-
-							<div class="overlay">
-								<br> <br> <a class="info" href="#">
-
-									<button type="button" class="btn btn-primary">가입하기</button> <br>
-									<br>
-									<button type="button" class="btn btn-danger">상세보기</button>
-								</a>
-
-							</div>
-
-						</div>
-					</div>
 				</div>
 				<hr style="border-color: gray; margin-bottom: 100px;">
 			</div>
+
+
+
+
+
 
 
 
@@ -227,42 +190,42 @@
 			<div>
 				<strong style="font-size: 150%">새로 시작한 모임</strong>
 				<button type="button" class="btn btn-outline-primary"
-					style="float: right; margin-top: 30px;" id="newGroupViewMore">+ 더보기</button>
+					style="float: right; margin-top: 30px;" id="newGroupViewMore">+
+					더보기</button>
 				<hr
 					style="margin-top: 40px; border-color: gray; margin-bottom: 40px;">
 
-				
+
 				<div class="form-inline" style="margin-bottom: 50px;">
-				
-				<c:forEach var="newGroupList" items="${newGroupList }" begin="0"
+
+					<c:forEach var="newGroupList" items="${newGroupList }" begin="0"
 						end="2" step="1">
-					<div class="card" style="width: 20rem; margin-right: 15px;">
-						<div class="hovereffect">
-							<img class="card-img-top"
-								src="${newGroupList.image }"
-								alt="Card image cap">
-							<div class="card-body">
-								<span>
-									<h3 class="card-title">${newGroupList.title }</h3>
-								</span> <span class="form-inline"> <span style="color: red;">
-										<h4>♥ &nbsp;1</h4>
-								</span>
-								</span>
-								<p class="card-text">키워드 : 키워드1, 키워드2</p>
+						<div class="card" style="width: 20rem; margin-right: 15px;">
+							<div class="hovereffect">
+								<img class="card-img-top" src="${newGroupList.image }"
+									alt="Card image cap">
+								<div class="card-body">
+									<span>
+										<h3 class="card-title">${newGroupList.title }</h3>
+									</span> <span class="form-inline"> <span style="color: red;">
+											<h4>♥ &nbsp;1</h4>
+									</span>
+									</span>
+									<p class="card-text">키워드 : 키워드1, 키워드2</p>
+								</div>
+
+								<div class="overlay">
+									<br> <br> <a class="info" href="#">
+
+										<button type="button" class="btn btn-primary">가입하기</button> <br>
+										<br>
+										<button type="button" class="btn btn-danger">상세보기</button>
+									</a>
+
+								</div>
+
 							</div>
-
-							<div class="overlay">
-								<br> <br> <a class="info" href="#">
-
-									<button type="button" class="btn btn-primary">가입하기</button> <br>
-									<br>
-									<button type="button" class="btn btn-danger">상세보기</button>
-								</a>
-
-							</div>
-
 						</div>
-					</div>
 					</c:forEach>
 
 
@@ -520,11 +483,23 @@
 			}
 		});
 		
+		// 공개 클릭 시 숨기기 / 비공개 클릭 시 보이기
+		$("#screctRadio").hide();
+
+		$("#screctRadio1").click(function() {
+			$("#screctRadio").hide();
+		});
+
+		$("#screctRadio2").click(function() {
+			$("#screctRadio").fadeIn();
+		});
+		
+
 		/* 인기모임 더 보기 */
 		$("#popularGroupViewMore").click(function() {
 			location.href = "/zaksim/community/popularCommunity";
 		});
-		
+
 		/* 새로운모임 더 보기 */
 		$("#newGroupViewMore").click(function() {
 			location.href = "/zaksim/community/newCommunity";
@@ -534,11 +509,7 @@
 		$("#categoryViewMore").click(function() {
 			location.href = "/zaksim/community/categoryCommunity";
 		});
-		
 
-
-		
-		
 	});
 </script>
 

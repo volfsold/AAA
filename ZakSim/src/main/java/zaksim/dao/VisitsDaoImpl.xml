@@ -6,4 +6,34 @@
   
   <mapper namespace="zaksim.dao.VisitsDao">
   
+  <resultMap type="zaksim.dto.Visits" id="Visits">
+  	<result property="visitDate" column="visit_date"/>
+  </resultMap>
+  
+  <select id="selectVisitsNum" parameterType="map" resultMap="Visits">
+  	SELECT * FROM VISITS
+  	<if test="period == '오늘'">
+  		WHERE TO_CHAR(visit_date, 'YYYY-MM-DD') = TO_CHAR(sysdate, 'YYYY-MM-DD')
+  	</if>
+  	<if test="period == '어제'">
+  		WHERE TO_CHAR(visit_date, 'YYYY-MM-DD') = TO_CHAR(sysdate, 'YYYY-MM-DD')
+  	</if>
+  	<if test="period == '최근 7일'">
+  		WHERE TO_CHAR(visit_date, 'YYYY-MM-DD') <![CDATA[ > ]]> TO_CHAR(sysdate-7, 'YYYY-MM-DD')
+  		AND TO_CHAR(visit_date, 'YYYY-MM-DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YYYY-MM-DD')
+  	</if>
+  	<if test="period == '최근 30일'">
+  		WHERE TO_CHAR(visit_date, 'YYYY-MM-DD') <![CDATA[ > ]]> TO_CHAR(sysdate-30, 'YYYY-MM-DD')
+  		AND TO_CHAR(visit_date, 'YYYY-MM-DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YYYY-MM-DD')
+  	</if>
+  	ORDER BY visit_date ASC
+  </select>
+  
+  <select id="selectVisitsNum2" parameterType="map" resultMap="Visits">
+  	SELECT * FROM VISITS
+	WHERE TO_CHAR(visit_date, 'YYYY-MM-DD') <![CDATA[ > ]]>= #{startDate}
+	AND TO_CHAR(visit_date, 'YYYY-MM-DD') <![CDATA[ < ]]>= #{endDate}
+	ORDER BY visit_date ASC
+  </select>
+  
   </mapper>

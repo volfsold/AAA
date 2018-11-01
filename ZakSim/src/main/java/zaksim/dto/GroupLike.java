@@ -7,19 +7,25 @@ public class GroupLike {
 	private int idx;
 
 	// 그룹 인덱스 
-	private int groupIdx;
+	private int group_idx;
 
 	// 회원 인덱스 
-	private int memberIdx;
+	private int member_idx;
 	
 	private int likeNum;
-
 
 	private CommunityGroup communityGroup;
 	
 	private ZakSimMember zakSimMember;
 	
 	private GroupKeyword groupKeyword;
+
+	@Override
+	public String toString() {
+		return "GroupLike [communityGroup=" + communityGroup + ", group_idx=" + group_idx + ", groupKeyword="
+				+ groupKeyword + ", idx=" + idx + ", likeNum=" + likeNum + ", member_idx=" + member_idx
+				+ ", zakSimMember=" + zakSimMember + "]";
+	}
 
 	public int getIdx() {
 		return idx;
@@ -29,20 +35,20 @@ public class GroupLike {
 		this.idx = idx;
 	}
 
-	public int getGroupIdx() {
-		return groupIdx;
+	public int getGroup_idx() {
+		return group_idx;
 	}
 
-	public void setGroupIdx(int groupIdx) {
-		this.groupIdx = groupIdx;
+	public void setGroup_idx(int group_idx) {
+		this.group_idx = group_idx;
 	}
 
-	public int getMemberIdx() {
-		return memberIdx;
+	public int getMember_idx() {
+		return member_idx;
 	}
 
-	public void setMemberIdx(int memberIdx) {
-		this.memberIdx = memberIdx;
+	public void setMember_idx(int member_idx) {
+		this.member_idx = member_idx;
 	}
 
 	public int getLikeNum() {
@@ -76,13 +82,10 @@ public class GroupLike {
 	public void setGroupKeyword(GroupKeyword groupKeyword) {
 		this.groupKeyword = groupKeyword;
 	}
+	
+	
 
-	@Override
-	public String toString() {
-		return "GroupLike [idx=" + idx + ", groupIdx=" + groupIdx + ", memberIdx=" + memberIdx + ", likeNum=" + likeNum
-				+ ", communityGroup=" + communityGroup + ", zakSimMember=" + zakSimMember + ", groupKeyword="
-				+ groupKeyword + "]";
-	}
+
 
 	
 }
