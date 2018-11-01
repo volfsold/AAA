@@ -132,8 +132,11 @@ function changePeriod(period) {
 		}
 		, dataType: "json"
 		, success: function( result ) {
+			$("#innerhtml").empty();
+			
 			var labels = [];
-			var data = [];
+			var mData = [];
+			var vData = [];
 			
 			$("#joinNum").text(result.joinNum);
 			
@@ -144,13 +147,18 @@ function changePeriod(period) {
 				
 				labels.push(date);
 				
-				data.push(result.memberCount[i].memberCount);
+				mData.push(result.memberCount[i].memberCount);
+			}
+			
+			for(var i=0; i<result.visits.length; i++) {
+				
+				vData.push(result.visits[i].visits);
 			}
 			
 			if(period == '오늘' || period == '어제') {
-				changeChart("bar", labels, data);			
+				changeChart("bar", labels, mData, vData);			
 			} else {
-				changeChart("line", labels, data);
+				changeChart("line", labels, mData, vData);
 			}
 		}
 		, error: function( e ) {
@@ -173,27 +181,30 @@ function changePeriod2(startDate, endDate) {
 		}
 		, dataType: "json"
 		, success: function( result ) {
-// 			var labels = [];
-// 			var data = [];
+			$("#innerhtml").empty();
 			
-// 			$("#joinNum").text(result.joinNum);
+			var labels = [];
+			var mData = [];
+			var vData = [];
 			
-// 			for(var i=0; i<result.memberCount.length; i++) {
-				
-// 				var date = (new Date(result.memberCount[i].memberCountDate).getMonth() + 1) + "월 "
-// 				+ new Date(result.memberCount[i].memberCountDate).getDate() + "일"
-				
-// 				labels.push(date);
-				
-// 				data.push(result.memberCount[i].memberCount);
-// 			}
+			$("#joinNum").text(result.joinNum);
 			
-// 			if(period == '오늘' || period == '어제') {
-// 				changeChart("bar", labels, data);			
-// 			} else {
-// 				changeChart("line", labels, data);
-// 			}
-			console.log("period2");
+			for(var i=0; i<result.memberCount.length; i++) {
+				
+				var date = (new Date(result.memberCount[i].memberCountDate).getMonth() + 1) + "월 "
+				+ new Date(result.memberCount[i].memberCountDate).getDate() + "일"
+				
+				labels.push(date);
+				
+				mData.push(result.memberCount[i].memberCount);
+			}
+			
+			for(var i=0; i<result.visits.length; i++) {
+				
+				vData.push(result.visits[i].visits);
+			}
+			
+			changeChart("line", labels, mData, vData);
 		}
 		, error: function( e ) {
 			console.log("--- error ---");
@@ -206,7 +217,8 @@ function changePeriod2(startDate, endDate) {
 }
 
 
-function changeChart(type, labels, data){
+function changeChart(type, labels, mData, vData){
+	$("#canvasDiv").html("<canvas id='myChart' width='400' height='180'></canvas>");
 	var ctx = document.getElementById("myChart").getContext('2d');
 	var myChart = new Chart(ctx, {
 	    type: type,
@@ -214,7 +226,7 @@ function changeChart(type, labels, data){
 	        labels: labels,
 	        datasets: [{
 	            label: '회원수',
-	            data: data,
+	            data: mData,
 	            backgroundColor: [
 	                'rgba(255, 99, 132, 0.2)'
 	            ],
@@ -225,7 +237,7 @@ function changeChart(type, labels, data){
 	        },
 	        {
 	            label: '방문수',
-	            data: [5000],
+	            data: vData,
 	            backgroundColor: [
 	                'rgba(0, 99, 50, 0.2)'
 	            ],

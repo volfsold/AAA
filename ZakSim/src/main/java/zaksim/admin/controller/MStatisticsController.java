@@ -1,8 +1,5 @@
 package zaksim.admin.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import zaksim.admin.service.MStatisticsService;
 import zaksim.dto.MemberCount;
+import zaksim.dto.Visits;
 import zaksim.util.ExcelWriter;
 
 @Controller
@@ -40,9 +38,11 @@ public class MStatisticsController {
 	public void mStatisticsForm(Model model) {
 		int joinNum = mStatisticsrService.viewJoinNum("오늘");
 		List<MemberCount> memberCount = mStatisticsrService.viewMemberNum("오늘");
+		List<Visits> visits = mStatisticsrService.viewVisitsNum("오늘");
 		
 		model.addAttribute("joinNum", joinNum);
 		model.addAttribute("memberCount", memberCount);
+		model.addAttribute("visits", visits);
 	}
 	
 	@RequestMapping(value="/mStatistics/changePeriod", method = RequestMethod.POST, produces="application/json; charset=utf-8")
@@ -52,9 +52,11 @@ public class MStatisticsController {
 		
 		int joinNum = mStatisticsrService.viewJoinNum(period);
 		List<MemberCount> memberCount = mStatisticsrService.viewMemberNum(period);
+		List<Visits> visits = mStatisticsrService.viewVisitsNum(period);
 		
 		map.put("joinNum", joinNum);
 		map.put("memberCount", memberCount);
+		map.put("visits", visits);
 		
 		return map;
 	}
@@ -63,14 +65,19 @@ public class MStatisticsController {
 	@ResponseBody
 	public Map<String, Object> changePeriod2(String startDate, String endDate) {
 		
+		startDate += "-01";
+		endDate += "-01";
 		System.out.println(startDate + ", " + endDate);
 		
 		HashMap<String, Object> map = new HashMap<>();
 		
 		int joinNum = mStatisticsrService.viewJoinNum(startDate, endDate);
 		List<MemberCount> memberCount = mStatisticsrService.viewMemberNum(startDate, endDate);
+		List<Visits> visits = mStatisticsrService.viewVisitsNum(startDate, endDate);
 		
 		map.put("joinNum", joinNum);
+		map.put("memberCount", memberCount);
+		map.put("visits", visits);
 		
 		return map;
 	}

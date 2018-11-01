@@ -11,6 +11,7 @@ import zaksim.dao.MemberCountDao;
 import zaksim.dao.VisitsDao;
 import zaksim.dao.ZakSimMemberDao;
 import zaksim.dto.MemberCount;
+import zaksim.dto.Visits;
 
 @Service
 public class MStatisticsServiceImpl implements MStatisticsService {
@@ -31,7 +32,7 @@ public class MStatisticsServiceImpl implements MStatisticsService {
 		Map<String, String> param = new HashMap<>();
 		param.put("startDate", startDate);
 		param.put("endDate", endDate);
-		return zakSimMemberDao.selectJoinNum(param);
+		return zakSimMemberDao.selectJoinNum2(param);
 	}
 
 	@Override
@@ -46,13 +47,21 @@ public class MStatisticsServiceImpl implements MStatisticsService {
 		Map<String, String> param = new HashMap<>();
 		param.put("startDate", startDate);
 		param.put("endDate", endDate);
-		return memberCountDao.selectMemberNum(param);
+		return memberCountDao.selectMemberNum2(param);
 	}
 
 	@Override
-	public List<Integer> viewVisitsNum(String period) {
-		// TODO Auto-generated method stub
-		visitsDao.selectVistsNum(period);
-		return null;
+	public List<Visits> viewVisitsNum(String period) {
+		Map<String, String> param = new HashMap<>();
+		param.put("period", period);
+		return visitsDao.selectVisitsNum(param);
+	}
+
+	@Override
+	public List<Visits> viewVisitsNum(String startDate, String endDate) {
+		Map<String, String> param = new HashMap<>();
+		param.put("startDate", startDate);
+		param.put("endDate", endDate);
+		return visitsDao.selectVisitsNum2(param);
 	}
 }

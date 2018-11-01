@@ -68,10 +68,16 @@
 	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]> TO_CHAR(sysdate-30, 'YY/MM/DD')
 	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YY/MM/DD')
   	</if>
-<!--   	<if test="startDate != '' and endDate != ''"> -->
-<!--   		AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]>= TO_CHAR(#{startDate}, 'YY/MM/DD') -->
-<!-- 	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(#{endDate}, 'YY/MM/DD') -->
-<!--   	</if> -->
+  	ORDER BY join_date ASC
+  	</select>
+  	
+  	<select id="selectJoinNum2" parameterType="map" resultType="int">
+  	SELECT COUNT(*)
+  	FROM ZakSimMember
+  	WHERE id != 'admin'
+  	AND TO_CHAR(join_date, 'YYYY-MM-DD') <![CDATA[ > ]]>= #{startDate}
+  	AND TO_CHAR(join_date, 'YYYY-MM-DD') <![CDATA[ < ]]>= #{endDate}
+  	ORDER BY join_date ASC
   	</select>
   
   <!--                      관리자                                                  -->
