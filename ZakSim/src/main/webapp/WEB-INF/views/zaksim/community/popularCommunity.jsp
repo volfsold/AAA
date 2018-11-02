@@ -59,200 +59,45 @@
 
 				<div class="form-inline">
 
-					<div class="card bg-dark text-white">
-						<div class="hovereffect">
-							<img class="card-img"
-								src="https://picsum.photos/1200/350/?image=137" alt="Card image">
-							<div class="card-img-overlay">
-								<h4 class="card-title">1조 파이널</h4>
-								<p class="card-text">#1조 입니다</p>
-								<p class="card-text">#KH</p>
-								<p class="card-text">♡ 100000000000000000000000</p>
-								<div class="progress">
-									<div class="progress-bar" role="progressbar"
-										style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-										aria-valuemax="100">50%</div>
-								</div>
-								
-
-
-								<div class="overlay">
-
-									<a class="info" href="#">
-
-										<button type="button" class="btn btn-primary">가입하기</button> <br>
-									<br>
-										<button type="button" class="btn btn-danger">상세보기</button>
-									</a> <br>
-									<br>
-									<br>
-
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="card bg-dark text-white">
-						<div class="hovereffect">
-							<img class="card-img"
-								src="https://picsum.photos/1200/350/?image=140" alt="Card image">
-							<div class="card-img-overlay">
-								<h4 class="card-title">2조 파이널</h4>
-								<p class="card-text">This is a wider card with supporting
-									text below as a natural lead-in to additional content. This
-									content is a little bit longer.</p>
-								<p class="card-text">Last updated 3 mins ago</p>
-								<div class="overlay">
-
-									<a class="info" href="#">
-
-										<button type="button" class="btn btn-primary">가입하기</button> <br>
-									<br>
-										<button type="button" class="btn btn-danger">상세보기</button>
-									</a> <br>
-									<br>
-									<br>
-
+					<c:forEach var="popularGroupList" items="${popularGroupList }"
+						begin="0" end="20" step="1">
+						
+						<div class="card bg-dark text-white">
+							<div class="hovereffect">
+								<img class="card-img"
+									src="${popularGroupList.communityGroup.image }"
+									alt="Card image">
+								<div class="card-img-overlay">
+									<h4 class="card-title">${popularGroupList.communityGroup.title }</h4>
+									
+									<c:forEach items="${keywordList }" var="keyword">
+										<c:if
+											test="${popularGroupList.communityGroup.idx eq keyword.group_idx}">
+												<p class="card-text">#${keyword.keyword } </p>
+											</c:if>
+									</c:forEach>
+									
+									<p class="card-text">♡ ${popularGroupList.likeNum }</p>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar"
+											style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
+											aria-valuemax="100">50%</div>
+									</div>
+									<div class="overlay">
+										<a class="info" href="#">
+											<button type="button" class="btn btn-primary">가입하기</button> <br>
+											<br>
+											<button type="button" class="btn btn-danger">상세보기</button>
+										</a> <br> <br> <br>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="card bg-dark text-white">
-						<div class="hovereffect">
-							<img class="card-img"
-								src="https://picsum.photos/1200/350/?image=141" alt="Card image">
-							<div class="card-img-overlay">
-								<h4 class="card-title">3조 파이널</h4>
-								<p class="card-text">This is a wider card with supporting
-									text below as a natural lead-in to additional content. This
-									content is a little bit longer.</p>
-								<p class="card-text">Last updated 3 mins ago</p>
-								<div class="overlay">
-
-									<a class="info" href="#">
-
-										<button type="button" class="btn btn-primary">가입하기</button> <br>
-									<br>
-										<button type="button" class="btn btn-danger">상세보기</button>
-									</a> <br>
-									<br>
-									<br>
-
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="card bg-dark text-white">
-						<div class="hovereffect">
-							<img class="card-img"
-								src="https://picsum.photos/1200/350/?image=142" alt="Card image">
-							<div class="card-img-overlay">
-								<h4 class="card-title">보안 전문가</h4>
-								<p class="card-text">This is a wider card with supporting
-									text below as a natural lead-in to additional content. This
-									content is a little bit longer.</p>
-								<p class="card-text">Last updated 3 mins ago</p>
-								<div class="overlay">
-
-									<a class="info" href="#">
-
-										<button type="button" class="btn btn-primary">가입하기</button> <br>
-									<br>
-										<button type="button" class="btn btn-danger">상세보기</button>
-									</a> <br>
-									<br>
-									<br>
-
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="card bg-dark text-white">
-						<div class="hovereffect">
-							<img class="card-img"
-								src="https://picsum.photos/1200/350/?image=151" alt="Card image">
-							<div class="card-img-overlay">
-								<h4 class="card-title">SW 양성과정</h4>
-								<p class="card-text">This is a wider card with supporting
-									text below as a natural lead-in to additional content. This
-									content is a little bit longer.</p>
-								<p class="card-text">Last updated 3 mins ago</p>
-
-								<div class="overlay">
-
-									<a class="info" href="#">
-
-										<button type="button" class="btn btn-primary">가입하기</button> <br>
-									<br>
-										<button type="button" class="btn btn-danger">상세보기</button>
-									</a> <br>
-									<br>
-									<br>
-
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-
-
-					<div class="card bg-dark text-white">
-						<div class="hovereffect">
-							<img class="card-img"
-								src="https://picsum.photos/1200/350/?image=157" alt="Card image">
-							<div class="card-img-overlay">
-								<h4 class="card-title">SW 양성과정</h4>
-								<p class="card-text">This is a wider card with supporting
-									text below as a natural lead-in to additional content. This
-									content is a little bit longer.</p>
-								<p class="card-text">Last updated 3 mins ago</p>
-								<div class="progress">
-									<div class="progress-bar" role="progressbar"
-										style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-										aria-valuemax="100">50%</div>
-								</div>
-
-								<div class="overlay">
-
-									<a class="info" href="#">
-
-										<button type="button" class="btn btn-primary">가입하기</button> <br>
-									<br>
-										<button type="button" class="btn btn-danger">상세보기</button>
-									</a> <br>
-									<br>
-									<br>
-
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-					<div class="card bg-dark text-white">
-
-						<div class="card-img-overlay">
-							<h4 class="card-title">Card title</h4>
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
-							<p class="card-text">Last updated 3 mins ago</p>
-						</div>
-					</div>
-
-
-
-
+						
+					</c:forEach>
 
 				</div>
-
 			</div>
-
-
 		</div>
 
 

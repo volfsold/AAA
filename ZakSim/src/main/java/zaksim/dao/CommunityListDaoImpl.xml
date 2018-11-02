@@ -6,20 +6,17 @@
 
 <mapper namespace="zaksim.dao.CommunityListDAO">
 
-	<select id="joinedGroupList"
-		resultType="zaksim.dto.CommunityGroup">
-		select * from CommunityGroup order by idx asc
-	</select>
+
 
 	<select id="categoryList"
 		resultType="zaksim.dto.CommunityCategory">
 		select * from CommunityCategory order by idx asc
 	</select>
 
-	<select id="newGroupList" resultType="zaksim.dto.CommunityGroup">
-		select * from
-		CommunityGroup order by idx desc
-	</select>
+<!-- 	<select id="newGroupList" resultType="zaksim.dto.CommunityGroup"> -->
+<!-- 		select * from -->
+<!-- 		CommunityGroup order by idx desc -->
+<!-- 	</select> -->
 
 	<resultMap type="zaksim.dto.CommunityGroup"
 		id="CommunityGroup">
@@ -52,11 +49,11 @@
 		<collection property="groupKeyword" resultMap="GroupKeyword" />
 	</resultMap>
 
-	<select id="test" resultMap="GroupLike">
+	<select id="joinedGroupList" resultMap="GroupLike">
 		select * from
 		(select c.idx g_idx,
 		c.title, c.content, c.image, c.max, c.open_date, c.secret, c.password
-		from groupmember m, communitygroup c where m.member_idx=3 and
+		from groupmember m, communitygroup c where m.member_idx=2 and
 		m.group_idx=c.idx
 		) g
 		left join (select count(*) like_num, group_idx
@@ -65,7 +62,7 @@
 		l.l_group_idx=g.g_idx
 	</select>
 
-	<select id="test2" resultMap="GroupKeyword">
+	<select id="keywordList" resultMap="GroupKeyword">
 		select k.group_idx, k.keyword
 		from
 		communityGroup g, GroupKeyword k
@@ -85,6 +82,20 @@
 		grouplike
 		GROUP BY group_idx order by like_num desc) l on l.l_group_idx=gk.g_idx
 	</select>
+	
+		<select id="newGroupList" resultMap="GroupLike">
+			SELECT
+		*
+		FROM
+		(SELECT g.idx g_idx, g.title ,g.content , g.image ,g.max , g.open_date , g.secret
+		, g.password
+		, k.keyword
+		FROM CommunityGroup g, GroupKeyword k
+		WHERE g.idx = k.group_idx order by g.idx desc) gk
+		left join (select count(*) as like_num, group_idx as l_group_idx from
+		grouplike
+		GROUP BY group_idx) l on l.l_group_idx=gk.g_idx
+		</select>
 
 <!-- 	<select id="newGroupList" resultMap="GroupLike"> -->
 <!-- 		select -->

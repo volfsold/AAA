@@ -24,16 +24,19 @@
 	<div class="row">
 		<div class="col"></div>
 		<div class="col-9">
-			<div class="form-inline">
-				<select class="custom-select d-block my-3" required>
-					<option value="1" selected="selected">모임 명</option>
-					<option value="2">카테고리</option>
-					<option value="3">키워드</option>
-				</select> <input type="text" class="form-control mx-3" style="width: 600px;"
-					placeholder="검색할 내용">
-				<button type="button" class="btn btn-outline-info">Search</button>
-			</div>
+			<form action="/zaksim/community/searchCommunity" method="post">
+				<div class="form-inline">
+					<select name="selectSearch" class="custom-select d-block my-3"
+						required>
+						<option value="communutyName" selected="selected">모임 명</option>
+						<option value="communutyCategory">카테고리</option>
+						<option value="communutyKeyword">키워드</option>
+					</select> <input type="text" class="form-control mx-3" style="width: 600px;"
+						name="searchContent" placeholder="검색할 내용" required="required"> 
+						<input type="submit" class="btn btn-outline-info" value="Search" />
 
+				</div>
+			</form>
 		</div>
 
 
@@ -54,11 +57,11 @@
 				<button type="button" class="btn btn-outline-primary"
 					style="float: right; margin-top: 30px;">+ 더보기</button>
 
+
 				<button type="button" class="btn btn-outline-danger"
 					style="float: right; margin-top: 30px; margin-left: 30px; margin-right: 30px;"
 					data-toggle="modal" data-target=".bd-example-modal-lg">모임
 					만들기</button>
-
 			</c:if>
 
 
@@ -68,6 +71,7 @@
 
 			<div class="form-inline" style="margin-bottom: 50px;">
 
+				<!-- 참여하고 있는 모임이 없을 시 -->
 				<c:if test="${empty  joinedGroupLIst}">
 
 					<div
@@ -82,7 +86,8 @@
 				</c:if>
 
 
-				<c:if test="${joinedGroupLIst ne null}">
+				<!-- 참여하고 있는 모임이 있을 시 -->
+				<c:if test="${joinedGroupLIst ne null }">
 					<c:forEach var="joinedGroupLIst" items="${joinedGroupLIst }"
 						begin="0" end="2" step="1">
 						<div class="card" style="width: 20rem; margin-right: 15px;">
@@ -99,7 +104,7 @@
 									</span>
 									<p class="card-text">
 										키워드 :
-										<c:forEach items="${keywordList }" var="keyword" >
+										<c:forEach items="${keywordList }" var="keyword">
 											<c:if
 												test="${joinedGroupLIst.communityGroup.idx eq keyword.group_idx}">
 													#${keyword.keyword } 
@@ -135,14 +140,13 @@
 					더보기</button>
 				<hr
 					style="margin-top: 40px; border-color: gray; margin-bottom: 40px;">
-
 				<div class="form-inline" style="margin-bottom: 50px;">
 					<c:forEach var="popularGroupList" items="${popularGroupList }"
 						begin="0" end="2" step="1">
 						<div class="card" style="width: 20rem; margin-right: 15px;">
 							<div class="hovereffect">
 								<img class="card-img-top"
-									src="https://picsum.photos/1200/350/?image=4"
+									src="${popularGroupList.communityGroup.image }"
 									alt="Card image cap">
 								<div class="card-body">
 									<span>
@@ -152,29 +156,25 @@
 									</span>
 									</span>
 									<p class="card-text">
-										키워드 : 
+										키워드 :
 										<c:forEach items="${keywordList }" var="keyword">
-											<c:if test="${popularGroupList.communityGroup.idx eq keyword.group_idx}">
+											<c:if
+												test="${popularGroupList.communityGroup.idx eq keyword.group_idx}">
 												#${keyword.keyword } 
 											</c:if>
 										</c:forEach>
 									</p>
 								</div>
-
 								<div class="overlay">
 									<br> <br> <a class="info" href="#">
-
 										<button type="button" class="btn btn-primary">가입하기</button> <br>
 										<br>
 										<button type="button" class="btn btn-danger">상세보기</button>
 									</a>
-
 								</div>
-
 							</div>
 						</div>
 					</c:forEach>
-
 				</div>
 				<hr style="border-color: gray; margin-bottom: 100px;">
 			</div>
@@ -202,16 +202,24 @@
 						end="2" step="1">
 						<div class="card" style="width: 20rem; margin-right: 15px;">
 							<div class="hovereffect">
-								<img class="card-img-top" src="${newGroupList.image }"
+								<img class="card-img-top"
+									src="${newGroupList.communityGroup.image }"
 									alt="Card image cap">
 								<div class="card-body">
 									<span>
-										<h3 class="card-title">${newGroupList.title }</h3>
+										<h3 class="card-title">${newGroupList.communityGroup.title }</h3>
 									</span> <span class="form-inline"> <span style="color: red;">
 											<h4>♥ &nbsp;1</h4>
 									</span>
 									</span>
-									<p class="card-text">키워드 : 키워드1, 키워드2</p>
+									<p class="card-text">
+										키워드 :
+										<c:forEach items="${keywordList }" var="keyword">
+											<c:if
+												test="${newGroupList.communityGroup.idx eq keyword.group_idx}">
+												#${keyword.keyword } 
+											</c:if>
+										</c:forEach>
 								</div>
 
 								<div class="overlay">
@@ -370,19 +378,19 @@
 
 
 
-
-
 									<span style="margin-left: 50px; margin-right: 70px;"><strong>카테고리</strong></span>
-									<select class="custom-select mb-2 mr-sm-2 mb-sm-0"
+									<select name ="category" class="custom-select mb-2 mr-sm-2 mb-sm-0"
 										style="height: 40px; width: 150px;">
-										<option value="Category1">Category 01</option>
-										<option value="Category2">Category 02</option>
-										<option value="Category3">Category 03</option>
+										<option value=1>Category01</option>
+										<option value=2>Category02</option>
+										<option value=3>Category03</option>
+										<option value=4>Category04</option>
+										<option value=5>Category05</option>
 									</select> <br> <br>
 									<div class="form-inline">
 										<span style="margin-left: 50px; margin-right: 90px;"><strong>키워드</strong></span>
 
-										<input type="text" class="form-control" style="width: 300px;"
+										<input type="text" class="form-control" style="width: 300px;" name="keyword"
 											name="keyword" placeholder="ex) #키워드1, #키워드2"
 											required="required"
 											onkeyup="this.value=this.value.replace(/[^#0-9가-힣a-zA-Z]/g,'')">
@@ -482,7 +490,7 @@
 				$('.top-button').fadeOut();
 			}
 		});
-		
+
 		// 공개 클릭 시 숨기기 / 비공개 클릭 시 보이기
 		$("#screctRadio").hide();
 
@@ -493,7 +501,6 @@
 		$("#screctRadio2").click(function() {
 			$("#screctRadio").fadeIn();
 		});
-		
 
 		/* 인기모임 더 보기 */
 		$("#popularGroupViewMore").click(function() {

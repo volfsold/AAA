@@ -46,17 +46,10 @@ public class CommunityListServiceImpl  implements CommunityListService{
 
 
 
-	// 테스트
 	@Override
-	public List<CommunityGroup> test() {
+	public List<GroupKeyword> keywordList() {
 		// TODO Auto-generated method stub
-		return communityListDAO.test();
-	}
-
-	@Override
-	public List<GroupKeyword> test2() {
-		// TODO Auto-generated method stub
-		return communityListDAO.test2();
+		return communityListDAO.keywordList();
 	}
 
 

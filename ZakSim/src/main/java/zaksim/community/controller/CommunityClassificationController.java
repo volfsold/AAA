@@ -28,19 +28,29 @@ public class CommunityClassificationController {
 	// 인기있는 커뮤니티 화면 GET
 	@RequestMapping(value="/popularCommunity", method=RequestMethod.GET)
 	public void popularCommunity(Model model) {
-		communityListService.popularGroupList();
-		communityListService.test2();
+		
+		// 인기있는 그룹
+		model.addAttribute("popularGroupList", communityListService.popularGroupList());
+		
+		// 키워드 리스트
+		model.addAttribute("keywordList", communityListService.keywordList());
+		
 	}
 	
 	// 새로운 커뮤니티 화면 GET
 	@RequestMapping(value="/newCommunity", method=RequestMethod.GET)
 	public void newCommunity(Model model) {
+		// 인기있는 그룹
 		model.addAttribute("newGroupList", communityListService.newGroupList());
+		
+		// 키워드 리스트
+		model.addAttribute("keywordList", communityListService.keywordList());
 	}
 	
 	// 카테고리 화면 GET
 	@RequestMapping(value="/categoryCommunity", method=RequestMethod.GET)
 	public void category(Model model) {
+		
 		model.addAttribute("categoryList", communityListService.categoryList());
 	}
 

@@ -56,28 +56,31 @@
 
 
 			<div style="margin-left: 22px;">
-
 				<div class="form-inline">
-
-					<c:forEach var="newGroupList" items="${newGroupList }" begin="0"
-						end="19" step="1">
+							<c:forEach var="newGroupList" items="${newGroupList }"
+						begin="0" end="20" step="1">
 	
-
 						<div class="card bg-dark text-white">
 							<div class="hovereffect">
-								<img class="card-img" src="${newGroupList.image }"
+								<img class="card-img"
+									src="${newGroupList.communityGroup.image }"
 									alt="Card image">
 								<div class="card-img-overlay">
-									<h4 class="card-title">${newGroupList.title }</h4>
-									<p class="card-text">${newGroupList.content }</p>
-									<p class="card-text">#KH</p>
-									<p class="card-text">♡ 100000000000000000000000</p>
+									<h4 class="card-title">${newGroupList.communityGroup.title }</h4>
+									
+									<c:forEach items="${keywordList }" var="keyword">
+										<c:if
+											test="${newGroupList.communityGroup.idx eq keyword.group_idx}">
+												<p class="card-text">#${keyword.keyword } </p>
+											</c:if>
+									</c:forEach>
+									
+									<p class="card-text">♡ ${newGroupList.likeNum }</p>
 									<div class="progress">
 										<div class="progress-bar" role="progressbar"
 											style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
 											aria-valuemax="100">50%</div>
 									</div>
-
 									<div class="overlay">
 										<a class="info" href="#">
 											<button type="button" class="btn btn-primary">가입하기</button> <br>
@@ -86,24 +89,9 @@
 										</a> <br> <br> <br>
 									</div>
 								</div>
-								
 							</div>
-						</div>
+						</div>			
 					</c:forEach>
-
-
-
-					<div class="card bg-dark text-white">
-
-						<div class="card-img-overlay">
-							<h4 class="card-title">Card title</h4>
-							<p class="card-text">This is a wider card with supporting
-								text below as a natural lead-in to additional content. This
-								content is a little bit longer.</p>
-							<p class="card-text">Last updated 3 mins ago</p>
-						</div>
-					</div>
-
 
 				</div>
 			</div>
