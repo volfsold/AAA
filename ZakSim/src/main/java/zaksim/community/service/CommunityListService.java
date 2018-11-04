@@ -24,4 +24,13 @@ public interface CommunityListService {
 	// 키워드 리스트
 	public List<GroupKeyword> keywordList();
 	
+	// 인덱스에 대한 커뮤니티 정보 가져오기
+	public List<CommunityGroup> info(int idx);
+	
+	// 카테고리 리스트2
+	public List<CommunityCategory> categoryList2();
+	
+	// 카테고리별 정보
+	public List<CommunityGroup> categoryGroup(int idx);
+	
 }

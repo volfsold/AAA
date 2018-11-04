@@ -21,7 +21,11 @@ public interface CommunityEditService {
 	public void createKeyword(GroupKeyword groupKeyword);
 	
 	// 그룹 수정
-	public void updateGroup(CommunityGroup communityGroup);
+	public void updateGroup(int idx);
+	
+	
+	// 키워드 수정
+	public void updateKeyword(int Group_index);
 	
 	// 그룹 삭제
 	public void deleteGroup(CommunityGroup communityGroup);

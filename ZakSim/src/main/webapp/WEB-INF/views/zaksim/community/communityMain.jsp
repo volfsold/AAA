@@ -32,8 +32,8 @@
 						<option value="communutyCategory">카테고리</option>
 						<option value="communutyKeyword">키워드</option>
 					</select> <input type="text" class="form-control mx-3" style="width: 600px;"
-						name="searchContent" placeholder="검색할 내용" required="required"> 
-						<input type="submit" class="btn btn-outline-info" value="Search" />
+						name="searchContent" placeholder="검색할 내용" required="required">
+					<input type="submit" class="btn btn-outline-info" value="Search" />
 
 				</div>
 			</form>
@@ -97,7 +97,11 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<span>
-										<h3 class="card-title">${joinedGroupLIst.communityGroup.title }</h3>
+										<h3 class="card-title">${joinedGroupLIst.communityGroup.title }
+											<c:if test="${joinedGroupLIst.communityGroup.secret==1 }">
+												<img alt="" src="/resouces/image/community/자물쇠.png">
+											</c:if>
+										</h3>
 									</span> <span class="form-inline"> <span style="color: red;">
 											<h4>♥ &nbsp;${joinedGroupLIst.likeNum }</h4>
 									</span>
@@ -115,7 +119,8 @@
 
 								<div class="overlay">
 									<br> <br> <br> <a class="info" href="#">
-										<button type="button" class="btn btn-danger">상세보기</button>
+										<button type="button" class="btn btn-danger"
+											onclick="moveURL(${joinedGroupLIst.communityGroup.idx })">상세보기</button>
 									</a>
 
 								</div>
@@ -150,13 +155,19 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<span>
-										<h3 class="card-title">${popularGroupList.communityGroup.title }</h3>
+										<h3 class="card-title">${popularGroupList.communityGroup.title }
+<%-- 											<c:if test="${popularGroupList.communityGroup.secret==1 }"> --%>
+<!-- 												<img style="width: 10px; height: auto;" alt="" src="/resources/image/community/자물쇠.png"> -->
+<%-- 											</c:if> --%>
+										</h3>
 									</span> <span class="form-inline"> <span style="color: red;">
 											<h4>♥ &nbsp;${popularGroupList.likeNum }</h4>
 									</span>
 									</span>
 									<p class="card-text">
+									<c:if test="${empty keywordList }">
 										키워드 :
+										</c:if>
 										<c:forEach items="${keywordList }" var="keyword">
 											<c:if
 												test="${popularGroupList.communityGroup.idx eq keyword.group_idx}">
@@ -166,10 +177,22 @@
 									</p>
 								</div>
 								<div class="overlay">
-									<br> <br> <a class="info" href="#">
-										<button type="button" class="btn btn-primary">가입하기</button> <br>
-										<br>
-										<button type="button" class="btn btn-danger">상세보기</button>
+									<br> <br> <a class="info"> 
+<%-- 									<c:if test="${userIdx ne popularGroupList.communityGroup.member_idx }"> --%>
+											<c:if test="${popularGroupList.communityGroup.secret == 1 }">
+												<button type="button" class="btn btn-primary"
+													data-toggle="modal" data-target="#join">가입하기</button>
+												<br>
+												<br>
+											</c:if>
+											<c:if test="${popularGroupList.communityGroup.secret == 0 }">
+												<button type="button" class="btn btn-primary">가입하기</button>
+												<br>
+												<br>
+											</c:if>
+<%-- 										</c:if> --%>
+										<button type="button" class="btn btn-danger"
+											onclick="moveURL(${popularGroupList.communityGroup.idx })">상세보기</button>
 									</a>
 								</div>
 							</div>
@@ -207,31 +230,47 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<span>
-										<h3 class="card-title">${newGroupList.communityGroup.title }</h3>
+										<h3 class="card-title">${newGroupList.communityGroup.title }
+<%-- 											<c:if test="${newGroupList.communityGroup.secret==1 }"> --%>
+<!-- 												<img alt="" style="width: 20px; height: auto;"  src="/resources/image/community/자물쇠.png"> -->
+<%-- 											</c:if> --%>
+										</h3>
 									</span> <span class="form-inline"> <span style="color: red;">
-											<h4>♥ &nbsp;1</h4>
+											<h4>♥ &nbsp;${newGroupList.likeNum }</h4>
 									</span>
 									</span>
 									<p class="card-text">
+									<c:if test="${empty keywordList }">
 										키워드 :
-										<c:forEach items="${keywordList }" var="keyword">
+										</c:if>
+										<c:forEach items="${keywordList }" var="keyword" >
 											<c:if
 												test="${newGroupList.communityGroup.idx eq keyword.group_idx}">
 												#${keyword.keyword } 
 											</c:if>
 										</c:forEach>
+									</p>
+									<p class="card-text"></p>
 								</div>
-
 								<div class="overlay">
-									<br> <br> <a class="info" href="#">
-
-										<button type="button" class="btn btn-primary">가입하기</button> <br>
-										<br>
-										<button type="button" class="btn btn-danger">상세보기</button>
+									<br> <br> <a class="info"> <c:if
+											test="${userIdx ne newGroupList.communityGroup.member_idx }">
+											<c:if test="${newGroupList.communityGroup.secret == 1 }">
+												<button type="button" class="btn btn-primary"
+													data-toggle="modal" data-target="#join">가입하기</button>
+												<br>
+												<br>
+											</c:if>
+											<c:if test="${newGroupList.communityGroup.secret == 0 }">
+												<button type="button" class="btn btn-primary">가입하기</button>
+												<br>
+												<br>
+											</c:if>
+										</c:if>
+										<button type="button" class="btn btn-danger"
+											onclick="moveURL(${newGroupList.communityGroup.idx })">상세보기</button>
 									</a>
-
 								</div>
-
 							</div>
 						</div>
 					</c:forEach>
@@ -253,8 +292,9 @@
 				<div class="form-inline" style="margin-bottom: 50px;">
 					<c:forEach var="categoryList" items="${categoryList }" begin="0"
 						end="2" step="1">
-						<div class="card" style="width: 20rem; margin-right: 15px;">
-							<div class="hovereffect">
+						<div class="card" style="width: 20rem; margin-right: 15px;" >
+
+							<div class="hovereffect" style="cursor: pointer;" onclick="categoryClick(${categoryList.idx})">
 								<img class="card-img-top" src="${categoryList.image }"
 									alt="Card image cap">
 								<div class="card-body">
@@ -281,6 +321,35 @@
 
 
 
+<!-- 가입하기 -->
+<div class="modal" id="join" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalVerticalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalVerticalLabel">입장하기</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="recipient-name" class="form-control-label">비밀번호</label>
+						<input type="password" class="form-control" id="recipient-password" />
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+				<button type="button" class="btn btn-primary" id= "joinedComm">입장하기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <!-- 위로가기 버튼 -->
 <div class="top-button">
 	<a href=""><img id="upImg" src="/resources/image/community/위로.png">
@@ -290,9 +359,11 @@
 <!-- footer include -->
 <%@include file="/WEB-INF/views/zaksim/main/footer.jsp"%>
 
+
+
 <!-- 모달 -->
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-	aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	id="createModal" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<form id="form1" action="/zaksim/community/createCommunity"
@@ -338,12 +409,12 @@
 									<div style="padding-bottom: 0px; margin-left: 50px;">
 										<span style="font-size: 20px;"><strong>모임명 : </strong></span>
 										<input class="form-control" type="text" style="height: 30px;"
-											name="title" maxlength="20" required="required"
+											name="title" maxlength="20" required="required" id="commName"
 											placeholder="20자 이내로 작성하세요"> <br> <br> <span
 											style="font-size: 20px;"><strong>최대 모임 인원 : </strong></span>
 										<input class="form-control" type="number"
 											style="width: 80px; height: 30px;" placeholder="100" min="1"
-											max="100" name="max" required="required"><strong>명</strong>
+											id="commMax" max="100" name="max" required="required"><strong>명</strong>
 										<br> <span
 											style="margin-left: 50px; font-size: 15px; color: gray;">※
 											최대 100명까지 가능</span>
@@ -363,12 +434,26 @@
 
 
 									<div style="margin-left: 30px; margin-right: 30px;">
-										<div id="screctRadio" style="vertical-align: top;">
+										<div class="screctRadio" style="vertical-align: top;">
 											<div class="card-body">
 												<div class="form-inline">
 													<span><strong>비밀번호</strong></span> <input type="password"
 														class="form-control" style="margin-left: 73px;"
-														name="password">
+														id="password1" name="password">
+												</div>
+
+											</div>
+										</div>
+									</div>
+
+
+									<div style="margin-left: 30px; margin-right: 30px;">
+										<div class="screctRadio" style="vertical-align: top;">
+											<div class="card-body">
+												<div class="form-inline">
+													<span><strong>비밀번호 확인</strong></span> <input
+														type="password" name="password2" class="form-control"
+														id="password2" style="margin-left: 37px;">
 												</div>
 												<br>
 											</div>
@@ -379,7 +464,8 @@
 
 
 									<span style="margin-left: 50px; margin-right: 70px;"><strong>카테고리</strong></span>
-									<select name ="category" class="custom-select mb-2 mr-sm-2 mb-sm-0"
+									<select name="category"
+										class="custom-select mb-2 mr-sm-2 mb-sm-0"
 										style="height: 40px; width: 150px;">
 										<option value=1>Category01</option>
 										<option value=2>Category02</option>
@@ -390,9 +476,9 @@
 									<div class="form-inline">
 										<span style="margin-left: 50px; margin-right: 90px;"><strong>키워드</strong></span>
 
-										<input type="text" class="form-control" style="width: 300px;" name="keyword"
-											name="keyword" placeholder="ex) #키워드1, #키워드2"
-											required="required"
+										<input type="text" class="form-control" style="width: 300px;"
+											name="keyword" name="keyword" placeholder="ex) #키워드1#키워드2"
+											required="required" pattern="" title=""
 											onkeyup="this.value=this.value.replace(/[^#0-9가-힣a-zA-Z]/g,'')">
 									</div>
 									<br>
@@ -429,6 +515,8 @@
 
 
 
+
+
 </body>
 
 <link rel="stylesheet" type="text/css" href="/css/community/hover.css">
@@ -436,7 +524,7 @@
 <link rel="stylesheet" type="text/css" href="/css/community/main.css">
 
 <script type="text/javascript"
-	src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+	src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 
@@ -492,15 +580,39 @@
 		});
 
 		// 공개 클릭 시 숨기기 / 비공개 클릭 시 보이기
-		$("#screctRadio").hide();
+		$(".screctRadio").hide();
 
 		$("#screctRadio1").click(function() {
-			$("#screctRadio").hide();
+			$(".screctRadio").hide();
 		});
 
 		$("#screctRadio2").click(function() {
-			$("#screctRadio").fadeIn();
+			$(".screctRadio").fadeIn();
 		});
+
+		$("#join").click(function() {
+			$("#createModal").modal();
+		});
+		
+		
+		$("#create").click(function() {
+			
+			var pw2 = document.getElementById('password2').value;
+			
+			if(pw1 != pw2){
+				alert('비밀번호가 일치하지 않습니다.');
+				return;
+			}
+			
+			else{
+				$('#form1').submit();
+			}
+			
+		});
+		
+
+		
+		
 
 		/* 인기모임 더 보기 */
 		$("#popularGroupViewMore").click(function() {
@@ -518,5 +630,18 @@
 		});
 
 	});
+	
+	function moveURL(url) {
+		document.location.href = "/zaksim/community/enrollCommunity?idx="+url;
+	}
+	
+	function categoryClick(categoryIdx){
+// 		document.location.href = "/zaksim/community/clickCategoryCommunity";
+		document.location.href = "/zaksim/community/clickCategoryCommunity?category_idx="+categoryIdx;
+		
+	}
+	
+
 </script>
+
 

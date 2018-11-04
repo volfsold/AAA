@@ -39,8 +39,14 @@ public class CommunityEditServiceImpl implements CommunityEditService{
 //	}
 //	
 	// 그룹 수정
-	public void updateGroup(CommunityGroup communityGroup) {
-		communityEditDAO.updateGroup(communityGroup);
+	public void updateGroup(int idx) {
+		communityEditDAO.updateGroup(idx);
+	}
+	
+	// 키워드 수정
+	@Override
+	public void updateKeyword(int Group_index) {
+		communityEditDAO.updateKeyword(Group_index);
 	}
 	
 	// 그룹 삭제
@@ -53,6 +59,8 @@ public class CommunityEditServiceImpl implements CommunityEditService{
 		
 		return categoryNum;
 	}
+
+
 
 
 

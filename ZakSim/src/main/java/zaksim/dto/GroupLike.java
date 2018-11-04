@@ -19,12 +19,14 @@ public class GroupLike {
 	private ZakSimMember zakSimMember;
 	
 	private GroupKeyword groupKeyword;
+	
+	private CommunityCategory communityCategory;
 
 	@Override
 	public String toString() {
-		return "GroupLike [communityGroup=" + communityGroup + ", group_idx=" + group_idx + ", groupKeyword="
-				+ groupKeyword + ", idx=" + idx + ", likeNum=" + likeNum + ", member_idx=" + member_idx
-				+ ", zakSimMember=" + zakSimMember + "]";
+		return "GroupLike [idx=" + idx + ", group_idx=" + group_idx + ", member_idx=" + member_idx + ", likeNum="
+				+ likeNum + ", communityGroup=" + communityGroup + ", zakSimMember=" + zakSimMember + ", groupKeyword="
+				+ groupKeyword + ", communityCategory=" + communityCategory + "]";
 	}
 
 	public int getIdx() {
@@ -82,7 +84,16 @@ public class GroupLike {
 	public void setGroupKeyword(GroupKeyword groupKeyword) {
 		this.groupKeyword = groupKeyword;
 	}
-	
+
+	public CommunityCategory getCommunityCategory() {
+		return communityCategory;
+	}
+
+	public void setCommunityCategory(CommunityCategory communityCategory) {
+		this.communityCategory = communityCategory;
+	}
+
+
 	
 
 

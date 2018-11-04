@@ -68,12 +68,10 @@ public class CommunityMainController {
 			model.addAttribute("searchContent", searchContent);
 
 		} else {
-			
 			model.addAttribute("searchKeywordGroup", communitySearchService.searchKeywordGroup(searchContent));
 			model.addAttribute("keywordList", communityListService.keywordList());
 			model.addAttribute("selectSearch", selectSearch);
 			model.addAttribute("searchContent", searchContent);
-			
 		}
 		
 		

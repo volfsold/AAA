@@ -1,5 +1,7 @@
 package zaksim.community.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +33,10 @@ public class CommunityClassificationController {
 		
 		// 인기있는 그룹
 		model.addAttribute("popularGroupList", communityListService.popularGroupList());
-		
 		// 키워드 리스트
 		model.addAttribute("keywordList", communityListService.keywordList());
+		// 카테고리 리스트
+		model.addAttribute("categoryList", communityListService.categoryList2());
 		
 	}
 	
@@ -41,8 +44,7 @@ public class CommunityClassificationController {
 	@RequestMapping(value="/newCommunity", method=RequestMethod.GET)
 	public void newCommunity(Model model) {
 		// 인기있는 그룹
-		model.addAttribute("newGroupList", communityListService.newGroupList());
-		
+		model.addAttribute("newGroupList", communityListService.newGroupList());	
 		// 키워드 리스트
 		model.addAttribute("keywordList", communityListService.keywordList());
 	}
@@ -54,10 +56,20 @@ public class CommunityClassificationController {
 		model.addAttribute("categoryList", communityListService.categoryList());
 	}
 
+//	int idx,
 	// 카테고리 클릭 시 검색 화면 GET
-
-	public void clickCategory( int idx,Model model) {
+   @RequestMapping(value="/clickCategoryCommunity", method=RequestMethod.GET)
+	public void clickCategory(Model model, HttpServletRequest request) {
 		
+	   String idx = request.getParameter("category_idx");
+	   
+		// 카테고리별 목록
+		model.addAttribute("category", communityListService.categoryGroup(Integer.parseInt(idx)));	
+		// 키워드 리스트
+		model.addAttribute("keywordList", communityListService.keywordList());
+	   
+	   
+	   
 	}
 
 	
