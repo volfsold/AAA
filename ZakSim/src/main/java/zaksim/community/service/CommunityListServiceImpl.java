@@ -23,6 +23,20 @@ public class CommunityListServiceImpl  implements CommunityListService{
 		return communityListDAO.joinedGroupList();
 	}
 	
+	// 인기 모임 리스트
+	@Override
+	public List<CommunityGroup> popularGroupList() {
+		// TODO Auto-generated method stub
+		return communityListDAO.popularGroupList();
+	}
+	
+	// 새로운 그룹 리스트
+	@Override
+	public List<CommunityGroup> newGroupList() {
+		// TODO Auto-generated method stub
+		return communityListDAO.newGroupList();
+	}
+	
 	// 카테고리 리스트
 	@Override
 	public List<CommunityCategory> categoryList() {
@@ -30,25 +44,36 @@ public class CommunityListServiceImpl  implements CommunityListService{
 		return communityListDAO.categoryList();
 	}
 
-	// 새로운 그룹 리스트
+
+	// 키워드 리스트
 	@Override
-	public List<CommunityGroup> newGroupList() {
+	public List<GroupKeyword> keywordList() {
 		// TODO Auto-generated method stub
-		return communityListDAO.newGroupList();
+		return communityListDAO.keywordList();
 	}
 
-	// 테스트
+	// 해당 커뮤니티 정보 가져오기
 	@Override
-	public List<CommunityGroup> test() {
+	public List<CommunityGroup> info(int idx) {
 		// TODO Auto-generated method stub
-		return communityListDAO.test();
+		return communityListDAO.info(idx);
 	}
 
+	// 카테고리 리스트2
 	@Override
-	public List<GroupKeyword> test2() {
+	public List<CommunityCategory> categoryList2() {
 		// TODO Auto-generated method stub
-		return communityListDAO.test2();
+		return communityListDAO.categoryList2();
 	}
+
+ @Override
+	// 카테고리별 정보
+	public List<CommunityGroup> categoryGroup(int idx){
+	 
+	 return communityListDAO.categoryGroup(idx);
+ }
+
+
 	
 	
 

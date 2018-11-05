@@ -34,10 +34,10 @@
                 <div style="margin-left: 110px; font-size: 30px; border-bottom: 1px solid; border-bottom-color: gray; margin-right: 60px;">
                     <div class="form-inline">
                         <div style="border-right: 1px solid; border-right-color: gray; padding-right: 200px; padding-left: 150px;  font-size: 30px;">
-                            <a href="individaulRanking.html">개인</a>
+                            <a href="/zaksim/community/individualRanking">개인</a>
                         </div>
                         <div style="margin-left: 200px; font-size: 30px;">
-                            <a href="groupRanking.html">모임</a>
+                            <a href="/zaksim/community/groupRanking">모임</a>
                         </div>
                     </div>
                 </div>

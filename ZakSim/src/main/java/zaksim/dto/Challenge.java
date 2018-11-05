@@ -2,15 +2,27 @@ package zaksim.dto;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Challenge {
 	
+	//인덱스
 	private int idx;
+	//유저 인덱스
 	private int memberIdx;
+	//도전 시작일
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date startDate;
+	//도전 종료일
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date endDate;
+	//도전금
 	private int money;
+	//도전명
 	private String title;
+	//도전 상태 ex) ing/done/halt(중도포기)
 	private String status;
+	//달성 결과 ex) success/fail
 	private String result;
 	
 	

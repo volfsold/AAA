@@ -1,33 +1,46 @@
 package zaksim.community.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import zaksim.community.service.CommunityListService;
+
 // 가입된 커뮤니티
 @Controller
 @RequestMapping(value="/zaksim/community")
 public class CommunityJoinController {
 	
+	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(CommunityMainController.class);
-
+	@Autowired CommunityListService communityListService;
 
 	// 해당 커뮤니티 화면 GET
-	public void joinCommunity(Model model, HttpSession session) {
+	@RequestMapping(value="/enrollCommunity", method=RequestMethod.GET)
+	public void joinCommunity(Model model, HttpSession session, HttpServletRequest request) {
+		
+			// 그룹 idx 가져옴
+			String idx = request.getParameter("idx");
+			System.out.println("그룹정보 : " +communityListService.info(Integer.parseInt(idx)));
+			
+			// 그룹 정보 넘기기
+			model.addAttribute("groupInfo", communityListService.info(Integer.parseInt(idx)));
+			
+			// 키워드 가져오기
+			model.addAttribute("keywordList", communityListService.keywordList());
+
 		
 	}
 	
-	// 커뮤니티 가입하기 POST
-//	public String joinCommunityProcess(HttpSession session, GroupMember groupMember) {
-//		
-//		return "";
-//	}
+
 	
 	// 커뮤니티 탈퇴 POST
 	public String exitCommunity(int idx, HttpSession session) {
@@ -56,12 +69,12 @@ public class CommunityJoinController {
 		
 	}
 	
-	// 참여하고 있는 모임 ( 자세히 보기 )  GET
-	// int idx
-	@RequestMapping(value="/enrollCommunity", method=RequestMethod.GET)
-	public void enrollCommunity(Model model   ) {
-		
-	}
+//	// 참여하고 있는 모임 ( 자세히 보기 )  GET
+//	// int idx
+//	@RequestMapping(value="/enrollCommunity", method=RequestMethod.GET)
+//	public void enrollCommunity(Model model   ) {
+//		
+//	}
 	
 	@RequestMapping(value="/detailCommunity", method=RequestMethod.GET)
 	public void detailCommunity(Model model   ) {

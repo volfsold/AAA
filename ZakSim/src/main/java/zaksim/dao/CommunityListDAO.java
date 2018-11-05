@@ -12,17 +12,26 @@ public interface CommunityListDAO {
 	public List<CommunityGroup> joinedGroupList( );
 	
 	// 인기그룹 리스트
-//	public List<CommunityGroup> popularGroupList( );
+	public List<CommunityGroup> popularGroupList( );
 
 	// 새로 시작한 그룹 리스트
 	public List<CommunityGroup> newGroupList( );
 	
 	// 카테고리 리스트
 	public List<CommunityCategory> categoryList();
-	
-	// 테스트
-	public List<CommunityGroup> test();
 
-	public List<GroupKeyword> test2();
+	// 키워드 리스트
+	public List<GroupKeyword> keywordList();
+	
+	// 카테고리 리스트2
+	public List<CommunityCategory> categoryList2();
+	
+	// 인덱스에 대한 커뮤니티 정보 가져오기
+	public List<CommunityGroup> info(int idx);
+	
+	// 카테고리별 정보
+	public List<CommunityGroup> categoryGroup(int idx);
+	
+	
 	
 }

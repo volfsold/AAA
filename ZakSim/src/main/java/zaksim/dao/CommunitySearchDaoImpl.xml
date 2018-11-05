@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="zaksim.dao.CommunitySearchDAO">
+
+
+
+	<resultMap type="zaksim.dto.CommunityGroup"
+		id="CommunityGroup">
+		<result column="g_idx" property="idx" />
+		<result column="member_idx" property="member_idx" />
+		<result column="category_idx" property="category_idx" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="image" property="image" />
+		<result column="max" property="max" />
+		<result column="open_date" property="open_date" />
+		<result column="secret" property="secret" />
+		<result column="password" property="password" />
+	</resultMap>
+
+	<resultMap type="zaksim.dto.GroupKeyword" id="GroupKeyword">
+		<result column="idx" property="idx" />
+		<result column="group_idx" property="group_idx" />
+		<result column="keyword" property="keyword" />
+		<collection property="communityGroup"
+			resultMap="CommunityGroup" />
+	</resultMap>
+
+	<resultMap type="zaksim.dto.GroupLike" id="GroupLike">
+		<result column="like_num" property="likeNum" />
+		<result column="idx" property="idx" />
+		<result column="l_group_idx" property="group_idx" />
+		<result column="member_idx" property="member_idx" />
+		<collection property="communityGroup" resultMap="CommunityGroup" />
+		<collection property="groupKeyword" resultMap="GroupKeyword" />
+	</resultMap>
+	
+		<resultMap type="zaksim.dto.CommunityCategory" id="CommunityCategory">
+		<result column="idx" property="idx" />
+		<result column="group_idx" property="group_idx" />
+		<result column="member_idx" property="member_idx" />
+		<collection property="communityGroup" resultMap="CommunityGroup" />
+	</resultMap>
+
+	<select id="searchGroup" resultMap="GroupLike">
+		SELECT
+		*
+		FROM
+		(SELECT g.idx
+		g_idx, g.title ,g.content , g.image ,g.max ,
+		g.open_date , g.secret
+		,g.password, k.keyword group_keyword, c.category group_category, c.image group_image
+		FROM CommunityGroup g, GroupKeyword
+		k,
+		CommunityCategory c
+		WHERE g.idx =
+		k.group_idx and g.category_idx =
+		c.idx
+		order by g.idx desc) gk
+		left
+		join (select count(*) as like_num,
+		group_idx as l_group_idx from
+		grouplike
+		GROUP BY group_idx) l on
+		l.l_group_idx=gk.g_idx where
+		title LIKE '%' || #{search} || '%'
+
+	</select>
+
+	<select id="keywordList" resultMap="GroupKeyword">
+		select k.group_idx, k.keyword
+		from
+		communityGroup g, GroupKeyword k
+		where g.idx=k.group_idx
+	</select>
+
+	<select id="searchCategoryGroup" resultMap="GroupLike">
+		SELECT
+		*
+		FROM
+		(SELECT g.idx
+		g_idx, g.title ,g.content , g.image ,g.max ,
+		g.open_date , g.secret
+		,g.password, k.keyword group_keyword, c.category group_category, c.image group_image
+		FROM CommunityGroup g, GroupKeyword
+		k,
+		CommunityCategory c
+		WHERE g.idx =
+		k.group_idx and g.category_idx =
+		c.idx
+		order by g.idx desc) gk
+		left
+		join (select count(*) as like_num,
+		group_idx as l_group_idx from
+		grouplike
+		GROUP BY group_idx) l on
+		l.l_group_idx=gk.g_idx where
+		group_category LIKE '%' || #{search} || '%'
+	</select>
+
+	<select id="searchKeywordGroup" resultMap="GroupLike">
+		SELECT
+		*
+		FROM
+		(SELECT g.idx
+		g_idx, g.title ,g.content , g.image ,g.max ,
+		g.open_date , g.secret
+		,g.password, k.keyword group_keyword, c.category group_category, c.image group_image
+		FROM CommunityGroup g, GroupKeyword
+		k,
+		CommunityCategory c
+		WHERE g.idx =
+		k.group_idx and g.category_idx =
+		c.idx
+		order by g.idx desc) gk
+		left
+		join (select count(*) as like_num,
+		group_idx as l_group_idx from
+		grouplike
+		GROUP BY group_idx) l on
+		l.l_group_idx=gk.g_idx where
+		group_keyword LIKE '%' || #{search} || '%'
+	</select>
+
+
+
+
+
+
+
+</mapper>

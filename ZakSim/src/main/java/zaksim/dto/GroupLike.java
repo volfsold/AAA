@@ -7,19 +7,27 @@ public class GroupLike {
 	private int idx;
 
 	// 그룹 인덱스 
-	private int groupIdx;
+	private int group_idx;
 
 	// 회원 인덱스 
-	private int memberIdx;
+	private int member_idx;
 	
 	private int likeNum;
-
 
 	private CommunityGroup communityGroup;
 	
 	private ZakSimMember zakSimMember;
 	
 	private GroupKeyword groupKeyword;
+	
+	private CommunityCategory communityCategory;
+
+	@Override
+	public String toString() {
+		return "GroupLike [idx=" + idx + ", group_idx=" + group_idx + ", member_idx=" + member_idx + ", likeNum="
+				+ likeNum + ", communityGroup=" + communityGroup + ", zakSimMember=" + zakSimMember + ", groupKeyword="
+				+ groupKeyword + ", communityCategory=" + communityCategory + "]";
+	}
 
 	public int getIdx() {
 		return idx;
@@ -29,20 +37,20 @@ public class GroupLike {
 		this.idx = idx;
 	}
 
-	public int getGroupIdx() {
-		return groupIdx;
+	public int getGroup_idx() {
+		return group_idx;
 	}
 
-	public void setGroupIdx(int groupIdx) {
-		this.groupIdx = groupIdx;
+	public void setGroup_idx(int group_idx) {
+		this.group_idx = group_idx;
 	}
 
-	public int getMemberIdx() {
-		return memberIdx;
+	public int getMember_idx() {
+		return member_idx;
 	}
 
-	public void setMemberIdx(int memberIdx) {
-		this.memberIdx = memberIdx;
+	public void setMember_idx(int member_idx) {
+		this.member_idx = member_idx;
 	}
 
 	public int getLikeNum() {
@@ -77,12 +85,18 @@ public class GroupLike {
 		this.groupKeyword = groupKeyword;
 	}
 
-	@Override
-	public String toString() {
-		return "GroupLike [idx=" + idx + ", groupIdx=" + groupIdx + ", memberIdx=" + memberIdx + ", likeNum=" + likeNum
-				+ ", communityGroup=" + communityGroup + ", zakSimMember=" + zakSimMember + ", groupKeyword="
-				+ groupKeyword + "]";
+	public CommunityCategory getCommunityCategory() {
+		return communityCategory;
 	}
+
+	public void setCommunityCategory(CommunityCategory communityCategory) {
+		this.communityCategory = communityCategory;
+	}
+
+
+	
+
+
 
 	
 }

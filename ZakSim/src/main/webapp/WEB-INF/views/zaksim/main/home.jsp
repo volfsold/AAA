@@ -58,6 +58,34 @@
       <div class="row justify-content-center">
        
        
+   <c:if test="${empty login }">
+       
+       <!-- 비로그인 상태 -->
+        <div class=" text-center  col-md-2 col-lg-2 m-2" style="	background-color: rgb(224, 224, 224);	border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;	border-left-width: 5px;	border-color: white;	border-style: solid;" >
+          <div class="row my-1 mb-4">
+          </div>
+          <div class="border border-light rounded py-4 my-1" style=" border-style: solid;	border-color: white;	border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;	border-left-width: 5px;">
+            <a class="btn btn-danger btn-lg w-75 my-2 mx-auto" href="/zaksim/login/login"> 로그인 </a>
+            <a class="btn btn-sm w-75 btn-success my-2" href="/zaksim/login/join"> 회원가입 </a>
+            <div class="mt-3">
+              <a href="/zaksim/login/findId" class="mx-1 mr-2">ID찾기</a>
+              <a href="/zaksim/login/findPw" class="text-left mx-1 ml-2">PW찾기</a>
+            </div>
+          </div>
+        </div>
+       
+       
+		<div class="col-md-6 col-lg-6 rounded m-2 mx-5 text-center" style="background-color: blanchedalmond;    border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;    border-left-width: 5px;	border-style: solid;	border-color: white;">
+          <h3 class="text-center my-4 mb-4">도전 정보</h3>
+          <hr  style="border:2px white solid;">
+          <h4 class="my-5"> <b>로그인 후 이용해 주세요! </b></h4>
+        </div>
+       
+    </c:if>
+       
+       
+   <c:if test="${login }">
+       <!-- 로그인 상태 -->
         <div class=" text-center rounded col-md-2 col-lg-2 m-2" style="background-color: rgb(224, 224, 224); border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;    border-left-width: 5px;	border-style: solid;	border-color: white;">
           <img class="img-fluid d-block my-2 mx-auto rounded-circle" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" style="	height: 140px; width: 140px;	border-right-width: 3px;	border-top-width: 3px;	border-bottom-width: 3px;    border-left-width: 3px;	border-style: solid;	border-color: white;	">
           <h5 class="text-center">홍길동</h5>
@@ -68,9 +96,29 @@
         </div>
         
         
+      <c:if test="${empty status }">
+      
+        <!-- 비도전 중일때 -->
+		<div class="col-md-6 col-lg-6 rounded m-2 mx-5 text-center" style="background-color: blanchedalmond;    border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;    border-left-width: 5px;	border-style: solid;	border-color: white;">
+          <h3 class="text-center my-2">도전 정보</h3>
+          <hr  style="border:2px white solid;">
+          <h5 class="my-2 mt-5"> <b> 아직 도전을 시작하지 않으셨군요. </b></h5>
+          <h5 class="my-2"> <b> 멋진 도전을 시작해 보세요! </b></h5>
+          
+          <a class="btn btn-sm w-50 btn-info my-2 mt-4" href="/zaksim/challenge/doChallenge"> 도전 시작하기 </a>
+          
+        </div>
+       
+      </c:if>
+        
+        
+        
+      <c:if test="${status }">
+        <!-- 도전중일때 -->
         <div class="col-md-6 col-lg-6 rounded m-2 mx-5 text-center" 
          style="background-color: blanchedalmond;    border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;    border-left-width: 5px;	border-style: solid;	border-color: white;">
-          <h3 class="text-center my-2 mb-4">도전 정보</h3>
+          <h3 class="text-center mt-2 mb-3">도전 정보</h3>
+          <hr style="border:2px white solid;">
           
           	<a class="my-2 d-flex justify-content-center align-items-end">  <h5 class="mb-1"> 10월 26일</h5>&nbsp;부터&nbsp; <h5 class="mb-1">12월 31일</h5>&nbsp;까지 </a>
          
@@ -78,8 +126,13 @@
           
          	<a class="my-2 d-flex justify-content-center align-items-end"><h5 class="mb-1"><b>헬스,운동하기</b></h5>&nbsp;도전중 </a>  
           
-          	<a class="btn btn-sm w-50 btn-info my-2 mt-4" href="#"> 도전 정보 확인 </a>
+          	<a class="btn btn-sm w-50 btn-info my-2 mt-4" href="/zaksim/challenge/challengeInfo"> 도전 정보 확인 </a>
         </div>
+      </c:if>
+        
+        
+    </c:if>
+        
         
         
         <div class="rounded col-md-2 col-lg-2 m-2" style="background-color: rgb(156, 177, 198);    border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;    border-left-width: 5px;	border-style: solid;	border-color: white;">
@@ -111,9 +164,9 @@
           <h4 class="mx-2" contenteditable="true">인기 그룹</h4>
         </div>
         <div class="col-md-9 px-0 ">
-          <hr class="border">
+          <hr style=" border-style: solid;	border-color: gray;	border-right-width: 1px;	border-top-width: 1px;	border-bottom-width: 1px;	border-left-width: 1px;">
         </div>
-        <div class="col-md-1 ml-4"><a href="#" class="btn btn-outline-white text-muted "><b>+더보기</b></a></div>
+        <div class="col-md-1 ml-4"><a href="/zaksim/community/popularCommunity" class="btn btn-outline-white text-muted "><b>+더보기</b></a></div>
       </div>
     </div>
     <div class="container">
@@ -257,9 +310,9 @@
           <h4 class="mx-2" contenteditable="true">최신 인증</h4>
         </div>
         <div class="col-md-9  px-0 ">
-          <hr class="border">
+          <hr style=" border-style: solid;	border-color: gray;	">
         </div>
-        <div class="col-md-1 ml-4"><a href="#" class="btn btn-outline-white text-muted "><b>+더보기</b></a></div>
+        <div class="col-md-1 ml-4"><a href="/zaksim/challenge/challengers" class="btn btn-outline-white text-muted "><b>+더보기</b></a></div>
       </div>
     </div>
     <div class="container">
