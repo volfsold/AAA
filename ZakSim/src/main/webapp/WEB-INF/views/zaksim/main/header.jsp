@@ -9,7 +9,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <title>ZakSim</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
 
@@ -127,10 +127,10 @@
         <li class="col "> </li><!-- 공백용 col-->
        
         <li class="nav-item  font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
-        <a href="#" style="text-decoration: none;  " >QnA</a>
+        <a href="/zaksim/customerCenter/QnA/list" style="text-decoration: none;  " >QnA</a>
         </li>
         <li class="nav-item   font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
-        <a href="#" style="text-decoration: none;  ">이용 안내</a>
+        <a href="/zaksim/customerCenter/guidance/view" style="text-decoration: none;  ">이용 안내</a>
         </li>
         
         
@@ -138,13 +138,13 @@
         <li class="col "> </li><!-- 공백용 col-->
         
         <li class="nav-item  font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
-        <a href="#" style="text-decoration: none;  " >회원 정보</a>
+        <a href="/zaksim/mypage/main" style="text-decoration: none;  " >회원 정보</a>
         </li>
         <li class="nav-item  font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
-        <a href="#" style="text-decoration: none;  ">참여중 그룹</a>
+        <a href="/zaksim/mypage/groups" style="text-decoration: none;  ">참여중 그룹</a>
         </li>
         <li class="nav-item font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
-        <a href="#" style="text-decoration: none;  ">지난 도전</a>
+        <a href="/zaksim/mypage/challenge" style="text-decoration: none;  ">지난 도전</a>
         
         <li class="col "> </li><!-- 공백용 col-->
       </ul>

@@ -20,7 +20,7 @@ public class AdminLoginController {
 	
 	@Autowired LoginService loginService;
 	
-	//fdgfgfgfgh
+
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public void loginForm() {
@@ -47,7 +47,7 @@ public class AdminLoginController {
 	public String logout(HttpSession session) {
 		logger.info("로그아웃");
 		session.setAttribute("adminLogin", false);
-		return "redirect:/zaksim/login";
+		return "redirect:/zaksim/admin/login";
 	}
 	
 }

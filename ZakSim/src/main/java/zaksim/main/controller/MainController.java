@@ -19,8 +19,5 @@ public class MainController {
 		
 		ZakSimMember member=new ZakSimMember();
 		
-		
-		
-		
 	}
 }

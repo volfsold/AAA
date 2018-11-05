@@ -1,8 +1,5 @@
 package zaksim.mypage.service;
 
-import java.util.List;
-import java.util.Map;
-
 import zaksim.dto.Challenge;
 import zaksim.dto.CommunityGroup;
 import zaksim.dto.ZakSimMember;

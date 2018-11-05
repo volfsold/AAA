@@ -88,11 +88,11 @@
        <!-- 로그인 상태 -->
         <div class=" text-center rounded col-md-2 col-lg-2 m-2" style="background-color: rgb(224, 224, 224); border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;    border-left-width: 5px;	border-style: solid;	border-color: white;">
           <img class="img-fluid d-block my-2 mx-auto rounded-circle" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" style="	height: 140px; width: 140px;	border-right-width: 3px;	border-top-width: 3px;	border-bottom-width: 3px;    border-left-width: 3px;	border-style: solid;	border-color: white;	">
-          <h5 class="text-center">홍길동</h5>
+          <h5 class="text-center">${sessionScope.login_nick }</h5>
           <hr class="border border-light my-2">
           <a href="#" class="mx-2">내 그룹</a>
           <a href="#" class="text-left mx-2">내 정보</a>
-          <a class="btn btn-sm w-50 my-2 btn-danger" href="#"> 로그아웃 </a>
+          <a class="btn btn-sm w-50 my-2 btn-danger" href="/zaksim/login/logout"> 로그아웃 </a>
         </div>
         
         

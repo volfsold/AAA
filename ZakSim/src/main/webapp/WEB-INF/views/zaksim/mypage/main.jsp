@@ -47,7 +47,7 @@
 					        <img class="rounded-circle" style="height:80px; width:100px;" src="https://data.ac-illust.com/data/thumbnails/78/7877e8c81ac0a942265a9b65a049b784_t.jpeg"/>
 					    </div>
 					    <div>    
-					        <p>홍길동</p>
+					        <p>${sessionScope.login_nick}</p>
 				        </div>
 				        
 				     <div class="btn-group btn-group-sm mt-2 mb-3"  style="margin:auto;">

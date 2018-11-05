@@ -63,7 +63,7 @@
 								<th scope="col">
 									<p style="color: red; font-size: 60px;">&nbsp;&nbsp;${ status.index+1 }</p>
 								</th>
-								<th scope="col"><img
+								<th scope="col"><img class="groupImg"
 									src="${communityList.communityGroup.image }"
 									style="width: 90px;"></th>
 								<th scope="col"
@@ -97,7 +97,7 @@
 								<th scope="col">
 									<p style="font-size: 60px;">&nbsp;&nbsp;${ status.index+1 }</p>
 								</th>
-								<th scope="col"><img
+								<th scope="col"><img class="groupImg"
 									src="${communityList.communityGroup.image }"
 									style="width: 90px;"></th>
 								<th scope="col"
@@ -132,7 +132,7 @@
 								<th scope="col">
 									<p style="font-size: 60px;">&nbsp;&nbsp;${ status.index+1 }</p>
 								</th>
-								<th scope="col"><img
+								<th scope="col"><img class="groupImg"
 									src="${communityList.communityGroup.image }"
 									style="width: 90px;"></th>
 								<th scope="col"
@@ -167,7 +167,7 @@
 								<th scope="col">
 									<p style="font-size: 60px;">${ status.index+1 }</p>
 								</th>
-								<th scope="col"><img
+								<th scope="col"><img class="groupImg"
 									src="${communityList.communityGroup.image }"
 									style="width: 90px;"></th>
 								<th scope="col"
@@ -213,7 +213,7 @@
 
 <link rel="stylesheet" type="text/css" href="/css/community/button.css">
 <link rel="stylesheet" type="text/css"
-	href="/css/community/individualRanking.css">
+	href="/css/community/groupRanking.css">
 
 <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">

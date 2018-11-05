@@ -5,7 +5,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-8 rounded" style="height: 530px; background-color: rgba(33, 33, 33, 0.67);">
           <div class="col-md-12 text-center my-4 text-white">
-            <h2> ${sessionScope.userNick} 의</h2>
+            <h2> ${sessionScope.login_nick} 의</h2>
             <h3> 새로운 도전 시작 </h3>
           </div>
           <div class="row text-center text-muted" style="height: 50px; background-color: rgba(154, 28, 15, 0.5);"> <div class="col-md-12"><h5 class="mt-3">멋진 도전을 시작해 보세요.</h5></div></div>
