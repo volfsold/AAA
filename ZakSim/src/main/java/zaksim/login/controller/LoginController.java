@@ -94,7 +94,6 @@ public class LoginController {
 		return map;
 	}
 	
-	
 	// 비밀번호 찾기
 	@RequestMapping(value="/zaksim/login/findPw", method=RequestMethod.GET)
 	public void findPwPage() {
@@ -135,7 +134,7 @@ public class LoginController {
 	@RequestMapping(value="/zaksim/login/joinId", method=RequestMethod.POST
 			, produces="application/json; charset=utf-8"/* 한글처리 */)
 	@ResponseBody // ajax 쓰기 위한 방법(jackson-databind 라이브러리를 이용한 출력 방법)
-	public Map<String, Object> joinAjax(String joinId) {
+	public Map<String, Object> joinId(String joinId) {
 		logger.info("중복 체크할 ID : " + joinId);
 		
 		Map<String, Object> map = new HashMap<>();
@@ -145,6 +144,24 @@ public class LoginController {
 		} else {
 			logger.info("이미 사용 중인 ID");
 			map.put("uniqueId", false);
+		}
+		
+		return map;
+	}
+	// 회원가입 - 닉네임 중복체크
+	@RequestMapping(value="/zaksim/login/joinNick", method=RequestMethod.POST
+			, produces="application/json; charset=utf-8"/* 한글처리 */)
+	@ResponseBody // ajax 쓰기 위한 방법(jackson-databind 라이브러리를 이용한 출력 방법)
+	public Map<String, Object> joinNick(String joinNick) {
+		logger.info("중복 체크할 닉네임 : " + joinNick);
+		
+		Map<String, Object> map = new HashMap<>();
+		if (memberService.checkNick(joinNick)) {
+			logger.info("사용 가능한 닉네임");
+			map.put("uniqueNick", true);
+		} else {
+			logger.info("이미 사용 중인 닉네임");
+			map.put("uniqueNick", false);
 		}
 		
 		return map;

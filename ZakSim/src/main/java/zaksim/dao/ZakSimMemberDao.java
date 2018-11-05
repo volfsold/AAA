@@ -74,10 +74,17 @@ public interface ZakSimMemberDao {
 	
 	/**
 	 * 회원가입 - 아이디 중복체크 dao
-	 * @param id
-	 * @return true or false
+	 * @param String id
+	 * @return int
 	 */
 	public int checkId(String id);
+	
+	/**
+	 * 회원가입 - 닉네임 중복체크 dao
+	 * @param String nick
+	 * @return int
+	 */
+	public int checkNick(String nick);
 	// -------------- 로그인 ------------------
 
 }

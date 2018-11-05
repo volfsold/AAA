@@ -89,4 +89,15 @@ public class ZakSimMemberServiceImpl implements ZakSimMemberService {
 		}
 	}
 
+	@Override
+	public boolean checkNick(String nick) {
+		if (memberDao.checkNick(nick) == 0) {
+			// 사용 가능한 닉네임일 경우
+			return true;
+		} else {
+			// 중복된 닉네임 발견
+			return false;
+		}
+	}
+
 }
