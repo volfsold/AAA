@@ -21,53 +21,69 @@
 </script>
 <% } %> --%>
 
-<!-- body -->
-  <img class="img-fluid d-block mx-auto pt-4" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" width="400" height="200">
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5 mx-auto py-2 shadow-sm" id="login_form">
-          <form action="/zaksim/login/login" method="post">
-            <div class="form-group"> <label>ID</label> <input type="text" class="form-control" name="id" placeholder="ID"></div>
-            <div class="form-group"> <label>비밀번호</label> <input type="password" class="form-control" name="password" placeholder="비밀번호"> </div>
-            <div class="col-md-5 mx-auto text-center">
-              <button type="submit" class="btn loginBtnColor col">로그인</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <br><br>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 mx-auto">
-          <button class="btn btn-naver col">Naver 로그인</button></div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-md-3 mx-auto">
-          <button class="btn btn-secondary col">Google 로그인</button>
-        </div>
-      </div>
-      <br><br><br><br>
-      <div class="row">
-        <div class="col-md-7 mx-auto">
-          <div class="text-center">
-            <button class="btn loginBtnColor col-md-3" id="btnFindIdPage">ID 찾기</button>
-            <button class="btn loginBtnColor col-md-4" id="btnFindPwPage">비밀번호 찾기</button>
-            <button class="btn loginBtnColor col-md-3">회원가입</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
- 
+	<!-- body -->
+	<!-- 로고 이미지 - 메인 페이지로 이동 -->
+	<div class="text-center pt-4">
+		<a href="/zaksim/main/home"> 
+			<img src="/resources/image/main/logo.jpg" width="400">
+		</a>
+	</div>
+	
+	<div class="py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 mx-auto py-2 shadow-sm" id="login_form">
+					<form action="/zaksim/login/login" method="post">
+						<div class="form-group">
+							<label>ID</label> 
+							<input type="text" class="form-control" name="id" placeholder="ID">
+						</div>
+						<div class="form-group">
+							<label>비밀번호</label> 
+							<input type="password" class="form-control" name="password" placeholder="비밀번호">
+						</div>
+						<div class="col-md-5 mx-auto text-center">
+							<button type="submit" class="btn loginBtnColor col">로그인</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<br><br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 mx-auto">
+					<button class="btn btn-naver col">Naver 로그인</button>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-3 mx-auto">
+					<button class="btn btn-secondary col">Google 로그인</button>
+				</div>
+			</div>
+			<br><br><br><br>
+			<div class="row">
+				<div class="col-md-7 mx-auto">
+					<div class="text-center">
+						<button class="btn loginBtnColor col-md-3" id="btnFindIdPage">ID 찾기</button>
+						<button class="btn loginBtnColor col-md-4" id="btnFindPwPage">비밀번호 찾기</button>
+						<button class="btn loginBtnColor col-md-3" id="btnJoinPage">회원가입</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 <%@ include file="../main/footer.jsp" %>
 <script type="text/javascript">
-$('#btnFindIdPage').click(function(){
-	location.href = "/zaksim/login/findId";
-});
-$('#btnFindPwPage').click(function(){
-	location.href = "/zaksim/login/findPw";
-});
+	$('#btnFindIdPage').click(function() {
+		location.href = "/zaksim/login/findId";
+	});
+	$('#btnFindPwPage').click(function() {
+		location.href = "/zaksim/login/findPw";
+	});
+	$('#btnJoinPage').click(function() {
+		location.href = "/zaksim/login/join";
+	});
 </script>

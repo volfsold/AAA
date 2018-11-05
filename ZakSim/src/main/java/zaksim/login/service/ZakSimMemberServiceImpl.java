@@ -79,9 +79,14 @@ public class ZakSimMemberServiceImpl implements ZakSimMemberService {
 	}
 
 	@Override
-	public boolean joinAjax(String id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean checkId(String id) {
+		if (memberDao.checkId(id) == 0) {
+			// 사용 가능한 ID일 경우
+			return true;
+		} else {
+			// 중복된 ID 발견
+			return false;
+		}
 	}
 
 }

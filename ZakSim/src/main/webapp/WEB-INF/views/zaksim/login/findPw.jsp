@@ -13,9 +13,13 @@
 
 <body>
 	<!-- body -->
-	<img class="img-fluid d-block mx-auto pt-4"
-		src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg"
-		width="400" height="200">
+	<!-- 로고 이미지 - 메인 페이지로 이동 -->
+	<div class="text-center pt-4">
+		<a href="/zaksim/main/home"> 
+			<img src="/resources/image/main/logo.jpg" width="400">
+		</a>
+	</div>
+	
 	<div class="py-5">
 		<div class="container">
 			<div class="row">
@@ -77,7 +81,7 @@
 				</div>
 				<div class="modal-body"></div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" id="btnRedirectLogin1">확인</button>
+					<button type="button" class="btn joinBtnColor" id="btnRedirectLogin1">확인</button>
 				</div>
 			</div>
 		</div>
@@ -93,7 +97,7 @@
 				</div>
 				<div class="modal-body"></div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" id="btnRedirectLogin2">확인</button>
+					<button type="button" class="btn joinBtnColor" id="btnRedirectLogin2">확인</button>
 				</div>
 			</div>
 		</div>

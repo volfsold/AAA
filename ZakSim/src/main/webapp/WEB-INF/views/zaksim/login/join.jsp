@@ -13,23 +13,25 @@
 <body>
   <!-- body -->
   <div class="py-3">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12"><img class="img-fluid d-block mx-auto" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" width="500" height="300"></div>
-      </div>
-    </div>
+	<!-- 로고 이미지 - 메인 페이지로 이동 -->
+	<div class="text-center py-3">
+		<a href="/zaksim/main/home"> 
+			<img src="/resources/image/main/logo.jpg" width="500">
+		</a>
+	</div>
   </div>
+  
   <div class="py-5">
     <div class="container">
       <div class="col-md-7 mx-auto">
         <div class="checkbox py-3">
-          <label style="font-size: 1.5em" class="row boldP" id = "allCheck"> <input type="checkbox" value="" > <span class="cr mt-2"><i class="cr-icon fa fa-check"></i></span>
+          <label style="font-size: 1.5em" class="row boldP"> <input type="checkbox" id="allCheck" value="" > <span class="cr mt-2"><i class="cr-icon fa fa-check"></i></span>
             <p class="mb-0">이용약관, 개인정보 수집 및 이용,</p>
             <p class="marginP">프로모션 안내 메일 수신(선택)에 모두 동의합니다.</p>
           </label>
         </div>
         <div class="checkbox py-2">
-          <label class="row boldP"> <input type="checkbox" value=""> <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+          <label class="row boldP"> <input type="checkbox" id="zaksimCheck" value=""> <span class="cr"><i class="cr-icon fa fa-check"></i></span>
             <p class="mb-0">ZakSim 이용약관 동의</p>
             <p class="redP">(필수)</p>
           </label>
@@ -144,7 +146,7 @@ ZakSim 서비스에는 기본적으로 본 약관이 적용됩니다만, 부득�
 ZakSim 서비스와 관련하여 궁금하신 사항이 있으시면 고객센터로 문의 주시기 바랍니다.</textarea>
         </div>
         <div class="checkbox py-2">
-          <label class="row boldP"> <input type="checkbox" value=""> <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+          <label class="row boldP"> <input type="checkbox" id="infoCheck" value=""> <span class="cr"><i class="cr-icon fa fa-check"></i></span>
             <p class="mb-0">개인정보 수집 및 이용 동의</p>
             <p class="redP">(필수)</p>
           </label>
@@ -196,16 +198,72 @@ ZakSim 및 ZakSim 관련 제반 서비스(모바일 웹/앱 포함)의 회원관
 로그인 기록: 3개월</textarea>
         </div>
         <div class="checkbox py-2">
-          <label class="row boldP"> <input type="checkbox" value=""> <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+          <label class="row boldP"> <input type="checkbox" id="etcCheck" value=""> <span class="cr"><i class="cr-icon fa fa-check"></i></span>
             <p class="mb-0">이벤트, 프로모션 안내 메일 수신(선택)</p>
           </label>
         </div>
         <div class="row justify-content-around pt-5">
-          <button class="btn col-md-3 btn-info">비동의</button>
-          <button class="btn col-md-3 joinBtnColor">동의</button>
+          <button class="btn col-md-3 btn-info" id="btnDisagree">비동의</button>
+          <button class="btn col-md-3 joinBtnColor" id="btnAgree">동의</button>
         </div>
       </div><!-- body 안  -->
     </div>
   </div>
+  
+  	<!-- Modal -->
+	<div class="modal fade" id="joinModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModal3Label">오류</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn joinBtnColor" id="btnRedirectLogin1" data-dismiss="modal">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <%@ include file="../main/footer.jsp" %>
+
+<script type="text/javascript">
+	$('#allCheck').click(function() {
+		if ($('#allCheck').prop("checked")) {
+			// 전체 동의 체크가 안 되어 있을 때
+			$('input[type=checkbox]').prop("checked", true); // 체크옵션 설정
+		} else {
+			// 전체 동의 체크가 되어 있을 때
+			$('input[type=checkbox]').prop("checked", false); // 체크옵션 비설정
+		}
+	});
+
+	$('#zaksimCheck, #infoCheck, #etcCheck').click(function() {
+		if ($('#zaksimCheck').prop("checked") 
+				&& $('#infoCheck').prop("checked") 
+				&& $('#etcCheck').prop("checked")) {
+			// 세가지 동의가 다 체크 되어있으면 전체 동의 체크하기
+			$('#allCheck').prop("checked", true);
+		} else {
+			// 아니면 체크 해제
+			$('#allCheck').prop("checked", false);
+		}
+	});
+
+	$('#btnAgree').click(function() {
+		console.log("클릭했소이다.")
+		if (!$('#zaksimCheck').prop("checked")
+				|| !$('#infoCheck').prop("checked")) {
+			// 필수 항목이 하나라도 체크 안 되어있을 경우, 팝업창 띄우기
+			console.log("if문 확인했소이다.")
+			$('.modal-body').html("동의하지 않은 약관이 있습니다.<br>필수 약관에 모두 동의해주세요.");
+			$('#joinModal').modal();
+		} else {
+			// 필수 항목 다 체크 되었을 경우, 회원가입 페이지로 이동
+			location.href = "/zaksim/login/joinForm";
+		}
+	});
+</script>
