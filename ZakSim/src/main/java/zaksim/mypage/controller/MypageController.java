@@ -55,9 +55,15 @@ public class MypageController {
 	@RequestMapping(value="/update", method=RequestMethod.POST)
 	public String MypageUpdateProcess(ZakSimMember memberDto, HttpServletRequest request) {
 		logger.info(request.getParameter("newPassword1"));
-
-        mypageService.updateMember(memberDto);
-
+		
+//		if () {
+//			mypageService.updateMember(memberDto);
+		
+//			return "redirect:/zaksim/mypage/main";
+//		} else {
+//			return "redirect:/zaksim/mypage/update";
+//		}
+		
 		return "redirect:/zaksim/mypage/main";
 	}
 	
