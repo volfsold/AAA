@@ -80,13 +80,13 @@
             <!-- The slideshow -->
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="https://picsum.photos/500/300/?random" alt="Los Angeles" style="width: 100%; height: 100%;">
+                <img src="https://picsum.photos/500/300/?image=135" alt="Los Angeles" style="width: 100%; height: 100%;">
               </div>
               <div class="carousel-item">
-                <img src="https://picsum.photos/500/300/?random" alt="Chicago" style="width: 100%; height: 100%;">
+                <img src="https://picsum.photos/500/300/?image=136" alt="Chicago" style="width: 100%; height: 100%;">
               </div>
               <div class="carousel-item">
-                <img src="https://picsum.photos/500/300/?random" alt="New York" style="width: 100%; height: 100%;">
+                <img src="https://picsum.photos/500/300/?image=137" alt="New York" style="width: 100%; height: 100%;">
               </div>
             </div>
             <!-- Left and right controls -->

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 <!-- header include -->
 <%@include file="/WEB-INF/views/zaksim/main/header.jsp" %>
 
@@ -36,7 +38,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-1"> <img class="img-fluid d-block rounded-circle ml-3" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" style="	height: 30px; width: 30px;"></div>
+        <div class="col-md-1"> <img class="img-fluid d-block rounded-circle ml-3" src="/resources/image/challenge/exitBT.png" style="cursor:pointer;	height: 45px; width: 45px;"></div>
       </div>
       
       <div id="chageDiv">
@@ -52,7 +54,7 @@
             
 <!--바디 끝-->
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 
 <!-- 도전정보 입력 -->
 	<script type="text/javascript">
@@ -60,6 +62,10 @@
 	
 
 	function toPriceChallenge(){
+		
+		$("[name='title']").prop("required", "required");
+		$("[name='startDate']").attr("required", "required");
+		$("[name='endDate']").attr("required", "required");
 		
 		var params= $('#doChal').serialize();
 		
@@ -92,7 +98,7 @@
     </script>
    
  
-<!-- iamport.payment.js -->
+<!-- iamport.payment.js 결제 모듈-->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 
@@ -105,7 +111,13 @@
   $('#chageDiv').on("click","#payBtn",function() {
 	  
 	  console.log("버튼 활성화");
+	  console.log($("#money").val());
     
+	  console.log('${user.email}');
+	  console.log('${user.name}');
+	  console.log('${user.phone}');
+	  
+		$("[name='money']").attr("required", true);
 //      var msg = "";
     
     // 결제 정보 설정 
@@ -114,37 +126,30 @@
           pay_method: "card",   // 결제방식 - 'card':신용카드
           merchant_uid: 'merchant_' + new Date().getTime(), // 고유주문번호 - random, unique
           
-          /* name: '${lesson[0].title}', */   // 도전명 - 선택항목, 결제정보 확인을 위한 입력, 16자 이내로 작성
-          name: '금연하기',
-          amount: 1000,   // 결제금액
-          buyer_email: 'asdf@naver.com',   // 주문자Email - db에서 가져오기
-          buyer_name: '홍길동',               // 주문자명 - db에서 가져오기
-          buyer_tel:    '010-1234-5678'      // 주문자연락처 - db에서 가져오기
+          name: $("#chalTitle").text(), // 도전 명
+          amount: $("#money").val(),   // 결제금액
+          
+          buyer_email: '${user.email}',   // 주문자Email - db에서 가져오기
+          buyer_name: '${user.name}',               // 주문자명 - db에서 가져오기
+          buyer_tel: '${user.phone}'      // 주문자연락처 - db에서 가져오기
       }, function (rsp) { // callback - 결제 이후 호출됨, 이곳에서 DB에 저장하는 로직을 작성한다
       
           if (rsp.success) {   // 결제 성공 로직
              
-//              var msg = '결제가 완료되었습니다.';
-//              msg += '\n고유ID : ' + rsp.imp_uid;
-//              msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-//              msg += '\n결제 금액 : ' + rsp.paid_amount;
-//              msg += '\n카드 승인번호 : ' + rsp.apply_num;
-             
-//              alert(msg);
+            
              
              //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
             
-             
-             
+       
             /*  챌린지 insert
             	결제 insert
             	정보 취합 넘겨 주는 역할 - post역활
-            	
+            */	
             	
              jQuery.ajax({
                 url: "/zaksim/challenge/priceChallenge", //cross-domain error가 발생하지 않도록 주의해주세요
                 type: 'post',
-                dataType: 'text',
+                dataType: 'html',
                 data: {
                    imp_uid : rsp.imp_uid,
                    merchant_uid : rsp.merchant_uid,
@@ -156,9 +161,9 @@
                    
                    // 도전자 정보
                    buyer_id : '${sessionScope.id}',
-                   buyer_name : '${member.name}',
-                   buyer_email : '${member.email}',
-                   buyer_phone : '${member.phone}',
+                   buyer_name : '${user.name}',
+                   buyer_email : '${user.email}',
+                   buyer_phone : '${user.phone}',
                    // 결제 시각
                    paid_at : rsp.paid_at, 
                    // 결제 상태
@@ -166,19 +171,22 @@
                    //기타 필요한 데이터가 있으면 추가 전달
                 }
                 , success: function( data ) {
-                   console.log(data);
+                   //console.log(data);
                    
-//                    msg = '결제가 완료되었습니다.';
-//                    msg += '\n고유ID : ' + rsp.imp_uid;
-//                    msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-//                    msg += '\n결제 금액 : ' + rsp.paid_amount;
-//                    msg += '\n카드 승인번호 : ' + rsp.apply_num;
+                  /*  msg = '결제가 완료되었습니다.';
+                  msg += '\n고유ID : ' + rsp.imp_uid;
+                   msg += '\n상점 거래ID : ' + rsp.merchant_uid;
+                   msg += '\n결제 금액 : ' + rsp.paid_amount;
+                  msg += '\n카드 승인번호 : ' + rsp.apply_num;
                    
-//                    alert(msg);
+                   alert(msg); */
+                   
+                   $("#chageDiv").html(data);
+                   
                 }
              });
              
-  --------------------------------  여기까지 주석 */
+//  --------------------------------  여기까지 주석 
              
              
              
@@ -214,6 +222,7 @@
              $(".data-cmenu").attr("style","");
 	         $("#cmenu3").attr("style","background-color:rgb(154, 28, 15); padding-top:7px; ");
 	         
+	        
              
           } else {
              console.log('fail');
@@ -229,6 +238,42 @@
   });
   
   </script>
+  
+  
+  
+  
+  <!-- 서약서 작성 -->
+<script type="text/javascript">
+
+	function toEndChallenge(){
+		
+		$.ajax({
+		      type: "get"
+		      , url : "/zaksim/challenge/endChallenge"
+		  //    , data : params
+		      , dataType: "html"
+		      , success: function( data ) {
+//		         console.log(data);
+		         $(".data-cmenu").attr("style","");
+		         $("#cmenu4").attr("style","background-color:rgb(154, 28, 15); padding-top:7px; ");
+		         
+		         $("#chageDiv").html(data);
+		      }
+		      , error: function( e ) {
+		         console.log("--- error ---");
+		         console.log( e.responseText );
+		      }
+		      , complete: function() {
+		         //입력 창 초기화
+		      }
+		   });  
+		
+		
+		
+	}
+
+
+</script>
    
    
         <!-- footer include -->

@@ -11,10 +11,10 @@ public class Challenge {
 	//유저 인덱스
 	private int memberIdx;
 	//도전 시작일
-	@DateTimeFormat(pattern="yyyy-mm-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date startDate;
 	//도전 종료일
-	@DateTimeFormat(pattern="yyyy-mm-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date endDate;
 	//도전금
 	private int money;

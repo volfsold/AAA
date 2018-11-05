@@ -8,7 +8,7 @@
  
  
   <div class="py-5 " style="background-image:url(/resources/image/main/back.webp); 
-   background-color: rgba(44, 62, 80, 0.84);">
+   background-color: rgba(44, 62, 80, 0.5); ">
     <div class="container">
       <div class="row">
         <div class="mr-4">
@@ -18,9 +18,9 @@
           <hr class="border border-white">
         </div>
       </div>
-      <div class="row my-3 mt-5 rounded text-white" >
+      <div class="row my-3 mt-5 rounded text-white"  >
         <div class="col-md-3"> </div>
-        <div class="col-md-6 border-dark my-3 px-5 py-4 rounded" style="background-color: rgba(33, 33, 33, 0.7);">
+        <div class="col-md-6 border-white my-3 px-5 py-4 rounded" style="background-color: rgba(33, 33, 33, 0.5); border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;    border-left-width: 5px;	border-style: solid;">
           <div class="row">
             <div class="col-md-4">
               <img class="img-fluid d-block my-2 rounded-circle float-right" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" style="	height: 140px; width: 140px;	border-right-width: 3px;	border-top-width: 3px;	border-bottom-width: 3px;    border-left-width: 3px;	border-style: solid;	border-color: white;">

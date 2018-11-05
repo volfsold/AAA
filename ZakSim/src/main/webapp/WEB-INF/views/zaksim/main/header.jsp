@@ -39,54 +39,62 @@
     </div> <!-- end of logo -->
 
     <!-- navbar -->
-    <nav class="row navbar navbar-expand-lg navbar-dark " style=" background-color: rgb(154, 28, 15);">
-        <div class="col-lg-2 text-white">
+    <div class="row navbar navbar-expand-lg navbar-dark m-0" style=" background-color: rgb(154, 28, 15);">
+        <div class=" text-white" style=" width:18rem!important;">
             <h3 class="my-0"><b>&nbsp;ZakSim</b></h3>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+ 
         </div>
 
         <div class="col-lg-10 collapse navbar-collapse text-center " id="navbarSupportedContent">
             <ul class="navbar-nav ">
-                <li class="nav-item mr-3 col-lg-5 " 
-                   data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <a class="nav-link " href="#"><b>챌린지</b></a>
-                </li>
 
-                <li class="nav-item mr-3 col-lg-5"
+	
+                <li class="nav-item" style="   font-size: 20px;"
                    data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <a class="nav-link " href="#"><b>커뮤니티</b></a>
-                </li>
-
-                <li class="nav-item mr-3 col-lg-5"
-                   data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <a class="nav-link " href="#"><b>고객센터</b></a>
-                </li>
-                <li class="nav-item mr-3 col-lg-5"
-                   data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <a class="nav-link " href="#"><b>마이페이지</b></a>
+                    <a class="nav-link " style="cursor:pointer;"><b>챌린지</b></a>
                 </li>
                 
+                
+ 		<li class="col " style="margin-left:2em; width:  14em;"> </li><!-- 공백용 col-->
+                <li class="nav-item " style="   font-size: 20px;"
+                   data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="nav-link " style="cursor:pointer;"><b>커뮤니티</b></a>
+                </li>
+
+ 		 
+ 		   <li class="col " style="margin-left:2em; width: 14em;"> </li><!-- 공백용 col-->
+                <li class="nav-item "  style="  font-size: 20px;"
+                   data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="nav-link " style="cursor:pointer;"><b>고객센터</b></a>
+                </li>
+                
+                  
+     	  <li class="col " style="margin-left:1em; width: 14em;"> </li><!-- 공백용 col-->
+                <li class="nav-item "  style="  font-size: 20px;" 
+                   data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="nav-link " style="cursor:pointer;"><b>마이페이지</b></a>
+                </li>
+          
             </ul>
         </div>
-        
-        
-
-        
-    </nav> <!-- end of navbar -->
+         
+    </div> <!-- end of navbar -->
 
 <!--나브바 토글-->
-<div class="row navbar navbar-expand-lg navbar-dark collapse" style="	background-color:lightgrey;	height: 40px;" id="navbarToggle">
-    <div class="text-blakc col-lg-2">
+<div class="row navbar navbar-expand-lg navbar-dark collapse m-0" style="	background-color:lightgrey;	height: 40px;" id="navbarToggle">
+    <div class="text-blakc " style="width: 25rem!important;">
       <h5 class="my-0 ml-1"><b>&nbsp;thirty day</b></h5>
     </div>
+    
     <div class="col-lg-10 ">
       <ul class="navbar-nav ">
-        <li class="col-md-1"> </li><!-- 공백용 col-->
-        <li class="nav-item font-weight-bold text-black-50 ml-0 mx-0" style="font-size: 13px">
+        
+        <li class="nav-item font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         
         
         <!-- 도전중 일때 -->
@@ -100,36 +108,46 @@
         </c:if>
         
         </li>
-        <li class="nav-item ml-3 font-weight-bold text-black-50" style="font-size: 13px">
+        <li class="nav-item  font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         <a href="/zaksim/challenge/challengers" style="text-decoration: none;  " >도전자 인증</a>
         </li>
         
-        <li class="col-lg-1"> </li><!-- 공백용 col-->
-        <li class="nav-item font-weight-bold text-black-50 ml-0 mx-0" style="font-size: 13px">
+        
+        
+        <li class="col "> </li><!-- 공백용 col-->
+        
+        <li class="nav-item font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         <a href="#" style="text-decoration: none;  " >커뮤니티</a>
         </li>
-        <li class="nav-item ml-3 font-weight-bold text-black-50" style="font-size: 13px">
+        <li class="nav-item  font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         <a href="#" style="text-decoration: none;  ">도전 통계</a>
         </li>
         
-        <li class="col-lg-1"> </li><!-- 공백용 col-->
-        <li class="nav-item ml-0 font-weight-bold text-black-50 mx-0" style="font-size: 13px">
+        
+        
+        <li class="col "> </li><!-- 공백용 col-->
+       
+        <li class="nav-item  font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         <a href="#" style="text-decoration: none;  " >QnA</a>
         </li>
-        <li class="nav-item ml-3 mr-3 font-weight-bold text-black-50" style="font-size: 13px">
+        <li class="nav-item   font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         <a href="#" style="text-decoration: none;  ">이용 안내</a>
         </li>
         
-        <li class="col-lg-1"> </li><!-- 공백용 col-->
-        <li class="nav-item ml-0 font-weight-bold text-black-50 mx-0" style="font-size: 13px">
+        
+        
+        <li class="col "> </li><!-- 공백용 col-->
+        
+        <li class="nav-item  font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         <a href="#" style="text-decoration: none;  " >회원 정보</a>
         </li>
-        <li class="nav-item ml-3 font-weight-bold text-black-50" style="font-size: 13px">
+        <li class="nav-item  font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         <a href="#" style="text-decoration: none;  ">참여중 그룹</a>
         </li>
-        <li class="nav-item ml-3 font-weight-bold text-black-50" style="font-size: 13px">
+        <li class="nav-item font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         <a href="#" style="text-decoration: none;  ">지난 도전</a>
         
+        <li class="col "> </li><!-- 공백용 col-->
       </ul>
     </div>
   </div>
