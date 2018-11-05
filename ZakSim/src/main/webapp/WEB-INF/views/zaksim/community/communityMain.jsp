@@ -478,7 +478,7 @@
 
 										<input type="text" class="form-control" style="width: 300px;"
 											name="keyword" name="keyword" placeholder="ex) #키워드1#키워드2"
-											required="required" pattern="" title=""
+											required="required" 
 											onkeyup="this.value=this.value.replace(/[^#0-9가-힣a-zA-Z]/g,'')">
 									</div>
 									<br>
