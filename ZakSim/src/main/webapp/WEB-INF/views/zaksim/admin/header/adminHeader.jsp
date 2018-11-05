@@ -129,7 +129,7 @@ body {
 	<nav class="navbar navbar-expand-lg fixed-top" style="background-color: #8A0303;">
 		<a href="" class="btn" style="font-size: xx-large; font-weight: bold; color: white;">ZakSim</a>
 		<div class="collapse navbar-collapse justify-content-end">
-			<a href="/zaksim/login" style="font-weight: bold; color: white;">LOGOUT</a>
+			<a href="/zaksim/login/logout" style="font-weight: bold; color: white;">LOGOUT</a>
 		</div>
 	</nav>
 <!-- navbar -->
@@ -147,7 +147,7 @@ body {
 				<div class="col-2"></div>		
 		</div>
 		<div class="row text-center" style="margin-top: 15px; margin-bottom: 80px;">
-			<div class="col-12"><p>ID or Name</p></div>
+			<div class="col-12"><p>ADMIN</p></div>
 		</div>
 		<a class="sidenav-a" href="/zaksim/admin/member">회원 관리</a>
 		<a class="sidenav-a" href="/zaksim/admin/payment">결제 관리</a>

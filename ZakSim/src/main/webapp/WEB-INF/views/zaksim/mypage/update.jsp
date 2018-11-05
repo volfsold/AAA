@@ -51,7 +51,7 @@
 						</div>
 						
 						<div>    
-							<p>${sessionScope.name }</p>
+							<p>${sessionScope.login_nick}</p>
 						</div>
 
 				</div>
@@ -76,7 +76,7 @@
 				<tbody>
 					<tr>
 						<th class="align-middle cols">아이디</th>
-						<td><input type="text" class="form-control form-control-sm mr-sm-2" value="${id }" 
+						<td><input type="text" class="form-control form-control-sm mr-sm-2" value="${sessionScope.login_id}" 
 						 style="width: 400px;" id="id" name="id" disabled/></td>
 						<td></td>
 					</tr>
@@ -104,25 +104,25 @@
 					<tr>
 						<th class="align-middle">이름</th>
 						<td><input type="text" class="form-control form-control-sm mr-sm-2"
-						style="width: 400px;" value="${name }" name="name" disabled /></td>
+						style="width: 400px;" value="${userName}" name="name" disabled /></td>
 						<td></td>
 					</tr>
 					<tr>
 						<th class="align-middle">닉네임</th>
 						<td><input type="text" class="form-control form-control-sm mr-sm-2"
-						style="width: 400px;" value="${nick }" id="nick" name="nick"/></td>
+						style="width: 400px;" value="${sessionScope.login_nick}" id="nick" name="nick"/></td>
 						<td></td>
 					</tr>
 					<tr>
 						<th class="align-middle">연락처</th>
 						<td><input type="text" class="form-control form-control-sm mr-sm-2"
-						style="width: 400px;" value="${phone }" id="phone" name="phone"/></td>
+						style="width: 400px;" value="${userPhone}" id="phone" name="phone"/></td>
 						<td></td>
 					</tr>
 					<tr>
 						<th class="align-middle">현재 이메일</th>
 						<td><input type="text" class="form-control form-control-sm mr-sm-2"
-						style="width: 400px;" value="${email }" id="email" name="email" disabled/></td>
+						style="width: 400px;" value="${userEmail}" id="email" name="email" disabled/></td>
 						<td></td>
 					</tr>
 					<tr>

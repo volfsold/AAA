@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-6 row" style="">
           <div class="col-md-12 my-3 mx-3">
-            <h4>홍길동님의 <b class="text-danger">도전 24일차</b></h4>
+            <h4>${sessionScope.login_nick }님의 <b class="text-danger">도전 24일차</b></h4>
           </div>
           <div class="border border-dark mx-3 col-md-12" style="height:50px;"> 막대 그래프 위치 </div>
         </div>

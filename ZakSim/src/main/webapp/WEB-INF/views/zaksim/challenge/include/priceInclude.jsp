@@ -9,7 +9,7 @@
         <div class="col-md-6 rounded" style="height: 220px; background-color: rgba(33, 33, 33, 0.67);">
           <div class="col-md-12 text-center my-4 text-white">
             <a class="my-2 d-flex justify-content-center align-items-end">
-            <h3 class="mb-1"> ${sessionScope.userNick} </h3>님의</a> 
+            <h3 class="mb-1"> ${sessionScope.login_nick} </h3>님의</a> 
          <a class="my-2 d-flex justify-content-center align-items-end">  
          
         

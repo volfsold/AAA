@@ -33,20 +33,21 @@ public class MypageController {
 
 	
 	@RequestMapping(value="/update", method=RequestMethod.GET)
-	public String MypageUpdate (HttpSession session, ZakSimMember memberDto) {
-		 logger.info("update");
-		
-		 memberDto.setId((String)session.getAttribute("id"));
-		 logger.info((String) session.getAttribute("id"));
+	public String MypageUpdate (Model model, HttpSession session, ZakSimMember memberDto) {
+//		 logger.info("update");
 		 
-		 memberDto = mypageService.memberInfo(memberDto.getId());
+		 memberDto = mypageService.memberInfo((String)session.getAttribute("login_id"));
 		 
-		 logger.info(memberDto.getNick());
+//		 logger.info(memberDto.getNick());
 		 
-		 session.setAttribute("nick", memberDto.getNick());
-		 session.setAttribute("name", memberDto.getName());
-		 session.setAttribute("phone", memberDto.getPhone());
-		 session.setAttribute("email", memberDto.getEmail());
+//		 session.setAttribute("login_nick", memberDto.getNick());
+//		 session.setAttribute("name", memberDto.getName());
+//		 session.setAttribute("phone", memberDto.getPhone());
+//		 session.setAttribute("email", memberDto.getEmail());
+		 
+		 model.addAttribute("userName", memberDto.getName());
+		 model.addAttribute("userPhone", memberDto.getPhone());
+		 model.addAttribute("userEmail", memberDto.getEmail());
 
 		 return "/zaksim/mypage/update";
 	}
@@ -56,7 +57,9 @@ public class MypageController {
 	public String MypageUpdateProcess(ZakSimMember memberDto, HttpServletRequest request) {
 		logger.info(request.getParameter("newPassword1"));
 
-        mypageService.updateMember(memberDto);
+        mypageService.updateMember(memberDto); 
+        
+        // 수정된 내용 세션에 반영
 
 		return "redirect:/zaksim/mypage/main";
 	}

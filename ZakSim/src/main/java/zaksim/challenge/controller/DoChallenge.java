@@ -26,9 +26,9 @@ public class DoChallenge {
 		
 		
 
-		session.setAttribute("login", true); // 로그인 상태 세션
-		session.setAttribute("userId", "user123"); // 로그인 id 세션
-		session.setAttribute("userNick", "왓따"); 
+//		session.setAttribute("login", true); // 로그인 상태 세션
+//		session.setAttribute("userId", "user123"); // 로그인 id 세션
+//		session.setAttribute("userNick", "왓따"); 
 		
 		
 		ZakSimMember user = new ZakSimMember();
@@ -36,7 +36,7 @@ public class DoChallenge {
 		
 		// 유저 조회
 		user.setName("아이린");
-		user.setEmail("user123@naver.com");
+		user.setEmail("user123ddddddddddd@naver.com");
 		user.setPhone("010-1234-5678");
 		
 		
