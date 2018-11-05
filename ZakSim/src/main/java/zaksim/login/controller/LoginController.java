@@ -49,8 +49,10 @@ public class LoginController {
 //			logger.info(memberDto.getMemberType());
 			
 			session.setAttribute("login", true);
-			session.setAttribute("id", memberDto.getId());
-			session.setAttribute("nick", memberDto.getNick());
+			session.setAttribute("login_idx", memberDto.getIdx());
+			session.setAttribute("login_memberType", memberDto.getMemberType());
+			session.setAttribute("login_id", memberDto.getId());
+			session.setAttribute("login_nick", memberDto.getNick());
 			
 			logger.info("로그인 완료!");
 			

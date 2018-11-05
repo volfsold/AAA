@@ -46,8 +46,9 @@
 							<div class="row mx-auto joinBorder">
 								<input type="password" class="form-control col-md-10" id="joinPw" name="joinPw" placeholder="8 ~ 16자(영문+숫자+특수문자*)">
 								<!-- if문 처리하기 -->
-								<span class="col-md text-center m-1 failColor">불가</span> 
-								<span class="col-md text-center m-1 successColor">가능</span>
+								<span class="col-md text-center m-1 failColor" id="pwMessage"></span> 
+<!-- 								<span class="col-md text-center m-1 failColor">불가</span>  -->
+<!-- 								<span class="col-md text-center m-1 successColor">가능</span> -->
 								<!----------------->
 							</div>
 						</div>
@@ -180,12 +181,13 @@
 		// 특수문자 + 영소문자 + 숫자 조합으로 8 ~ 16자
 		// 특수문자 : !@#$%^&*() 키보드 숫자키의 특수문자만 가능
 		
-		if ( !formPw(joinPw) ) {
+		if ( joinPw == "" || !formPw(joinPw) ) {
 			// 유효하지 않을 시
-			$('#')
+			$('#pwMessage').attr('class', 'failColor');
+			$('#pwMessage').text('불가');
 		}
 		
-		
+		// 닉네임 : 4 ~ 12 글자
 	});
 
 </script>
