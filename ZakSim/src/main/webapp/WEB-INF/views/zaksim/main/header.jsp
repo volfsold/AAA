@@ -116,7 +116,7 @@
         <li class="col "> </li><!-- 공백용 col-->
         
         <li class="nav-item font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
-        <a href="#" style="text-decoration: none;  " >커뮤니티</a>
+        <a href="/zaksim/community/communityMain" style="text-decoration: none;  " >커뮤니티</a>
         </li>
         <li class="nav-item  font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         <a href="/zaksim/community/individualRanking" style="text-decoration: none;  ">도전 통계</a>

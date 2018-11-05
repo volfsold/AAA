@@ -175,8 +175,8 @@
 									wrap="hard">${communityList.communityGroup.title }<br>
 									<c:forEach var="keywordList" items="${keywordList }">
 										<c:if
-											test="${communityList.communityGroup.idx eq keyword.group_idx}">
-											<span>#${keywordList }</span>
+											test="${communityList.communityGroup.idx eq keywordList.group_idx}">
+											<span>#${keywordList.keyword }</span>
 										</c:if>
 									</c:forEach>
 								</th>
