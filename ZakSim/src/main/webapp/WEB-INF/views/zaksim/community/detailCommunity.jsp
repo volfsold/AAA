@@ -19,7 +19,7 @@
                 <strong style="font-size: 150%">참여하고 있는 모임1</strong>
                 <span style="color: gray;">자세히 보기</span>
 
-                <button type="button" style="float: right;" class="btn btn-secondary">모임 상세보기</button>
+                <button type="button" style="float: right;" class="btn btn-secondary" id="enrollView">모임 상세보기</button>
 
                 <hr style="margin-top: 40px; border-color: red; margin-bottom: 40px;">
 
@@ -174,6 +174,8 @@
         <script type="text/javascript">
         $(document).ready(function() {
 
+        	
+        	
             $(window).scroll(function() {
                 if ($(this).scrollTop() > 200) {
                     $('.top-button').fadeIn();
