@@ -168,7 +168,7 @@
 									<c:if test="${empty keywordList }">
 										키워드 :
 										</c:if>
-										<c:forEach items="${keywordList }" var="keyword">
+										<c:forEach items="${keywordList }" var="keyword" begin="0" end="4" step="1" >
 											<c:if
 												test="${popularGroupList.communityGroup.idx eq keyword.group_idx}">
 												#${keyword.keyword } 
