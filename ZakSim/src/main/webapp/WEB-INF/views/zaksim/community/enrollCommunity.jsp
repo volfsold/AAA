@@ -432,6 +432,55 @@
 <!-- footer include -->
 <%@include file="/WEB-INF/views/zaksim/main/footer.jsp"%>
 
+<!-- 게시글 등록 모달 -->
+<div class="modal fade" id="boardWrite" tabindex="-1" role="dialog"
+	aria-labelledby="boardWriteLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">
+					<strong>게시판 - 글쓰기</strong>
+				</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label for="recipient-name" class="form-control-label"><strong>글
+								종류</strong></label> <br>
+						<div class="form-inline"
+							style="margin-left: auto; margin-right: auto;">
+							<div class="radio"
+								style="margin-left: 100px; margin-right: 100px;">
+								<label> <input type="radio" name="optionsRadios"
+									id="textKind" value="nomalText" checked> 일반 글
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input type="radio" name="optionsRadios"
+									id="textKind" value="certificationText"> 인증 글
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="message-text" class="form-control-label"><strong>Content:</strong></label>
+						<textarea class="form-control" id="board-text"
+							onkeydown="boardCommnet(this)" onkeyup="boardCommnet(this)"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger">등록</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 
 <!-- 신고 모달 -->
@@ -663,54 +712,6 @@
 
 
 
-<!-- 게시글 등록 모달 -->
-<div class="modal fade" id="boardWrite" tabindex="-1" role="dialog"
-	aria-labelledby="boardWriteLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">
-					<strong>게시판 - 글쓰기</strong>
-				</h5>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="form-group">
-						<label for="recipient-name" class="form-control-label"><strong>글
-								종류</strong></label> <br>
-						<div class="form-inline"
-							style="margin-left: auto; margin-right: auto;">
-							<div class="radio"
-								style="margin-left: 100px; margin-right: 100px;">
-								<label> <input type="radio" name="optionsRadios"
-									id="textKind" value="nomalText" checked> 일반 글
-								</label>
-							</div>
-							<div class="radio">
-								<label> <input type="radio" name="optionsRadios"
-									id="textKind" value="certificationText"> 인증 글
-								</label>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="message-text" class="form-control-label"><strong>Content:</strong></label>
-						<textarea class="form-control" id="board-text"
-							onkeydown="boardCommnet(this)" onkeyup="boardCommnet(this)"></textarea>
-					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger">등록</button>
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-			</div>
-		</div>
-	</div>
-</div>
 
 
 
