@@ -137,8 +137,8 @@
 									<p class="card-text">♡ ${searchGroup.likeNum }</p>
 									<div class="progress">
 										<div class="progress-bar" role="progressbar"
-											style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-											aria-valuemax="100">50%</div>
+											style="width: 100%;" aria-valuenow="100" aria-valuemin="0"
+											aria-valuemax="100">100%</div>
 									</div>
 									<div class="overlay">
 										<a class="info" href="#">
