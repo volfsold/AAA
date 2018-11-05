@@ -8,7 +8,7 @@
   <!--바디-->
    
    <div class=" pt-5" style="background-image: url(/resources/image/main/back.webp); 
-   background-color: rgba(240, 200, 240, 0.3);">
+   background-color: rgba(240, 200, 240, 0.7);">
     <div class="container">
       <div class="row  py-4">
         <div class="col-md-4" style="">
@@ -29,7 +29,7 @@
     
   </div>
   <div class="py-1" style="background-image: url(/resources/image/main/back.webp); 
-   background-color: rgba(240, 200, 240, 0.3);">
+   background-color: rgba(240, 200, 240, 0.7);">
     <div class="container " >
       <hr class="my-5">
       <div class="row  py-3">
@@ -63,7 +63,7 @@
     </div>
   </div>
   <div class="py-3 pb-5" style="background-image: url(/resources/image/main/back.webp); 
-   background-color: rgba(240, 200, 240, 0.3);">
+   background-color: rgba(240, 200, 240, 0.7);">
     <div class="container mb-5 ">
       <div class="row mb-5">
         <div class="col-md-5 border border-dark"> 달력 API </div>

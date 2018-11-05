@@ -117,14 +117,8 @@
         
         <li class="nav-item font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         <a href="#" style="text-decoration: none;  " >커뮤니티</a>
-
-        <li class="col-lg-1"> </li><!-- 공백용 col-->
-        <li class="nav-item font-weight-bold text-black-50 ml-0 mx-0" style="font-size: 13px">
-        <a href="/zaksim/community/communityMain" style="text-decoration: none;  " >커뮤니티</a>
         </li>
         <li class="nav-item  font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
-        <a href="#" style="text-decoration: none;  ">도전 통계</a>
-        <li class="nav-item ml-3 font-weight-bold text-black-50" style="font-size: 13px">
         <a href="/zaksim/community/individualRanking" style="text-decoration: none;  ">도전 통계</a>
         </li>
         
