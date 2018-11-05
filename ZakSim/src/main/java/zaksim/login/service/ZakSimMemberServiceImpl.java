@@ -62,12 +62,9 @@ public class ZakSimMemberServiceImpl implements ZakSimMemberService {
 		if ( memberDao.findPw(map) == 1 ) {
 			ranPw = UUID.randomUUID().toString().replaceAll("-", ""); // - 제거
 			ranPw = ranPw.substring(0, 10);
-			Random ran = new Random();
 			
-//			for( int i = 0; i < 10; i++ ) {
-//				ranPw = ranPw + ran.nextInt(10); // 0 ~ 9 까지 랜덤으로 숫자 넣기
-//			}
 			System.out.println("생성된 임시 비밀번호 : " + ranPw);
+			
 			map.put("ranPw", ranPw);
 			memberDao.findPwResult(map);
 		}
