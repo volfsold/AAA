@@ -168,7 +168,7 @@
 									<c:if test="${empty keywordList }">
 										키워드 :
 										</c:if>
-										<c:forEach items="${keywordList }" var="keyword" begin="0" end="4" step="1" >
+										<c:forEach items="${keywordList }" var="keyword">
 											<c:if
 												test="${popularGroupList.communityGroup.idx eq keyword.group_idx}">
 												#${keyword.keyword } 
@@ -478,7 +478,7 @@
 
 										<input type="text" class="form-control" style="width: 300px;"
 											name="keyword" name="keyword" placeholder="ex) #키워드1#키워드2"
-											required="required" pattern="" title=""
+											required="required" 
 											onkeyup="this.value=this.value.replace(/[^#0-9가-힣a-zA-Z]/g,'')">
 									</div>
 									<br>
