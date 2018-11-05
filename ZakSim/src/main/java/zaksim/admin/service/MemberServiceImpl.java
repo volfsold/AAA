@@ -42,9 +42,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<Report> viewReport(ZakSimMember member) {
-		// TODO Auto-generated method stub
-		reportDao.selectReport(member);
-		return null;
+		return reportDao.selectReport(member);
 	}
 
 	@Override

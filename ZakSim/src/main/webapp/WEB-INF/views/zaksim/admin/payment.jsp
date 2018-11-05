@@ -10,7 +10,6 @@
 	
 
 
-
 <!-- main -->
 	<div class="container-fluid">
 		<div class="main">
@@ -36,8 +35,8 @@
 				<div class="col-1"></div>
 				<div class="col-5">
 					<div class="row justify-content-start">
-						<button class="btn btn-zaksim rounded" type="button" style="margin-left: 15px; margin-right: 5px;">전액 환불</button>
-						<button class="btn btn-zaksim rounded" type="button">부분 환불</button>
+						<button id="refundBtn" class="btn btn-zaksim rounded" type="button" style="margin-left: 15px; margin-right: 5px;">전액 환불</button>
+						<button id="partialRefundBtn" class="btn btn-zaksim rounded" type="button">부분 환불</button>
 					</div>
 				</div>
 				
@@ -75,6 +74,37 @@
 		</div>
 	</div>
 <!-- main -->
+
+
+<!-- Refund Modal -->
+<div class="modal" id="refundModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mt-1 mb-1" style="font-family: Dohyeon; font-weight: 300;">전체 환불 리스트</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="row border ml-1 mr-1" style="max-height: 200px;">
+        	<div class="col-12" style="overflow: auto;">
+        		<div class="row mb-1" id="totalMem"></div>
+        		<div class="row text-center" id="memberIdDiv">
+        		</div>
+        	</div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Refund Modal -->
+
 
 
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -268,6 +298,95 @@ $("#pagingDiv").on("click", '.page-link', function() {
 		}
 	});	
 	
+});
+
+//전체 선택하기, 해제하기
+$("#pagingDiv").on("click", "[name=checkAll]", function(){
+	$("[name=checkOne]").prop("checked", $(this).prop("checked") );
+});
+
+// 개별 체크박스 선택 시
+$("#pagingDiv").on("click", "[name=checkOne]", function() {
+	
+	if( $(this).prop("checked") ) {
+		checkBoxLength = $("[name=checkOne]").length;
+		checkedLength = $("[name=checkOne]:checked").length;
+	
+		if( checkBoxLength == checkedLength ) {
+			$("[name=checkAll]").prop("checked", true);
+		} else {
+			$("[name=checkAll]").prop("checked", false);
+		}
+	} else {
+		// 하나라도 해제가 되면 전체 버튼은 해제
+		$("[name=checkAll]").prop("checked", false);
+	}
+});
+
+//전체 환불 버튼 클릭 시
+$("#refundBtn").click(function() {
+	var checkList = $("[name=checkOne]:checked");
+	var refundMemberIdx = [];
+	var refundMemberId = [];
+	var refundPrice = [];
+
+	checkList.each(function(i) {
+		refundMemberIdx.push(checkList.parent().parent().eq(i).children("td").eq(0).text());
+		refundMemberId.push(checkList.parent().parent().eq(i).children("td").eq(3).text());
+		refundPrice.push(checkList.parent().parent().eq(i).children("td").eq(9).text());
+	});
+	
+	$("#memberIdDiv").html("");
+	
+	var modalText = "<div class='col-6 border'>회원 아이디</div>"
+					+ "<div class='col-6 border'>환불 금액</div>";
+	
+	for(var i=0; i<refundMemberId.length; i++){
+		modalText += "<div class='col-6 border'>" 
+					+ refundMemberId[i] 
+					+ "</div>"
+					+ "<div class='col-6 border'>" 
+					+ refundPrice[i] + "원"
+					+ "</div>";
+	}
+
+	$("#totalMem").html("총 " + refundMemberId.length + "명");
+	$("#memberIdDiv").html(modalText);
+	
+	$("#refundModal").modal('show');
+});
+
+//부분 환불 버튼 클릭 시
+$("#partialRefundBtn").click(function() {
+	var checkList = $("[name=checkOne]:checked");
+	var refundMemberIdx = [];
+	var refundMemberId = [];
+	var refundPrice = [];
+
+	checkList.each(function(i) {
+		refundMemberIdx.push(checkList.parent().parent().eq(i).children("td").eq(0).text());
+		refundMemberId.push(checkList.parent().parent().eq(i).children("td").eq(3).text());
+		refundPrice.push(checkList.parent().parent().eq(i).children("td").eq(9).text());
+	});
+	
+	$("#memberIdDiv").html("");
+	
+	var modalText = "<div class='col-6 border'>회원 아이디</div>"
+					+ "<div class='col-6 border'>환불 금액</div>";
+	
+	for(var i=0; i<refundMemberId.length; i++){
+		modalText += "<div class='col-6 border'>" 
+					+ refundMemberId[i] 
+					+ "</div>"
+					+ "<div class='col-6 border'>" 
+					+ refundPrice[i]/10 + "원"
+					+ "</div>";
+	}
+
+	$("#totalMem").html("총 " + refundMemberId.length + "명");
+	$("#memberIdDiv").html(modalText);
+	
+	$("#refundModal").modal('show');
 });
 
 </script>

@@ -13,7 +13,8 @@
                         <span style="font-size: 40px;">참여하고 있는 모임 1</span>
                         <span style="color: grey; font-style: italic; margin-left: 20px;">참여자 보기</span>
                     </strong>
-                    <button type="button" class="btn btn-danger" style="margin-top: 60px; margin-left: 150px;">모임 상세 보기</button>
+                    <button type="button" class="btn btn-danger" style="margin-top: 60px; margin-left: 150px;" id="detailView">
+                    모임 상세 보기</button>
                 </div>
 
             </div>
@@ -274,6 +275,10 @@
     <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+        	
+        	$("#detailView").click(function() {
+    			document.location.href = "/zaksim/community/detailCommunity";
+    		});
 
             $(window).scroll(function() {
                 if ($(this).scrollTop() > 200) {

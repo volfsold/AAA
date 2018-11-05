@@ -51,8 +51,8 @@ public interface ZakSimMemberService {
 	/**
 	 * 회원가입 - 아이디 중복체크 service
 	 * @param id
-	 * @return true or false
+	 * @return true(사용 가능) or false(중복된 ID가 있음)
 	 */
-	public boolean joinAjax(String id);
+	public boolean checkId(String id);
 	
 }

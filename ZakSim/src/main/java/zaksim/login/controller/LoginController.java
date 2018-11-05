@@ -102,7 +102,6 @@ public class LoginController {
 			, produces="application/json; charset=utf-8"/* 한글처리 */)
 	@ResponseBody // ajax 쓰기 위한 방법(jackson-databind 라이브러리를 이용한 출력 방법)
 	public Map<String, Object> findPw(String id, String name, String email) {
-		logger.info("데이터 제출");
 		logger.info("아이디 : " + id + " / 이름 : " + name + " / 이메일 : " + email);
 		
 		String pw = memberService.findPw(id, name, email);
@@ -126,13 +125,26 @@ public class LoginController {
 	public String joinPage() {
 		return "zaksim/login/joinForm";
 	}
-	@RequestMapping(value="/zaksim/login/join", method=RequestMethod.POST)
-	public String join(ZakSimMember memberDto) {
-		return "redirect:/zaksim/login/login";
+	@RequestMapping(value="/zaksim/login/joinForm", method=RequestMethod.POST)
+	public void join(ZakSimMember memberDto) {
+//		return "redirect:/zaksim/login/login"; // TODO: 리다이렉트는 jsp 쪽에서 하자
 	}
 	// 회원가입 - 아이디 중복체크
-	@RequestMapping(value="/zaksim/login/joinAjax", method=RequestMethod.POST)
-	public void joinAjax(HttpServletResponse response) {
+	@RequestMapping(value="/zaksim/login/joinId", method=RequestMethod.POST
+			, produces="application/json; charset=utf-8"/* 한글처리 */)
+	@ResponseBody // ajax 쓰기 위한 방법(jackson-databind 라이브러리를 이용한 출력 방법)
+	public Map<String, Object> joinAjax(String joinId) {
+		logger.info("중복 체크할 ID : " + joinId);
 		
+		Map<String, Object> map = new HashMap<>();
+		if (memberService.checkId(joinId)) {
+			logger.info("사용 가능한 ID");
+			map.put("uniqueId", true);
+		} else {
+			logger.info("이미 사용 중인 ID");
+			map.put("uniqueId", false);
+		}
+		
+		return map;
 	}
 }

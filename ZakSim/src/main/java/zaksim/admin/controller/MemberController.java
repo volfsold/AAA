@@ -1,6 +1,5 @@
 package zaksim.admin.controller;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,22 +61,14 @@ public class MemberController {
 	// 신고 상세 모달
 	@RequestMapping(value="/reportDetail", method = RequestMethod.GET, produces="application/json; charset=utf-8")
 	@ResponseBody
-	public Map<String, Object> reportDetail(int idx) {
+	public Map<String, Object> reportDetail(ZakSimMember member) {
+		
+		System.out.println(member.getIdx());
 		
 		// 신고 상세 가져오기
 		HashMap<String, Object> map = new HashMap<>();
 		
-		// test data
-		Report rList = new Report();
-		rList.setBoardIdx(0);
-		rList.setCategory("욕설");
-		rList.setCommentIdx(12);
-		rList.setIdx(1);
-		rList.setMemberIdx(idx);
-		rList.setReason("갑자기 욕해요ㅠㅠ");
-		rList.setReportDate(new Date());
-		rList.setReporterIdx(2);
-		
+		List<Report> rList = memberService.viewReport(member);
 		
 		map.put("rList", rList);
 		

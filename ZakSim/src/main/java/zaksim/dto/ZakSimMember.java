@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class ZakSimMember {
 	
+	private int reportNum;
+	
 	private int rnum;
 	
 	private int idx;
@@ -19,6 +21,13 @@ public class ZakSimMember {
 	private Date suspensionDate;	// 계정 정지 처분 날짜
 	
 	
+	
+	public int getReportNum() {
+		return reportNum;
+	}
+	public void setReportNum(int reportNum) {
+		this.reportNum = reportNum;
+	}
 	public int getRnum() {
 		return rnum;
 	}
@@ -93,9 +102,9 @@ public class ZakSimMember {
 	}
 	@Override
 	public String toString() {
-		return "ZakSimMember [rnum=" + rnum + ", idx=" + idx + ", memberType=" + memberType + ", id=" + id
-				+ ", password=" + password + ", nick=" + nick + ", name=" + name + ", email=" + email + ", phone="
-				+ phone + ", joinDate=" + joinDate + ", status=" + status + ", suspensionDate=" + suspensionDate + "]";
+		return "ZakSimMember [reportNum=" + reportNum + ", rnum=" + rnum + ", idx=" + idx + ", memberType=" + memberType
+				+ ", id=" + id + ", password=" + password + ", nick=" + nick + ", name=" + name + ", email=" + email
+				+ ", phone=" + phone + ", joinDate=" + joinDate + ", status=" + status + ", suspensionDate="
+				+ suspensionDate + "]";
 	}
-	
 }

@@ -71,7 +71,7 @@
 							<span style="font-size: 150%;">n명 </span> <span
 								style="font-size: 150%;">/ 최대
 								${groupInfo.communityGroup.max }명</span> &nbsp;&nbsp;&nbsp;
-							<button type="button" class="btn btn-outline-secondary">참여자
+							<button type="button" class="btn btn-outline-secondary" id="joinMemberView">참여자
 								보기</button>
 						</div>
 
@@ -92,8 +92,8 @@
 							style="margin-left: 50px; margin-right: 50px; margin-bottom: 50px; display: none;"
 							id="communityAchievementComment">
 
-							<button type="button" class="btn btn-outline-danger">
-								<a href=""></a>자세히 보기
+							<button type="button" class="btn btn-outline-danger"id="detailView">
+								자세히 보기
 							</button>
 							<br> <br>
 							<div class="progress">
@@ -748,6 +748,14 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		$("#detailView").click(function() {
+			document.location.href = "/zaksim/community/detailCommunity";
+		});
+		
+		$('#joinMemberView').click(function() {
+			document.location.href="/zaksim/community/joinMember";
+		});
 
 		// 공개 클릭 시 숨기기 / 비공개 클릭 시 보이기
 		$(".screctRadio").hide();
@@ -837,6 +845,8 @@
 		obj.style.height = "1px";
 		obj.style.height = (12 + obj.scrollHeight) + "px";
 	}
+	
+  
 </script>
 
 
