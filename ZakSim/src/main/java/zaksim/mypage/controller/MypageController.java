@@ -60,7 +60,15 @@ public class MypageController {
         mypageService.updateMember(memberDto); 
         
         // 수정된 내용 세션에 반영
-
+		
+//		if () {
+//			mypageService.updateMember(memberDto);
+		
+//			return "redirect:/zaksim/mypage/main";
+//		} else {
+//			return "redirect:/zaksim/mypage/update";
+//		}
+		
 		return "redirect:/zaksim/mypage/main";
 	}
 	

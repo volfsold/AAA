@@ -70,7 +70,7 @@
         	 <hr style="border: solid 2px black;">
      		</div>
 		
-			<form action="/zaksim/mypage/update" method="post" id="updateform">
+			<form action="/zaksim/mypage/update" method="post" id="updateform" onsubmit="return update();">
 			<div class="d-flex justify-content-center">
 			<table class="table table-sm table-borderless" style="width:900px; bagroundcolor:white;">
 				<tbody>
@@ -86,7 +86,7 @@
 							<input type="password" class="form-control form-control-sm mr-sm-2"
 							style="width: 400px;" id="newPassword1" name="newPassword1"/>
 						 	<ul>
-                        		<li class="mt-3" style="font-size: 12px; color:red; line-height: 200%;">비밀번호는 6~15자의 영문, 숫자,
+                        		<li class="mt-3" style="font-size: 12px; color:red; line-height: 200%;">비밀번호는 8~16자의 영문, 숫자,
                            		 특수문자를 2가지 이상 혼합해서 사용하셔야합니다.</li>
                         		<li style="font-size: 12px; line-height: 200%;">자주 쓰는 사이트의 비밀번호가 같을 경우,
                             	주기적으로 변경하는게 안전합니다.</li>
@@ -145,7 +145,8 @@
 			</table>
 			</div>
 			<div class="form-inline d-flex justify-content-center mt-4">
-					<button type="submit" class="btn btn-danger btn-sm mr-4" onclick="update();">회원정보 수정</button>
+<!-- 					<button type="submit" class="btn btn-danger btn-sm mr-4" onclick="update();">회원정보 수정</button> -->
+					<button class="btn btn-danger btn-sm mr-4">회원정보 수정</button>
 					<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">서명 생성/수정</button>
 				</div>
 				
@@ -227,7 +228,7 @@
 	    	    if(emailB.length == 0){
 	    	        alert("이메일을 입력해주세요");
 	    	        $("#Cemail").focus();
-	    	        return false;
+	    	        return false;	    	    
 	    	    }
 	    	    
 	//	    	    if(addr1.length == 0 || addr2.length == 0 || addr3.length == 0 ){
@@ -254,8 +255,8 @@
 		    	 }
 		    	 
 		    	 // 닉네임 체크
-		    	 if(!/^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{1,10}$/.test(checknick)) {
-		    		 alert("닉네임은 특수문자를 제외하고 10자 이내로 작성해야 합니다.")
+		    	 if(!/^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{4,12}$/.test(checknick)) {
+		    		 alert("닉네임은 특수문자를 제외하고 4자에서 12자 이내로 작성해야 합니다.")
 		    		 return false;
 		    	 }
 		    	 
@@ -272,9 +273,9 @@
 		    	 }
 		    	  
 		    	 // 길이
-		    	 if(!/^[a-zA-Z0-9!@#$%^&*()?_~]{6,15}$/.test(newPassword1))
+		    	 if(!/^[/^(?=.*[!@#$%^&*()])(?=.*[a-z])(?=.*\d).{8,16}$/.test(newPassword1))
 		    	 { 
-		    	  alert("비밀번호는 숫자, 영문, 특수문자 조합으로 6~15자리를 사용해야 합니다."); 
+		    	  alert("비밀번호는 숫자, 영문, 특수문자 조합으로 8~16자리를 사용해야 합니다."); 
 		    	  return false;
 		    	 }
 		    	 
@@ -282,20 +283,13 @@
 		    	 var chk = 0;
 		    	 if(newPassword1.search(/[0-9]/g) != -1 ) chk ++;
 		    	 if(newPassword1.search(/[a-z]/ig)  != -1 ) chk ++;
-		    	 if(newPassword1.search(/[!@#$%^&*()?_~]/g)  != -1  ) chk ++;
+		    	 if(newPassword1.search(/[!@#$%^&*()]/g)  != -1  ) chk ++;
 		    	 if(chk < 2)
 		    	 { 
 		    	  alert("비밀번호는 숫자, 영문, 특수문자를 두가지이상 혼용하여야 합니다."); 
 		    	  return false;
 		    	 }
-		    	  
-		    	 // 동일한 문자/숫자 4이상, 연속된 문자
-		    	 if(/(\w)\1\1\1/.test(newPassword1) || isContinuedValue(newPassword1))
-		    	 {
-		    	  alert("비밀번호에 4자 이상의 연속 또는 반복 문자 및 숫자를 사용하실 수 없습니다."); 
-		    	  return false;
-		    	 }
-		    	  
+
 		    	 // 아이디 포함 여부
 		    	 if(newPassword1.search(userID)>-1)
 		    	 {
