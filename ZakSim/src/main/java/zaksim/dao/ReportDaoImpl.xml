@@ -6,4 +6,29 @@
   
   <mapper namespace="zaksim.dao.ReportDao">
   
+  <resultMap type="zaksim.dto.ZakSimMember" id="ZakSimMember">
+  	<result property="id" column="id"/>
+  </resultMap>
+  
+  <resultMap type="zaksim.dto.Report" id="Report">
+  	<result property="boardIdx" column="board_idx"/>
+  	<result property="commentIdx" column="comment_idx"/>
+  	<result property="reporterIdx" column="reporter_idx"/>
+  	<result property="category" column="category"/>
+  	<result property="reason" column="reason"/>
+  	<result property="memberIdx" column="member_idx"/>
+  	<result property="reportDate" column="report_date"/>
+  	<collection property="zakSimMember" resultMap="ZakSimMember"/>
+  </resultMap>
+  
+  <!-- 신고 정보와 신고자 아이디 반환 -->
+  <select id="selectReport" parameterType="zaksim.dto.ZakSimMember" resultMap="Report">
+ 	SELECT rz.*, m.id
+ 	FROM (
+ 		SELECT r.board_idx, r.comment_idx, r.reporter_idx, r.category, r.reason, r.member_idx, r.report_date
+ 		FROM Report r
+ 		WHERE r.member_idx = #{idx}) rz, ZakSimMember m
+ 	WHERE rz.reporter_idx=m.idx
+  </select>
+  
   </mapper>

@@ -12,7 +12,7 @@
 						<p style="font-family: Dohyeon;">가입 인원</p>
 					</div>
 				</div>
-				<div class="col-6 border ml-2">
+				<div class="col-6 border ml-2" id="canvasDiv">
 					<canvas id="myChart" width="400" height="180"></canvas>
 				</div>
 				<div class="col-1"></div>

@@ -22,6 +22,7 @@ public class Report {
 	
 	
 	
+	
 	public int getIdx() {
 		return idx;
 	}

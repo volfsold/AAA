@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="zaksim.dao.MypageDao">
+	
+	 <resultMap type="zaksim.dto.ZakSimMember" id="ZakSimMember">
+	  	<result property="id" column="id"/>
+	  	<result property="password" column="password"/>
+	  	<result property="nick" column="nick"/>
+	  	<result property="name" column="name"/>
+	  	<result property="email" column="email"/>
+	  	<result property="phone" column="phone"/>
+	  	<result property="memberType" column="member_type"/>
+	  </resultMap>
+ 
+ 
+	  <!-- parameterType: 정보를 받아온다 resultType: 정보를 돌려준다 -->
+	  <select id="memberInfo" parameterType="String" resultType="zaksim.dto.ZakSimMember">
+	        SELECT name, nick, phone, email FROM ZaksimMember
+	        WHERE id = #{id}
+	  </select> 
+	  
+	  <update id="updateMember" parameterType="zaksim.dto.ZakSimMember">
+	  		UPDATE ZaksimMember 
+	  		SET password = #{password}, 
+	  		nick = #{nick}, 
+	  		phone = #{phone},
+	  		email = #{email}
+	  		WHERE id = #{id}
+	  </update>
+	  
+	  <delete id="deleteMember" parameterType="String">
+	  		DELETE FROM ZaksimMember
+	  		WHERE id = #{id}
+	  </delete>
+    
+</mapper>

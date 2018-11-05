@@ -11,7 +11,7 @@
 					<table class="table table-hover text-center">
 						<thead>
 							<tr>
-								<th><input type="checkbox"/></th>
+								<th><input type="checkbox" name="checkAll"/></th>
 								<th style="display: none;">idx</th>
 								<th>No.</th>
 								<th>type</th>
@@ -30,7 +30,7 @@
 						<c:forEach items="${ mList }" var="member">
 							<tr>
 								<th scope="row">
-									<input type="checkbox"/>
+									<input type="checkbox" name="checkOne"/>
 								</th>
 								<td style="display: none;">${member.idx}</td>
 								<td>${member.rnum}</td>
@@ -50,7 +50,7 @@
 								<c:if test="${not empty member.suspensionDate }">
 									<td>${member.suspensionDate}</td>								
 								</c:if>
-								<td><span class="data-span-modal">0</span></td>
+								<td><span class="data-span-modal">${member.reportNum}</span></td>
 							</tr>
 						</c:forEach>
 						</tbody>

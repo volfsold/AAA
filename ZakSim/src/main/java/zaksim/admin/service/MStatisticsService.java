@@ -3,6 +3,7 @@ package zaksim.admin.service;
 import java.util.List;
 
 import zaksim.dto.MemberCount;
+import zaksim.dto.Visits;
 
 public interface MStatisticsService {
 	
@@ -19,6 +20,9 @@ public interface MStatisticsService {
 	public List<MemberCount> viewMemberNum(String startDate, String endDate);
 	
 	// 방문수 정보 가져오기
-	public List<Integer> viewVisitsNum(String period);
+	public List<Visits> viewVisitsNum(String period);
+	
+	// 방문수 정보 가져오기
+	public List<Visits> viewVisitsNum(String startDate, String endDate);
 
 }

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 
+
     <!-- footer -->
 
     <div class=" text-white" style="background-color: rgb(33, 33, 33)">
@@ -81,7 +82,22 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<!-- pie chart -->
+	<script src="http://rendro.github.io/easy-pie-chart/javascripts/jquery.easy-pie-chart.js"></script> 
+	
+	<script>
+		// 파이 차트
+		$(function () {
+		    $('.min-chart#chart-sales').easyPieChart({
+		        barColor: "#4caf50",
+		        onStep: function (from, to, percent) {
+		            $(this.el).find('#percent').text(Math.round(percent));
+		        }
+		    });
+		});
 
+	</script>
+	
 </body>
 
 </html>

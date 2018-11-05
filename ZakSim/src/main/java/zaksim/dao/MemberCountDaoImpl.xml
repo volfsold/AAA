@@ -29,10 +29,14 @@
   		AND TO_CHAR(membercount_date, 'YYYY-MM-DD') <![CDATA[ > ]]> TO_CHAR(sysdate-30, 'YYYY-MM-DD')
   		AND TO_CHAR(membercount_date, 'YYYY-MM-DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YYYY-MM-DD')
   	</if>
-<!--   	<if test="startDate != '' and endDate != ''"> -->
-<!--   		AND TO_CHAR(membercount_date, 'YY/MM/DD') <![CDATA[ > ]]>= TO_CHAR(#{startDate}, 'YY/MM/DD') -->
-<!-- 	  	AND TO_CHAR(membercount_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(#{endDate}, 'YY/MM/DD') -->
-<!--   	</if> -->
+  	ORDER BY membercount_date ASC
+  </select>
+  
+  <select id="selectMemberNum2" parameterType="map" resultMap="MemberCount">
+  	SELECT * FROM MEMBERCOUNT
+  	WHERE TO_CHAR(membercount_date, 'YYYY-MM-DD') <![CDATA[ > ]]>= #{startDate}
+  	AND TO_CHAR(membercount_date, 'YYYY-MM-DD') <![CDATA[ < ]]>= #{endDate}
+  	ORDER BY membercount_date ASC
   </select>
 
 

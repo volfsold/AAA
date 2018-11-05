@@ -21,30 +21,44 @@
   </select>
   
   <select id="selectTotalMemberCount" parameterType="map" resultType="int">
-  	SELECT COUNT(*)
-  	FROM ZakSimMember
-	WHERE id != 'admin'
-	AND id LIKE '%' || #{searchId} || '%'
+	SELECT COUNT(*) FROM (
+		SELECT * FROM ZakSimMember
+		WHERE id != 'admin'
+		AND id LIKE '%' || #{searchId} || '%'
+		<if test="category == '계정 정지 회원'">
+			AND suspension_date IS NOT NULL
+		</if>
+		ORDER BY idx DESC
+	) z
+	LEFT JOIN (
+		SELECT COUNT(*) reportNum, member_idx FROM Report 
+		GROUP BY member_idx) zr
+	ON zr.member_idx=z.idx
 	<if test="category == '계정 정지 대상'">
-	</if>
-	<if test="category == '계정 정지 회원'">
-		AND suspension_date IS NOT NULL
+	WHERE zr.reportNum <![CDATA[ > ]]>= 10
 	</if>
   </select>
   
   <select id="selectAdminMemberList" parameterType="map" resultMap="ZakSimMember">
   	SELECT * FROM ( 
-		SELECT rownum rnum, Z.* FROM (
-			SELECT * FROM ZakSimMember
-			WHERE id != 'admin'
-			AND id LIKE '%' || #{searchId} || '%'
+		SELECT rownum rnum, Zak.* FROM (
+			SELECT * FROM (
+				SELECT * FROM ZakSimMember
+				WHERE id != 'admin'
+				AND id LIKE '%' || #{searchId} || '%'
+				<if test="category == '계정 정지 회원'">
+					AND suspension_date IS NOT NULL
+				</if>
+				ORDER BY idx DESC
+			) z
+			LEFT JOIN (
+				SELECT COUNT(*) reportNum, member_idx FROM Report 
+				GROUP BY member_idx) zr
+			ON zr.member_idx=z.idx
 			<if test="category == '계정 정지 대상'">
+			WHERE zr.reportNum <![CDATA[ > ]]>= 10
 			</if>
-			<if test="category == '계정 정지 회원'">
-				AND suspension_date IS NOT NULL
-			</if>
-			ORDER BY idx DESC
-		) Z
+		) Zak
 		ORDER BY rnum
 	)
 	WHERE rnum BETWEEN #{paging.startNo} AND #{paging.endNo}
@@ -68,10 +82,16 @@
 	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]> TO_CHAR(sysdate-30, 'YY/MM/DD')
 	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YY/MM/DD')
   	</if>
-<!--   	<if test="startDate != '' and endDate != ''"> -->
-<!--   		AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]>= TO_CHAR(#{startDate}, 'YY/MM/DD') -->
-<!-- 	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(#{endDate}, 'YY/MM/DD') -->
-<!--   	</if> -->
+  	ORDER BY join_date ASC
+  	</select>
+  	
+  	<select id="selectJoinNum2" parameterType="map" resultType="int">
+  	SELECT COUNT(*)
+  	FROM ZakSimMember
+  	WHERE id != 'admin'
+  	AND TO_CHAR(join_date, 'YYYY-MM-DD') <![CDATA[ > ]]>= #{startDate}
+  	AND TO_CHAR(join_date, 'YYYY-MM-DD') <![CDATA[ < ]]>= #{endDate}
+  	ORDER BY join_date ASC
   	</select>
   
   <!--                      관리자                                                  -->

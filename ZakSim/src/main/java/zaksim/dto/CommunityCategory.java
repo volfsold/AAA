@@ -11,6 +11,7 @@ public class CommunityCategory {
 
 	// 카테고리 이미지 
 	private String image;
+	
 
 	public int getIdx() {
 		return idx;

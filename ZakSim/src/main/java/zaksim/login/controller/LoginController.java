@@ -43,7 +43,7 @@ public class LoginController {
 		if ( memberService.login(memberDto) ) {
 			memberDto = memberService.memberInfo(memberDto);
 			
-			// 로그인 후, 회원정보 가져오기 테스트 - 완료
+//          로그인 후, 회원정보 가져오기 테스트 - 완료
 //			logger.info(memberDto.getId().toString());
 //			logger.info(memberDto.getNick().toString());
 //			logger.info(memberDto.getMemberType());
