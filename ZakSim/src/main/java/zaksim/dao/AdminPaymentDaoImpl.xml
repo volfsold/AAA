@@ -29,6 +29,7 @@
   	<result property="merchantUid" column="merchant_uid"/>
   	<result property="buyerIdx" column="buyer_idx"/>
   	<result property="challengeIdx" column="challenge_idx"/>
+  	<result property="price" column="price"/>
   	<result property="paidAt" column="paid_at"/>
   	<result property="status" column="Pstatus"/>
   	<result property="paymentOption" column="payment_option"/>
@@ -56,7 +57,7 @@
 <!-- 	select ZP.imp_uid, ZP.id, ZP.name, ZP.nick, ZP.challenge_idx, ZP.payment_option, RP.refund_option, ZP.status from  -->
 	select COUNT(*) from (
     select * from (
-		select P.imp_uid Pimp_Uid, Z.id Zid, Z.name Zname, Z.nick Znick, P.challenge_idx, P.payment_option, P.status Pstatus
+		select P.imp_uid Pimp_Uid, Z.id Zid, Z.name Zname, Z.nick Znick, P.challenge_idx, P.price, P.payment_option, P.status Pstatus
 	    from zaksimMember Z, payment P
 	    where Z.id !='admin' 
 	    	AND Z.id LIKE '%' || #{searchId} || '%'
@@ -80,7 +81,7 @@
     (select rownum rnum, AdminP.* from
         (select ZPR.*, C.title Ctitle from (
             select * from (
-                select P.imp_uid Pimp_Uid, Z.member_type Zmember_type, Z.id Zid, Z.name Zname, Z.nick Znick, P.challenge_idx, P.payment_option, P.status Pstatus
+                select P.imp_uid Pimp_Uid, Z.member_type Zmember_type, Z.id Zid, Z.name Zname, Z.nick Znick, P.challenge_idx, P.price, P.payment_option, P.status Pstatus
                 from zaksimMember Z, payment P
                 where id !='admin' 
                 	AND id LIKE '%' || #{searchId} || '%'

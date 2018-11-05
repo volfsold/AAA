@@ -33,7 +33,7 @@
 			<div class="row justify-content-between">
 				<div class="col-1"></div>
 				<div class="col-1">
-					<button class="btn btn-zaksim rounded" type="button" >계정 정지</button>
+					<button class="btn btn-zaksim rounded" type="button" id="suspendBtn">계정 정지</button>
 				</div>
 				<div class="col-9">
 					<div class="row justify-content-end">
@@ -73,7 +73,7 @@
 
 
 
-<!-- Modal -->
+<!-- Report Modal -->
 <div class="modal" id="reportModal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -90,15 +90,9 @@
         </div>
         <div class="row ml-1 mr-1 mt-2" style="max-height: 300px;">
         	<div class="col-12" style="overflow: auto;">
-	        	<div class="row border">
-	        		<div class="col-12">
-		        		<div class="row" id="reportCategory" style="font-family: Dohyeon;">신고 카테고리</div>
-		        		<div class="row" id="reportReason">신고 사유 상세</div>
-		        		<div class="row justify-content-end">
-		        			<button class="btn data-modal-iconBtn"><i class="fas fa-arrow-circle-right"></i></button>
-		        		</div>
-		        	</div>
-	        	</div>
+        	
+        	<div id="reportDiv"></div>
+	        	
         	</div>
         </div>
       </div>
@@ -108,7 +102,38 @@
     </div>
   </div>
 </div>
+<!-- Report Modal -->
 
+<!-- Suspend Modal -->
+<div class="modal" id="suspendModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mt-1 mb-1" style="font-family: Dohyeon; font-weight: 300;">계정 정지 회원 리스트</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    	<div class="row ml-1 mr-1">
+    		<p class="text-danger" style="font-size: 0.9em;"> 아래의 회원들은 15일간 계정이 정지됩니다.</p>
+    	</div>
+        
+        <div class="row border ml-1 mr-1" style="height: 150px;">
+        	<div class="col-12" style="overflow: auto;">
+        		<div class="row" id="totalMem"></div>
+        		<div class="row" id="memberIdDiv"></div>
+        	</div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Suspend Modal -->
 
 
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -191,6 +216,7 @@ $("#pageCount30").click(function() {
 	paging(category, pageCount, searchId);
 });
 
+// 카테고리 또는 리스트 갯수 변경 시
 function paging(category, pageCount, searchId) {
 	$.ajax({
 		type: "get"
@@ -209,6 +235,7 @@ function paging(category, pageCount, searchId) {
 	});	
 }
 
+// 검색
 function searching() {
 	var category = $("#categoryDrop").text();
 	var pageCount = $("#pageCountDrop").text().substr(0,2);
@@ -233,10 +260,8 @@ function searching() {
 	});	
 }
 
+// 신고 갯수 클릭 시
 $("#pagingDiv").on("click", ".data-span-modal", function() {
-	// ajax로
-	// 신고 리스트 가져오기
-	// 신고 게시글/댓글의 주소?내용? 가져오기
 			
 	var idx = $(this).parent().parent().children("td").eq(0).text();
 	console.log(idx);
@@ -246,10 +271,26 @@ $("#pagingDiv").on("click", ".data-span-modal", function() {
 		, url : "/zaksim/admin/reportDetail?idx=" + idx
 		, dataType: "json"
 		, success: function( data ) {
-			console.log(data.rList);
-		
-			$("#reportCategory").text(data.rList.category);
-			$("#reportReason").text(data.rList.reason);
+			
+			var text = "";
+			
+			for(var i=0; i<data.rList.length; i++) {
+				text += "<div class='row border'>"
+        				+ "<div class='col-12'>"
+        				+ "<div class='row' id='reportCategory' style='font-family: Dohyeon;'>"
+        				+ data.rList[i].category
+        				+ "</div>"
+        				+ "<div class='row' id='reportReason'>"
+        				+ data.rList[i].reason
+        				+ "</div>"
+        				+ "<div class='row justify-content-end'>"
+        				+ "<button class='btn data-modal-iconBtn'><i class='fas fa-arrow-circle-right'></i></button>"
+        				+ "</div>"
+        				+ "</div>"
+    					+ "</div>";
+			}
+			
+			$("#reportDiv").html(text);
 		
 			$("#reportModal").modal('show');
 		}
@@ -263,6 +304,7 @@ $("#pagingDiv").on("click", ".data-span-modal", function() {
 	});	
 });
 
+// 페이징 버튼 클릭 시
 $("#pagingDiv").on("click", ".page-link", function() {
 	
 	var category = $("#categoryDrop").text();
@@ -290,6 +332,54 @@ $("#pagingDiv").on("click", ".page-link", function() {
 		}
 	});	
 	
+});
+
+// 전체 선택하기, 해제하기
+$("#pagingDiv").on("click", "[name=checkAll]", function(){
+	$("[name=checkOne]").prop("checked", $(this).prop("checked") );
+});
+
+// 개별 체크박스 선택 시
+$("#pagingDiv").on("click", "[name=checkOne]", function() {
+	
+	if( $(this).prop("checked") ) {
+		checkBoxLength = $("[name=checkOne]").length;
+		checkedLength = $("[name=checkOne]:checked").length;
+	
+		if( checkBoxLength == checkedLength ) {
+			$("[name=checkAll]").prop("checked", true);
+		} else {
+			$("[name=checkAll]").prop("checked", false);
+		}
+	} else {
+		// 하나라도 해제가 되면 전체 버튼은 해제
+		$("[name=checkAll]").prop("checked", false);
+	}
+});
+
+// 계정 정지 버튼 클릭 시
+$("#suspendBtn").click(function() {
+	var checkList = $("[name=checkOne]:checked");
+	var suspendMemberIdx = [];
+	var suspendMemberId = [];
+
+	checkList.each(function(i) {
+		suspendMemberIdx.push(checkList.parent().parent().eq(i).children("td").eq(0).text());
+		suspendMemberId.push(checkList.parent().parent().eq(i).children("td").eq(3).text());
+	});
+	console.log(suspendMemberIdx);
+	console.log(suspendMemberId);
+	
+	var modalText = "";
+	
+	for(var i=0; i<suspendMemberId.length; i++){
+		modalText += suspendMemberId[i] + ", ";
+	}
+
+	$("#totalMem").html("총 " + suspendMemberId.length + "명");
+	$("#memberIdDiv").html(modalText.substr(0, modalText.length-2));
+	
+	$("#suspendModal").modal('show');
 });
 
 

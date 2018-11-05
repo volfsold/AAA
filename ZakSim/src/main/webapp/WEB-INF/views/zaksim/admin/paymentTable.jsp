@@ -11,7 +11,7 @@
 					<table class="table table-hover text-center">
 						<thead>
 							<tr>
-								<th><input type="checkbox"/></th>
+								<th><input type="checkbox" name="checkAll"/></th>
 								<th style="display: none;">impUid</th>
 								<th>No.</th>
 								<th>회원 유형</th>
@@ -21,6 +21,7 @@
 								<th style="display: none;">도전 인덱스</th>
 								<th>도전 타이틀</th>
 								<th>결제 방법</th>
+								<th>결제 금액</th>
 								<th>환불 사유</th>
 								<th>인증률</th>
 								<th>결제 상태</th>
@@ -30,7 +31,7 @@
 						<c:forEach items="${ rList }" var="refund">
 							<tr>
 								<th scope="row">
-									<input type="checkbox"/>
+									<input type="checkbox" name="checkOne"/>
 								</th>
 								<td style="display: none;">${refund.impUid}</td>
 								<td>${refund.rRnum}</td>
@@ -41,6 +42,7 @@
 								<td style="display: none;">${refund.payment.challengeIdx}</td>
 								<td>${refund.payment.challenge.title}</td>
 								<td>${refund.payment.paymentOption}</td>
+								<td>${refund.payment.price}</td>
 								<c:if test="${empty refund.refundOption}">
 									<td>-</td>
 								</c:if>
