@@ -88,7 +88,7 @@
 									<input type="email" class="form-control" id="joinEmail" name="joinEmail" placeholder="ex) abcd@gmail.com">
 								</div>
 								<label class="col-md-1"> </label>
-								<button type="button" class="btn col-md-3 joinBtnColorCheck1">인증번호 받기</button>
+								<button type="button" class="btn col-md-3 joinBtnColorCheck1" id="btnEmail">인증번호 받기</button>
 							</div>
 							<br>
 							<div class="row mx-auto">
@@ -96,11 +96,11 @@
 									<input type="email" class="form-control" id="joinNum" placeholder="인증번호를 입력하세요.">
 								</div>
 								<label class="col-md-1"> </label>
-								<button type="button" class="btn col-md-3 joinBtnColorCheck2">인증 확인</button>
+								<button type="button" class="btn col-md-3 joinBtnColorCheck2" id="btnEmailCheck">인증 확인</button>
 							</div>
 						</div>
 						<div class="col-md-6 mx-auto pt-5 pb-3">
-							<button type="submit" class="btn joinBtnColor col-md">가입하기</button>
+							<button type="submit" class="btn joinBtnColor col-md" id="btnJoin">가입하기</button>
 						</div>
 					</form>
 				</div>
@@ -303,5 +303,8 @@
 			console.log("Flag name : " + flagName);
 			
 		}
+	});
+	$('#btnEmail').click(function(){
+		
 	});
 </script>
