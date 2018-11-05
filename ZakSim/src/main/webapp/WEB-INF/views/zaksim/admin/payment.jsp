@@ -379,7 +379,7 @@ $("#partialRefundBtn").click(function() {
 					+ refundMemberId[i] 
 					+ "</div>"
 					+ "<div class='col-6 border'>" 
-					+ refundPrice[i]/10 + "원"
+					+ (refundPrice[i]/10)*9 + "원"
 					+ "</div>";
 	}
 
