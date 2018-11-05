@@ -50,9 +50,16 @@ public interface ZakSimMemberService {
 	
 	/**
 	 * 회원가입 - 아이디 중복체크 service
-	 * @param id
+	 * @param String id
 	 * @return true(사용 가능) or false(중복된 ID가 있음)
 	 */
 	public boolean checkId(String id);
+
+	/**
+	 * 회원가입 - 닉네임 중복체크 service
+	 * @param String nick
+	 * @return true(사용 가능) or false(중복된 닉네임이 있음)
+	 */
+	public boolean checkNick(String nick);
 	
 }
