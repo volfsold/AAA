@@ -18,7 +18,6 @@
 		<div class="col-9">
 			<strong>
 				<h1 style="vertical-align: 100%">커뮤니티</h1>
-				
 			</strong>
 		</div>
 		<div class="col"></div>
@@ -26,19 +25,42 @@
 	<div class="row">
 		<div class="col"></div>
 		<div class="col-9">
-			<form action="/zaksim/community/searchCommunity" method="post">
-				<div class="form-inline">
-					<select name="selectSearch" class="custom-select d-block my-3"
-						required>
-						<option value="communutyName" selected="selected">모임 명</option>
-						<option value="communutyCategory">카테고리</option>
-						<option value="communutyKeyword">키워드</option>
-					</select> <input type="text" class="form-control mx-3" style="width: 600px;"
-						name="searchContent" placeholder="검색할 내용" required="required">
-					<input type="submit" class="btn btn-outline-info" value="Search" />
+			<div class="form-inline">
 
-				</div>
-			</form>
+				<!-- 							<form action="/zaksim/community/searchCommunity" method="post"> -->
+				<!-- 								<div class="form-inline"> -->
+				<!-- 									<select name="selectSearch" class="custom-select d-block my-3" -->
+				<!-- 										required> -->
+				<!-- 										<option value="communutyName" selected="selected">모임 명</option> -->
+				<!-- 										<option value="communutyCategory">카테고리</option> -->
+				<!-- 										<option value="communutyKeyword">키워드</option> -->
+				<!-- 									</select> <input type="text" class="form-control mx-3" style="width: 600px;" -->
+				<!-- 										name="searchContent" placeholder="검색할 내용" required="required"> -->
+				<!-- 									<input type="submit" class="btn btn-outline-info" value="Search" /> -->
+
+				<!-- 								</div> -->
+				<!-- 							</form> -->
+
+				<form action="/zaksim/community/searchCommunity" method="post">
+					<div class="form-inline">
+
+						<c:set var="selectSearch2" value="${selectSearch }" />
+						<select name="selectSearch" class="custom-select d-block my-3"
+							required>
+							<option value="communutyName"
+								<c:if test="${selectSearch2 eq 'communutyName'}"> selected</c:if>>모임
+								명</option>
+							<option value="communutyCategory"
+								<c:if test="${selectSearch2 eq 'communutyCategory'}"> selected</c:if>>카테고리</option>
+							<option value="communutyKeyword"
+								<c:if test="${selectSearch2 eq 'communutyKeyword'}"> selected</c:if>>키워드</option>
+						</select> <input type="text" class="form-control mx-3"
+							style="width: 600px;" name="searchContent"
+							value="${searchContent }" required="required"> <input
+							type="submit" class="btn btn-outline-info" value="Search" />
+					</div>
+				</form>
+			</div>
 
 		</div>
 
@@ -49,9 +71,9 @@
 	<div class="row">
 		<div class="col"></div>
 
-
+		
 		<div class="col-sm-11" style="margin-top: 50px; margin-right: 50px;">
-			<strong style="font-size: 150%">인기 모임</strong>
+			<strong style="font-size: 150%">검색 결과</strong>
 				<button type="button" class="btn btn-outline-danger"
 					style="float: right; margin-top: 30px; margin-left: 30px; margin-right: 30px;"
 					data-toggle="modal" data-target=".bd-example-modal-lg">모임
@@ -62,37 +84,24 @@
 
 
 
-
-			<div style="margin-left: 22px;">
-
 				<div class="form-inline">
-
-					<c:forEach var="popularGroupList" items="${popularGroupList }"
-						begin="0" end="20" step="1">
+					<c:forEach var="category" items="${category }">
 
 						<div class="card bg-dark text-white">
 							<div class="hovereffect">
-								<img class="card-img"
-									src="${popularGroupList.communityGroup.image }"
+								<img class="card-img" src="${category.communityGroup.image }"
 									alt="Card image">
 								<div class="card-img-overlay">
-									<h4 class="card-title">${popularGroupList.communityGroup.title }</h4>
-
-									<c:forEach items="${categoryList }" var="categoryList">
-										<c:if
-  											test="${popularGroupList.communityGroup.category_idx eq categoryList.idx}"> 
- 											<p class="card-text">${categoryList }</p> 
-  										</c:if>  									
-  										</c:forEach> 
+									<h4 class="card-title">${category.communityGroup.title }</h4>
 
 									<c:forEach items="${keywordList }" var="keyword">
 										<c:if
-											test="${popularGroupList.communityGroup.idx eq keyword.group_idx}">
+											test="${category.communityGroup.idx eq keyword.group_idx}">
 											<p class="card-text">#${keyword.keyword }</p>
 										</c:if>
 									</c:forEach>
 
-									<p class="card-text">♡ ${popularGroupList.likeNum }</p>
+									<p class="card-text">♡ ${category.likeNum }</p>
 									<div class="progress">
 										<div class="progress-bar" role="progressbar"
 											style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
@@ -103,7 +112,7 @@
 											<button type="button" class="btn btn-primary">가입하기</button> <br>
 											<br>
 											<button type="button" class="btn btn-danger"
-											onclick="moveURL(${popularGroupList.communityGroup.idx })">상세보기</button>
+												onclick="moveURL(${category.communityGroup.idx })">상세보기</button>
 										</a> <br> <br> <br>
 									</div>
 								</div>
@@ -111,18 +120,21 @@
 						</div>
 
 					</c:forEach>
-
 				</div>
+
+
+
 			</div>
-		</div>
-
-
-
-
-		<div class="col" style="margin-bottom: 300px;"></div>
 	</div>
 
 </div>
+
+
+
+
+
+<div class="col" style="margin-bottom: 300px;"></div>
+
 
 
 
@@ -131,6 +143,7 @@
 	<a href=""><img id="upImg" src="/resources/image/community/위로.png">
 	</a>
 </div>
+
 
 <!-- footer include -->
 <%@include file="/WEB-INF/views/zaksim/main/footer.jsp"%>
@@ -279,12 +292,14 @@
 					<div class="modal-footer" style="">
 						<input type="submit" class="btn btn-danger" id="create"
 							value="만들기" />
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">취소</button>
 					</div>
 			</form>
 		</div>
 	</div>
 </div>
+
 
 </body>
 
@@ -294,70 +309,44 @@
 	href="/css/community/popularCommunity.css">
 
 
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("#imgInp").on('change', function() {
-			readURL(this);
-		});
-	});
+	$(document).ready(function() {
 
-	function readURL(input) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				$('#image').attr('src', e.target.result);
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 200) {
+				$('.top-button').fadeIn();
+			} else {
+				$('.top-button').fadeOut();
 			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
+		});
 
-	function content(obj) {
-		obj.style.height = "1px";
-		obj.style.height = (12 + obj.scrollHeight) + "px";
+		$('.top-button').click(function() {
+			$('html,body').animate({
+				scrollTop : 0
+			}, 400);
+			return false;
+		});
+		
+		// 공개 클릭 시 숨기기 / 비공개 클릭 시 보이기
+		$(".screctRadio").hide();
+
+		$("#screctRadio1").click(function() {
+			$(".screctRadio").hide();
+		});
+
+		$("#screctRadio2").click(function() {
+			$(".screctRadio").fadeIn();
+		});
+
+		$("#join").click(function() {
+			$("#createModal").modal();
+		});
+		
+	});
+	
+	function moveURL(url) {
+		document.location.href = "/zaksim/community/enrollCommunity?idx="+url;
 	}
 </script>
-<script type="text/javascript">
-        $(document).ready(function() {
-
-            $(window).scroll(function() {
-                if ($(this).scrollTop() > 200) {
-                    $('.top-button').fadeIn();
-                } else {
-                    $('.top-button').fadeOut();
-                }
-            });
-
-
-            $('.top-button').click(function() {
-                $('html,body').animate({
-                    scrollTop: 0
-                }, 400);
-                return false;
-            });
-    		// 공개 클릭 시 숨기기 / 비공개 클릭 시 보이기
-    		$(".screctRadio").hide();
-
-    		$("#screctRadio1").click(function() {
-    			$(".screctRadio").hide();
-    		});
-
-    		$("#screctRadio2").click(function() {
-    			$(".screctRadio").fadeIn();
-    		});
-
-    		$("#join").click(function() {
-    			$("#createModal").modal();
-    		});
-            
-        });
-        
-    	function moveURL(url) {
-    		document.location.href = "/zaksim/community/enrollCommunity?idx="+url;
-    	}
-        
-    </script>
-
-
 

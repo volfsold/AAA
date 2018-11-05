@@ -3,13 +3,36 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-    <mapper namespace="zaksim.dao.CommunityEditDAO">
-  
-  <insert id="createGroup" parameterType="zaksim.dto.CommunityGroup">
-  		INSERT INTO CommunityGroup (idx, member_idx, category_idx, title, content, image, max, open_date, private, password) 
-  		VALUES (CommunityGroup_SEQ.nextval,1, 1, #{title}, #{content}, #{image}, #{max}, default, #{secret}, #{password})
-  </insert>
-  
-  </mapper>
+
+<mapper namespace="zaksim.dao.CommunityEditDAO">
+
+	<select id="getCategoryIdx" resultType="int" parameterType="int">
+	
+		select * from CommunityCategory where idx=#{idx}
+	
+	</select>
+
+
+	<insert id="createGroup"
+		parameterType="zaksim.dto.CommunityGroup">
+		INSERT INTO CommunityGroup (idx, member_idx, category_idx, title, content,
+		image, max, open_date, secret, password)
+		VALUES (#{idx}, #{member_idx}, #{category_idx}, #{title}, #{content}, #{image},
+		#{max}, default, #{secret}, #{password})
+	</insert>
+	
+	
+	<select id="getnextval" resultType="int">
+		select communitygroup_seq.nextval from dual
+	</select>
+
+
+
+	<insert id="createKeyword"
+		parameterType="zaksim.dto.GroupKeyword">
+		INSERT INTO groupkeyword (idx, group_idx, keyword)
+		VALUES (groupkeyword_SEQ.nextval, #{group_idx}, #{keyword})
+	</insert>
+
+</mapper>
   

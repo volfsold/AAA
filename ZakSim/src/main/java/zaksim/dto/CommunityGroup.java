@@ -5,6 +5,8 @@ import java.util.Date;
 // 커뮤니티 그룹
 public class CommunityGroup {
 
+	private int currval;
+	
     // 인덱스 
     private int idx;
 
@@ -34,13 +36,23 @@ public class CommunityGroup {
 
     // 비밀번호 
     private String password;
-
     
+    CommunityCategory communityCategory;
+
 	@Override
 	public String toString() {
-		return "CommunityGroup [category_idx=" + category_idx + ", content=" + content + ", idx=" + idx + ", image="
-				+ image + ", max=" + max + ", member_idx=" + member_idx + ", open_date=" + open_date + ", password="
-				+ password + ", secret=" + secret + ", title=" + title + "]";
+		return "CommunityGroup [currval=" + currval + ", idx=" + idx + ", member_idx=" + member_idx + ", category_idx="
+				+ category_idx + ", title=" + title + ", content=" + content + ", image=" + image + ", max=" + max
+				+ ", open_date=" + open_date + ", secret=" + secret + ", password=" + password + ", communityCategory="
+				+ communityCategory + "]";
+	}
+
+	public int getCurrval() {
+		return currval;
+	}
+
+	public void setCurrval(int currval) {
+		this.currval = currval;
 	}
 
 	public int getIdx() {
@@ -121,6 +133,14 @@ public class CommunityGroup {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public CommunityCategory getCommunityCategory() {
+		return communityCategory;
+	}
+
+	public void setCommunityCategory(CommunityCategory communityCategory) {
+		this.communityCategory = communityCategory;
 	}
 
 
