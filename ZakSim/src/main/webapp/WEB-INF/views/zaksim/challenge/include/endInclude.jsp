@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<div class="row text-dark pb-5 py-2 " style="background-color: rgba(94, 94, 94, 0.64);">
+
+       <div class="row text-dark pb-5 py-2 " style="background-color: rgba(94, 94, 94, 0.64);">
         <div class="col-md-1"></div>
         <div class="col-md-10 rounded" style="height: 660px; background-color: rgba(33, 33, 33, 0.67);">
           <div class="col-md-12 text-center my-4 text-white">
@@ -27,13 +28,13 @@
             <a >- 벤자민 프랭클린</a>
           </div>
           <div class="row">
-            <div class="col-md-6 text-left">
-              <a class="btn text-white btn-lg ml-5" style="background-color: gray;"> 도전 취소 </a>
-            </div>
-            <div class="col-md-6 text-right">
-              <a class="btn text-white btn-lg mr-5" href="/zaksim/challenge/challengeInfo" style="background-color: rgb(187, 68, 56);"> 도전 시작 </a>
+            
+            <div class="col-md-12 text-center">
+              <a class="btn text-white btn-md " href="/zaksim/challenge/challengeInfo" style=" background-color: rgb(187, 68, 56);">
+            	   도전 정보 확인 </a>
             </div>
           </div>
         </div>
         <div class="col-md-1"></div>    
-      </div>
+     </div>
+         
