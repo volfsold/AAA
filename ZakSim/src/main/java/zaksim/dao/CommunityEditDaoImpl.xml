@@ -33,6 +33,22 @@
 		INSERT INTO groupkeyword (idx, group_idx, keyword)
 		VALUES (groupkeyword_SEQ.nextval, #{group_idx}, #{keyword})
 	</insert>
+	
+	
+	<update id="updateGroup" parameterType="int">
+update communityGroup set category_idx=#{category_idx }, title=#{title }, content=#{comtent },
+		 image=#{image }, max=#{max }
+		 where idx=#{idx }
+	</update>
+	
+	<delete id="deleteKeyword" parameterType="int">
+		delete from groupkeyword where group_idx=#{group_idx }
+ 	</delete>
+ 	
+ 	<delete id="deleteGroup" parameterType="int">
+ 		delete from communityGroup where idx=#{idx }
+ 	</delete>
+
 
 </mapper>
   

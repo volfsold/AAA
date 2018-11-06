@@ -1,5 +1,7 @@
 package zaksim.dao;
 
+import java.util.List;
+
 import zaksim.dto.CommunityCategory;
 import zaksim.dto.CommunityGroup;
 import zaksim.dto.GroupKeyword;
@@ -26,13 +28,14 @@ public interface CommunityEditDAO {
 	public void createKeyword(GroupKeyword groupKeyword);
 	
 	
-	// 그룹 수정
-	public void updateGroup(int  idx);
+	// 키워드 삭제
+	public void deleteKeyword(int group_idx);
 	
-	// 키워드 수정
-	public void updateKeyword(int Group_index);
+	
+	// 그룹 수정
+	public void updateGroup(int group_idx);
 	
 	// 그룹 삭제
-	public void deleteGroup(CommunityGroup communityGroup);
+	public void deleteGroup(int idx);
 	
 }

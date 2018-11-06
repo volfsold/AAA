@@ -38,27 +38,47 @@ public class CommunityEditServiceImpl implements CommunityEditService{
 //		communityEditDAO.createKeyword(groupKeyword);
 //	}
 //	
+	
 	// 그룹 수정
-	public void updateGroup(int idx) {
-		communityEditDAO.updateGroup(idx);
-	}
+//	public void updateGroup(int idx) {
+//		communityEditDAO.updateGroup(idx);
+//	}
 	
 	// 키워드 수정
 	@Override
-	public void updateKeyword(int Group_index) {
-		communityEditDAO.updateKeyword(Group_index);
+	public void updateKeyword(int group_index, String keyword) {
+
+		
 	}
 	
-	// 그룹 삭제
-	public void deleteGroup(CommunityGroup communityGroup) {
-		communityEditDAO.deleteGroup(communityGroup);
-	}
 
 	@Override
 	public int getCategoryIdx(int categoryNum) {
-		
 		return categoryNum;
 	}
+
+	
+	// 키워드 삭제
+	@Override
+	public void deleteKeyword(int group_idx) {
+		communityEditDAO.deleteKeyword(group_idx);
+	}
+
+	// 그룹 수정
+	@Override
+	public void updateGroup(int group_idx) {
+		communityEditDAO.updateGroup(group_idx);
+	}
+
+	// 그룹 삭제
+	@Override
+	public void deleteGroup(int idx) {
+		communityEditDAO.deleteGroup(idx);
+	}
+
+
+
+
 
 
 

@@ -26,7 +26,7 @@
 		<div class="col"></div>
 
 		<c:forEach var="groupInfo" items="${groupInfo }">
-		
+
 			<div class="col-sm-11" style="margin-top: 50px; margin-right: 50px;">
 				<strong style="font-size: 150%">${groupInfo.communityGroup.title }</strong>
 
@@ -71,7 +71,8 @@
 							<span style="font-size: 150%;">n명 </span> <span
 								style="font-size: 150%;">/ 최대
 								${groupInfo.communityGroup.max }명</span> &nbsp;&nbsp;&nbsp;
-							<button type="button" class="btn btn-outline-secondary" id="joinMemberView">참여자
+							<button type="button" class="btn btn-outline-secondary"
+								onclick="joinMemberView(${groupInfo.communityGroup.idx })">참여자
 								보기</button>
 						</div>
 
@@ -92,9 +93,8 @@
 							style="margin-left: 50px; margin-right: 50px; margin-bottom: 50px; display: none;"
 							id="communityAchievementComment">
 
-							<button type="button" class="btn btn-outline-danger"id="detailView">
-								자세히 보기
-							</button>
+							<button type="button" class="btn btn-outline-danger"
+								id="detailView">자세히 보기</button>
 							<br> <br>
 							<div class="progress">
 								<div class="progress-bar" role="progressbar" style="width: 25%;"
@@ -565,6 +565,20 @@
 									<div class="form-inline">
 										<div>
 
+											<%-- 										<c:set var="key" value="${keywordList.group_idx }" /> --%>
+
+											<%-- 											<c:forEach var="keywordList" items="${keywordList }"> --%>
+											<%-- 												<c:if --%>
+											<%-- 													test="${groupInfo.communityGroup.idx eq keywordList.group_idx}"> --%>
+											<%-- 													<input type="hidden" name="commCategoryIdx" value="${keywordList.group_idx }" /> --%>
+											<%-- 											</c:if> --%>
+											<%-- 											</c:forEach> --%>
+											<input type="hidden" name="commGroupIdx"
+												value="${groupInfo.communityGroup.idx }" />
+											<%-- 										<input type="hidden" name="commCategoryIdx" value="${key }" /> --%>
+
+
+
 											<img id="image" src="${groupInfo.communityGroup.image }"
 												alt="..." class="img-thumbnail"
 												style="width: 200px; height: 150px; margin-bottom: 10px;"><br>
@@ -587,11 +601,11 @@
 											</strong></span> <input class="form-control" type="text"
 												style="height: 30px;" name="title" maxlength="20"
 												required="required" id="commName"
-												placeholder="${groupInfo.communityGroup.title }"> <br>
+												value="${groupInfo.communityGroup.title }"> <br>
 											<br> <span style="font-size: 20px;"><strong>최대
 													모임 인원 : </strong></span> <input class="form-control" type="number"
 												style="width: 80px; height: 30px;"
-												placeholder="${groupInfo.communityGroup.max }" min="1"
+												value="${groupInfo.communityGroup.max }" min="1"
 												id="commMax" max="100" name="max" required="required"><strong>명</strong>
 											<br> <span
 												style="margin-left: 50px; font-size: 15px; color: gray;">※
@@ -604,26 +618,30 @@
 									<div style="margin-top: 30px;">
 										<span style="margin-left: 50px; margin-right: 102px;"><strong>공개</strong></span>
 										<input type="radio" name="secret" id="screctRadio1" value=0
-										<c:if test="${groupInfo.communityGroup.secret==0}">checked="checked"</c:if> />
+											<c:if test="${groupInfo.communityGroup.secret==0}">checked="checked"</c:if> />
 
 										<label> 공개</label> <input type="radio"
-											style="margin-left: 100px;" id="screctRadio2" name="secret" value=1
+											style="margin-left: 100px;" id="screctRadio2" name="secret"
+											value=1
 											<c:if test="${groupInfo.communityGroup.secret==1}">checked="checked"</c:if> />
-											 <label> 비공개</label> <br> <br>
+										<label> 비공개</label> <br> <br>
 
-										<div style="margin-left: 30px; margin-right: 30px;">
-											<div class="screctRadio" style="vertical-align: top;">
-												<div class="card-body">
-													<div class="form-inline">
-														<span><strong>기존 비밀번호</strong></span> <input
-															type="password" class="form-control"
-															style="margin-left: 37px;" id="pass" name="pass">
+										<!-- 기존 비밀번호가 존재 시 -->
+										<c:if test="${groupInfo.communityGroup.secret==1}">
+											<div style="margin-left: 30px; margin-right: 30px;">
+												<div class="screctRadio" style="vertical-align: top;">
+													<div class="card-body">
+														<div class="form-inline">
+															<span><strong>기존 비밀번호</strong></span> <input
+																type="password" class="form-control"
+																style="margin-left: 37px;" id="pass">
+														</div>
+
+													<span style="margin-left: 140px; display: none;" id="passComment" ></span>
 													</div>
-
 												</div>
 											</div>
-										</div>
-
+										</c:if>
 
 										<div style="margin-left: 30px; margin-right: 30px;">
 											<div class="screctRadio" style="vertical-align: top;">
@@ -633,7 +651,7 @@
 															type="password" class="form-control"
 															style="margin-left: 22px;" id="password1" name="password">
 													</div>
-
+													<span style="margin-left: 140px; display: none;" id="pass1Comment"></span>
 												</div>
 											</div>
 										</div>
@@ -647,6 +665,7 @@
 															type="password" name="password2" class="form-control"
 															id="password2" style="margin-left: 37px;">
 													</div>
+													<span style="margin-left: 140px; display: none;" id="pass2Comment"></span>
 													<br>
 												</div>
 											</div>
@@ -658,19 +677,18 @@
 										<select name="category"
 											class="custom-select mb-2 mr-sm-2 mb-sm-0"
 											style="height: 40px; width: 150px;">
-											<option value="Category01" >Category01</option>
-											<option value="Category02">Category02</option>
-											<option value="Category03">Category03</option>
-											<option value="Category04">Category04</option>
-											<option value="Category05">Category05</option>
+											<option value=1>운동</option>
+											<option value=2>금연</option>
+											<option value=3>다이어트</option>
+											<option value=4>스터디</option>
+											<option value=5>도서</option>
 										</select> <br> <br>
 										<div class="form-inline">
 											<span style="margin-left: 50px; margin-right: 90px;"><strong>키워드</strong></span>
 
-										
 											<input type="text" class="form-control" style="width: 300px;"
 												name="keyword" name="keyword" placeholder="ex) #키워드1#키워드2"
-												required="required" pattern="" title="" 
+												required="required"
 												onkeyup="this.value=this.value.replace(/[^#0-9가-힣a-zA-Z]/g,'')">
 										</div>
 										<br>
@@ -679,10 +697,10 @@
 
 											<br>
 											<textarea class="form-control" name="content"
-												onkeydown="content(this)"
+												onkeydown="boardCommnet(this)"
 												style="width: 300px; margin-bottom: 20px;"
-												onkeyup="content(this)" placeholder="내용을 입력하세요"
-												required="required"></textarea>
+												onkeyup="boardCommnet(this)" placeholder="내용을 입력하세요"
+												required="required">${groupInfo.communityGroup.content}</textarea>
 
 
 										</div>
@@ -695,12 +713,15 @@
 							</div>
 						</div>
 
-						<div class="modal-footer" style="">
+						<div class="modal-footer">
 							<input type="submit" class="btn btn-danger" id="update"
+								onclick="updateClick(${groupInfo.communityGroup.password})"
 								value="수정" />
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">취소</button>
-							<button type="button" class="btn btn-success">삭제</button>
+							<button type="reset" class="btn btn-secondary"
+								onclick="updateCancel()">취소</button>
+							<button type="button" class="btn btn-success"
+								onclick="deleteCommnunity(${groupInfo.communityGroup.idx})">삭제</button>
+
 						</div>
 				</c:forEach>
 			</form>
@@ -722,7 +743,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/css/community/enrollCommunity.css">
 
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
 
 <script type="text/javascript">
 	$(function() {
@@ -749,23 +770,38 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
+
 		$("#detailView").click(function() {
 			document.location.href = "/zaksim/community/detailCommunity";
 		});
-		
-		$('#joinMemberView').click(function() {
-			document.location.href="/zaksim/community/joinMember";
+
+		$("#deleteCommnunity").click(function() {
+			document.location.href = "/zaksim/community/communityMain";
 		});
 
 		// 공개 클릭 시 숨기기 / 비공개 클릭 시 보이기
-		$(".screctRadio").hide();
+		var radioVal = $('input[name="secret"]:checked').val();
+		if(radioVal==0){
+			$(".screctRadio").hide();
+		}
+		else {
+			$(".screctRadio").show();
+		}
 
 		$("#screctRadio1").click(function() {
+			$("#pass").val("");
+			$("#password1").val("");
+			$("#password2").val("");
+			$("#pass").attr("disabled", false);
+			$("#password1").attr("disabled", false);
+			$("#password2").attr("disabled", false);
 			$(".screctRadio").hide();
 		});
 
 		$("#screctRadio2").click(function() {
+			$("#pass").attr("required", true);
+			$("#password1").attr("required", true);
+			$("#password2").attr("required", true);
 			$(".screctRadio").fadeIn();
 		});
 
@@ -842,12 +878,109 @@
 		});
 
 	});
+	
+	
 	function boardCommnet(obj) {
 		obj.style.height = "1px";
 		obj.style.height = (12 + obj.scrollHeight) + "px";
 	}
 	
-  
+	// 안됌
+// 	function content(obj) {
+// 		obj.style.height = "1px";
+// 		obj.style.height = (12 + obj.scrollHeight) + "px";
+// 	}
+	
+	function deleteCommnunity(obj) {
+		document.location.href = "/zaksim/community/deleteCommunity?idx="+obj;
+	}
+	
+	function joinMemberView(obj) {
+		document.location.href = "/zaksim/community/joinMember?idx="+obj;
+	}
+	
+	// 커뮤니티 정보 모달 창 취소
+	function updateCancel() {
+		 $("#updateCommunityModal").modal('hide');
+	}
+	
+	
+	// 
+	function updateClick(password) {
+		
+		// 라디오 체크 값
+		var radioVal = $('input[name="secret"]:checked').val();
+        
+		// 기존 비밀번호
+		var pass = document.getElementById("pass").value;
+		// 새로운 비밀번호
+		var pw1=  document.getElementById("password1").value;
+		// 비밀번호 확인
+		var pw2=  document.getElementById("password2").value;
+		
+		// 공개 클릭 시 비밀번호들 비활성화
+		if(radioVal==0 ){
+			$("#pass").attr("disabled", false);
+			$("#password1").attr("disabled", false);
+			$("#password2").attr("disabled", false);
+		}
+		else{
+			if(pass == null || pass== ''){
+				$('#passComment').css("display", "inline");
+				$('#pass1Comment').css("display", "none");
+				$('#pass2Comment').css("display", "none");
+				document.getElementById('passComment').innerHTML = "기존비밀번호를 입력하세요.";
+				document.getElementById('passComment').style.color = "red";
+				$("#passCommnet").val('');
+				return;
+			}
+			
+			else if(pass != password){
+				$('#passComment').css("display", "inline");
+				$('#pass1Comment').css("display", "none");
+				$('#pass2Comment').css("display", "none");
+				document.getElementById('passComment').innerHTML = "기존비밀번호가 틀립니다.";
+				document.getElementById('passComment').style.color = "red";
+				$("#passCommnet").val('');
+				return;
+			}
+		
+			else if(pw1 == null || pw1=='' ){
+				$('#pass1Comment').css("display", "inline");
+				$('#passComment').css("display", "none");
+				$('#pass2Comment').css("display", "none");
+				document.getElementById('pass1Comment').innerHTML = "새로운 비밀번호를 입력하세요.";
+				document.getElementById('pass1Comment').style.color = "red";
+				$("#pass1Commnet").val('');
+				return;
+			}
+		
+			else if(pw2 == null || pw2== '' ){
+				$('#passComment2').css("display", "inline");
+				$('#pass1Comment').css("display", "none");
+				$('#pass2Comment').css("display", "none");
+				document.getElementById('pass2Comment').innerHTML = "비밀번호 확인을 입력하세요.";
+				document.getElementById('pass2Comment').style.color = "red";
+				$("#pass2Commnet").val('');
+				return;
+			}
+		
+
+			else if(pw1 != pw2){
+				$('#pass2Comment').css("display", "inline");
+				$('#passComment').css("display", "none");
+				$('#pass1Comment').css("display", "none");
+				document.getElementById('pass2Comment').innerHTML = "비밀번호가 일치하지 않습니다.";
+				document.getElementById('pass2Comment').style.color = "red";
+				$("#pass1Commnet").val('');
+				$("#pass2Commnet").val('');
+				return;
+			}
+		}
+	}
+	
+
+
 </script>
 
 
