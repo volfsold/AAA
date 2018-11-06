@@ -7,7 +7,7 @@
 <%@include file="/WEB-INF/views/zaksim/main/header.jsp" %>
 
 
-
+ 
 <!-- 바디 -->
 
    <div class="py-5" style="background-image: url(/resources/image/challenge/back.jpg);">
@@ -19,18 +19,23 @@
             <div class="mt-2 col-md-3">
               <h2 class="text-left ml-4 mt-1"> <b>ZakSim</b> </h2>
             </div>
+            
+            <div class="col-md-2 mt-3 ">
+              
+            </div>
+            
             <div class="col-md-2 mt-3 data-cmenu" id="cmenu1" style="background-color:rgb(154, 28, 15); padding-top:7px; ">
               <h5 class="mt-1 "> 도전 정보입력 </h5>
             </div>
+            
             <div class="col-md-2 mt-3 data-cmenu" id="cmenu2">
               <h5 class="mt-1 "> 도전금 결제 </h5>
             </div>
+            
             <div class="col-md-2 mt-3 data-cmenu" id="cmenu3">
-              <h5 class="mt-1 "> 서약서 작성 </h5>
-            </div>
-            <div class="col-md-2 mt-3 data-cmenu" id="cmenu4">
               <h5 class="mt-1"> 도전 안내사항 </h5>
             </div>
+            
             <div class="col-md-1 mt-3">
             </div>
             
@@ -241,8 +246,8 @@
   
   
   
-  
-  <!-- 서약서 작성 -->
+ <!--  
+  서약서 작성
 <script type="text/javascript">
 
 	function toEndChallenge(){
@@ -274,7 +279,9 @@
 
 
 </script>
-   
+   -->    
+    
+
    
         <!-- footer include -->
 <%@include file="/WEB-INF/views/zaksim/main/footer.jsp" %>

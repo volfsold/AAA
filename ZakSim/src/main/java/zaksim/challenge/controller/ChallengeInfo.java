@@ -14,4 +14,9 @@ public class ChallengeInfo {
 		
 	}
 	
+	@RequestMapping(value="/vow", method=RequestMethod.GET)
+	public void challengeVowGet() {
+		
+	}
+	
 }

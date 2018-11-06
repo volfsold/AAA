@@ -88,37 +88,37 @@ public class DoChallenge {
 		// paymentDB insert
 		
 		// 데이터 전달 (boolean=true 일때)
-		return dc.vowChallengeGet(model, chal, pay);
+		return dc.endChallengeGet();
 	}
 	
-	
-	// 서약서 작성
-	@RequestMapping(value="/vowChallenge", method=RequestMethod.GET)
-	public String vowChallengeGet(Model model, Challenge chal, Payment pay) {
-		
-		
-		logger.info("도전금 결제 활성화");
-		logger.info("결제정보 : "+model);
-		
-	
-		
-		
-		return "/zaksim/challenge/include/vowInclude";
-				
-	}
-	
-	@RequestMapping(value="/vowChallenge", method=RequestMethod.POST)
-	public void vowChallengePost(Model model, Challenge chal, Payment pay) {
-		
-		
-		logger.info("도전금 결제 활성화");
-		logger.info("결제정보 : "+model);
-		
-	
-		
-				
-	}
-	
+//	
+//	// 서약서 작성
+//	@RequestMapping(value="/vowChallenge", method=RequestMethod.GET)
+//	public String vowChallengeGet(Model model, Challenge chal, Payment pay) {
+//		
+//		
+//		logger.info("도전금 결제 활성화");
+//		logger.info("결제정보 : "+model);
+//		
+//	
+//		
+//		
+//		return "/zaksim/challenge/include/vowInclude";
+//				
+//	}
+//	
+//	@RequestMapping(value="/vowChallenge", method=RequestMethod.POST)
+//	public void vowChallengePost(Model model, Challenge chal, Payment pay) {
+//		
+//		
+//		logger.info("도전금 결제 활성화");
+//		logger.info("결제정보 : "+model);
+//		
+//	
+//		
+//				
+//	}
+//	
 	
 	// 도전 안내사항
 	@RequestMapping(value="/endChallenge", method=RequestMethod.GET)
