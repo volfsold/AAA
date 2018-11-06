@@ -116,16 +116,20 @@
       
         <div class="row mb-5 ">
            
-           <div class="col-md-12 text-center">
+           <div class="col-md-6 text-center">
            
             <c:if test="${empty status }">
-                <a class="btn btn-md w-25 my-4 btn-primary text-white " href="/zaksim/challenge/vow"> 서약서 작성 </a>
+                <a class="btn btn-lg w-25 my-4 btn-primary text-white " href="/zaksim/challenge/vow"> 서약서 작성 </a>
             </c:if>
             
             <c:if test="${status }">
-                <a class="btn btn-md w-25 my-4 btn-primary text-white " href="#modal"> 서약서 확인 </a>
+                <a class="btn btn-lg w-25 my-4 btn-primary text-white " href="#modal"> 서약서 확인 </a>
             </c:if>
             
+            </div>
+            
+            <div class="col-md-6 text-center"> 
+                <a class="btn btn-lg w-25 my-4 btn-dark text-white " href="#modal"> 도전 포기 </a>
             </div>
             
         </div>

@@ -36,16 +36,24 @@ crossorigin="anonymous"></script>
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="modaltitle"><b> 알림 </b></h4>
+        <h3 class="modal-title" id="modaltitle"><b> 알림 </b></h3>
       </div>
       
-      <div class="modal-body">
-      	<h5> <b style="size: 1.3rem;">로그인</b> 후 이용해 주세요. </h5>
+      <div class="modal-body text-center">
+      	<h4> <b>로그인</b> 후 이용해 주세요. </h4>
       </div>
       
       
       <div class="modal-footer">
-        <a href="/zaksim/main/home"><button type="button" class="btn btn-secondary" >닫기</button></a>
+       
+	       	<div class="col-md-4 text-center">
+	       	<a class="btn btn-md btn-info w-100 m-2" href="/zaksim/login/login"> 로그인 </a>
+	       	</div>
+	     	 <div class="col-md-4"></div>
+	     	<div class="col-md-4 text-center">
+	     	<a class="btn btn-md btn-secondary w-100 m-2" href="javascript:history.go(-1)">확인</a>
+	     	</div>
+     
       </div>
     </div>
   </div>

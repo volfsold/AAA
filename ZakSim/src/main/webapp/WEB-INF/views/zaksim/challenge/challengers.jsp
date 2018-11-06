@@ -22,10 +22,10 @@
        
        <div class="row">
         <div class="mx-3">
-          <h4 class="" contenteditable="true">도전자 인증</h4>
+          <h4 class="" contenteditable="true"><b>도전자 인증</b></h4>
         </div>
         <div class="px-0 col-md-10">
-          <hr class="border border-light" >
+           <div style="height:2px; background-color:gray;" class="col rounded my-2 mt-3"></div> 
         </div>
       </div>
       
