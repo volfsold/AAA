@@ -156,16 +156,19 @@
                 type: 'post',
                 dataType: 'html',
                 data: {
+                	
+                challenge : '${info}', /* 도전 정보 전달 */
+                	
                    imp_uid : rsp.imp_uid,
                    merchant_uid : rsp.merchant_uid,
                   
                    // challenge idx
-                   lesson_idx : '${ lesson[0].idx }',
+               /* lesson_idx : '${ lesson[0].idx }', */
                   
                    // 도전 정보 , 타이틀, 시작일, 종료일, 도전금
                    
                    // 도전자 정보
-                   buyer_id : '${sessionScope.id}',
+                   buyer_id : '${user.id}',
                    buyer_name : '${user.name}',
                    buyer_email : '${user.email}',
                    buyer_phone : '${user.phone}',
@@ -176,7 +179,7 @@
                    //기타 필요한 데이터가 있으면 추가 전달
                 }
                 , success: function( data ) {
-                   //console.log(data);
+                   console.log(data);
                    
                   /*  msg = '결제가 완료되었습니다.';
                   msg += '\n고유ID : ' + rsp.imp_uid;
