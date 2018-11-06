@@ -45,9 +45,11 @@ public class MypageController {
 //		 session.setAttribute("phone", memberDto.getPhone());
 //		 session.setAttribute("email", memberDto.getEmail());
 		 
-		 model.addAttribute("userName", memberDto.getName());
-		 model.addAttribute("userPhone", memberDto.getPhone());
-		 model.addAttribute("userEmail", memberDto.getEmail());
+//		 model.addAttribute("id", memberDto.getId());
+		 model.addAttribute("nick", memberDto.getNick());
+		 model.addAttribute("name", memberDto.getName());
+		 model.addAttribute("phone", memberDto.getPhone());
+		 model.addAttribute("email", memberDto.getEmail());
 
 		 return "/zaksim/mypage/update";
 	}
@@ -57,7 +59,7 @@ public class MypageController {
 	public String MypageUpdateProcess(ZakSimMember memberDto, HttpServletRequest request) {
 		logger.info(request.getParameter("newPassword1"));
 
-        mypageService.updateMember(memberDto); 
+//        mypageService.updateMember(memberDto); 
         
         // 수정된 내용 세션에 반영
 		
