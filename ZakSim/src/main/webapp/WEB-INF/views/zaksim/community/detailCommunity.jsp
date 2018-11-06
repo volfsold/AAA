@@ -53,7 +53,7 @@
 
                 <div>
                     <button type="button" class="btn btn-danger" style="margin-left: 250px; width: 150px;">인증하기</button>
-                    <button type="button" class="btn btn-info" style="margin-left: 200px; width: 150px;">인증 목록</button>
+                    <button type="button" class="btn btn-info" style="margin-left: 200px; width: 150px;" id="certification">인증 목록</button>
                 </div>
 
                 <div style="margin-top: 100px; font-size: 300%; margin-left: 150px;">랭킹</div>
@@ -174,7 +174,9 @@
         <script type="text/javascript">
         $(document).ready(function() {
 
-        	
+        	$('#certification').click(function() {
+        		document.location.href="/zaksim/community/certificationCommunity";
+        	});
         	
             $(window).scroll(function() {
                 if ($(this).scrollTop() > 200) {

@@ -3,6 +3,7 @@ package zaksim.login.service;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,13 +60,11 @@ public class ZakSimMemberServiceImpl implements ZakSimMemberService {
 		map.put("email", email);
 		
 		if ( memberDao.findPw(map) == 1 ) {
-			ranPw = "";
-			Random ran = new Random();
+			ranPw = UUID.randomUUID().toString().replaceAll("-", ""); // - 제거
+			ranPw = ranPw.substring(0, 10);
 			
-			for( int i = 0; i < 10; i++ ) {
-				ranPw = ranPw + ran.nextInt(10); // 0 ~ 9 까지 랜덤으로 숫자 넣기
-			}
 			System.out.println("생성된 임시 비밀번호 : " + ranPw);
+			
 			map.put("ranPw", ranPw);
 			memberDao.findPwResult(map);
 		}
@@ -85,6 +84,17 @@ public class ZakSimMemberServiceImpl implements ZakSimMemberService {
 			return true;
 		} else {
 			// 중복된 ID 발견
+			return false;
+		}
+	}
+
+	@Override
+	public boolean checkNick(String nick) {
+		if (memberDao.checkNick(nick) == 0) {
+			// 사용 가능한 닉네임일 경우
+			return true;
+		} else {
+			// 중복된 닉네임 발견
 			return false;
 		}
 	}

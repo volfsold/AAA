@@ -129,7 +129,7 @@ body {
 	<nav class="navbar navbar-expand-lg fixed-top" style="background-color: #8A0303;">
 		<a href="" class="btn" style="font-size: xx-large; font-weight: bold; color: white;">ZakSim</a>
 		<div class="collapse navbar-collapse justify-content-end">
-			<a href="/zaksim/login/logout" style="font-weight: bold; color: white;">LOGOUT</a>
+			<a href="/zaksim/admin/logout" style="font-weight: bold; color: white;">LOGOUT</a>
 		</div>
 	</nav>
 <!-- navbar -->

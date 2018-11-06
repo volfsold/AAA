@@ -61,7 +61,7 @@
                     <div class="form-inline">
                     <c:forEach var="categoryList" items="${categoryList }">
                             <div class="card bg-dark text-white">
-                            <div class="hovereffect">
+                            <div class="hovereffect" style="cursor: pointer;" onclick="categoryClick(${categoryList.idx})">
                                 <img class="card-img" src="${categoryList.image }" alt="Card image">
                                 <div class="card-img-overlay">
                                     <h4 class="card-title">${categoryList.category }</h4>
@@ -198,11 +198,11 @@
 									<select name="category"
 										class="custom-select mb-2 mr-sm-2 mb-sm-0"
 										style="height: 40px; width: 150px;">
-										<option value=1>Category01</option>
-										<option value=2>Category02</option>
-										<option value=3>Category03</option>
-										<option value=4>Category04</option>
-										<option value=5>Category05</option>
+										<option value=1>운동</option>
+										<option value=2>금연</option>
+										<option value=3>다이어트</option>
+										<option value=4>스터디</option>
+										<option value=5>도서</option>
 									</select> <br> <br>
 									<div class="form-inline">
 										<span style="margin-left: 50px; margin-right: 90px;"><strong>키워드</strong></span>
@@ -250,8 +250,15 @@
 <link rel="stylesheet" type="text/css" href="/css/community/categoryCommunity.css">
 <link rel="stylesheet" type="text/css" href="/css/community/button.css">
 
-    <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
+    
+	function categoryClick(categoryIdx){
+// 		document.location.href = "/zaksim/community/clickCategoryCommunity";
+		document.location.href = "/zaksim/community/clickCategoryCommunity?category_idx="+categoryIdx;
+		
+	}
+    
         $(document).ready(function() {
 
             $(window).scroll(function() {

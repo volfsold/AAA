@@ -179,9 +179,11 @@
 									<span style="margin-left: 50px; margin-right: 70px;"><strong>카테고리</strong></span>
 									<select class="custom-select mb-2 mr-sm-2 mb-sm-0"
 										style="height: 40px; width: 150px;">
-										<option value="Category1">Category 01</option>
-										<option value="Category2">Category 02</option>
-										<option value="Category3">Category 03</option>
+										<option value=1>운동</option>
+										<option value=2>금연</option>
+										<option value=3>다이어트</option>
+										<option value=4>스터디</option>
+										<option value=5>도서</option>
 									</select> <br> <br>
 									<div class="form-inline">
 										<span style="margin-left: 50px; margin-right: 90px;"><strong>키워드</strong></span>

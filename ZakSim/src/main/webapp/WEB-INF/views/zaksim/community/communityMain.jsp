@@ -467,18 +467,18 @@
 									<select name="category"
 										class="custom-select mb-2 mr-sm-2 mb-sm-0"
 										style="height: 40px; width: 150px;">
-										<option value=1>Category01</option>
-										<option value=2>Category02</option>
-										<option value=3>Category03</option>
-										<option value=4>Category04</option>
-										<option value=5>Category05</option>
+										<option value=1>운동</option>
+										<option value=2>금연</option>
+										<option value=3>다이어트</option>
+										<option value=4>스터디</option>
+										<option value=5>도서</option>
 									</select> <br> <br>
 									<div class="form-inline">
 										<span style="margin-left: 50px; margin-right: 90px;"><strong>키워드</strong></span>
 
 										<input type="text" class="form-control" style="width: 300px;"
 											name="keyword" name="keyword" placeholder="ex) #키워드1#키워드2"
-											required="required" pattern="" title=""
+											required="required" 
 											onkeyup="this.value=this.value.replace(/[^#0-9가-힣a-zA-Z]/g,'')">
 									</div>
 									<br>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +25,7 @@
 	<nav class="navbar navbar-expand-lg fixed-top" style="background-color: #8A0303;">
 		<a href="" class="btn" style="font-size: xx-large; font-weight: bold; color: white;">ZakSim</a>
 		<div class="collapse navbar-collapse justify-content-end">
-			<a href="/zaksim/admin/login" style="font-weight: bold; color: white;">LOGOUT</a>
+			<a href="/zaksim/admin/login" style="font-weight: bold; color: white;"></a>
 		</div>
 	</nav>
 <!-- navbar -->
@@ -44,7 +47,7 @@
               </div>
               <div class="row mt-4 pt-4">
                 <div class="col ml-3 mr-3">
-                  <form action="/zaksim/admin/login" method="post">
+                  <form>
                     <div class="form-group mb-2">
                       <div class="input-group border-0">
                         <div class="input-group-prepend">
@@ -62,10 +65,10 @@
                             <i class="fa fa-key fa-fw"></i>
                           </span>
                         </div>
-                        <input type="text" class="form-control" id="password" name="password" placeholder="PASSWORD">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="PASSWORD">
                       </div>
                     </div>
-                    <button type="submit" class="btn mt-4 mb-4 btn-danger rounded btn-lg" style="background-color: #a81919; font-weight: bold">LOGIN</button>
+                    <button type="button" class="btn mt-4 mb-4 btn-danger rounded btn-lg" onclick="adminLogin();" style="background-color: #a81919; font-weight: bold">LOGIN</button>
                   </form>
                 </div>
               </div>
@@ -77,9 +80,76 @@
   </div>
 <!-- main -->
 
+
+<!-- Login fail Modal -->
+<div class="modal" id="loginFailModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mt-1 mb-1" style="font-family: Dohyeon; font-weight: 300;">로그인 실패</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="row ml-1 mr-1" style="max-height: 200px;">
+        	<p>아이디와 비밀번호를 다시 확인해 주세요.</p>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Login fail Modal -->
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  
+  
+<script type="text/javascript">
+
+function adminLogin() {
+	
+	var id = $("#id").val();
+	var password = $("#password").val();
+	
+	$.ajax({
+		type: "post"
+		, url : "/zaksim/admin/login"
+		, data : {
+			id : id,
+			password : password
+		}
+		, dataType: "json"
+		, success: function( data ) {
+			console.log(data);
+			
+			if(data.aLogin == false){
+				$("#id").val("");
+				$("#password").val("");
+				$("#loginFailModal").modal("show");
+			} else {
+				console.log("aaaa");
+				$(location).attr('href', "/zaksim/admin/member");
+			}
+		}
+		, error: function( e ) {
+			console.log("--- error ---");
+			console.log( e.responseText );
+		}
+		, complete: function() {
+			//입력 창 초기화
+		}
+	});	
+}
+
+</script>
   
 </body>
 </html>
