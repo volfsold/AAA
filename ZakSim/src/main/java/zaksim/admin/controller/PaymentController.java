@@ -1,5 +1,6 @@
 package zaksim.admin.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,7 @@ import zaksim.util.Paging;
 @RequestMapping(value="/zaksim/admin")
 public class PaymentController {
 	
-private static final Logger logger = LoggerFactory.getLogger(PaymentController.class);
+	private static final Logger logger = LoggerFactory.getLogger(PaymentController.class);
 	
 	@Autowired PaymentService paymentService;
 	
@@ -64,27 +65,34 @@ private static final Logger logger = LoggerFactory.getLogger(PaymentController.c
 	// 전액 환불 처리
 	@RequestMapping(value="/payment/refund", method = RequestMethod.POST, produces="application/json; charset=utf-8")
 	@ResponseBody
-	public Map<String, String> refund(Challenge challenge) {
-		
-		// 페이징 객체 생성
-		// 서비스.전액 환불 처리();
-		// 서비스.리스트 받아오기();
+	public Map<String, String> refund(@RequestParam(value="refundImpUid")List<String> impUid) {
 		
 		HashMap<String, String> map = new HashMap<>();
 		
-		return map;
-	}
-	
-	// 부분 환불 처리
-	@RequestMapping(value="/payment/partialRefund", method = RequestMethod.POST, produces="application/json; charset=utf-8")
-	@ResponseBody
-	public Map<String, String> partialRefund(Challenge challenge) {
+		List<Payment> pList = new ArrayList<>();
 		
-		// 페이징 객체 생성
-		// 서비스.부분 환불 처리();
-		// 서비스.리스트 정보 받아오기();
+		if(impUid.get(0).equals("refund")) {
+			
+			for(int i=1; i<impUid.size(); i++) {
+				Payment p = new Payment();
+				p.setImpUid(impUid.get(i));
+				pList.add(p);
+			}
+			
+			paymentService.refund(pList);
 		
-		HashMap<String, String> map = new HashMap<>();
+		} else if(impUid.get(0).equals("partial")) {
+			
+			for(int i=1; i<impUid.size(); i++) {
+				Payment p = new Payment();
+				p.setImpUid(impUid.get(i));
+				pList.add(p);
+			}
+			
+			paymentService.partialRefund(pList);
+		}
+		
+		map.put("result", "true");
 		
 		return map;
 	}

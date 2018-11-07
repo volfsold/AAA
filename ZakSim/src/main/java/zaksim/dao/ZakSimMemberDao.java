@@ -3,11 +3,16 @@ package zaksim.dao;
 import java.util.List;
 import java.util.Map;
 
+import zaksim.dto.MStatistics;
 import zaksim.dto.ZakSimMember;
 
 public interface ZakSimMemberDao {
 	
 	// -------------- 관리자 ------------------
+	
+	// 인덱스로 회원 정보 가져오기
+	public ZakSimMember selectMemberInfoByIdx(ZakSimMember member);
+	
 	// 로그인
 	// 아이디, 비밀번호 일치하는 count(*) 반환
 	public int selectAdminMember(ZakSimMember member);
@@ -20,12 +25,12 @@ public interface ZakSimMemberDao {
 
 	// 계정 정지 처리
 	public void updateMemberStatus(ZakSimMember member);
-
+	
 	// 기간 별 가입 인원
 	public int selectJoinNum(Map<String, String> param);
 	
-	// 기간 별 가입 인원
-	public int selectJoinNum2(Map<String, String> param);
+	// 회원 통계 상세 표 정보 가져오기
+	public List<MStatistics> selectMStatisticsDetailData(Map<String, String> param);
 
 //	// 기간 별 회원 수
 //	public void selectMemberNum(String period);
@@ -70,7 +75,7 @@ public interface ZakSimMemberDao {
 	 * 회원가입 dao
 	 * @param ZaksimMember memberDto
 	 */
-	public void jogin(ZakSimMember memberDto);
+	public void join(ZakSimMember memberDto);
 	
 	/**
 	 * 회원가입 - 아이디 중복체크 dao
@@ -86,5 +91,6 @@ public interface ZakSimMemberDao {
 	 */
 	public int checkNick(String nick);
 	// -------------- 로그인 ------------------
+
 
 }

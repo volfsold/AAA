@@ -23,7 +23,6 @@
 								<th>결제 방법</th>
 								<th>결제 금액</th>
 								<th>환불 사유</th>
-<!-- 								<th>인증률</th> -->
 								<th>결제 상태</th>
 							</tr>
 						</thead>
@@ -55,7 +54,6 @@
 								<c:if test="${refund.refundOption eq 'stop'}">
 									<td>도전 철회</td>
 								</c:if>
-<%-- 								<td>${refund.payment.certificationRate}</td> --%>
 								<c:if test="${refund.payment.status eq 'success'}">
 									<td>결제 완료</td>
 								</c:if>

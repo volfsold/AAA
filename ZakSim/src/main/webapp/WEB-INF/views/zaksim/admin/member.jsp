@@ -85,8 +85,41 @@
       </div>
       <div class="modal-body">
         <div class="row border ml-1 mr-1" style="height: 150px;">
-        	<div class="col-4 bg-warning"></div>
-        	<div class="col-8"></div>
+        	<div class="col-4 bg-warning">
+        		<img class="img-fluid d-block rounded-circle" id="memberProfile" src="">
+        	</div>
+        	<div class="col-8">
+        		<div class="row">
+        			<table class="table table-sm table-striped" style="font-size: 0.8em;">
+					    <tbody>
+					        <tr>
+					          <th>아이디</th>
+					            <td id="memberId"></td>
+					        </tr>
+					        <tr>
+					          <th>닉네임</th>
+					            <td id="memberNick"></td>
+					        </tr>
+					        <tr>
+					          <th>이메일</th>
+					            <td id="memberEmail"></td>
+					        </tr>
+					        <tr>
+					          <th>계정 정지일</th>
+					            <td id="memberSuspendDate"></td>
+					        </tr>
+					        <tr>
+					          <th>계정 정지 횟수</th>
+					            <td id="memberSuspendNum"></td>
+					        </tr>
+					        <tr>
+					          <th>블락 상태</th>
+					            <td id="memberBlockStatus"></td>
+					        </tr>
+					    </tbody>
+					 </table>
+        		</div>
+        	</div>
         </div>
         <div class="row ml-1 mr-1 mt-2" style="max-height: 300px;">
         	<div class="col-12" style="overflow: auto;">
@@ -264,13 +297,21 @@ function searching() {
 $("#pagingDiv").on("click", ".data-span-modal", function() {
 			
 	var idx = $(this).parent().parent().children("td").eq(0).text();
-	console.log(idx);
 	
 	$.ajax({
 		type: "get"
 		, url : "/zaksim/admin/reportDetail?idx=" + idx
 		, dataType: "json"
 		, success: function( data ) {
+			
+// 			$("#memberProfile").attr('src', data.memberData.profile);
+			
+			$("#memberId").text(data.memberData.id);
+			$("#memberNick").text(data.memberData.nick);
+			$("#memberEmail").text(data.memberData.email);
+			$("#memberSuspendDate").text(data.memberData.suspensionDate);
+			$("#memberSuspendNum").text("suspendNum");
+			$("#memberBlockStatus").text("blockStatus");
 			
 			var text = "";
 			

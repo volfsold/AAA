@@ -3,7 +3,6 @@ package zaksim.login.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -60,6 +59,7 @@ public class LoginController {
 			
 		} else {
 			logger.info("로그인 실패! 아이디 혹은 비밀번호를 확인해주세요.");
+			session.setAttribute("login", false);
 			
 			return "redirect:/zaksim/login/login"; // 로그인 실패시 로그인 화면으로 리다이렉트
 		}
@@ -109,12 +109,10 @@ public class LoginController {
 		Map<String, Object> map = new HashMap<>();
 		if ( pw != null ) {
 			map.put("findPwResult", true); // 결과 반환(비밀번호 찾기 완료)
-			map.put("temPw", pw); // 임시 비밀번호 반환(이메일 발송 기능 전에 잠시 사용하기로...) TODO: 이메일 발송 기능 후, 삭제바람
 		} else {
 			map.put("findPwResult", false); // 결과 반환(비밀번호 찾기 실패-정보 없음)
 		}
 		return map;
-//		return "redirect:/zaksim/login/login"; // TODO: 리다이렉트는 jsp 쪽에서 하자
 	}
 	
 	// 회원가입
@@ -127,8 +125,10 @@ public class LoginController {
 		return "zaksim/login/joinForm";
 	}
 	@RequestMapping(value="/zaksim/login/joinForm", method=RequestMethod.POST)
-	public void join(ZakSimMember memberDto) {
-//		return "redirect:/zaksim/login/login"; // TODO: 리다이렉트는 jsp 쪽에서 하자
+	public String join(ZakSimMember memberDto) {
+		memberService.join(memberDto);
+		
+		return "redirect:/zaksim/login/login"; // TODO: 리다이렉트는 jsp 쪽에서 하자
 	}
 	// 회원가입 - 아이디 중복체크
 	@RequestMapping(value="/zaksim/login/joinId", method=RequestMethod.POST
@@ -163,6 +163,22 @@ public class LoginController {
 			logger.info("이미 사용 중인 닉네임");
 			map.put("uniqueNick", false);
 		}
+		
+		return map;
+	}
+	// 회원가입 - 이메일 인증
+	@RequestMapping(value="/zaksim/login/joinEmail", method=RequestMethod.POST
+			, produces="application/json; charset=utf-8"/* 한글처리 */)
+	@ResponseBody // ajax 쓰기 위한 방법(jackson-databind 라이브러리를 이용한 출력 방법)
+	public Map<String, Object> joinEmail(String joinEmail) {
+		logger.info("보낼 이메일 : " + joinEmail);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		String checkNum = memberService.authEmail(joinEmail);
+		logger.info("인증번호 : " + checkNum);
+		
+		map.put("checkNum", checkNum);
 		
 		return map;
 	}

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ZakSim admin</title>
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -128,14 +128,14 @@ function adminLogin() {
 		}
 		, dataType: "json"
 		, success: function( data ) {
-			console.log(data);
+// 			console.log(data);
 			
 			if(data.aLogin == false){
 				$("#id").val("");
 				$("#password").val("");
 				$("#loginFailModal").modal("show");
 			} else {
-				console.log("aaaa");
+// 				console.log("aaaa");
 				$(location).attr('href', "/zaksim/admin/member");
 			}
 		}

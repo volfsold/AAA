@@ -19,6 +19,11 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired ZakSimMemberDao zakSimMemberDao;
 	@Autowired ReportDao reportDao;
 	
+	
+	@Override
+	public ZakSimMember getMemberData(ZakSimMember member) {
+		return zakSimMemberDao.selectMemberInfoByIdx(member);
+	}
 
 	@Override
 	public int getAdminTotalCount(String searchId, String category) {

@@ -31,6 +31,7 @@
 	
 	<div class="py-5">
 		<div class="container">
+			<p class="col-md-5 mx-auto" id="loginFailMessage"></p>
 			<div class="row">
 				<div class="col-md-5 mx-auto py-2 shadow-sm" id="login_form">
 					<form action="/zaksim/login/login" method="post">
@@ -86,4 +87,12 @@
 	$('#btnJoinPage').click(function() {
 		location.href = "/zaksim/login/join";
 	});
+	
+	var session = <%=session.getAttribute("login")%>;
+	console.log("LOGIN 세션 : " + session);
+	
+	if(session == false) {
+		$('#loginFailMessage').text('※ 아이디랑 비밀번호를 확인해주세요.');
+		
+	}
 </script>

@@ -1,5 +1,6 @@
 package zaksim.admin.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import zaksim.admin.service.MStatisticsService;
+import zaksim.dao.ZakSimMemberDao;
+import zaksim.dto.MStatistics;
 import zaksim.dto.MemberCount;
 import zaksim.dto.Visits;
+import zaksim.dto.ZakSimMember;
 import zaksim.util.ExcelWriter;
 
 @Controller
@@ -27,67 +31,55 @@ public class MStatisticsController {
 	private static final Logger logger = LoggerFactory.getLogger(MStatisticsController.class);
 	
 	@Autowired MStatisticsService mStatisticsrService;
-	ExcelWriter excelWriter;
-	
-	// 화면 연결
-	// 기간 변경
-	// 엑셀 다운
-	
+	@Autowired ZakSimMemberDao zDao;
+
+
 	
 	@RequestMapping(value = "/mStatistics", method = RequestMethod.GET)
 	public void mStatisticsForm(Model model) {
-		int joinNum = mStatisticsrService.viewJoinNum("오늘");
-		List<MemberCount> memberCount = mStatisticsrService.viewMemberNum("오늘");
-		List<Visits> visits = mStatisticsrService.viewVisitsNum("오늘");
-		
-		model.addAttribute("joinNum", joinNum);
-		model.addAttribute("memberCount", memberCount);
-		model.addAttribute("visits", visits);
+//		int joinNum = mStatisticsrService.viewJoinNum("오늘");
+//		List<MemberCount> memberCount = mStatisticsrService.viewMemberNum("오늘");
+//		List<Visits> visits = mStatisticsrService.viewVisitsNum("오늘");
+////		List<MStatistics> detailList = mStatisticsrService.viewDetailList("오늘");
+//		
+//		model.addAttribute("joinNum", joinNum);
+//		model.addAttribute("memberCount", memberCount);
+//		model.addAttribute("visits", visits);
 	}
 	
 	@RequestMapping(value="/mStatistics/changePeriod", method = RequestMethod.POST, produces="application/json; charset=utf-8")
 	@ResponseBody
-	public Map<String, Object> changePeriod(String period) {		
-		HashMap<String, Object> map = new HashMap<>();
-		
-		int joinNum = mStatisticsrService.viewJoinNum(period);
-		List<MemberCount> memberCount = mStatisticsrService.viewMemberNum(period);
-		List<Visits> visits = mStatisticsrService.viewVisitsNum(period);
-		
-		map.put("joinNum", joinNum);
-		map.put("memberCount", memberCount);
-		map.put("visits", visits);
-		
-		return map;
-	}
-	
-	@RequestMapping(value="/mStatistics/changePeriod2", method = RequestMethod.POST, produces="application/json; charset=utf-8")
-	@ResponseBody
-	public Map<String, Object> changePeriod2(String startDate, String endDate) {
-		
-		startDate += "-01";
-		endDate += "-01";
-		System.out.println(startDate + ", " + endDate);
+	public Map<String, Object> changePeriod(String startDate, String endDate) {
 		
 		HashMap<String, Object> map = new HashMap<>();
 		
 		int joinNum = mStatisticsrService.viewJoinNum(startDate, endDate);
 		List<MemberCount> memberCount = mStatisticsrService.viewMemberNum(startDate, endDate);
 		List<Visits> visits = mStatisticsrService.viewVisitsNum(startDate, endDate);
+		List<MStatistics> detailList = mStatisticsrService.viewDetailList(startDate, endDate);
 		
 		map.put("joinNum", joinNum);
 		map.put("memberCount", memberCount);
 		map.put("visits", visits);
+		map.put("detailList", detailList);
 		
 		return map;
 	}
 	
-	@RequestMapping(value="/mStatistics/downloadExcel", method = RequestMethod.POST)
+	@RequestMapping(value="/mStatistics/downloadExcel", method = RequestMethod.POST, produces="application/json; charset=utf-8")
 	@ResponseBody
-	public void downloadExcel(HttpServletResponse response) {
+	public Map<String, String> downloadExcel(HttpServletResponse response, String startDate, String endDate) {
 		
-		// ExcelWriter.파일 생성();
-		// 서비스.파일 다운로드();
+	    Map<String, String> map = new HashMap<>();
+
+	    List<MStatistics> detailList = mStatisticsrService.viewDetailList(startDate, endDate);
+	    
+	    ExcelWriter excelWriter = new ExcelWriter();
+	    excelWriter.memberExcelDown(response, detailList);
+	    
+	    map.put("result", "success");
+	    
+	    return map;
 	}
 	
 

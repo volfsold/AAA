@@ -21,7 +21,6 @@ public class ZakSimMember {
 	private Date suspensionDate;	// 계정 정지 처분 날짜
 	
 	
-	
 	public int getReportNum() {
 		return reportNum;
 	}

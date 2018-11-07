@@ -12,7 +12,18 @@
   	<result property="suspensionDate" column="suspension_date"/>
   </resultMap>
   
+  <resultMap type="zaksim.dto.MStatistics" id="MStatistics">
+  	<result property="todayCount" column="today_count"/>
+  	<result property="joinCount" column="join_count"/>
+  	<result property="yesterdayCount" column="yesterday_count"/>
+  </resultMap>
+  
+  
   <!--                      관리자                                                  -->
+  
+  <select id="selectMemberInfoByIdx" parameterType="zaksim.dto.ZakSimMember" resultMap="ZakSimMember">
+  	SELECT * FROM ZakSimMember WHERE idx=#{idx}
+  </select>
   
   <select id="selectAdminMember" parameterType="zaksim.dto.ZakSimMember" resultType="int">
   	SELECT COUNT(*)
@@ -37,6 +48,7 @@
 	<if test="category == '계정 정지 대상'">
 	WHERE zr.reportNum <![CDATA[ > ]]>= 10
 	</if>
+	ORDER BY idx DESC
   </select>
   
   <select id="selectAdminMemberList" parameterType="map" resultMap="ZakSimMember">
@@ -58,40 +70,39 @@
 			<if test="category == '계정 정지 대상'">
 			WHERE zr.reportNum <![CDATA[ > ]]>= 10
 			</if>
+			ORDER BY idx DESC
 		) Zak
 		ORDER BY rnum
 	)
 	WHERE rnum BETWEEN #{paging.startNo} AND #{paging.endNo}
   </select>
-  
-  <select id="selectJoinNum" parameterType="map" resultType="int">
-  	SELECT COUNT(*)
-  	FROM ZakSimMember
-  	WHERE id != 'admin'
-  	<if test="period == '오늘'">
-	  	AND TO_CHAR(join_date, 'YY/MM/DD') = TO_CHAR(sysdate, 'YY/MM/DD')
-  	</if>
-  	<if test="period == '어제'">
-	  	AND TO_CHAR(join_date, 'YY/MM/DD') = TO_CHAR(sysdate-1, 'YY/MM/DD')
-  	</if>
-  	<if test="period == '최근 7일'">
-	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]> TO_CHAR(sysdate-7, 'YY/MM/DD')
-	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YY/MM/DD')
-  	</if>
-  	<if test="period == '최근 30일'">
-	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ > ]]> TO_CHAR(sysdate-30, 'YY/MM/DD')
-	  	AND TO_CHAR(join_date, 'YY/MM/DD') <![CDATA[ < ]]>= TO_CHAR(sysdate, 'YY/MM/DD')
-  	</if>
-  	ORDER BY join_date ASC
+  	
+  	<select id="selectJoinNum" parameterType="map" resultType="int">
+	  	SELECT COUNT(*)
+	  	FROM ZakSimMember
+	  	WHERE id != 'admin'
+	  	AND TO_CHAR(join_date, 'YYYY-MM-DD') <![CDATA[ > ]]>= #{startDate}
+	  	AND TO_CHAR(join_date, 'YYYY-MM-DD') <![CDATA[ < ]]>= #{endDate}
+	  	ORDER BY join_date ASC
   	</select>
   	
-  	<select id="selectJoinNum2" parameterType="map" resultType="int">
-  	SELECT COUNT(*)
-  	FROM ZakSimMember
-  	WHERE id != 'admin'
-  	AND TO_CHAR(join_date, 'YYYY-MM-DD') <![CDATA[ > ]]>= #{startDate}
-  	AND TO_CHAR(join_date, 'YYYY-MM-DD') <![CDATA[ < ]]>= #{endDate}
-  	ORDER BY join_date ASC
+  	<select id="selectMStatisticsDetailData" parameterType="map" resultMap="MStatistics">
+  		SELECT mj.*, v.visits
+  		FROM (
+	  		SELECT mc.membercount_date today, mc.membercount today_count, mc.join_count, mem.membercount_date yesterday, mem.membercount yesterday_count
+	  		FROM (
+				SELECT c.*, DECODE(m.join_count, NULL, 0, m.join_count) as join_count
+				FROM (
+					SELECT * FROM memberCount
+					WHERE membercount_date <![CDATA[ > ]]>= to_date(#{startDate}, 'YYYY/MM/DD')
+					AND membercount_date <![CDATA[ < ]]>= to_date(#{endDate}, 'YYYY/MM/DD')
+					ORDER BY membercount_date asc) c
+				LEFT JOIN (SELECT count(*) join_count, join_date FROM zaksimMember GROUP BY join_date) m
+				ON c.membercount_date = m.join_date) mc
+			LEFT JOIN membercount mem
+			ON mem.membercount_date = mc.membercount_date-1) mj
+		LEFT JOIN Visits v
+		ON v.visit_date = mj.today
   	</select>
   
   <!--                      관리자                                                  -->
@@ -136,6 +147,12 @@
   	SET password = #{ranPw}
   	WHERE member_type = 'zaksim' AND id = #{id}
   </update>
+  
+  <!-- 회원가입 -->
+  <insert id="join" parameterType="zaksim.dto.ZakSimMember">
+  	INSERT INTO ZakSimMember(idx, member_type, id, password, nick, name, email, phone, status)
+  	VALUES (ZaksimMember_SEQ.NEXTVAL, 'zaksim', #{id}, #{password}, #{nick}, #{name}, #{email}, #{phone}, 'normal')
+  </insert>
   
   <!-- 회원가입 - 아이디 중복 체크 -->
   <select id="checkId" parameterType="string" resultType="int">

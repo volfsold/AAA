@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import zaksim.dao.AdminPaymentDao;
 import zaksim.dao.PaymentDao;
+import zaksim.dao.RefundDao;
 import zaksim.dto.Payment;
 import zaksim.dto.Refund;
 import zaksim.util.Paging;
@@ -16,8 +17,8 @@ import zaksim.util.Paging;
 @Service
 public class PaymentServiceImpl implements PaymentService {
 	
-	@Autowired PaymentDao paymentDao;
 	@Autowired AdminPaymentDao adminPaymentDao;
+	@Autowired RefundDao refundDao;
 	
 	
 	@Override
@@ -30,7 +31,6 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	public List<Refund> viewAdminList(Paging paging, String category, String searchId) {
-		// TODO Auto-generated method stub
 		Map<String, Object> param = new HashMap<>();
 		param.put("paging", paging);
 		param.put("category", category);
@@ -41,19 +41,20 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	public void refund(List<Payment> pList) {
-		// TODO Auto-generated method stub
-		// forEach(pList)
-		Payment payment = new Payment();
-		paymentDao.updateStatusToRefund(payment);
-		
+		System.out.println("service - refund");
+		for(Payment payment : pList) {
+			System.out.println(payment);
+			adminPaymentDao.updateStatusToRefund(payment);
+			refundDao.refund(payment);
+		}		
 	}
 
 	@Override
 	public void partialRefund(List<Payment> pList) {
-		// TODO Auto-generated method stub
-		// forEach(pList)
-		Payment payment = new Payment();
-		paymentDao.updateStatusToPartialRefund(payment);
+		for(Payment payment : pList) {
+			adminPaymentDao.updateStatusToPartialRefund(payment);
+			refundDao.refund(payment);
+		}	
 	}
 
 }

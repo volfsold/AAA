@@ -142,7 +142,7 @@ body {
 		<div class="row" style="margin-top: 50px;">
 			<div class="col-2"></div>
 				<div class="col-8">
-				<img class="img-fluid d-block rounded-circle" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" >
+					<img class="img-fluid d-block rounded-circle" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" >
 				</div>
 				<div class="col-2"></div>		
 		</div>

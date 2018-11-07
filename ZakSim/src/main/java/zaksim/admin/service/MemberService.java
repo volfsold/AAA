@@ -8,6 +8,9 @@ import zaksim.util.Paging;
 
 public interface MemberService {
 	
+	// 회원 정보 가져오기
+	public ZakSimMember getMemberData(ZakSimMember member);
+	
 	// 총 회원수 가져오기
 	public int getAdminTotalCount(String searchId, String category);
 
