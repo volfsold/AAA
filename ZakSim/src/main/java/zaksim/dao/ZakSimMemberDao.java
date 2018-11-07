@@ -70,7 +70,7 @@ public interface ZakSimMemberDao {
 	 * 회원가입 dao
 	 * @param ZaksimMember memberDto
 	 */
-	public void jogin(ZakSimMember memberDto);
+	public void join(ZakSimMember memberDto);
 	
 	/**
 	 * 회원가입 - 아이디 중복체크 dao
