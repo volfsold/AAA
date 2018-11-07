@@ -45,18 +45,18 @@
 						<div class="btn-group" style="margin-right: 7px;">
 				            <button class="btn btn-outline-danger dropdown-toggle" id="categoryDrop" data-toggle="dropdown">전체 결제 내역</button>
 				            <div class="dropdown-menu">
-				            	<a class="dropdown-item" id="all">전체 결제 내역</a>
-				            	<a class="dropdown-item" id="partialRefund">부분 환불 신청</a>
-				            	<a class="dropdown-item" id="refund">전체 환불 신청</a>
-				            	<a class="dropdown-item" id="completeRefund">환불 완료</a>
+				            	<a class="dropdown-item categoryDrop" id="all">전체 결제 내역</a>
+				            	<a class="dropdown-item categoryDrop" id="partialRefund">부분 환불 신청</a>
+				            	<a class="dropdown-item categoryDrop" id="refund">전체 환불 신청</a>
+				            	<a class="dropdown-item categoryDrop" id="completeRefund">환불 완료</a>
 				          	</div>
 						</div>
 						<div class="btn-group">
 				            <button class="btn btn-outline-danger dropdown-toggle" id="pageCountDrop" data-toggle="dropdown">10개씩 보기</button>
 				            <div class="dropdown-menu">
-				            	<a class="dropdown-item" id="pageCount10">10개씩 보기</a>
-				            	<a class="dropdown-item" id="pageCount15">15개씩 보기</a>
-				            	<a class="dropdown-item" id="pageCount30">30개씩 보기</a>
+				            	<a class="dropdown-item pageCountDrop" id="pageCount10">10개씩 보기</a>
+				            	<a class="dropdown-item pageCountDrop" id="pageCount15">15개씩 보기</a>
+				            	<a class="dropdown-item pageCountDrop" id="pageCount30">30개씩 보기</a>
 				          	</div>
 						</div>	
 					</div>
@@ -81,7 +81,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title mt-1 mb-1" style="font-family: Dohyeon; font-weight: 300;">전체 환불 리스트</h5>
+        <h5 class="modal-title mt-1 mb-1" id="modalTitle" style="font-family: Dohyeon; font-weight: 300;">전체 환불 리스트</h5>
         <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -98,6 +98,7 @@
         
       </div>
       <div class="modal-footer">
+     	<button type="button" class="btn btn-primary" onclick="refund();">OK</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -114,122 +115,41 @@
 	
 <script type="text/javascript">	
 
-window.onload = function() {
-	console.log($("#pageCountDrop").text());
-}
-
-$("#all").click(function() {
-	$("#categoryDrop").text($("#all").text());
+// 카테고리 선택 시
+$(".categoryDrop").click(function() {
+	$("#categoryDrop").text($(this).text());
 	
-	var category = $("#categoryDrop").text();
-	var pageCount = $("#pageCountDrop").text().substr(0,2);
-	var searchId = $("#searchId").val();
-	
-	console.log(category + ", " + pageCount + ", " + searchId);
-	
-	paging(category, pageCount, searchId);
+	clickPageLink($("#categoryDrop").text(), $("#pageCountDrop").text().substr(0,2), $("#searchId").val(), 1);
 });
 
-$("#partialRefund").click(function() {
-	$("#categoryDrop").text($("#partialRefund").text());
+// 리스트 갯수 선택 시
+$(".pageCountDrop").click(function() {
+	$("#pageCountDrop").text($(this).text());
 	
-	var category = $("#categoryDrop").text();
-	var pageCount = $("#pageCountDrop").text().substr(0,2);
-	var searchId = $("#searchId").val();
-	
-	console.log(category + ", " + pageCount + ", " + searchId);
-	
-	paging(category, pageCount, searchId);
+	clickPageLink($("#categoryDrop").text(), $("#pageCountDrop").text().substr(0,2), $("#searchId").val(), 1);
 });
 
-$("#refund").click(function() {
-	$("#categoryDrop").text($("#refund").text());
-	
-	var category = $("#categoryDrop").text();
-	var pageCount = $("#pageCountDrop").text().substr(0,2);
-	var searchId = $("#searchId").val();
-	
-	console.log(category + ", " + pageCount + ", " + searchId);
-	
-	paging(category, pageCount, searchId);
-});
-
-$("#completeRefund").click(function() {
-	$("#categoryDrop").text($("#completeRefund").text());
-	
-	var category = $("#categoryDrop").text();
-	var pageCount = $("#pageCountDrop").text().substr(0,2);
-	var searchId = $("#searchId").val();
-	
-	console.log(category + ", " + pageCount + ", " + searchId);
-	
-	paging(category, pageCount, searchId);
-});
-
-$("#pageCount10").click(function() {
-	$("#pageCountDrop").text($("#pageCount10").text());
-	
-	var category = $("#categoryDrop").text();
-	var pageCount = $("#pageCountDrop").text().substr(0,2);
-	var searchId = $("#searchId").val();
-	
-	console.log(category + ", " + pageCount + ", " + searchId);
-	
-	paging(category, pageCount, searchId);
-});
-
-$("#pageCount15").click(function() {
-	$("#pageCountDrop").text($("#pageCount15").text());
-	
-	var category = $("#categoryDrop").text();
-	var pageCount = $("#pageCountDrop").text().substr(0,2);
-	var searchId = $("#searchId").val();
-	
-	console.log(category + ", " + pageCount + ", " + searchId);
-	
-	paging(category, pageCount, searchId);
-});
-
-$("#pageCount30").click(function() {
-	$("#pageCountDrop").text($("#pageCount30").text());
-	
-	var category = $("#categoryDrop").text();
-	var pageCount = $("#pageCountDrop").text().substr(0,2);
-	var searchId = $("#searchId").val();
-	
-	console.log(category + ", " + pageCount + ", " + searchId);
-	
-	paging(category, pageCount, searchId);
-});
-
-function paging(category, pageCount, searchId) {
-	$.ajax({
-		type: "get"
-		, url : "/zaksim/admin/paymentTable?category=" + category + "&pageCount=" + pageCount + "&searchId=" + searchId
-		, dataType: "html"
-		, success: function( data ) {
-			$("#pagingDiv").html(data);
-		}
-		, error: function( e ) {
-			console.log("--- error ---");
-			console.log( e.responseText );
-		}
-		, complete: function() {
-			//입력 창 초기화
-		}
-	});	
-}
-
+// 검색 버튼 클릭 시
 function searching() {
+	clickPageLink($("#categoryDrop").text(), $("#pageCountDrop").text().substr(0,2), $("#searchId").val(), 1);
+}
+
+// 페이징 버튼 클릭 시
+$("#pagingDiv").on("click", '.page-link', function() {
+	
 	var category = $("#categoryDrop").text();
 	var pageCount = $("#pageCountDrop").text().substr(0,2);
 	var searchId = $("#searchId").val();
-	
-	console.log(category + ", " + pageCount + ", " + searchId);
-	
+	var curPage = $(this).attr('data-curPage');
+
+	clickPageLink(category, pageCount, searchId, curPage);	
+});
+
+// 페이징 ajax
+function clickPageLink(category, pageCount, searchId, curPage) {
 	$.ajax({
 		type: "get"
-		, url : "/zaksim/admin/paymentTable?category=" + category + "&pageCount=" + pageCount + "&searchId=" + searchId
+		, url : "/zaksim/admin/paymentTable?curPage=" + curPage + "&category=" + category + "&pageCount=" + pageCount + "&searchId=" + searchId
 		, dataType: "html"
 		, success: function( data ) {
 			$("#pagingDiv").html(data);
@@ -244,18 +164,16 @@ function searching() {
 	});	
 }
 
+// 신고 모달 띄우기
 $("#pagingDiv").on("click", ".data-span-modal", function() {
 			
 	var idx = $(this).parent().parent().children("td").eq(0).text();
-// 	console.log(idx);
 	
 	$.ajax({
 		type: "get"
 		, url : "/zaksim/admin/reportDetail?idx=" + idx
 		, dataType: "json"
 		, success: function( data ) {
-			console.log(data.rList);
-		
 			$("#reportCategory").text(data.rList.category);
 			$("#reportReason").text(data.rList.reason);
 		
@@ -271,36 +189,7 @@ $("#pagingDiv").on("click", ".data-span-modal", function() {
 	});	
 });
 
-$("#pagingDiv").on("click", '.page-link', function() {
-	
-	var category = $("#categoryDrop").text();
-	var pageCount = $("#pageCountDrop").text().substr(0,2);
-	var searchId = $("#searchId").val();
-	var curPage = $(this).attr('data-curPage');
-	
-	console.log(category + ", " + pageCount + ", " + searchId + ", " + curPage);
-	
-	$.ajax({
-		type: "get"
-		, url : "/zaksim/admin/paymentTable?curPage=" + curPage + "&category=" + category + "&pageCount=" + pageCount + "&searchId=" + searchId
-		, dataType: "html"
-		, success: function( data ) {
-			console.log(data);
-			
-			$("#pagingDiv").html(data);
-		}
-		, error: function( e ) {
-			console.log("--- error ---");
-			console.log( e.responseText );
-		}
-		, complete: function() {
-			//입력 창 초기화
-		}
-	});	
-	
-});
-
-//전체 선택하기, 해제하기
+// 체크박스 전체 선택하기, 해제하기
 $("#pagingDiv").on("click", "[name=checkAll]", function(){
 	$("[name=checkOne]").prop("checked", $(this).prop("checked") );
 });
@@ -323,23 +212,34 @@ $("#pagingDiv").on("click", "[name=checkOne]", function() {
 	}
 });
 
-//전체 환불 버튼 클릭 시
+// 전체 환불 버튼 클릭 시
 $("#refundBtn").click(function() {
 	var checkList = $("[name=checkOne]:checked");
-	var refundMemberIdx = [];
+	
+	var refundImpUid = ['refund'];
 	var refundMemberId = [];
 	var refundPrice = [];
 
 	checkList.each(function(i) {
-		refundMemberIdx.push(checkList.parent().parent().eq(i).children("td").eq(0).text());
-		refundMemberId.push(checkList.parent().parent().eq(i).children("td").eq(3).text());
-		refundPrice.push(checkList.parent().parent().eq(i).children("td").eq(9).text());
+		if(((checkList.parent().parent().eq(i).children("td").eq(10).text() == "도전 성공")
+				|| (checkList.parent().parent().eq(i).children("td").eq(10).text() == "도전 철회"))
+				&& (checkList.parent().parent().eq(i).children("td").eq(11).text() == "결제 완료")) {
+			refundImpUid.push(checkList.parent().parent().eq(i).children("td").eq(0).text());
+			refundMemberId.push(checkList.parent().parent().eq(i).children("td").eq(3).text());
+			refundPrice.push(checkList.parent().parent().eq(i).children("td").eq(9).text());
+		}
 	});
+	
+	$("#modalTitle").text("전체 환불 리스트");
 	
 	$("#memberIdDiv").html("");
 	
 	var modalText = "<div class='col-6 border'>회원 아이디</div>"
 					+ "<div class='col-6 border'>환불 금액</div>";
+	
+	var totalMemText = "<p>총 " + refundMemberId.length + "명</p>"
+					+ "<p>부분환불 신청자 외에는 선택하더라도 적용되지 않습니다.</p>"
+					+ "<p id='refundImpUid' style='display: none;'>" + refundImpUid + "</p>";
 	
 	for(var i=0; i<refundMemberId.length; i++){
 		modalText += "<div class='col-6 border'>" 
@@ -350,7 +250,7 @@ $("#refundBtn").click(function() {
 					+ "</div>";
 	}
 
-	$("#totalMem").html("총 " + refundMemberId.length + "명");
+	$("#totalMem").html(totalMemText);
 	$("#memberIdDiv").html(modalText);
 	
 	$("#refundModal").modal('show');
@@ -359,20 +259,31 @@ $("#refundBtn").click(function() {
 //부분 환불 버튼 클릭 시
 $("#partialRefundBtn").click(function() {
 	var checkList = $("[name=checkOne]:checked");
-	var refundMemberIdx = [];
+	
+	var refundImpUid = ['partial'];
 	var refundMemberId = [];
 	var refundPrice = [];
 
 	checkList.each(function(i) {
-		refundMemberIdx.push(checkList.parent().parent().eq(i).children("td").eq(0).text());
-		refundMemberId.push(checkList.parent().parent().eq(i).children("td").eq(3).text());
-		refundPrice.push(checkList.parent().parent().eq(i).children("td").eq(9).text());
+		if(checkList.parent().parent().eq(i).children("td").eq(10).text() == "도전 실패/도전 중단"
+			&& (checkList.parent().parent().eq(i).children("td").eq(10).text() == "결제 완료")) {
+			refundImpUid.push(checkList.parent().parent().eq(i).children("td").eq(0).text());
+			refundMemberId.push(checkList.parent().parent().eq(i).children("td").eq(3).text());
+			refundPrice.push(checkList.parent().parent().eq(i).children("td").eq(9).text());
+		}
+		
 	});
+	
+	$("#modalTitle").text("부분 환불 리스트");
 	
 	$("#memberIdDiv").html("");
 	
 	var modalText = "<div class='col-6 border'>회원 아이디</div>"
 					+ "<div class='col-6 border'>환불 금액</div>";
+					
+	var totalMemText = "<p>총 " + refundMemberId.length + "명</p>"
+					+ "<p>부분환불 신청자 외에는 선택하더라도 적용되지 않습니다.</p>"
+					+ "<p id='refundImpUid' style='display: none;'>" + refundImpUid + "</p>";
 	
 	for(var i=0; i<refundMemberId.length; i++){
 		modalText += "<div class='col-6 border'>" 
@@ -383,11 +294,47 @@ $("#partialRefundBtn").click(function() {
 					+ "</div>";
 	}
 
-	$("#totalMem").html("총 " + refundMemberId.length + "명");
+	$("#totalMem").html(totalMemText);
 	$("#memberIdDiv").html(modalText);
 	
 	$("#refundModal").modal('show');
 });
+
+// 환불 버튼 클릭 시
+function refund() {
+	var refundImpUid = $("#refundImpUid").text();
+	
+	$.ajax({
+		type: "post"
+		, url : "/zaksim/admin/payment/refund"
+		, data : {
+			refundImpUid : refundImpUid
+		}
+		, dataType: "json"
+		, success: function( data ) {
+
+// 			var category = $("#categoryDrop").text();
+// 			var pageCount = $("#pageCountDrop").text().substr(0,2);
+// 			var searchId = $("#searchId").val();
+// 			var curPage = $("button[class*='page-link'][class*='active']").attr('data-curPage');
+			
+// 			console.log(curPage);
+			
+// 			clickPageLink(category, pageCount, searchId, curPage);
+
+			$("#refundModal").modal('hide');
+
+			$(location).attr('href', '/zaksim/admin/payment');
+		}
+		, error: function( e ) {
+			console.log("--- error ---");
+			console.log( e.responseText );
+		}
+		, complete: function() {
+			//입력 창 초기화
+		}
+	});	
+}
 
 </script>
 

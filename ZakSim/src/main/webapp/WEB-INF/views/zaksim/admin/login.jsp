@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ZakSim admin</title>
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +25,7 @@
 	<nav class="navbar navbar-expand-lg fixed-top" style="background-color: #8A0303;">
 		<a href="" class="btn" style="font-size: xx-large; font-weight: bold; color: white;">ZakSim</a>
 		<div class="collapse navbar-collapse justify-content-end">
-			<a href="/zaksim/admin/login" style="font-weight: bold; color: white;">LOGOUT</a>
+			<a href="/zaksim/admin/login" style="font-weight: bold; color: white;"></a>
 		</div>
 	</nav>
 <!-- navbar -->
@@ -128,14 +128,14 @@ function adminLogin() {
 		}
 		, dataType: "json"
 		, success: function( data ) {
-			console.log(data);
+// 			console.log(data);
 			
 			if(data.aLogin == false){
 				$("#id").val("");
 				$("#password").val("");
 				$("#loginFailModal").modal("show");
 			} else {
-				console.log("aaaa");
+// 				console.log("aaaa");
 				$(location).attr('href', "/zaksim/admin/member");
 			}
 		}

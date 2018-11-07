@@ -63,14 +63,17 @@ public class MemberController {
 	@ResponseBody
 	public Map<String, Object> reportDetail(ZakSimMember member) {
 		
-		System.out.println(member.getIdx());
+//		System.out.println(member.getIdx());
 		
 		// 신고 상세 가져오기
 		HashMap<String, Object> map = new HashMap<>();
 		
 		List<Report> rList = memberService.viewReport(member);
 		
+		ZakSimMember memberData = memberService.getMemberData(member);
+		
 		map.put("rList", rList);
+		map.put("memberData", memberData);
 		
 		return map;
 	}
