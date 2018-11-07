@@ -28,7 +28,7 @@ public class DoChallengeServiceImpl implements DoChallengeService{
 	public void setCahllengeInfo(Challenge chal) {
 		
 		
-		
+		challengeDao.insertChallenge(chal);
 	}
 
 	// 도전 정보 가져오기
@@ -41,7 +41,8 @@ public class DoChallengeServiceImpl implements DoChallengeService{
 	// 결제 정보 입력
 	@Override
 	public void setPayment(Payment pay) {
-		// TODO Auto-generated method stub
+
+		challengeDao.insertPayment(pay);
 		
 	}
 

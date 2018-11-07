@@ -154,9 +154,10 @@ public class DoChallenge {
 		
 		
 		// 도전 insert
+//		dochalsv.setCahllengeInfo(chal);
 		
 		// 결제 insert
-		
+//		dochalsv.setPayment(payment);
 		
 		
 		return dc.endChallengeGet();

@@ -313,7 +313,7 @@
         </div>
         <div class="col-md-9 px-0 ">
           
-         <div style="height:3px; background-color:gray;" class="col rounded my-2 mt-3"></div> 
+         <div style="height:2px; background-color:gray;" class="col rounded my-2 mt-3"></div> 
         </div>
         <div class="col-md-1 ml-4"><a href="/zaksim/challenge/challengers" class="btn btn-outline-white text-muted "><b>+더보기</b></a></div>
       </div>
