@@ -33,7 +33,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <a href="/zaksim/main/home"><img src="/resources/image/main/logo.jpg" class="img-fluid" alt="Responsive image" /></a>
+                <a href="/zaksim/main/home"><img src="/resources/image/main/logo.jpg" class="img-fluid" alt="Responsive image" style="height: 18rem; width: 30rem;" /></a>
             </div>
         </div>
     </div> <!-- end of logo -->

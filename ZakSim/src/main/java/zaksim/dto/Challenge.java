@@ -10,6 +10,9 @@ public class Challenge {
 	private int idx;
 	//유저 인덱스
 	private int memberIdx;
+	//도전 신청일
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date applyDate;
 	//도전 시작일
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date startDate;
@@ -43,6 +46,16 @@ public class Challenge {
 		this.memberIdx = memberIdx;
 	}
 	
+	
+	
+	public Date getApplyDate() {
+		return applyDate;
+	}
+
+	public void setApplyDate(Date applyDate) {
+		this.applyDate = applyDate;
+	}
+
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -90,10 +103,13 @@ public class Challenge {
 	public void setResult(String result) {
 		this.result = result;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Challenge [idx=" + idx + ", memberIdx=" + memberIdx + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", money=" + money + ", title=" + title + ", status=" + status + ", result=" + result + "]";
+		return "Challenge [idx=" + idx + ", memberIdx=" + memberIdx + ", applyDate=" + applyDate + ", startDate="
+				+ startDate + ", endDate=" + endDate + ", money=" + money + ", title=" + title + ", status=" + status
+				+ ", result=" + result + "]";
 	}
+	
+	
 }

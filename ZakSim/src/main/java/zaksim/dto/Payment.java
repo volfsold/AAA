@@ -9,7 +9,7 @@ public class Payment {
 	// 아임포트 인덱스
 	private String impUid;
 	// 결제 인덱스
-	private int merchantUid;
+	private String merchantUid;
 	// 회원 인덱스
 	private int buyerIdx;
 	// 도전 인덱스
@@ -63,11 +63,11 @@ public class Payment {
 		this.impUid = impUid;
 	}
 
-	public int getMerchantUid() {
+	public String getMerchantUid() {
 		return merchantUid;
 	}
 
-	public void setMerchantUid(int merchantUid) {
+	public void setMerchantUid(String merchantUid) {
 		this.merchantUid = merchantUid;
 	}
 

@@ -13,11 +13,12 @@
          <a class="my-2 d-flex justify-content-center align-items-end">  
          
         
-         <h4 class="mb-0"> <fmt:formatDate value="${info.startDate}" pattern="yyyy.MM.dd"/> </h4>&nbsp;부터&nbsp;
-         <h4 class="mb-0"> <fmt:formatDate value="${info.endDate}" pattern="yyyy.MM.dd"/> </h4>&nbsp;까지 </a>
+         <h4 class="mb-0" id="startDate"><fmt:formatDate value="${info.startDate}" pattern="yyyy-MM-dd"/></h4>&nbsp;부터&nbsp;
+         <h4 class="mb-0" id="endDate"><fmt:formatDate value="${info.endDate}" pattern="yyyy-MM-dd"/></h4>&nbsp;까지 </a>
            <a class="my-2 d-flex justify-content-center align-items-end"> 
-               <h4 class="mb-1" id="chalTitle"> ${info.title}</h4> &nbsp;도전의</a>
+               <h4 class="mb-1" id="chalTitle">${info.title}</h4> &nbsp;도전의</a>
             <h3>도전금 정하기!</h3>
+            
           </div>
         </div>
         <div class="col-md-3"></div>
