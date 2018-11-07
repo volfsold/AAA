@@ -46,7 +46,7 @@ public interface ZakSimMemberService {
 	 * 회원가입 service
 	 * @param ZakSimMember memberDto
 	 */
-	public void jogin(ZakSimMember memberDto);
+	public void join(ZakSimMember memberDto);
 	
 	/**
 	 * 회원가입 - 아이디 중복체크 service
@@ -61,5 +61,12 @@ public interface ZakSimMemberService {
 	 * @return true(사용 가능) or false(중복된 닉네임이 있음)
 	 */
 	public boolean checkNick(String nick);
+
+	/**
+	 * 이메일 인증 service
+	 * @param String email
+	 * @return String
+	 */
+	public String authEmail(String email);
 	
 }

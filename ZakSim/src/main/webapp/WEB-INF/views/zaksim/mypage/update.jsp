@@ -35,7 +35,7 @@
 
      </style>
 
-	<div class="py-5" style="background-image: url(/resources/image/main/back.webp); background-color: rgba(197, 155, 60, 0.4); ">
+	<div class="py-5" style="background-image: url(/resources/image/main/back.webp); background-color: rgba(197, 155, 60, 0.4);">
 		<div class="container">
 		
 			<div class="row">
@@ -51,7 +51,7 @@
 						</div>
 						
 						<div>    
-							<p>${sessionScope.login_nick}</p>
+							<p>${sessionScope.login_nick }</p>
 						</div>
 
 				</div>
@@ -76,7 +76,7 @@
 				<tbody>
 					<tr>
 						<th class="align-middle cols">아이디</th>
-						<td><input type="text" class="form-control form-control-sm mr-sm-2" value="${sessionScope.login_id}" 
+						<td><input type="text" class="form-control form-control-sm mr-sm-2" value="${login_id }" 
 						 style="width: 400px;" id="id" name="id" disabled/></td>
 						<td></td>
 					</tr>
@@ -91,7 +91,7 @@
                         		<li style="font-size: 12px; line-height: 200%;">자주 쓰는 사이트의 비밀번호가 같을 경우,
                             	주기적으로 변경하는게 안전합니다.</li>
                         		<li style="font-size: 12px; line-height: 200%;">안전한 개인정보관리를 위해서 주기적으로 변경하시는 것이 안전합니다. </li>
-                           </ul>
+                            </ul>
 						</td>
 						<td></td>
 					</tr>
@@ -104,25 +104,25 @@
 					<tr>
 						<th class="align-middle">이름</th>
 						<td><input type="text" class="form-control form-control-sm mr-sm-2"
-						style="width: 400px;" value="${userName}" name="name" disabled /></td>
+						style="width: 400px;" value="${name }" name="name" disabled /></td>
 						<td></td>
 					</tr>
 					<tr>
 						<th class="align-middle">닉네임</th>
 						<td><input type="text" class="form-control form-control-sm mr-sm-2"
-						style="width: 400px;" value="${sessionScope.login_nick}" id="nick" name="nick"/></td>
+						style="width: 400px;" value="${nick }" id="nick" name="nick"/></td>
 						<td></td>
 					</tr>
 					<tr>
 						<th class="align-middle">연락처</th>
 						<td><input type="text" class="form-control form-control-sm mr-sm-2"
-						style="width: 400px;" value="${userPhone}" id="phone" name="phone"/></td>
+						style="width: 400px;" value="${phone }" id="phone" name="phone"/></td>
 						<td></td>
 					</tr>
 					<tr>
 						<th class="align-middle">현재 이메일</th>
 						<td><input type="text" class="form-control form-control-sm mr-sm-2"
-						style="width: 400px;" value="${userEmail}" id="email" name="email" disabled/></td>
+						style="width: 400px;" value="${email }" id="email" name="email" disabled/></td>
 						<td></td>
 					</tr>
 					<tr>
@@ -136,7 +136,7 @@
 					<tr>
 						<th class="align-middle">이메일 인증번호</th>
 						<td class="form-inline">
-							<input type="email" class="form-control form-control-sm mr-sm-2" style="width: 400px;" id="mailnum" name="mailnum"/>
+							<input type="text" class="form-control form-control-sm mr-sm-2" style="width: 400px;" id="mailnum" name="mailnum"/>
 							<button type="button" class="btn btn-sm btn-danger" onclick="randomcheck()" style="height:30px;">확인</button>
 						</td>
 						<td></td>
@@ -171,7 +171,6 @@
 							<div class="modal-body">
 								<form action="/mypage/sign" method="post">
 									<div class="form-group">
-										
 									</div>
 															
 									<div>
@@ -182,10 +181,8 @@
 							
 					    </div>							    
 					</div>
-				</div>	
-				
-				
-				
+		</div>	
+
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -198,10 +195,17 @@
 	    	    var nickB = $("#nick").val();
 	    	    var phoneB = $("#phone").val();
 	    	    var emailB = $("#Cemail").val();
-	//	    	    var addr1 = $("#addr1").val();
+//	    	    var addr1 = $("#addr1").val();
+	
+				var userID = document.getElementById("id").value;
+//      	    var password = document.getElementById("password").value;
+		    	var newPassword1 = document.getElementById("newPassword1").value;
+		    	var newPassword2 = document.getElementById("newPassword2").value;
+		    	var checkemail = document.getElementById("Cemail").value;
+		    	var checknick = document.getElementById("nick").value;
+		    	var checkphone = document.getElementById("phone").value;
 	    	    
-	    	    
-	    	    if(userpwB.length == 0){
+		    	if(userpwB.length == 0){
 	    	        alert("변경할 비밀번호를 입력해 주세요"); 
 	    	        $("#newPassword1").focus();
 	    	        return false;
@@ -230,30 +234,38 @@
 	    	        $("#Cemail").focus();
 	    	        return false;	    	    
 	    	    }
-	    	    
-	//	    	    if(addr1.length == 0 || addr2.length == 0 || addr3.length == 0 ){
-	//	    	        alert("주소를 입력해주세요");
-	//	    	        $("#addr3").focus();
-	//	    	        return false;
-	//	    	    }
-	
-	
-	
-		    	 
-		    	 var userID = document.getElementById("id").value;
-	// 	    	 var password = document.getElementById("password").value;
-		    	 var newPassword1 = document.getElementById("newPassword1").value;
-		    	 var newPassword2 = document.getElementById("newPassword2").value;
-		    	 var checkemail = document.getElementById("Cemail").value;
-		    	 var checknick = document.getElementById("nick").value;
-		    	 var checkphone = document.getElementById("phone").value;
-		    	 
-		    	 // 이메일 체크
-		    	 if(!/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i.test(checkemail)) {
-		    		 alert("이메일 형식이 맞지 않습니다.")
-		    		 return false;
+		    	
+		    	// 길이
+		    	 if(!/^[/^(?=.*[!@#$%^&*()])(?=.*[a-z])(?=.*\d).{8,16}$/.test(newPassword1))
+		    	 { 
+			    	  alert("비밀번호는 숫자, 영문, 특수문자 조합으로 8~16자리를 사용해야 합니다."); 
+			    	  return false;
+		    	 }
+		    	
+		    	// 영문, 숫자, 특수문자 2종 이상 혼용
+		    	 var chk = 0;
+		    	 if(newPassword1.search(/[0-9]/g) != -1 ) chk ++;
+		    	 if(newPassword1.search(/[a-z]/ig)  != -1 ) chk ++;
+		    	 if(newPassword1.search(/[!@#$%^&*()]/g)  != -1  ) chk ++;
+		    	 if(chk < 2)
+		    	 { 
+		    	  alert("비밀번호는 숫자, 영문, 특수문자를 두가지이상 혼용하여야 합니다."); 
+		    	  return false;
 		    	 }
 		    	 
+		    	// 아이디 포함 여부
+		    	 if(newPassword1.search(userID)>-1)
+		    	 {
+		    	  alert("ID가 포함된 비밀번호는 사용하실 수 없습니다."); 
+		    	  return false;
+		    	 }
+		    	
+		    	// 재입력 일치 여부
+		    	 if (newPassword1 != newPassword2) {
+			    	  alert("입력한 두 개의 비밀번호가 서로  일치하지 않습니다."); 
+			    	  return false;
+		    	 }
+
 		    	 // 닉네임 체크
 		    	 if(!/^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{4,12}$/.test(checknick)) {
 		    		 alert("닉네임은 특수문자를 제외하고 4자에서 12자 이내로 작성해야 합니다.")
@@ -266,43 +278,25 @@
 		    		 return false;
 		    	 }
 		    	 
-		    	 // 재입력 일치 여부
-		    	 if (newPassword1 != newPassword2) {
-		    	  alert("입력한 두 개의 비밀번호가 서로  일치하지 않습니다.");
-		    	  return false;
-		    	 }
-		    	  
-		    	 // 길이
-		    	 if(!/^[/^(?=.*[!@#$%^&*()])(?=.*[a-z])(?=.*\d).{8,16}$/.test(newPassword1))
-		    	 { 
-		    	  alert("비밀번호는 숫자, 영문, 특수문자 조합으로 8~16자리를 사용해야 합니다."); 
-		    	  return false;
-		    	 }
-		    	 
-		    	 // 영문, 숫자, 특수문자 2종 이상 혼용
-		    	 var chk = 0;
-		    	 if(newPassword1.search(/[0-9]/g) != -1 ) chk ++;
-		    	 if(newPassword1.search(/[a-z]/ig)  != -1 ) chk ++;
-		    	 if(newPassword1.search(/[!@#$%^&*()]/g)  != -1  ) chk ++;
-		    	 if(chk < 2)
-		    	 { 
-		    	  alert("비밀번호는 숫자, 영문, 특수문자를 두가지이상 혼용하여야 합니다."); 
-		    	  return false;
+		    	// 이메일 체크
+		    	 if(!/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i.test(checkemail)) {
+		    		 alert("이메일 형식이 맞지 않습니다.")
+		    		 return false;
 		    	 }
 
-		    	 // 아이디 포함 여부
-		    	 if(newPassword1.search(userID)>-1)
-		    	 {
-		    	  alert("ID가 포함된 비밀번호는 사용하실 수 없습니다."); 
-		    	  return false;
-		    	 }
+//	    	    if(addr1.length == 0 || addr2.length == 0 || addr3.length == 0 ){
+//	    	        alert("주소를 입력해주세요");
+//	    	        $("#addr3").focus();
+//	    	        return false;
+//	    	    }
+ 
 		    	 
+
 		    	 // 기존 비밀번호와 새 비밀번호 일치 여부
-		    	 if (password == newPassword2) {
-		    	  alert("기존 비밀본호와 새 비밀번호가 일치합니다.");
-		    	  return false;
-		    	 }
-
+// 		    	 if (password == newPassword2) {
+// 		    	  alert("기존 비밀번호와 새 비밀번호가 일치합니다.");
+// 		    	  return false;
+// 		    	 }
 	    	}
 	    
 	    function isContinuedValue(value) {
@@ -352,7 +346,7 @@
 	    	
 	        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-	        for( var i=0; i < 5; i++ ) 
+	        for( var i=0; i < 8; i++ ) // 코드 생성
 	            text += possible.charAt(Math.floor(Math.random() * possible.length));
 
 	        alert(text); 
@@ -368,12 +362,9 @@
 	    		 alert("인증번호가 일치합니다.");
 	    	} else {
 	    		alert("인증번호가 맞지 않습니다.");
-	    		
 	    		return false;
-	    	}
-	    	
+	    	}	
 	    }
-	    
     </script>
 	
 <!-- footer include -->

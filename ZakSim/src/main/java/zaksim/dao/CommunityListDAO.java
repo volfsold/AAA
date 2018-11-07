@@ -5,6 +5,7 @@ import java.util.List;
 import zaksim.dto.CommunityCategory;
 import zaksim.dto.CommunityGroup;
 import zaksim.dto.GroupKeyword;
+import zaksim.dto.GroupMember;
 
 public interface CommunityListDAO {
 
@@ -31,6 +32,8 @@ public interface CommunityListDAO {
 	
 	// 카테고리별 정보
 	public List<CommunityGroup> categoryGroup(int idx);
+	
+
 	
 	
 	

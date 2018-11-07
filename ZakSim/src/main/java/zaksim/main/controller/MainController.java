@@ -20,4 +20,13 @@ public class MainController {
 		ZakSimMember member=new ZakSimMember();
 		
 	}
+	
+	
+	@RequestMapping(value="/notLogin", method=RequestMethod.GET)
+	public void notLogin() {
+		
+		
+		
+	}
+	
 }

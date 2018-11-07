@@ -33,7 +33,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <a href="/zaksim/main/home"><img src="/resources/image/main/logo.jpg" class="img-fluid" alt="Responsive image" /></a>
+                <a href="/zaksim/main/home"><img src="/resources/image/main/logo.jpg" class="img-fluid" alt="Responsive image" style="height: 18rem; width: 30rem;" /></a>
             </div>
         </div>
     </div> <!-- end of logo -->
@@ -97,15 +97,23 @@
         <li class="nav-item font-weight-bold text-black-50 mx-2" style="font-size: 15px;">
         
         
-        <!-- 도전중 일때 -->
-        <c:if test="${ status }">
-        <a href="/zaksim/challenge/challengeInfo" style="text-decoration: none; " >나의 도전</a>
+        <c:if test="${sessionScope.login}">
+	        
+	        <!-- 도전중 일때 -->
+	        <c:if test="${ status }">
+	        <a href="/zaksim/challenge/challengeInfo" style="text-decoration: none; " >나의 도전</a>
+	        </c:if>
+	        
+	        <!-- 도전중이 아닐때 -->
+	        <c:if test="${empty status }">
+	        <a href="/zaksim/challenge/doChallenge" style="text-decoration: none; " >나의 도전</a>
+	        </c:if>
         </c:if>
         
-        <!-- 도전중이 아닐때 -->
-        <c:if test="${empty status }">
-        <a href="/zaksim/challenge/doChallenge" style="text-decoration: none; " >나의 도전</a>
+        <c:if test="${not sessionScope.login}"> 
+        	<a href="/zaksim/main/notLogin" style="text-decoration: none; " >나의 도전</a>
         </c:if>
+        
         
         </li>
         <li class="nav-item  font-weight-bold text-black-50 mx-2" style="font-size: 15px;">

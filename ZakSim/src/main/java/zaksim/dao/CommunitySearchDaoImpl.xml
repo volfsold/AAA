@@ -99,6 +99,7 @@
 	</select>
 
 	<select id="searchKeywordGroup" resultMap="GroupLike">
+		
 		SELECT
         distinct gk.g_idx, gk.title, gk.content, gk.image, gk.max, gk.open_date, gk.secret, gk.password,  gk.group_category, gk.group_image, l.like_num, l.l_group_idx
       FROM

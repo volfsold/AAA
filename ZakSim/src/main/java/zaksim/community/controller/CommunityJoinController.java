@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import zaksim.community.service.CommunityListService;
+import zaksim.community.service.CommunityMemberListService;
 
 // 가입된 커뮤니티
 @Controller
@@ -22,6 +23,7 @@ public class CommunityJoinController {
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(CommunityMainController.class);
 	@Autowired CommunityListService communityListService;
+	@Autowired CommunityMemberListService communityMemberListService;
 
 	// 해당 커뮤니티 화면 GET
 	@RequestMapping(value="/enrollCommunity", method=RequestMethod.GET)
@@ -29,15 +31,14 @@ public class CommunityJoinController {
 		
 			// 그룹 idx 가져옴
 			String idx = request.getParameter("idx");
-			System.out.println("그룹정보 : " +communityListService.info(Integer.parseInt(idx)));
 			
 			// 그룹 정보 넘기기
 			model.addAttribute("groupInfo", communityListService.info(Integer.parseInt(idx)));
 			
 			// 키워드 가져오기
 			model.addAttribute("keywordList", communityListService.keywordList());
+			
 
-		
 	}
 	
 
@@ -65,8 +66,16 @@ public class CommunityJoinController {
 	//, int idx
 	// 커뮤니티 참여자 보기 GET
 	@RequestMapping(value="/joinMember", method=RequestMethod.GET)
-	public void joinMember(Model model) {
+	public void joinMember(Model model, HttpServletRequest request) {
 		
+		String idx = request.getParameter("idx");
+		
+		// 그룹 정보 넘기기
+		model.addAttribute("groupInfo", communityListService.info(Integer.parseInt(idx)));
+		
+		// 맴버 정보
+		model.addAttribute("members", communityMemberListService.members());
+
 	}
 	
 //	// 참여하고 있는 모임 ( 자세히 보기 )  GET

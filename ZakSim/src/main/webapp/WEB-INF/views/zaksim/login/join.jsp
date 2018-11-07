@@ -215,15 +215,13 @@ ZakSim 및 ZakSim 관련 제반 서비스(모바일 웹/앱 포함)의 회원관
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModal3Label">오류</h5>
+					<h5 class="modal-title" id="exampleModal3Label"></h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body"></div>
-				<div class="modal-footer">
-					<button type="button" class="btn joinBtnColor" id="btnRedirectLogin1" data-dismiss="modal">확인</button>
-				</div>
+				<div class="modal-footer"></div>
 			</div>
 		</div>
 	</div>
@@ -259,11 +257,29 @@ ZakSim 및 ZakSim 관련 제반 서비스(모바일 웹/앱 포함)의 회원관
 				|| !$('#infoCheck').prop("checked")) {
 			// 필수 항목이 하나라도 체크 안 되어있을 경우, 팝업창 띄우기
 			console.log("if문 확인했소이다.")
+			
+			$('.modal-title').text("오류");
 			$('.modal-body').html("동의하지 않은 약관이 있습니다.<br>필수 약관에 모두 동의해주세요.");
+			$('.modal-footer').html('<button type="button" class="btn joinBtnColor" data-dismiss="modal">확인</button>');
+			
 			$('#joinModal').modal();
 		} else {
 			// 필수 항목 다 체크 되었을 경우, 회원가입 페이지로 이동
 			location.href = "/zaksim/login/joinForm";
 		}
 	});
+	
+	$('#btnDisagree').click(function(){
+		$('.modal-title').text("안내");
+		$('.modal-body').html("동의하지 않을 경우 회원가입을 진행할 수 없습니다.<br>회원가입을 취소합니다.");
+		$('.modal-footer').html('<button type="button" class="btn joinBtnColor" id="btnRedirectMain">확인</button>'
+				+'<button type="button" class="btn btn-info" data-dismiss="modal">취소</button>');
+		
+		$('#joinModal').modal();
+		
+		$('#btnRedirectMain').click(function(){
+			location.href = "/zaksim/main/home";
+		});
+	});
+	
 </script>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="zaksim.dao.CommunityMemberListDao">
+
+		<resultMap type="zaksim.dto.CommunityGroup" id="CommunityGroup">
+		<result column="idx" property="idx" />
+		<result column="member_idx" property="member_idx" />
+		<result column="category_idx" property="category_idx" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="image" property="image" />
+		<result column="max" property="max" />
+		<result column="open_date" property="open_date" />
+		<result column="secret" property="secret" />
+		<result column="password" property="password" />
+	</resultMap>
+
+	<resultMap type="zaksim.dto.GroupMember" id="GroupMember">
+		<result column="idx" property="idx" />
+		<result column="group_idx" property="group_idx" />
+		<result column="member_idx" property="member_idx" />
+		<collection property="communityGroup"
+			resultMap="CommunityGroup" />
+	</resultMap>
+	
+	
+	<select id="members" resultMap="GroupMember">
+		select * from groupmember m, communitygroup g where m.group_idx = g.idx
+	</select>
+	
+
+
+  </mapper>

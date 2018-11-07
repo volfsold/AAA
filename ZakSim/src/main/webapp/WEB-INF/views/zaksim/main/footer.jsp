@@ -28,7 +28,7 @@
 
             <hr style="border-style: solid; border-color: dimgray;">
 
-            <div class="row h-25 justify-content-center">
+            <div class="row justify-content-center">
 
                 <div class="row text-center">
                     <div class="col-xl-12">

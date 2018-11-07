@@ -5,6 +5,9 @@
 <%@include file="/WEB-INF/views/zaksim/main/header.jsp" %>
 
   
+
+
+
   <!--바디-->
    
    <div class=" pt-5" style="background-image: url(/resources/image/main/back.webp); 
@@ -15,19 +18,30 @@
           <img class="img-fluid d-block my-2 rounded-circle float-right" src="https://pingendo.com/assets/photos/wireframe/photo-1.jpg" style="	height: 140px; width: 140px;	border-right-width: 3px;	border-top-width: 3px;	border-bottom-width: 3px;    border-left-width: 3px;	border-style: solid;	border-color: white;">
         </div>
         <div class="col-md-6 row" style="">
-          <div class="col-md-12 my-3 mx-3">
+          <div class="col-md-12 my-3 mx-3 text-center">
             <h4>${sessionScope.login_nick }님의 <b class="text-danger">도전 24일차</b></h4>
           </div>
-          <div class="border border-dark mx-3 col-md-12" style="height:50px;"> 막대 그래프 위치 </div>
+       <div class=" mx-3 col-md-12" style="background-color:blanchedalmond; height:70px;  border-right-width: 2px;	border-top-width: 2px;	border-bottom-width: 2px;    border-left-width: 2px;	border-style:solid;	border-color: white;"> 
+		
+		<div class="m-1">
+		<h6><b>도전 인증률</b></h6>
+		<div class="progress mb-2" style="height: 25px; border-right-width: 2px;	border-top-width: 2px;	border-bottom-width: 2px;    border-left-width: 2px;	border-style:solid;	border-color: white;"> 
+		    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+		      40%
+		    </div>
+		</div>
+		</div>
+		
+	</div>
         </div>
-        <div class="col-md-2" style="">
-        </div>
-      
+        <div class="col-md-2" >
+        </div>     
        </div>
-    
     </div>
-    
   </div>
+  
+  
+  
   <div class="py-1" style="background-image: url(/resources/image/main/back.webp); 
    background-color: rgba(240, 200, 240, 0.7);">
     <div class="container " >
@@ -39,9 +53,7 @@
          
          
           <h4 class="text-center my-2 mb-4">도전 정보</h4>
-          
-          
-            
+           
          <a class="my-2 d-flex justify-content-center align-items-end">  <h5 class="mb-1"> 10월 26일</h5>&nbsp;부터&nbsp; <h5 class="mb-1">12월 31일</h5>&nbsp;까지 </a>
          
           <a class="my-2 d-flex justify-content-center align-items-end"> 도전금&nbsp;<h4 class="mb-0"> 30,000</h4>원을 걸고</a>
@@ -49,9 +61,6 @@
          <a class="my-2 d-flex justify-content-center align-items-end"><h5 class="mb-1"><b>헬스,운동하기</b></h5>&nbsp;도전중 </a>  
           
           <a class="btn btn-sm w-25 my-4 btn-primary text-white" href="/zaksim/challenge/citation"> 도전 인증 </a>
-        
-        
-        
         
         
         </div>
@@ -62,6 +71,8 @@
       <hr class="my-5">
     </div>
   </div>
+  
+  
   <div class="py-3 pb-5" style="background-image: url(/resources/image/main/back.webp); 
    background-color: rgba(240, 200, 240, 0.7);">
     <div class="container mb-5 ">
@@ -99,6 +110,30 @@
           </div>
         </div>
       </div>
+      
+       <hr class="my-5">
+      
+      
+        <div class="row mb-5 ">
+           
+           <div class="col-md-6 text-center">
+           
+            <c:if test="${empty status }">
+                <a class="btn btn-lg w-25 my-4 btn-primary text-white " href="/zaksim/challenge/vow"> 서약서 작성 </a>
+            </c:if>
+            
+            <c:if test="${status }">
+                <a class="btn btn-lg w-25 my-4 btn-primary text-white " href="#modal"> 서약서 확인 </a>
+            </c:if>
+            
+            </div>
+            
+            <div class="col-md-6 text-center"> 
+                <a class="btn btn-lg w-25 my-4 btn-dark text-white " href="#modal"> 도전 포기 </a>
+            </div>
+            
+        </div>
+      
     </div>
   </div>
 

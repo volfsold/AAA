@@ -148,6 +148,12 @@
   	WHERE member_type = 'zaksim' AND id = #{id}
   </update>
   
+  <!-- 회원가입 -->
+  <insert id="join" parameterType="zaksim.dto.ZakSimMember">
+  	INSERT INTO ZakSimMember(idx, member_type, id, password, nick, name, email, phone, status)
+  	VALUES (ZaksimMember_SEQ.NEXTVAL, 'zaksim', #{id}, #{password}, #{nick}, #{name}, #{email}, #{phone}, 'normal')
+  </insert>
+  
   <!-- 회원가입 - 아이디 중복 체크 -->
   <select id="checkId" parameterType="string" resultType="int">
   	SELECT COUNT(*) FROM ZakSimMember

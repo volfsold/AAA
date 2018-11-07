@@ -86,12 +86,14 @@
 	</select>
 
 	<select id="categoryList2" resultMap="CommunityCategory">
-		select c.idx, c.category
+		select distinct c.idx, c.image, c.category
 		from
 		communityGroup g, CommunityCategory c
 		where
 		c.idx= g.category_idx
 	</select>
+	
+
 
 	<!-- <select id="popularGroupList" resultMap="GroupLike"> -->
 	<!-- SELECT -->
@@ -116,12 +118,12 @@
 		g_idx, g.title ,g.content , g.image ,g.max , g.open_date , g.secret
 		,
 		g.password
-		FROM CommunityGroup g) gk
+		FROM CommunityGroup g order by g_idx asc) gk
 		left join (select count(*) as
 		like_num, group_idx as l_group_idx from
 		grouplike
 		GROUP BY group_idx
-		order by like_num desc, null desc) l on l.l_group_idx=gk.g_idx
+		order by like_num desc nulls last) l on l.l_group_idx=gk.g_idx
 	</select>
 
 
@@ -223,6 +225,9 @@
 		grouplike
 		GROUP BY group_idx order by
 		like_num desc, null desc) l on l.l_group_idx=gk.g_idx
+	</select>
+	
+	<select id="member" >
 	</select>
 
 

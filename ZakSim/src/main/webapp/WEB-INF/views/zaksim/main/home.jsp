@@ -76,9 +76,9 @@
        
        
 		<div class="col-md-6 col-lg-6 rounded m-2 mx-5 text-center" style="background-color: blanchedalmond;    border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;    border-left-width: 5px;	border-style: solid;	border-color: white;">
-          <h3 class="text-center my-4 mb-4">도전 정보</h3>
+          <h3 class="text-center my-4 mb-4"><b>도전 정보</b></h3>
           <hr  style="border:2px white solid;">
-          <h4 class="my-5"> <b>로그인 후 이용해 주세요! </b></h4>
+          <h4 class="my-5"> 로그인 후 이용해 주세요! </h4>
         </div>
        
     </c:if>
@@ -102,8 +102,8 @@
 		<div class="col-md-6 col-lg-6 rounded m-2 mx-5 text-center" style="background-color: blanchedalmond;    border-right-width: 5px;	border-top-width: 5px;	border-bottom-width: 5px;    border-left-width: 5px;	border-style: solid;	border-color: white;">
           <h3 class="text-center my-2">도전 정보</h3>
           <hr  style="border:2px white solid;">
-          <h5 class="my-2 mt-5"> <b> 아직 도전을 시작하지 않으셨군요. </b></h5>
-          <h5 class="my-2"> <b> 멋진 도전을 시작해 보세요! </b></h5>
+          <h5 class="my-2 mt-5"> 아직 도전을 시작하지 않으셨군요.</h5>
+          <h5 class="my-2">  멋진 도전을 시작해 보세요! </h5>
           
           <a class="btn btn-sm w-50 btn-info my-2 mt-4" href="/zaksim/challenge/doChallenge"> 도전 시작하기 </a>
           
@@ -161,10 +161,12 @@
     <div class="container">
       <div class="row">
         <div class="mx-3" >
-          <h4 class="mx-2" contenteditable="true">인기 그룹</h4>
+          <h4 class="mx-2" contenteditable="true"><b>인기 그룹</b></h4>
         </div>
         <div class="col-md-9 px-0 ">
-          <hr style=" border-style: solid;	border-color: gray;	border-right-width: 1px;	border-top-width: 1px;	border-bottom-width: 1px;	border-left-width: 1px;">
+          
+         <div style="height:2px; background-color:gray;" class="col rounded my-2 mt-3"></div> 
+         
         </div>
         <div class="col-md-1 ml-4"><a href="/zaksim/community/popularCommunity" class="btn btn-outline-white text-muted "><b>+더보기</b></a></div>
       </div>
@@ -306,11 +308,12 @@
     <div class="container">
     
       <div class="row">
-        <div class="mx-3">
-          <h4 class="mx-2" contenteditable="true">최신 인증</h4>
+        <div class="mx-3" >
+          <h4 class="mx-2" contenteditable="true"><b>최신 인증</b></h4>
         </div>
-        <div class="col-md-9  px-0 ">
-          <hr style=" border-style: solid;	border-color: gray;	">
+        <div class="col-md-9 px-0 ">
+          
+         <div style="height:3px; background-color:gray;" class="col rounded my-2 mt-3"></div> 
         </div>
         <div class="col-md-1 ml-4"><a href="/zaksim/challenge/challengers" class="btn btn-outline-white text-muted "><b>+더보기</b></a></div>
       </div>

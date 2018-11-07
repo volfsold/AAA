@@ -6,11 +6,13 @@ public class GroupMember {
 	private int idx;
 	private int group_idx;
 	private int member_idx;
-	
-	
+    private CommunityGroup communityGroup;
+    
+    
 	@Override
 	public String toString() {
-		return "GroupMember [idx=" + idx + ", group_idx=" + group_idx + ", member_idx=" + member_idx + "]";
+		return "GroupMember [idx=" + idx + ", group_idx=" + group_idx + ", member_idx=" + member_idx
+				+ ", communityGroup=" + communityGroup + "]";
 	}
 	public int getIdx() {
 		return idx;
@@ -30,6 +32,17 @@ public class GroupMember {
 	public void setMember_idx(int member_idx) {
 		this.member_idx = member_idx;
 	}
+	public CommunityGroup getCommunityGroup() {
+		return communityGroup;
+	}
+	public void setCommunityGroup(CommunityGroup communityGroup) {
+		this.communityGroup = communityGroup;
+	}
+    
+    
 	
+	
+	
+
 	
 }
