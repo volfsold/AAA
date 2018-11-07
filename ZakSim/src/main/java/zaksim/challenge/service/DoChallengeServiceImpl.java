@@ -3,6 +3,7 @@ package zaksim.challenge.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import zaksim.dao.ChallengeDao;
 import zaksim.dao.ZakSimMemberDao;
 import zaksim.dto.Challenge;
 import zaksim.dto.Payment;
@@ -12,7 +13,7 @@ import zaksim.dto.ZakSimMember;
 public class DoChallengeServiceImpl implements DoChallengeService{
 
 	@Autowired ZakSimMemberDao memberDao;
-
+	@Autowired ChallengeDao challengeDao;
 	
 	// 회원정보 가져오기
 	@Override
@@ -24,8 +25,9 @@ public class DoChallengeServiceImpl implements DoChallengeService{
 
 	// 도전 정보 입력
 	@Override
-	public void setCahllengeInfo(ZakSimMember user) {
-		// TODO Auto-generated method stub
+	public void setCahllengeInfo(Challenge chal) {
+		
+		
 		
 	}
 
@@ -38,7 +40,7 @@ public class DoChallengeServiceImpl implements DoChallengeService{
 
 	// 결제 정보 입력
 	@Override
-	public void setPayment(ZakSimMember user) {
+	public void setPayment(Payment pay) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -48,6 +50,15 @@ public class DoChallengeServiceImpl implements DoChallengeService{
 	public Payment getPayment(ZakSimMember user) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	
+	// insert 매개변수 시퀀스 가져오기
+	@Override
+	public int getSeqNextval() {
+		
+		
+		return challengeDao.selectSeq();
 	}
 	
 	
