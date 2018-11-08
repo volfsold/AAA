@@ -23,7 +23,7 @@
 	        WHERE id = #{id}
 	  </select> 
 	  
-	  <update id="updateMember" parameterType="ZakSimMember">
+	  <update id="updateMember" parameterType="zaksim.dto.ZakSimMember">
 	  		UPDATE ZaksimMember 
 	  		SET password = #{password}, 
 	  		nick = #{nick}, 
