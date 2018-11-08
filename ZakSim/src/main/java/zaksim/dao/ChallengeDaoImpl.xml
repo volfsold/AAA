@@ -15,7 +15,7 @@
   	<insert id="insertChallenge" parameterType="zaksim.dto.Challenge">
   	
   		INSERT INTO Challenge (idx, member_idx, apply_date, start_date, end_date, money, title, status, result) 
-  		VALUES (#{idx}, #{memberIdx},  to_date(sysdate,YYYY-MM-DD), to_date(#{startDate},'YYYY-MM-DD'), to_date('#{endDate}','YYYY-MM-DD'), #{money}, #{title}, #{status}, null);
+  		VALUES (#{idx}, #{memberIdx}, sysdate, #{startDate}, #{endDate}, #{money}, #{title}, #{status}, null)
   	
   	</insert>
   
@@ -23,7 +23,7 @@
   	<insert id="insertPayment" parameterType="zaksim.dto.Payment">
   		
   		INSERT INTO PAYMENT (imp_uid, merchant_uid, buyer_idx, challenge_idx, price, paid_at, status, payment_option) 
-  		VALUES ( #{impUid} , #{merchantUid} , #{buyerIdx} , #{challengeIdx} , #{price} , to_date(#{paidAt}, 'YYYY-MM-DD') , #{status} , #{paymentOption} );
+  		VALUES ( #{impUid} , #{merchantUid} , #{buyerIdx} , #{challengeIdx} , #{price} , #{paidAt} , #{status} , #{paymentOption} )
   	
   	</insert>
   

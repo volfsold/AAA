@@ -18,18 +18,18 @@
  
  
 	  <!-- parameterType: 정보를 받아온다 resultType: 정보를 돌려준다 -->
-	  <select id="memberInfo" parameterType="String" resultType="java.util.HashMap">
+	  <select id="memberInfo" parameterType="String" resultMap="ZakSimMember">
 	        SELECT * FROM ZaksimMember
 	        WHERE id = #{id}
 	  </select> 
 	  
-	  <update id="updateMember" parameterType="java.util.HashMap">
+	  <update id="updateMember" parameterType="ZakSimMember">
 	  		UPDATE ZaksimMember 
-	  		SET password = #{PASSWORD}, 
-	  		nick = #{NICK}, 
-	  		phone = #{PHONE},
-	  		email = #{EMAIL}
-	  		WHERE id = #{ID}
+	  		SET password = #{password}, 
+	  		nick = #{nick}, 
+	  		phone = #{phone},
+	  		email = #{email}
+	  		WHERE id = #{id}
 	  </update>
 	  
 	  <delete id="deleteMember" parameterType="String">
